@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - SenyasHub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/Main_Page-direct/profile.css">
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="header-container">
+            <h1 class="app-title">SenyasHub</h1>
+            <div class="profile-container">
+                <button class="profile-btn" id="profileBtn">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile" class="profile-img">
+                </button>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="profile.html">View Profile</a>
+                    <a href="index-home.html">Home</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="profile-content">
+        <div class="profile-header">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile Picture" class="profile-picture" id="profilePicture">
+            <div class="profile-info">
+                <h2 id="userName">Juan Dela Cruz</h2>
+                <p id="userEmail">juan.delacruz@example.com</p>
+                <p id="userType">Learner</p>
+                <input type="file" id="fileInput" class="file-input" accept="image/*">
+                <button class="upload-btn" id="uploadBtn">Change Photo</button>
+            </div>
+            <button class="edit-btn" id="editBtn">Edit Profile</button>
+        </div>
+
+        <div class="profile-details">
+            <div class="detail-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" value="Juan Dela Cruz" disabled>
+            </div>
+            
+            <div class="detail-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" value="juan.delacruz@example.com" disabled>
+            </div>
+            
+            <div class="detail-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" value="+63 912 345 6789" disabled>
+            </div>
+            
+            <div class="detail-group">
+                <label for="birthdate">Birthdate</label>
+                <input type="date" id="birthdate" value="1990-01-15" disabled>
+            </div>
+            
+            <div class="detail-group">
+                <label for="gender">Gender</label>
+                <select id="gender" disabled>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                    <option value="prefer-not-to-say">Prefer not to say</option>
+                </select>
+            </div>
+            
+            <div class="detail-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" value="Manila, Philippines" disabled>
+            </div>
+            
+            <div class="detail-group">
+                <label for="bio">About Me</label>
+                <textarea id="bio" disabled>I'm learning Filipino Sign Language to better communicate with my deaf cousin. I'm excited to be part of this community!</textarea>
+            </div>
+            
+            <div class="button-group" id="buttonGroup">
+                <button class="save-btn" id="saveBtn">Save Changes</button>
+                <button class="cancel-btn" id="cancelBtn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="app-footer">
+        <nav class="footer-nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="index-home.html" class="nav-link">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F45e25a86832c414caad53c69831aefe6" alt="Home" class="nav-icon">
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="modules-section.html" class="nav-link">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5f960d0d2c9f43379a72dd74267b9d2b" alt="Modules" class="nav-icon">
+                        <span>Modules</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="Quizzes_home-home.html" class="nav-link">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F0674cddbe79f4c5b82486ba63b28758d" alt="Quizzes" class="nav-icon">
+                        <span>Quizzes</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="chat-section-client.html" class="nav-link">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F44567bd71c43455d89f29e8379fa4244" alt="Live Chat" class="nav-icon">
+                        <span>Live Chat</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="about_us.html" class="nav-link">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F2fceff1214cb48c8b43e5651ff4022f0"
+                            alt="About" class="nav-icon">
+                        <span>About</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Profile dropdown functionality
+            $("#profileBtn").click(function(e) {
+                e.stopPropagation();
+                $("#profileDropdown").toggleClass("show");
+            });
+            
+            // Close dropdown when clicking outside
+            $(document).click(function() {
+                $("#profileDropdown").removeClass("show");
+            });
+            
+            // Logout functionality
+            $("#logoutBtn").click(function(e) {
+                e.preventDefault();
+                if(confirm("Are you sure you want to logout?")) {
+                    // Here you would typically make an AJAX call to your logout endpoint
+                    // For now, we'll just redirect to login page
+                    window.location.href = "login.html";
+                }
+            });
+            
+            // Edit profile functionality
+            let originalValues = {};
+            
+            $("#editBtn").click(function() {
+                // Enable all form fields
+                $(".profile-details input, .profile-details select, .profile-details textarea").prop("disabled", false);
+                
+                // Store original values
+                $(".profile-details input, .profile-details select, .profile-details textarea").each(function() {
+                    originalValues[this.id] = $(this).val();
+                });
+                
+                // Show save/cancel buttons
+                $("#buttonGroup").show();
+                
+                // Hide edit button
+                $(this).hide();
+            });
+            
+            // Cancel editing
+            $("#cancelBtn").click(function() {
+                // Restore original values
+                for (let id in originalValues) {
+                    $("#" + id).val(originalValues[id]);
+                }
+                
+                // Disable all form fields
+                $(".profile-details input, .profile-details select, .profile-details textarea").prop("disabled", true);
+                
+                // Hide save/cancel buttons
+                $("#buttonGroup").hide();
+                
+                // Show edit button
+                $("#editBtn").show();
+            });
+            
+            // Save changes
+            $("#saveBtn").click(function() {
+                // Here you would typically make an AJAX call to save the changes
+                // For now, we'll just update the displayed name and disable the fields
+                
+                // Update the displayed name
+                $("#userName").text($("#fullName").val());
+                
+                // Disable all form fields
+                $(".profile-details input, .profile-details select, .profile-details textarea").prop("disabled", true);
+                
+                // Hide save/cancel buttons
+                $("#buttonGroup").hide();
+                
+                // Show edit button
+                $("#editBtn").show();
+                
+                // Show success message
+                alert("Profile updated successfully!");
+            });
+            
+            // Profile picture upload
+            $("#uploadBtn").click(function() {
+                $("#fileInput").click();
+            });
+            
+            $("#fileInput").change(function(e) {
+                if (e.target.files && e.target.files[0]) {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(event) {
+                        $("#profilePicture").attr("src", event.target.result);
+                    }
+                    
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
