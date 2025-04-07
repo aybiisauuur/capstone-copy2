@@ -7,14 +7,27 @@
     <title>SenyasHub - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/Main_Page-direct/home.css">
-    <link rel="stylesheet" href="CSS/Main_Page-direct/home.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
     <header class="app-header">
-        <h1 class="app-title">SenyasHub</h1>
+        <div class="header-container">
+            <h1 class="app-title">SenyasHub</h1>
+            <div class="profile-container">
+                <button class="profile-btn" id="profileBtn">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile"
+                        class="profile-img">
+                </button>
+                <div class="profile-dropdown" id="profileDropdown">
+                    <a href="profile.html">View Profile</a>
+                    <a href="edit-profile.html">Edit Profile</a>
+                    <a href="#" id="logoutBtn">Logout</a>
+                </div>
+            </div>
+        </div>
     </header>
+
     <div class="search-container">
         <div class="search-box">
             <input type="search" class="search-input" placeholder="What would you like to learn?"
@@ -33,7 +46,8 @@
             <p>This app will help you turn your eyes into ears. With this app, you will be able to learn the basics of
                 Filipino Sign Language (FSL).</p>
             <br>
-            <p>The modules, quizzes, and live chat can only be used or accessed when you have an internet connection.</p>
+            <p>The modules, quizzes, and live chat can only be used or accessed when you have an internet connection.
+            </p>
             <br>
             <p>To learn more about this app, please click on the About Us tab located below.</p>
         </section>
@@ -44,25 +58,29 @@
             <ul class="nav-list">
                 <li class="nav-item">
                     <a href="index-home.html" class="nav-link active">
-                        <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F45e25a86832c414caad53c69831aefe6" alt="" class="nav-icon">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F45e25a86832c414caad53c69831aefe6"
+                            alt="" class="nav-icon">
                         <span>Home</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="modules-section.html" class="nav-link">
-                        <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5f960d0d2c9f43379a72dd74267b9d2b" alt="" class="nav-icon">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5f960d0d2c9f43379a72dd74267b9d2b"
+                            alt="" class="nav-icon">
                         <span>Modules</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="Quizzes_home-home.html" class="nav-link">
-                        <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F0674cddbe79f4c5b82486ba63b28758d" alt="" class="nav-icon">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F0674cddbe79f4c5b82486ba63b28758d"
+                            alt="" class="nav-icon">
                         <span>Quizzes</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="chat-section-client.html" class="nav-link">
-                        <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F44567bd71c43455d89f29e8379fa4244" alt="" class="nav-icon">
+                        <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F44567bd71c43455d89f29e8379fa4244"
+                            alt="" class="nav-icon">
                         <span>Live Chat</span>
                     </a>
                 </li>
@@ -79,6 +97,27 @@
     <script>
 
         $(document).ready(function () {
+            // Profile dropdown functionality
+            $("#profileBtn").click(function (e) {
+                e.stopPropagation();
+                $("#profileDropdown").toggleClass("show");
+            });
+
+            // Close dropdown when clicking outside
+            $(document).click(function () {
+                $("#profileDropdown").removeClass("show");
+            });
+
+            // Logout functionality
+            $("#logoutBtn").click(function (e) {
+                e.preventDefault();
+                if (confirm("Are you sure you want to logout?")) {
+                    // Here you would typically make an AJAX call to your logout endpoint
+                    // For now, we'll just redirect to login page
+                    window.location.href = "login.html";
+                }
+            });
+
             let allPhraseCards = '';
             let recentModules = [];
             const files = [
@@ -166,7 +205,7 @@
                 .blur(function () {
                     $('.search-box').css('border-color', '#000');
                 });
-                
+
             // Recent modules handling remains the same
             $(document).on('click', '.recent-item', function () {
                 const moduleName = $(this).find('span').text();
