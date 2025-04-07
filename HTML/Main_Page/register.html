@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="CSS/Main_Page-direct/register.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type = "module" src="JS/Main_Page-directjs/register.js"></script>
+</head>
+
+<body>
+    <section class="login" role="main">
+        <header class="app-header">
+            <h1 class="app-title">Register</h1>
+        </header>
+        <div class="intro-text-container">
+            <h2 class="intro-text">SenyasHub</h2>
+        </div>
+
+        <!-- User Email -->
+        <div class="search-container">
+            <div class="input-wrapper">
+                <img src="CSS/pngegg (28) 1.png" alt="User Icon" class="icon">
+                <input type="search" class="search-input" placeholder="User Email" aria-label="userID" id="email">
+            </div>
+        </div>
+
+        <!-- Password -->
+        <div class="password-container">
+            <div class="input-wrapper">
+                <img src="CSS/pngegg (29) 1.png" alt="Password Icon" class="icon">
+                <input type="password" class="password-input" placeholder="Password" aria-label="password" id="password"
+                    required>
+                <button type="button" class="toggle-password">&#128065;</button>
+            </div>
+        </div>
+
+        <!-- Retype Password -->
+        <div class="repassword-container">
+            <div class="input-wrapper">
+                <img src="CSS/pngegg (29) 1.png" alt="Password Icon" class="icon">
+                <input type="password" class="repassword-input" placeholder="Retype Password" aria-label="repassword"
+                    id="retypepass">
+                <button type="button" class="toggle-password">&#128065;</button>
+            </div>
+        </div>
+
+        <main class="content-wrapper">
+            <section class="Sign_In-section" aria-label="FSL Categories">
+                <button class="Sign_In-card light" id="signup_button">
+                    <h3 class="Sign_In-title">Sign up</h3>
+                </button>
+            </section>
+        </main>
+    </section>
+</body>
+
+</html>

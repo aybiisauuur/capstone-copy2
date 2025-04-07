@@ -1,0 +1,323 @@
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: #fff;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+  .quiz {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.top-header {
+  background-color: rgba(217, 217, 217, 0.4);
+  border-top: 2px solid #575757;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+.page-title {
+  font-size: 20px;
+  color: #000;
+  font-weight: 400;
+  margin: 0;
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.content-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  gap: 20px; /* Add spacing between child elements */
+  padding: 20px;
+  width: 100%; /* Full-width container */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.intro-text {
+  text-align: center; /* Center the text */
+  color: var(--text-color, #000); /* Use a fallback for the variable */
+  font-size: 45px;
+  font-weight: 400;
+  margin-top: -9%;
+}
+
+.back-link {
+  display: flex;
+  align-items: center;
+  gap: 1.188rem;
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: opacity 0.2s;
+}
+
+.back-link:hover,
+.back-link:focus {
+  opacity: 0.8;
+}
+
+.back-icon {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 5px;
+}
+
+.back-text {
+  font-size: 20px;
+}
+
+.intro-text {
+  height: auto;
+  text-align: left; /* Align text to the left */
+  color: var(--text-color, #000); /* Use a fallback for the variable */
+  font-size: 25px;
+  font-weight: 400;
+  margin-top: 30px;
+  width: 100%; /* Ensure the text takes full width */
+  max-width: 720px; /* Match the width of the container below */
+  margin-left: 110px; 
+  padding-left: 10px; /* Add some padding for better alignment */
+}
+
+/* Video Container */
+.video-container {
+  position: relative;
+  max-width: 470px; /* Adjust as needed */
+  margin: 20px auto; /* Center the video */
+}
+
+/* Video Styling */
+#quiz-video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Replay Button Styling */
+#replay-button {
+  position: absolute;
+  bottom: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background-color: #007bffa7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#replay-button.visible {
+  opacity: 1;
+}
+
+/* Hide the replay button by default */
+.hidden {
+  display: none;
+}
+
+.options-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+  .Options-container  {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-rows: repeat(2, 1fr); /* 2 rows */
+    gap: 10px; /* Reduce the gap between items */
+    row-gap: 2px; /* Reduce the row gap */
+    column-gap: 2px; /* Reduce the column gap */
+    width: fit-content; /* Make the container fit its content */
+    margin: 0 auto; /* Center the container */  
+  }
+  
+
+  .Option_A img, .Option_B img, .Option_C img, .Option_D img {
+  margin-top: 10px;
+  margin-left: 115px;
+  width: 90%; 
+  height: auto; 
+  display: block; 
+  }
+
+  .Option_A, .Option_B, .Option_C, .Option_D {
+    position: relative;
+    border: 2px solid transparent;
+    overflow: hidden; /* Ensures the image doesn't overflow */
+    display: grid;
+    gap: 5px;
+    row-gap: 5px;
+    column-gap:5px;
+    grid-template-columns: 1fr 1fr;
+    cursor: pointer; /* Indicates the option is clickable */
+    transition: border-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
+  }
+
+  .Option_A:hover, .Option_B:hover, .Option_C:hover, .Option_D:hover {
+    border-bottom: 50%;
+    border-left: 150%;
+    border-right: 150%;
+    transform: scale(1.05); /* Slightly enlarge the option */
+  }
+  
+.overlay {
+  position: absolute;
+  border-radius: 4px;
+  border-bottom-right-radius: 4px;
+  margin-top: 1.3%;
+  left: 0;
+  margin-left:15.9%;
+  width: 326px; /* Match the width of the image */
+  height: 79.8px; /* Match the height of the image */
+  background-color: transparent;
+  transition: background-color 0.3s ease, opacity 0.5s ease; /* Add opacity transition */
+  pointer-events: none;
+}
+
+.correct .overlay {
+  background-color: rgba(0, 255, 0, 0.5);
+  opacity: 1; /* Start fully visible */
+}
+
+.incorrect .overlay {
+  background-color: rgba(255, 0, 0, 0.5);
+  opacity: 1; /* Start fully visible */
+}
+
+.next-container {
+  display: flex;
+  justify-content: flex-end; /* Align to the right */
+  align-items: center;
+  margin: 10px 30px 20px 0; /* Adjust margins */
+  position: absolute;
+  bottom: 40px; /* Above the progress bar */
+  right: -275px; /* Keep it aligned to the right */
+  width: auto;
+}
+
+#next-button {
+  background-color: #004AAD; /* Match primary color */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px; /* Match other button fonts */
+  font-weight: 500;
+  padding: 12px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.app-footer {
+  background-color: #EEEEEE;
+  border-top: 2px solid #575757;
+  padding: 10px 0;
+  position: fixed; /* Keep it fixed at the bottom */
+  bottom: 0;
+  width: 100%;
+}
+
+.footer-nav {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-item {
+  text-align: center;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 18px;
+}
+
+.nav-link.active {
+  color: #004AAD;
+}
+
+.nav-icon {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 5px;
+}
+
+.progress-bar {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 15px; 
+  width: 100%;
+}
+
+.progress-segment {
+  height: 8px;
+  flex: 1;
+  background-color: #555;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.progress-segment.correct {
+  background-color: #4CAF50;
+}
+
+.progress-segment.incorrect {
+  background-color: #f44336;
+}
+
+/* Disable pointer events when answered */
+.Options-container[style*="pointer-events: none"] .Option_A,
+.Options-container[style*="pointer-events: none"] .Option_B,
+.Options-container[style*="pointer-events: none"] .Option_C,
+.Options-container[style*="pointer-events: none"] .Option_D {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+#next-button {
+  margin-top: 20px;
+  padding: 10px 30px;
+  cursor: pointer;
+  display: none; /* Initially hidden */
+  position: relative;
+  left: -290px;
+}
+
+#next-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
