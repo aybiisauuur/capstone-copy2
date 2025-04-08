@@ -12,7 +12,7 @@ body {
 }
 
 .top-header {
-  background-color: rgba(217, 217, 217, 0.4);
+  background-color: #004AB3;
   border-top: 2px solid #575757;
   display: flex;
   justify-content: space-between;
