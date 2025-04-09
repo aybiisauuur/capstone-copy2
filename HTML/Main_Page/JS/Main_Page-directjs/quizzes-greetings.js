@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM fully loaded and parsed");
-  const OPENAI_API_KEY = 'sk-proj-...'; // very long key
+  const OPENAI_API_KEY = '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';
 
   const OPENAI_API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
   
