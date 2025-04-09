@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Quiz</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="CSS/Main_Page-direct/quizzes-greetings.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="CSS/Main_Page-direct/quizzes-greetings.css" />
 </head>
 
 <body>
@@ -17,25 +17,32 @@
       <a href="greetings-kind-of-type_quiz.html" class="back-link" aria-label="Back to previous page">
         <img
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/a5a0739d6a7f59d76f219442bd8478312fc5a4ce00fc7218515a4a6831c1f9fe?placeholderIfAbsent=true&apiKey=46a78e6780fc481d9e0cdcbac16d84ba"
-          alt="" class="back-icon" aria-hidden="true">
+          alt=""
+          class="back-icon"
+          aria-hidden="true"
+        />
         <span class="back-text">Quiz - Type</span>
       </a>
       <h1 class="page-title">Greetings - Quiz</h1>
     </header>
-    <div class="progress-bar" id="progress-bar"></div>
+
+    <div class="progress-container"></div>
+
     <article class="intro-section">
       <!-- Video Container -->
       <div class="video-container">
         <video id="quiz-video" controls>
           <source
             src="https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F147d233312414ae0af5bc611afff6a7f%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=147d233312414ae0af5bc611afff6a7f&alt=media&optimized=true"
-            type="video/mp4">
+            type="video/mp4"
+          />
           Your browser does not support the video tag.
         </video>
         <button id="replay-button" class="hidden">Replay Video</button>
       </div>
       <h2 class="intro-text">Choose the correct answer.</h2>
     </article>
+
     <section class="Options-section" aria-label="FSL Categories">
       <div class="Options-container">
         <div class="Option_A" data-correct="true">
@@ -65,15 +72,15 @@
       </div>
     </section>
     <div class="next-container">
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button class="btn btn-success me-md-2 btn-lg" type="button" id="next-button">Next Question</button>
-      </div>
+      <button class="next-button" type="button" id="next-button">Next Question</button>
     </div>
-    </main>
+    <div class="feedback-container" id="feedback-container">
+      <div class="initial-feedback" id="initial-feedback"></div>
+      <div class="analysis-status" id="analysis-status"></div>
+    </div>
   </section>
   <script src="JS/Main_Page-directjs/quizzes-greetings.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="JS/Main_Page-directjs/api-servicce.js"></script>
 </body>
 </html>
