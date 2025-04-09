@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,34 +8,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/Main_Page-direct/trueORfalse-style.css">
 </head>
+
 <body>
     <section class="T_or_F" role="main">
         <header class="top-header" role="banner">
             <a href="greetings-kind-of-type_quiz.html" class="back-link" aria-label="Back to previous page">
-                <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/a5a0739d6a7f59d76f219442bd8478312fc5a4ce00fc7218515a4a6831c1f9fe?placeholderIfAbsent=true&apiKey=46a78e6780fc481d9e0cdcbac16d84ba"
-                alt="" class="back-icon" aria-hidden="true">
+                <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F4f58b895b87b443ba782586860e6d12c"
+                    alt="" class="back-icon" aria-hidden="true">
                 <span class="back-text">Quiz - Type</span>
             </a>
             <h1 class="page-title">True or False - Quiz</h1>
-            </header>
-            
-            <div class="progress-bar" id="progressBar"></div>
+        </header>
 
-            <div class="video-container">
-                <video id="quizVideo" controls autoplay></video>
-            </div>
+        <div class="progress-bar" id="progressBar"></div>
 
-            <div class="question-container">
-                <h2 id="questionText"></h2>
-            </div>
+        <div class="video-container">
+            <video id="quizVideo" controls autoplay></video>
+        </div>
 
-            <div class="buttons-container">
-                <button class="true-false-btn" id="trueBtn">True</button>
-                <button class="true-false-btn" id="falseBtn">False</button>
-                <button class="next-btn" id="nextBtn">Next Question</button>
+        <div class="question-container">
+            <h2 id="questionText"></h2>
+        </div>
+
+        <div class="buttons-container">
+            <button class="true-false-btn" id="trueBtn">True</button>
+            <button class="true-false-btn" id="falseBtn">False</button>
+            <button class="next-btn" id="nextBtn">Next Question</button>
+        </div>
+
+        <!-- Modal -->
+        <div id="quiz-modal" class="modal">
+            <div class="modal-content">
+                <h2>Yay, you finished the quiz!</h2>
+                <p>Quiz score: <span id="quiz-score">15</span> / 11</p>
+                <div class="modal-buttons">
+                    <button class="modal-button back-button">Back</button>
+                    <button class="modal-button try-again-button">Try Again</button>
+                </div>
             </div>
+        </div>
     </section>
     <script src="JS/Main_Page-directjs/trueOfalse-backend.js"></script>
 </body>
+
 </html>
