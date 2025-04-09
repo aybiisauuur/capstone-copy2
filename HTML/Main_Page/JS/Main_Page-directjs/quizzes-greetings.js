@@ -1,10 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM fully loaded and parsed");
-  const AI_FEEDBACK_ENDPOINT = 'http://localhost:3001/api/deepseek-proxy';
+  const OPENAI_API_KEY = 'sk-proj-...'; // very long key
+
+  const OPENAI_API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
+  
   const video = document.getElementById("quiz-video");
   const replayButton = document.getElementById("replay-button");
   const optionsContainer = document.querySelector(".Options-container");
-  
   
 
   let answered = false;
@@ -205,17 +207,18 @@ document.addEventListener("DOMContentLoaded", function () {
       },
         {image:"https://cdn.builder.io/api/v1/image/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F4f2555bd89f944f187bdfb0de698ea60",
         correct: false,
-        feedback: "The hands does not indicate 'Take care'",
-        imageDescription: "Not a Filipino Sign Language (FSL) sign"
+        feedback: "not a greeting 'Are you ok?'😑",
+        imageDescription: "Not a greeting more like a question"
       },
         {image:"https://cdn.builder.io/api/v1/image/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fbe92bc4f62b149aa9406e2fbe0a8af13",
         correct: false,
-        
+        feedback: "not a greeting 'What?'🙄",
+        imageDescription: "hands palm facing right up, doing a circular motion stationary to position"
       },
         {image:"https://cdn.builder.io/api/v1/image/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F020a48b4ff484fcab6c03c9ae3d5e04c",
         correct: false,
-        feedback: "Not a formal sign for 'Take care'",
-        imageDescription: "Not a formal Filipino Sign Language (FSL) sign"
+        feedback: "Not greeting more like an action 'mixing' 🥣",
+        imageDescription: "Used for something else like baking 'mixing'"
       },
       ],
     },
@@ -229,12 +232,13 @@ document.addEventListener("DOMContentLoaded", function () {
       },
         {image:"https://cdn.builder.io/api/v1/image/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F4f2555bd89f944f187bdfb0de698ea60",
         correct: false,
-        
+        feedback: "not a greeting more like an action of respect 'Salute'😑",
+        imageDescription: "use to give respect to military or authority"
       },
         {image:"https://cdn.builder.io/api/v1/image/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F05c5cfe459a44a959a2acddb680f491d",
           correct: false,
-          feedback: "Downward motion is used for evening 🌙 not morning",
-          imageDescription: "Hand moves downward from forehead with palm facing body"
+          feedback: "waving motion is used for saying goodbye 👋 not seeing someone for a long time",
+          imageDescription: "Hand waving from face height"
         },
         {image:"https://cdn.builder.io/api/v1/image/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F7888824f70614803834c2ccae7e15b7e",
           correct: true,
@@ -248,19 +252,31 @@ document.addEventListener("DOMContentLoaded", function () {
       options: [
         {image:"https://cdn.builder.io/api/v1/image/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fd6bc29feeb1c4c8ba8cb47a40043a6e2",
         correct: false,
-        feedback: "Hands meeting in the middle indicates 'Nice to meet'🤝",
-        imageDescription: "Sweeping the hands and fingers pointing and meeting together in the middle",
+        feedback: "Is an indication of saying to see you in a location 📌",
+        imageDescription: "Not much of a greeting sign",
       },
         {image:"https://cdn.builder.io/api/v1/image/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F4f2555bd89f944f187bdfb0de698ea60",
           correct: false,},
-        {image:"https://cdn.builder.io/api/v1/image/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fcdd4402b0d2048509ae614a695c9a18b",correct: true,},
-        {image:"https://cdn.builder.io/api/v1/image/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F9fa995778624418aa77effed293d4556",correct: false,},
+        {image:"https://cdn.builder.io/api/v1/image/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fcdd4402b0d2048509ae614a695c9a18b",
+          correct: true,
+          feedback: "Correct! The action indication of seeing and motion of afternoon/later 'See you later'👋",
+          imageDescription: "Pointing to the eye and motioning it upwards to the middle"
+        },
+        {image:"https://cdn.builder.io/api/v1/image/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F9fa995778624418aa77effed293d4556",
+        correct: false,
+        feedback: "Correct! The upward motion indicates 'You're welcome'🤗",
+        imageDescription: "Three fingers up from the chin and curving towards the belly"
+      },
       ],
     },
     {//Nicetomeetyou
       video:"https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F0299652d0ea94bdab652d539b2616b7d%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=0299652d0ea94bdab652d539b2616b7d&alt=media&optimized=true",
       options: [
-        {image:"https://cdn.builder.io/api/v1/image/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F1588edd7d4a0462db20ea1ec7095a374",correct: true,},
+        {image:"https://cdn.builder.io/api/v1/image/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F1588edd7d4a0462db20ea1ec7095a374",
+          correct: true,
+          feedback: "Correct! The upward motion indicates 'Nice to meet you'🤗",
+          imageDescription: "Hands in front of the persons chin, palm facing each other moving fro and back",
+        },
         {image:"https://cdn.builder.io/api/v1/image/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fe238ac31364149dc9a6b1b1a56c405c8",correct: false,},
         {image:"https://cdn.builder.io/api/v1/image/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F1b513c5316cf4cf68090e058ec2edab1",correct: false,},
         {image:"https://cdn.builder.io/api/v1/image/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F6334972c503047c0aa6e856090dc1ad5",correct: false,},
@@ -318,64 +334,108 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  async function getAIFeedback(wrongDesc, correctDesc, context) {
+    console.log('Sending AI request...', { wrongDesc, correctDesc, context });
+    try {
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer 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'
+        },
+        body: JSON.stringify({
+          model: 'gpt-4',
+          messages: [
+            {
+              role: 'system',
+              content: 'You are an expert sign language tutor giving constructive feedback.'
+            },
+            {
+              role: 'user',
+              content: `I chose: '${wrongDesc}', but the correct sign was: '${correctDesc}' in the context of: '${context}'. Help me understand why.`
+            }
+          ],
+          temperature: 0.7
+        })
+      });
+  
+      const data = await response.json();
+      console.log('AI response:', data);
+      return data?.choices?.[0]?.message?.content || '🤖 No response from the AI.';
+    } catch (error) {
+      console.error('OpenAI feedback error:', error);
+      return '⚠️ Could not connect to OpenAI. Please check your internet or API key.';
+    }
+  }
+
   function handleOptionClick(event) {
     if (answered) return;
     const optionDiv = event.currentTarget;
     if (!optionDiv || !optionDiv.hasAttribute("data-correct")) return;
-
+  
     answered = true;
     optionsContainer.style.pointerEvents = 'none';
-    const nextButton = document.getElementById('next-button');
     nextButton.style.display = 'flex';
-
+  
     const isCorrect = optionDiv.getAttribute('data-correct') === 'true';
     const question = currentQuestions[currentQuestionIndex];
     const optionIndex = Array.from(optionDiv.parentNode.children).indexOf(optionDiv);
     const selectedOption = question.options[optionIndex];
     const correctOption = question.options.find(opt => opt.correct);
-
+  
     const initialFeedbackEl = document.getElementById('initial-feedback');
     const analysisStatusEl = document.getElementById('analysis-status');
     initialFeedbackEl.className = 'initial-feedback';
-    analysisStatusEl.innerHTML = '';
-
+    analysisStatusEl.className = 'analysis-status';
     initialFeedbackEl.innerHTML = isCorrect
       ? `✅ <strong>Correct!</strong><br>${selectedOption.feedback}`
       : `⚠️ <strong>Needs Practice:</strong><br>${selectedOption.feedback}`;
     initialFeedbackEl.classList.add(isCorrect ? 'correct' : 'incorrect');
-
+  
     const overlay = optionDiv.querySelector(".overlay");
     if (overlay) overlay.classList.add(isCorrect ? "correct" : "incorrect");
     optionDiv.classList.add(isCorrect ? "correct" : "incorrect");
-
+  
     updateProgress(isCorrect);
-
+  
     if (!isCorrect) {
+      analysisStatusEl.style.display = 'flex';
       setTimeout(() => {
         analysisStatusEl.innerHTML = `
           <div class="loading-spinner"></div>
           <span class="analysis-text">Analyzing your mistake...</span>`;
         analysisStatusEl.classList.add('loading');
-      }, 2000);
-
+      }, 1000);
+  
       setTimeout(async () => {
         const aiResponse = await getAIFeedback(
           selectedOption.imageDescription,
           correctOption.imageDescription,
-          question.context
+          question.context || 'greeting signs'
         );
+        analysisStatusEl.classList.remove('loading');
         analysisStatusEl.innerHTML = `
           🕵️ <strong>Expert Analysis:</strong>
           <div class="ai-feedback">${aiResponse}</div>
           <div class="practice-tip">💡 Practice Tip: ${correctOption.feedback}</div>`;
-        analysisStatusEl.classList.remove('loading');
-      }, 4000);
-
+      }, 1000);
+  
       if (!retryQuestions.includes(question)) {
         retryQuestions.push(question);
       }
     }
   }
+  
+
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+  
 
   function loadQuestion(questionIndex) {
     answered = false;
@@ -384,7 +444,12 @@ document.addEventListener("DOMContentLoaded", function () {
     video.src = question.video;
     video.load();
     optionsContainer.innerHTML = "";
-
+    const initialFeedbackEl = document.getElementById('initial-feedback');
+    const analysisStatusEl = document.getElementById('analysis-status');
+    initialFeedbackEl.innerHTML = '';
+    analysisStatusEl.innerHTML = '';
+    analysisStatusEl.style.display = 'none';
+  
     question.options.forEach((optionData, index) => {
       const optionDiv = document.createElement("div");
       optionDiv.classList.add(`Option_${String.fromCharCode(65 + index)}`);
@@ -400,6 +465,8 @@ document.addEventListener("DOMContentLoaded", function () {
       optionsContainer.appendChild(optionDiv);
     });
   }
+
+  currentQuestions = shuffleArray([...allQuestions]);
 
   const nextButton = document.getElementById('next-button');
   nextButton.style.display = 'none';
