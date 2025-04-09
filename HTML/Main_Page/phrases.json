@@ -1,0 +1,29 @@
+{
+    "categories": [
+      {
+        "name": "Greetings",
+        "phrases": [
+          {
+            "title": "Hello",
+            "video": "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fff152d2f2f064bf39c6d14efa13bd29c%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=ff152d2f2f064bf39c6d14efa13bd29c&alt=media&optimized=true",
+            "video_thumbnail": "https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fa10220d5724348fb9299cc8eb12bea3c"
+          },
+          {
+            "title": "Good Morning",
+            "video": "https://your-cdn.com/videos/good-morning.mp4",
+            "video_thumbnail": "https://your-cdn.com/thumbnails/good-morning.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Common Phrases - COMELEC",
+        "phrases": [
+          {
+            "title": "Thank You",
+            "video": "https://your-cdn.com/videos/thank-you.mp4",
+            "video_thumbnail": "https://your-cdn.com/thumbnails/thank-you.jpg"
+          }
+        ]
+      }
+    ]
+  }

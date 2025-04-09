@@ -41,6 +41,7 @@
     </div>
 
     <main class="main-content" role="main">
+        <section class="search-results" style="display: none;"></section>
         <section class="info-panel" aria-label="App Information">
             <p>This app will help you turn your eyes into ears. With this app, you will be able to learn the basics of
                 Filipino Sign Language (FSL).</p>
@@ -51,6 +52,17 @@
             <p>To learn more about this app, please click on the About Us tab located below.</p>
         </section>
     </main>
+
+    <div id="videoModal" class="vid-modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <video id="phraseVideo" controls>
+                Your browser does not support the video tag.
+            </video>
+            <h3 id="videoTitle"></h3>
+            <p id="videoDescription"></p>
+        </div>
+    </div>
 
     <footer class="app-footer">
         <nav class="footer-nav">
@@ -96,6 +108,64 @@
     <script>
 
         $(document).ready(function () {
+            $.getJSON("phrases.json")
+                .done(function (data) {
+                    initializeSearch(data);
+                })
+                .fail(function () {
+                    console.error("Error loading phrases");
+                    initializeSearch(getMockData());
+                });
+
+            function initializeSearch(phraseData) {
+                let allPhraseCards = '';
+                phraseData.categories.forEach(category => {
+                    category.phrases.forEach(phrase => {
+                        allPhraseCards += `
+                    <div class="phrase-card" data-video="${phrase.video}">
+                        <div class="video-thumbnail" style="background-image: url('${phrase.video_thumbnail || phrase.image}')">
+                            ${phrase.video ? '<div class="play-icon">▶</div>' : ''}
+                        </div>
+                        <h3 class="card-title">${phrase.title}</h3>
+                        <p>${phrase.description}</p>
+                    </div>
+                `;
+                    });
+                });
+
+                // Set up search
+                $('.search-icon, .search-input').on('click keypress', function (e) {
+                    if (e.type === 'click' || e.key === "Enter") {
+                        performSearch(allPhraseCards);
+                    }
+                });
+
+                // Set up video playback
+                $(document).on('click', '.phrase-card', function () {
+                    const videoUrl = $(this).data('video');
+                    if (videoUrl) {
+                        showVideoModal(
+                            videoUrl,
+                            $(this).find('.card-title').text(),
+                            $(this).find('p').text()
+                        );
+                    }
+                });
+
+                // Close modal
+                $('.close-modal').on('click', function () {
+                    $('#videoModal').hide();
+                    $('#phraseVideo')[0].pause();
+                });
+            }
+
+            function showVideoModal(videoUrl, title, description) {
+                const videoPlayer = $('#phraseVideo')[0];
+                videoPlayer.src = videoUrl;
+                $('#videoTitle').text(title);
+                $('#videoModal').show();
+                videoPlayer.play();
+            }
             // Profile dropdown functionality
             $("#profileBtn").click(function (e) {
                 e.stopPropagation();
