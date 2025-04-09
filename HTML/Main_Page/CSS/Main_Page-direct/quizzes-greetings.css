@@ -38,18 +38,18 @@ body {
 .content-wrapper {
   flex: 1;
   display: flex;
-  flex-direction: column; /* Stack content vertically */
-  justify-content: center; /* Center vertically */
-  align-items: center; /* Center horizontally */
-  gap: 20px; /* Add spacing between child elements */
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 20px; 
   padding: 20px;
-  width: 100%; /* Full-width container */
-  box-sizing: border-box; /* Include padding in width calculation */
+  width: 100%; 
+  box-sizing: border-box; 
 }
 
 .intro-text {
-  text-align: center; /* Center the text */
-  color: var(--text-color, #000); /* Use a fallback for the variable */
+  text-align: center;
+  color: var(--text-color, #000); 
   font-size: 45px;
   font-weight: 400;
   margin-top: -9%;
@@ -81,32 +81,30 @@ body {
 
 .intro-text {
   height: auto;
-  text-align: left; /* Align text to the left */
-  color: var(--text-color, #000); /* Use a fallback for the variable */
+  text-align: left; 
+  color: var(--text-color, #000); 
   font-size: 25px;
   font-weight: 400;
   margin-top: 30px;
-  width: 100%; /* Ensure the text takes full width */
-  max-width: 720px; /* Match the width of the container below */
+  width: 100%; 
+  max-width: 720px; 
   margin-left: 110px; 
-  padding-left: 10px; /* Add some padding for better alignment */
+  padding-left: 10px; 
 }
 
-/* Video Container */
+
 .video-container {
   position: relative;
-  max-width: 470px; /* Adjust as needed */
-  margin: 20px auto; /* Center the video */
+  max-width: 470px; 
+  margin: 20px auto; 
 }
 
-/* Video Styling */
 #quiz-video {
   width: 100%;
   height: auto;
   display: block;
 }
 
-/* Replay Button Styling */
 #replay-button {
   position: absolute;
   bottom: 150px;
@@ -126,7 +124,6 @@ body {
   opacity: 1;
 }
 
-/* Hide the replay button by default */
 .hidden {
   display: none;
 }
@@ -144,13 +141,13 @@ body {
     position: relative;
     z-index: 1;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    grid-template-rows: repeat(2, 1fr); /* 2 rows */
-    gap: 10px; /* Reduce the gap between items */
-    row-gap: 2px; /* Reduce the row gap */
-    column-gap: 2px; /* Reduce the column gap */
-    width: fit-content; /* Make the container fit its content */
-    margin: 0 auto; /* Center the container */  
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: repeat(2, 1fr); 
+    gap: 10px; 
+    row-gap: 2px; 
+    column-gap: 2px; 
+    width: fit-content; 
+    margin: 0 auto; 
   }
   
 
@@ -165,21 +162,21 @@ body {
   .Option_A, .Option_B, .Option_C, .Option_D {
     position: relative;
     border: 2px solid transparent;
-    overflow: hidden; /* Ensures the image doesn't overflow */
+    overflow: hidden; 
     display: grid;
     gap: 5px;
     row-gap: 5px;
     column-gap:5px;
     grid-template-columns: 1fr 1fr;
-    cursor: pointer; /* Indicates the option is clickable */
-    transition: border-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
+    cursor: pointer; 
+    transition: border-color 0.3s ease, transform 0.2s ease; 
   }
 
   .Option_A:hover, .Option_B:hover, .Option_C:hover, .Option_D:hover {
     border-bottom: 50%;
     border-left: 150%;
     border-right: 150%;
-    transform: scale(1.05); /* Slightly enlarge the option */
+    transform: scale(1.05);
   }
   
   .overlay {
@@ -223,7 +220,7 @@ body {
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   display: none;
-  margin: 0 auto; /* Center horizontally */
+  margin: 0 auto; 
   position: relative;
 }
 
@@ -236,7 +233,7 @@ body {
   border-radius: 8px;
   font-size: 20px;
   margin: 20px;
-  display: flex; /* Initially hidden */
+  display: flex; 
   cursor: pointer;
 }
 
