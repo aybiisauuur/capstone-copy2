@@ -78,12 +78,16 @@ const quizData = [
 
 let currentQuestion = 0;
 let score = [];
+let shuffledQuestions = []; // This will store shuffled questions
 const progressBar = document.getElementById('progressBar');
 const videoElement = document.getElementById('quizVideo');
 const questionText = document.getElementById('questionText');
 const nextBtn = document.getElementById('nextBtn');
 const trueBtn = document.getElementById('trueBtn');
 const falseBtn = document.getElementById('falseBtn');
+const modal = document.getElementById('quiz-modal');
+const backButton = document.querySelector('.back-button');
+const tryAgainButton = document.querySelector('.try-again-button');
 
 function initializeProgressBar() {
     progressBar.innerHTML = '';
@@ -94,19 +98,10 @@ function initializeProgressBar() {
     });
 }
 
-function loadQuestion() {
-    videoElement.src = quizData[currentQuestion].videoUrl;
-    questionText.textContent = `Is this video saying "${quizData[currentQuestion].statement}"?`;
-    nextBtn.style.display = 'none';
-
-    trueBtn.classList.remove('correct', 'wrong');
-    falseBtn.classList.remove('correct', 'wrong');
-    trueBtn.disabled = false;
-    falseBtn.disabled = false;
-}
-
 function checkAnswer(userAnswer) {
-    const correct = userAnswer === quizData[currentQuestion].correctAnswer;
+    // Use shuffledQuestions if available, otherwise use quizData
+    const currentQuestions = shuffledQuestions.length > 0 ? shuffledQuestions : quizData;
+    const correct = userAnswer === currentQuestions[currentQuestion].correctAnswer;
     score[currentQuestion] = correct;
 
     const segment = progressBar.children[currentQuestion];
@@ -130,8 +125,12 @@ function checkAnswer(userAnswer) {
 }
 
 function loadQuestion() {
-    videoElement.src = quizData[currentQuestion].videoUrl;
-    questionText.textContent = `Is this video saying "${quizData[currentQuestion].statement}"?`;
+    // Use shuffledQuestions if available, otherwise use quizData
+    const currentQuestions = shuffledQuestions.length > 0 ? shuffledQuestions : quizData;
+    const question = currentQuestions[currentQuestion];
+    
+    videoElement.src = question.videoUrl;
+    questionText.textContent = `Is this video saying "${question.statement}"?`;
     nextBtn.style.display = 'none';
 
     trueBtn.classList.remove('correct', 'wrong');
@@ -146,21 +145,64 @@ function loadQuestion() {
 
 function nextQuestion() {
     currentQuestion++;
-    if (currentQuestion < quizData.length) {
+    const currentQuestions = shuffledQuestions.length > 0 ? shuffledQuestions : quizData;
+    if (currentQuestion < currentQuestions.length) {
         loadQuestion();
     } else {
-        alert(`Quiz finished! Score: ${score.filter(Boolean).length}/${quizData.length}`);
-        //Reset quiz
-        currentQuestion = 0;
-        score = [];
-        initializeProgressBar();
-        loadQuestion();
+        endQuiz();
     }
 }
+
+function shuffleQuestions() {
+    // Create a copy of quizData and shuffle it
+    shuffledQuestions = [...quizData];
+    for (let i = shuffledQuestions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledQuestions[i], shuffledQuestions[j]] = [shuffledQuestions[j], shuffledQuestions[i]];
+    }
+}
+
+tryAgainButton.addEventListener('click', function() {
+    modal.style.display = 'none';
+    
+    // Reset quiz state
+    currentQuestion = 0;
+    score = new Array(quizData.length).fill(false);
+    
+    // Shuffle questions for new attempt
+    shuffleQuestions();
+    
+    // Reinitialize and load first question
+    initializeProgressBar();
+    loadQuestion();
+});
+
+backButton.addEventListener('click', function() {
+    modal.style.display = 'none';
+    window.history.back();
+});
+
+modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+function calculateScore() {
+    return score.filter(Boolean).length;
+}
+
+function endQuiz() {
+    const userScore = calculateScore();
+    document.getElementById('quiz-score').textContent = userScore;
+    document.getElementById('quiz-modal').style.display = 'flex';
+}
+
+// Initialize quiz
+initializeProgressBar();
+loadQuestion();
+
+// Event listeners
 trueBtn.addEventListener('click', () => checkAnswer(true));
 falseBtn.addEventListener('click', () => checkAnswer(false));
 nextBtn.addEventListener('click', nextQuestion);
-
-
-initializeProgressBar();
-loadQuestion();

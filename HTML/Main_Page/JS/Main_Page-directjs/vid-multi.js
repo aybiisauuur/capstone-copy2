@@ -108,12 +108,16 @@ const questions = [
 let currentQuestion = 0;
 let selectedOption = null;
 let progressStatus = [];
+let score = []; // Added score array
+let shuffledQuestions = [];
+
 const questionText = document.getElementById('question-text');
 const optionsContainer = document.getElementById('video-options-container');
 const nextBtn = document.getElementById('next-btn');
 const finalAnswerBtn = document.getElementById('final-answer-btn');
-const feedbackText = document.getElementById('feedbackText');
-
+const modal = document.getElementById('quiz-modal');
+const backButton = document.querySelector('.back-button');
+const tryAgainButton = document.querySelector('.try-again-button');
 
 function initializeProgressBar() {
     const progressBar = document.getElementById('progress-bar');
@@ -124,6 +128,7 @@ function initializeProgressBar() {
         progressBar.appendChild(segment);
     });
     progressStatus = new Array(questions.length).fill(null);
+    score = new Array(questions.length).fill(false); // Initialize score array
 }
 
 function updateProgressBar() {
@@ -136,14 +141,17 @@ function updateProgressBar() {
     });
 }
 
-
 function loadQuestion() {
-    const question = questions[currentQuestion];
+    // Use shuffledQuestions if it exists, otherwise use original questions
+    const questionSet = shuffledQuestions.length > 0 ? shuffledQuestions : questions;
+    const question = questionSet[currentQuestion];
+    
     questionText.textContent = question.question;
     optionsContainer.innerHTML = '';
     nextBtn.style.display = 'none';
     finalAnswerBtn.style.display = 'none';
     selectedOption = null;
+    
     question.options.forEach(option => {
         const optionDiv = document.createElement('div');
         optionDiv.className = 'video-option';
@@ -165,12 +173,13 @@ function loadQuestion() {
     updateProgressBar();
 }
 
-
 function confirmFinalAnswer() {
     if (!selectedOption) return;
+    
     selectedOption.element.classList.remove('selected');
     selectedOption.element.classList.add(selectedOption.correct ? 'correct' : 'incorrect');
     progressStatus[currentQuestion] = selectedOption.correct;
+    score[currentQuestion] = selectedOption.correct; // Update score array
 
     document.querySelectorAll('.video-option').forEach(opt => {
         opt.style.pointerEvents = 'none';
@@ -187,22 +196,29 @@ function confirmFinalAnswer() {
     feedbackText.id = 'feedbackText';
     feedbackText.textContent = selectedOption.correct 
         ? (Math.random() < 0.5 ? 'Correct! Good job!' : 'Correct Answer!') 
-        : 'Wrong answer, sorry!';
+        : 'Wrong answer, sorry!' ;
     feedbackText.className = selectedOption.correct ? 'feedback-correct' : 'feedback-wrong';
     questionText.parentNode.insertBefore(feedbackText, questionText.nextSibling);
 
     updateProgressBar();
-
     finalAnswerBtn.style.display = 'none';
     nextBtn.style.display = 'block';
 }
 
 function nextQuestion() {
+    // Clear feedback first
+    const existingFeedback = document.getElementById('feedbackText');
+    if (existingFeedback) {
+        existingFeedback.remove();
+    }
+
+    // Reset video options
     document.querySelectorAll('.video-option').forEach(opt => {
         opt.style.pointerEvents = 'auto';
-        opt.classList.remove('correct', 'incorrect');
+        opt.classList.remove('correct', 'incorrect', 'selected');
     });
 
+    // Move to next question or show results
     currentQuestion++;
     if (currentQuestion < questions.length) {
         loadQuestion();
@@ -210,35 +226,65 @@ function nextQuestion() {
         showFinalResults();
     }
 
-    const existingFeedback = document.getElementById('feedbackText');
-    if (existingFeedback) {
-        existingFeedback.remove();
-    }
-
-    // Corrected: No second increment
-    displayQuestion(currentQuestion);
-
     // Reset buttons
-    finalAnswerBtn.style.display = 'block';
+    finalAnswerBtn.style.display = 'none';
     nextBtn.style.display = 'none';
 }
 
+function calculateScore() {
+    return score.filter(Boolean).length;
+}
 
 function showFinalResults() {
-    const correctCount = progressStatus.filter(status => status).length;
-    optionsContainer.innerHTML = `
-        <div class="final-results">
-            <h2>Quiz Complete!</h2>
-            <p>You got ${correctCount} out of ${questions.length} correct!</p>
-        </div>
-    `;
-    nextBtn.style.display = 'none';
+    const userScore = calculateScore();
+    document.getElementById('quiz-score').textContent = userScore;
+    document.getElementById('quiz-modal').style.display = 'flex';
 }
 
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
 
+// Event listeners
 finalAnswerBtn.addEventListener('click', confirmFinalAnswer);
 nextBtn.addEventListener('click', nextQuestion);
 
+backButton.addEventListener('click', function() {
+    modal.style.display = 'none';
+    window.history.back();
+});
 
+tryAgainButton.addEventListener('click', function() {
+    // Hide the modal
+    modal.style.display = 'none';
+    
+    // Reset quiz progress
+    currentQuestion = 0;
+    score = new Array(questions.length).fill(false);
+    progressStatus = new Array(questions.length).fill(null);
+    
+    // Shuffle the questions array (without modifying the original)
+    shuffledQuestions = [...questions]; // Create a copy
+    for (let i = shuffledQuestions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledQuestions[i], shuffledQuestions[j]] = [shuffledQuestions[j], shuffledQuestions[i]];
+    }
+    
+    // Reinitialize and load first question
+    initializeProgressBar();
+    loadQuestion();
+});
+
+modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+        modal.style.display = 'none';
+    }
+});
+
+// Initialize the quiz
 initializeProgressBar();
 loadQuestion();
