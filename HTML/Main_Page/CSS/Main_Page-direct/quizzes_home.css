@@ -8,13 +8,14 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    overflow-y: auto;
 }
 
 .Quiz {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 70px;
 }
 
 .app-header {
@@ -25,7 +26,7 @@ body {
 
 .app-title {
     color: #ffffff;
-    font-size: 30px;
+    font-size: clamp(24px, 5vw, 30px);
     font-weight: 400;
     margin: 0;
 }
@@ -34,12 +35,13 @@ body {
     flex: 1;
     display: flex;
     flex-direction: column; /* Stack content vertically */
-    justify-content: center; /* Center vertically */
+    justify-content: flex-start; /* Center vertically */
     align-items: center; /* Center horizontally */
     gap: 20px; /* Add spacing between child elements */
     padding: 20px;
     width: 100%; /* Full-width container */
     box-sizing: border-box; /* Include padding in width calculation */
+    margin-bottom: 20px;
 }
 
 .intro-text {
@@ -52,7 +54,7 @@ body {
 
 .categories-section {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three equal-width columns */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Three equal-width columns */
     gap: 20px;
     justify-items: center;
     width: 100%;
@@ -60,6 +62,7 @@ body {
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
+    margin-bottom: 10px;
 }
 
 .category-card {
@@ -75,7 +78,7 @@ body {
     text-decoration: none;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
-    height: 200px; /* Fixed height for consistency */
+    min-height: 200px; /* Fixed height for consistency */
 }
 .category-card:hover,
 .category-card:focus {
@@ -108,7 +111,7 @@ body {
 
 .category-title {
     color: var(--text-color, #000000); /* Use a fallback */
-    font-size: 25px;
+    font-size: clamp(18px, 3vw, 25px);
     font-weight: 400;
     margin: 0;
     text-align: center;
@@ -254,14 +257,51 @@ body {
     border: 0;
 }
 
-@media (min-width: 769px) {
-  body {
-      overflow: hidden;
-  }
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 15px;
+    }
+    
+    .categories-section {
+        padding: 10px;
+        gap: 15px;
+    }
+    
+    .category-card {
+        padding: 15px;
+        min-height: 180px;
+    }
+}
 
-  .main-content {
-      overflow-y: hidden;
-  }
+@media (max-width: 480px) {
+    .content-wrapper {
+        gap: 15px;
+    }
+    
+    .intro-text {
+        font-size: 22px;
+    }
+    
+    .category-title {
+        font-size: 20px;
+    }
+    
+    .category-icon {
+        width: 50px;
+    }
+    
+    .app-footer {
+        padding: 10px 0;
+    }
+    
+    .nav-icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .nav-link {
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 991px) {

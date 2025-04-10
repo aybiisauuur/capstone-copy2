@@ -40,8 +40,8 @@ body {
 }
 
 .top-header {
+  position: relative;
   background-color: #004AB3;
-  border-top: 2px solid #575757;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -64,8 +64,8 @@ body {
 }
 
 .back-icon {
-  width: 30px;
-  height: 30px;
+  width: 15px;
+  height: 20px;
   margin-bottom: 5px;
 }
 
@@ -76,10 +76,14 @@ body {
 }
 
 .page-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 20px;
-  color: #000;
+  color: #fff;
   font-weight: 400;
   margin: 0;
+  white-space: nowrap;
 }
 
 .category-nav {
