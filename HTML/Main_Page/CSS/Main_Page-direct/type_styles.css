@@ -47,12 +47,14 @@ body {
     box-sizing: border-box; /* Include padding in width calculation */
 }
 
+/* Adjust intro text positioning */
 .intro-text {
-    text-align: center; /* Center the text */
-    color: var(--text-color, #000); /* Use a fallback for the variable */
+    text-align: center;
+    color: #000;
     font-size: 45px;
     font-weight: 400;
-    margin-top: -9%;
+    margin: 20px 0; /* Changed from negative margin */
+    padding: 0 20px;
 }
 
 .back-link {
@@ -80,40 +82,33 @@ body {
 
 .categories-section {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
-    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-rows: repeat(3, auto); /* 3 rows */
     gap: 20px;
     justify-items: center;
     width: 100%;
     max-width: 800px;
-    margin: 0 auto; /* Center the grid on the page */
-}
-
-.category-card:nth-child(1),
-.category-card:nth-child(2),
-.category-card:nth-child(3){
-    grid-column: 1; /* Place first three cards in the left column */
-}
-
-.category-card:nth-child(4) {
-    grid-column: 2; /* Place the last card in the right column */
-    grid-row: 1; /* Align it with the first card */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .category-card {
     display: flex;
-    flex-direction: column; /* Ensure column alignment inside each card */
-    align-items: center; /* Center content within the card */
-    justify-content: center; /* Center content vertically */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     border-radius: 20px;
-    box-shadow: var(--card-shadow, 0 4px 6px rgba(0, 0, 0, 0.1)); /* Use a fallback */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: 100%; /* Make the card responsive */
-    max-width: 320px; /* Set a maximum width to prevent overlap */
+    width: 100%;
+    max-width: 320px;
+    min-height: 100px; /* Added for consistent height */
     text-decoration: none;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
 }
+
 
 .category-card:hover,
 .category-card:focus {
@@ -150,6 +145,32 @@ body {
     font-weight: 400;
     margin: 0;
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    .categories-section {
+        grid-template-columns: 1fr; /* Stack cards on small screens */
+    }
+    
+    .intro-text {
+        font-size: 35px;
+        margin: 15px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .intro-text {
+        font-size: 28px;
+    }
+    
+    .category-card {
+        padding: 15px;
+        min-height: 100px;
+    }
+    
+    .category-title {
+        font-size: 20px;
+    }
 }
 .app-footer {
     background-color: #004AAD;

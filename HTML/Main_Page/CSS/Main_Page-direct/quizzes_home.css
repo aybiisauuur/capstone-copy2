@@ -52,42 +52,31 @@ body {
 
 .categories-section {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
-    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(3, 1fr); /* Three equal-width columns */
     gap: 20px;
     justify-items: center;
     width: 100%;
-    max-width: 800px;
-    margin: 0 auto; /* Center the grid on the page */
+    max-width: 1000px; /* Increased max-width to accommodate 3 columns */
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
 }
-
-.category-card:nth-child(1),
-.category-card:nth-child(2),
-.category-card:nth-child(3) {
-    grid-column: 1; /* Place first three cards in the left column */
-}
-
-.category-card:nth-child(4) {
-    grid-column: 2; /* Place the last card in the right column */
-    grid-row: 1; /* Align it with the first card */
-}
-
 
 .category-card {
     display: flex;
-    flex-direction: column; /* Ensure column alignment inside each card */
-    align-items: center; /* Center content within the card */
-    justify-content: center; /* Center content vertically */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     border-radius: 20px;
-    box-shadow: var(--card-shadow, 0 4px 6px rgba(0, 0, 0, 0.1)); /* Use a fallback */
+    box-shadow: var(--card-shadow, 0 4px 6px rgba(0, 0, 0, 0.1));
     padding: 20px;
-    width: 100%; /* Make the card responsive */
-    max-width: 320px; /* Set a maximum width to prevent overlap */
+    width: 100%;
+    max-width: 280px; /* Slightly reduced to fit 3 in a row */
     text-decoration: none;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
+    height: 200px; /* Fixed height for consistency */
 }
-
 .category-card:hover,
 .category-card:focus {
     transform: translateY(-5px);
@@ -324,5 +313,17 @@ body {
     .nav-items {
         flex-wrap: wrap;
         gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .categories-section {
+        grid-template-columns: 1fr 1fr; /* Switch to 2 columns on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .categories-section {
+        grid-template-columns: 1fr; /* Single column on very small screens */
     }
 }
