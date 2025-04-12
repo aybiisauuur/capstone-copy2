@@ -1,10 +1,9 @@
-
 body {
     font-family: 'Josefin Sans', sans-serif;
     text-align: center;
     display: flex;
     flex-direction: column;
-    background: #fff;
+    background-color: #f5f5f5;
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -72,14 +71,15 @@ body {
     text-decoration: none;
     color: var(--primary-color);
     transition: opacity 0.2s;
+    font-family: 'Josefin Sans', sans-serif;
 }
 .back-link:hover,
 .back-link:focus {
     opacity: 0.8;
 }
 .back-icon {
-    width: 30px;
-    height: 30px;
+    width: 15px;
+    height: 20px;
     margin-bottom: 5px;
 }
 .back-text {
@@ -87,8 +87,9 @@ body {
 }
 
 .page-title {
-    font-size: 15px;
-    color: #000;
+    font-size: 20px;
+    font-family: 'Josefin Sans', sans-serif;
+    color: #fff;
     font-weight: 400;
     margin: 0;
 }

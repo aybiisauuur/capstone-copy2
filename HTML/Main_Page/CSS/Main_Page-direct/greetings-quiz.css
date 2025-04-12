@@ -40,3 +40,29 @@ body {
     width: 100%; /* Full-width container */
     box-sizing: border-box; /* Include padding in width calculation */
 }
+
+.progress-bar {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 15px; 
+    width: 100%;
+}
+
+.progress-segment {
+    height: 8px;
+    flex: 1;
+    background-color: #555;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.progress-segment.correct {
+    background-color: #4CAF50;
+}
+
+.progress-segment.incorrect {
+    background-color: #f44336;
+}
