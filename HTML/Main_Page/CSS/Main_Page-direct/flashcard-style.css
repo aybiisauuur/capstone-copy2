@@ -3,22 +3,21 @@ body {
   text-align: center;
   display: flex;
   flex-direction: column;
-  background: #fff;
+  background-color: #f5f5f5;
   min-height: 100vh;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  overflow-y: auto;
 }
 
 .top-header {
+  position: relative;
   background-color: #004AB3;
-  border-top: 2px solid #575757;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  text-align: center;
   padding: 15px 20px;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .back-link {
@@ -28,6 +27,7 @@ body {
   text-decoration: none;
   color: var(--primary-color);
   transition: opacity 0.2s;
+  z-index: 1; /* Ensure it stays above the title */
 }
 
 .back-link:hover,
@@ -42,24 +42,33 @@ body {
 }
 
 .back-text {
-  font-size: 20px;
+  font-size: clamp(16px, 4vw, 20px); /* Responsive font size */
   color: white;
   font-family: 'Josefin Sans', sans-serif;
 }
 
 .page-title {
-  font-size: 20px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(16px, 4vw, 20px); /* Responsive font size */
   color: #fff;
   font-weight: 400;
   margin: 0;
-  font-family: 'Josefin Sans', sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 60%;
 }
 
 .flashcard-container {
   perspective: 1000px;
-  width: 900px;
-  height: 480px;
-  margin: 50px auto;
+  width: 90%;
+  max-width: 900px;
+  height: 60vh;
+  min-height: 300px;
+  max-height: 480px;
+  margin: 30px auto;
 }
 
 .flashcard {
@@ -86,16 +95,19 @@ body {
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: 'Josefin Sans', sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .front {
   background: #cae4ff;
-  font-size: 3em;
+  font-size: clamp(1.5rem, 5vw, 3em); /* Responsive font size */
 }
 
 .back {
   background: #fff;
   transform: rotateY(180deg);
+  font-size: clamp(1rem, 3vw, 1.5em); /* Responsive font size */
 }
 
 .card-video {
@@ -109,24 +121,38 @@ p {
   font-family: 'Josefin Sans', sans-serif;
   text-align: center;
   margin: 1px;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 3vw, 1.2rem); /* Responsive font size */
 }
 
-/* Fix for the next button to ensure it's centered */
+.container.text-center {
+  padding-bottom: 40px; /* Adds space at the bottom */
+  margin-top: 20px; /* Adds space above the buttons */
+}
+
+.controls-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 600px;
+  margin-bottom: 50px;
+}
+
 #next-button,
 #previous-button,
 #reset-button,
 #shuffle-button {
-  padding: 12px 30px;
-  align-self: center;
+  padding: 12px 25px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  font-size: 1.2em;
-  margin: 2px;
-  display: block;
-  transition: background-color 0.3s ease;
+  font-size: clamp(1rem, 3vw, 1.2em);
+  transition: all 0.3s ease;
   font-family: 'Josefin Sans', sans-serif;
+  margin: 2px; /* Adds small space between buttons */
+  white-space: nowrap; /* Prevents button text from wrapping */
 }
 
 #next-button:hover {
@@ -136,17 +162,70 @@ p {
 
 #previous-button:hover {
   background-color: #EE6B6E;
+  color: white;
 }
 
 #shuffle-button:hover {
   background-color: #32cd32;
+  color: white;
 }
 
 #reset-button:hover {
   background-color: #8b0000;
+  color: white;
 }
 
 button:disabled {
   background-color: #cccccc;
+  color: #666;
   cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .top-header {
+    padding: 10px 15px;
+  }
+  
+  .page-title {
+    max-width: 50%;
+  }
+  
+  .flashcard-container {
+    height: 50vh;
+    margin: 20px auto;
+  }
+  
+  .controls-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #next-button,
+  #previous-button,
+  #reset-button,
+  #shuffle-button {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .back-link {
+    gap: 0.5rem;
+  }
+  
+  .back-icon {
+    width: 12px;
+    height: 16px;
+  }
+  
+  .flashcard-container {
+    height: 45vh;
+    min-height: 250px;
+  }
+  
+  .card-face {
+    padding: 15px;
+  }
 }

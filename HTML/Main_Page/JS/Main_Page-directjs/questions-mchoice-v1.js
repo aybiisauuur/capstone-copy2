@@ -138,8 +138,7 @@ const signVideo = document.getElementById('sign-video');
 const resultElement = document.getElementById('result');
 const scoreDisplay = document.getElementById('score-display');
 const nextBtn = document.getElementById('next-btn');
-const progressBar = document.getElementById('progress-bar');
-const progressText = document.getElementById('progress-text');
+const progressBar = document.getElementById('progressBar');
 const questionCounter = document.getElementById('question-counter');
 
 // Add modal elements to DOM selection
@@ -165,6 +164,25 @@ function init() {
     nextBtn.addEventListener('click', nextQuestion);
 }
 
+function initializeProgressBar() {
+    progressBar.innerHTML = '';
+    questions.forEach((question, index) => {
+        const segment = document.createElement('div');
+        segment.className = 'progress-segment';
+        
+        if (index < currentQuestionIndex) {
+            // Check if the user's answer was correct
+            const userAnswer = userAnswers[index];
+            const isCorrect = userAnswer === questions[index].correctAnswer;
+            segment.classList.add(isCorrect ? 'correct' : 'incorrect');
+        } else if (index === currentQuestionIndex) {
+            segment.classList.add('current');
+        }
+        
+        progressBar.appendChild(segment);
+    });
+}
+
 // Start a new quiz
 function startQuiz() {
     loadingElement.style.display = 'block';
@@ -186,12 +204,20 @@ function startQuiz() {
         scoreDisplay.textContent = '';
     }, 800);
 }
-// Update progress bar and counter
+
 function updateProgress() {
-    const progress = ((currentQuestionIndex) / questions.length) * 100;
-    progressBar.style.width = `${progress}%`;
-    progressText.textContent = `${currentQuestionIndex}/${questions.length}`;
-    questionCounter.textContent = `Question ${currentQuestionIndex + 1} of ${questions.length}`;
+    const segments = progressBar.querySelectorAll('.progress-segment');
+    const currentSegment = segments[currentQuestionIndex];
+    
+    // Remove any existing classes
+    currentSegment.classList.remove('current', 'correct', 'incorrect');
+    
+    // Check if the user's answer was correct
+    const userAnswer = userAnswers[currentQuestionIndex];
+    const isCorrect = userAnswer === questions[currentQuestionIndex].correctAnswer;
+    
+    // Add the appropriate class
+    currentSegment.classList.add(isCorrect ? 'correct' : 'incorrect');
 }
 
 // Display the current question
@@ -252,7 +278,15 @@ function showQuestion() {
         nextBtn.style.display = 'none';
     }
 
-    updateProgress();
+    questionCounter.textContent = `${currentQuestionIndex + 1}/${questions.length}`;
+
+    initializeProgressBar(); 
+
+    resultElement.textContent = '';
+    resultElement.className = 'result';
+    nextBtn.style.display = 'none';
+    answered = false;
+    optionsContainer.style.pointerEvents = 'auto';
 }
 
 // Handle option selection
@@ -270,9 +304,9 @@ function selectOption(optionElement) {
 
     // Automatically check the answer when an option is selected
     checkAnswer();
+    updateProgress();
 }
 
-// Check the answer and show result
 function checkAnswer() {
     if (!selectedOption || answerSubmitted || userAnswers[currentQuestionIndex] !== null) return;
 
@@ -303,12 +337,13 @@ function checkAnswer() {
         : `Wrong answer, sorry! The correct answer is: ${currentQuestion.correctAnswer}`;
     resultElement.className = isCorrect ? 'result correct' : 'result wrong';
 
+    // Update the progress bar
+    updateProgress();
+
     // Force the Next button to be visible
     nextBtn.style.display = 'block';
     nextBtn.style.visibility = 'visible';
     scoreDisplay.textContent = `Score: ${score} out of ${currentQuestionIndex + 1}`;
-
-    updateProgress();
 }
 
 // Move to next question

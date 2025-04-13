@@ -359,14 +359,19 @@ function init() {
 
 function initializeProgressBar() {
     progressBar.innerHTML = '';
-    questions.forEach((_, index) => {
+    questions.forEach((question, index) => {
         const segment = document.createElement('div');
         segment.className = 'progress-segment';
+        
         if (index < currentQuestionIndex) {
-            segment.classList.add(userAnswers[index] ? 'correct' : 'incorrect');
+            // Check if the stored option has correct: true
+            const userAnswer = userAnswers[index];
+            const isCorrect = userAnswer ? userAnswer.correct : false;
+            segment.classList.add(isCorrect ? 'correct' : 'incorrect');
         } else if (index === currentQuestionIndex) {
             segment.classList.add('current');
         }
+        
         progressBar.appendChild(segment);
     });
 }
