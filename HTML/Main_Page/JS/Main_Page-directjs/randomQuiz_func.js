@@ -72,7 +72,7 @@ const questions = [
     },
     {
         type: "video-multiple-choice",
-        question: "Is this video showing an FSL for Nice to meet you?",
+        question: "Which video shows the Sign Language for Nice to meet you?",
         options: [
             "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F75c44265368f48d2a8fd3ed56e3e0821%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=75c44265368f48d2a8fd3ed56e3e0821&alt=media&optimized=true", 
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F03059a88b09a4c75bbba39f2ee592978%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=03059a88b09a4c75bbba39f2ee592978&alt=media&optimized=true",
@@ -239,10 +239,24 @@ function lockAnswer(questionIndex) {
     const finalAnswerBtn = document.querySelector(`#questions .question:nth-child(${questionIndex + 1}) .final-answer`);
     finalAnswerBtn.classList.add('hidden');
     options.forEach(opt => opt.style.pointerEvents = 'none');
-    const isCorrect = selectedQuestions[questionIndex].options[selectedQuestions[questionIndex].selected] === 
-    selectedQuestions[questionIndex].correct;
+    
+    // Check if answer is correct
+    const isCorrect = question.options[question.selected] === question.correct;
+    
+    // Update score if correct
+    if (isCorrect) {
+        score++;
+    }
+    
+    // Mark question as answered
+    question.answered = true;
+    question.correct = isCorrect;
+    
+    // Update progress bar
     updateProgressBar(questionIndex, isCorrect);
-
+    
+    // Show feedback
+    showFeedback(questionIndex, isCorrect);
 }
 
 function updateProgressBar(questionIndex, isCorrect) {
@@ -268,6 +282,14 @@ function showResults() {
     document.getElementById('questions').style.display = 'none';
     document.querySelector('.progress').style.display = 'none';
     document.querySelector('.navigation').style.display = 'none';
+    
+    // Update results text
+    const resultsDiv = document.querySelector('.results');
+    resultsDiv.innerHTML = `
+        <h2>Quiz Complete!</h2>
+        <p>You scored ${score} out of ${selectedQuestions.length}</p>
+        <button onclick="restartQuiz()">Try Again</button>
+    `;
 }
 
 function updateProgress(current) {
@@ -285,6 +307,21 @@ function restartQuiz() {
     document.getElementById('nextButton').disabled = true;
     createProgressBar();
     initQuiz();
+}
+
+function showFeedback(questionIndex, isCorrect) {
+    const questionDiv = document.querySelectorAll('.question')[questionIndex];
+    const feedbackDiv = document.createElement('div');
+    feedbackDiv.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+    feedbackDiv.textContent = isCorrect ? '✓ Correct!' : '✗ Incorrect!';
+    
+    // Remove existing feedback if any
+    const existingFeedback = questionDiv.querySelector('.feedback');
+    if (existingFeedback) {
+        existingFeedback.remove();
+    }
+    
+    questionDiv.appendChild(feedbackDiv);
 }
 
 
