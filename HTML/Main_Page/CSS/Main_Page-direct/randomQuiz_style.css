@@ -96,6 +96,7 @@ body {
     background-color: var(--progress-bg);
     border-radius: 5px;
     margin-bottom: 20px;
+    margin-top: 8px     ;
 }
 
 .progress-bar {
@@ -129,7 +130,7 @@ body {
 /* Video Containers */
 .video-container {
     width: 100%;
-    max-width: 800px;
+    max-width: 550px;
     margin: 20px auto;
     background: black;
     border-radius: 8px;
@@ -275,64 +276,6 @@ body {
     right: 15px;
 }
 
-/* Flashcards */
-.flashcard {
-    perspective: 1000px;
-    margin: 20px 0;
-}
-
-.flashcard-inner {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-    cursor: pointer;
-}
-
-.flashcard.flipped .flashcard-inner {
-    transform: rotateY(180deg);
-}
-
-.flashcard-front, .flashcard-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    border: 2px solid #007bff;
-    border-radius: 10px;
-    font-size: 1.2em;
-}
-
-.flashcard-back {
-    transform: rotateY(180deg);
-    background-color: #f8f9fa;
-}
-
-.flashcard-back video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.flashcard-controls {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.flashcard {
-    width: 100%;
-    max-width: 600px;
-    height: 400px;
-    margin: 20px auto;
-}
-
-
 /* Buttons */
 .final-answer {
     display: block;
@@ -363,10 +306,15 @@ body {
     transition: opacity 0.3s, transform 0.3s;
 }
 
+/* Controls - Next Button Alignment */
 .controls {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end; /* Aligns children (next button) to the right */
     margin-top: 30px;
+    width: 100%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 button {
@@ -429,9 +377,14 @@ button {
 .flashcard {
     perspective: 1000px;
     width: 100%;
-    height: 300px;
-    margin: 20px 0;
+    max-width: 700px;
+    height: 400px;
+    margin: 20px auto; /* This centers the flashcard horizontally */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally within flashcard */
 }
+
 
 .flashcard-inner {
     position: relative;
@@ -439,6 +392,7 @@ button {
     height: 100%;
     transition: transform 0.6s;
     transform-style: preserve-3d;
+    cursor: pointer;
 }
 
 .flashcard.flipped .flashcard-inner {
@@ -456,10 +410,14 @@ button {
     border-radius: 10px;
     padding: 20px;
     box-sizing: border-box;
+    border: 2px solid #007bff;
+    background-color: white;
+    font-size: 1.2em;
+
 }
 
 .flashcard-back {
-    background-color: #f8f8f8;
+    background-color: #f8f8fa;
     transform: rotateY(180deg);
 }
 
@@ -468,11 +426,19 @@ button {
     max-height: 100%;
 }
 
+.flashcard-back video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Changed from 'cover' to 'contain' to show full video */
+    border-radius: 10px;
+    background: black;
+}
+
 /* feedback */
 
 .feedback {
-    margin-top: 15px;
-    padding: 10px;
+    margin-bottom: 8px;
+    padding: 5px;
     border-radius: 5px;
     text-align: center;
     font-weight: bold;
