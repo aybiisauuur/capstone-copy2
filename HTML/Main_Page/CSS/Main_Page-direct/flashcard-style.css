@@ -1,3 +1,12 @@
+:root {
+  --primary-color: #0056b3;
+  --secondary-color: #f8f9fa;
+  --accent-color: #ffc107;
+  --text-color: #333;
+  --correct-color: #28a745;
+  --wrong-color: #dc3545;
+}
+
 body {
   font-family: 'Josefin Sans', sans-serif;
   text-align: center;
@@ -61,6 +70,17 @@ body {
   max-width: 60%;
 }
 
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 60px;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-left: 8px solid var(--primary-color);
+}
+
 .flashcard-container {
   perspective: 1000px;
   width: 90%;
@@ -121,6 +141,7 @@ p {
   font-family: 'Josefin Sans', sans-serif;
   text-align: center;
   margin: 1px;
+  padding-bottom: 20px;
   font-size: clamp(1rem, 3vw, 1.2rem); /* Responsive font size */
 }
 

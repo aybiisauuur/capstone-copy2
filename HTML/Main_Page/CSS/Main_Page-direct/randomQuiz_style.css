@@ -330,7 +330,7 @@ button {
 .next-btn {
     background: var(--primary-color);
     color: #ffffff;
-    display: none;
+    display: none;  
 }
 
 .next-btn:hover {
