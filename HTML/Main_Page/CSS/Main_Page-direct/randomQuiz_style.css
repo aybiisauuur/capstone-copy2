@@ -460,6 +460,37 @@ button {
     to { opacity: 1; }
 }
 
+.correct-answer {
+    background-color: #4CAF50;
+    color: white;
+    border: 2px solid #45a049;
+}
+
+.feedback {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.feedback.correct {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+.feedback.incorrect {
+    background-color: #f2dede;
+    color: #a94442;
+}
+
+.progress-segment.correct {
+    background-color: #4CAF50;
+}
+
+.progress-segment.wrong {
+    background-color: #f44336;
+}
+
 /* Modal Styles */
 .modal {
     display: none;
