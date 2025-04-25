@@ -193,9 +193,31 @@ function createProgressBar() {
 function toggleFlashcard(index) {
     const card = document.querySelectorAll('.flashcard')[index];
     card.classList.toggle('flipped');
+    
+    // Play the video when flipped to back
+    if (card.classList.contains('flipped')) {
+        const video = card.querySelector('video');
+        if (video) {
+            // Reset video to start and play
+            video.currentTime = 0;
+            video.play().catch(e => console.log("Video play failed:", e));
+        }
+    } else {
+        // Pause video when flipped back to front
+        const video = card.querySelector('video');
+        if (video) {
+            video.pause();
+        }
+    }
 }
 
 function markFlashcardCorrect(index) {
+    const card = document.querySelectorAll('.flashcard')[index];
+    const video = card.querySelector('video');
+    if (video) {
+        video.pause();
+    }
+    
     selectedQuestions[index].answered = true;
     selectedQuestions[index].correct = true;
     score++;
@@ -204,6 +226,12 @@ function markFlashcardCorrect(index) {
 }
 
 function markFlashcardWrong(index) {
+    const card = document.querySelectorAll('.flashcard')[index];
+    const video = card.querySelector('video');
+    if (video) {
+        video.pause();
+    }
+    
     selectedQuestions[index].answered = true;
     selectedQuestions[index].correct = false;
     updateProgressBar(index, false);
@@ -241,7 +269,9 @@ function lockAnswer(questionIndex) {
     options.forEach(opt => opt.style.pointerEvents = 'none');
     
     // Check if answer is correct
-    const isCorrect = question.options[question.selected] === question.correct;
+    const isCorrect = question.type === 'video-multiple-choice' 
+        ? question.selected === question.correct
+        : question.options[question.selected] === question.correct;
     
     // Update score if correct
     if (isCorrect) {
@@ -255,8 +285,50 @@ function lockAnswer(questionIndex) {
     // Update progress bar
     updateProgressBar(questionIndex, isCorrect);
     
-    // Show feedback
+    // Show feedback and highlight correct answer if wrong
     showFeedback(questionIndex, isCorrect);
+    if (!isCorrect) {
+        highlightCorrectAnswer(questionIndex);
+    }
+}
+
+function highlightCorrectAnswer(questionIndex) {
+    const question = selectedQuestions[questionIndex];
+    const options = document.querySelectorAll(`#questions .question:nth-child(${questionIndex + 1}) .option`);
+    
+    // Remove any existing highlights
+    options.forEach(opt => opt.classList.remove('correct-answer'));
+    
+    // Find and highlight the correct answer
+    if (question.type === 'video-multiple-choice') {
+        options[question.correct].classList.add('correct-answer');
+    } else {
+        const correctIndex = question.options.findIndex(opt => opt === question.correct);
+        if (correctIndex >= 0) {
+            options[correctIndex].classList.add('correct-answer');
+        }
+    }
+}
+
+// Update the showFeedback function to include more detailed feedback
+function showFeedback(questionIndex, isCorrect) {
+    const questionDiv = document.querySelectorAll('.question')[questionIndex];
+    const feedbackDiv = document.createElement('div');
+    feedbackDiv.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+    
+    // Remove existing feedback if any
+    const existingFeedback = questionDiv.querySelector('.feedback');
+    if (existingFeedback) {
+        existingFeedback.remove();
+    }
+    
+    if (isCorrect) {
+        feedbackDiv.textContent = '✓ Correct!';
+    } else {
+        feedbackDiv.textContent = '✗ Incorrect! The correct answer is highlighted.';
+    }
+    
+    questionDiv.appendChild(feedbackDiv);
 }
 
 function updateProgressBar(questionIndex, isCorrect) {
@@ -307,21 +379,6 @@ function restartQuiz() {
     document.getElementById('nextButton').disabled = true;
     createProgressBar();
     initQuiz();
-}
-
-function showFeedback(questionIndex, isCorrect) {
-    const questionDiv = document.querySelectorAll('.question')[questionIndex];
-    const feedbackDiv = document.createElement('div');
-    feedbackDiv.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
-    feedbackDiv.textContent = isCorrect ? '✓ Correct!' : '✗ Incorrect!';
-    
-    // Remove existing feedback if any
-    const existingFeedback = questionDiv.querySelector('.feedback');
-    if (existingFeedback) {
-        existingFeedback.remove();
-    }
-    
-    questionDiv.appendChild(feedbackDiv);
 }
 
 
