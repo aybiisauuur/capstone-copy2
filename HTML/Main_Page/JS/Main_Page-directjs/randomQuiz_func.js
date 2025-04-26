@@ -261,6 +261,7 @@ function updateProgress(current) {
         `Question ${current} of ${quizState.selectedQuestions.length}`;
 }
 
+
 // Flashcard Functions
 function toggleFlashcard(index) {
     const card = document.querySelectorAll('.flashcard')[index];
