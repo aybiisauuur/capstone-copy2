@@ -443,39 +443,67 @@ function showQuestion() {
     optionsContainer.style.pointerEvents = 'auto';
 }
 
+// Replace the OpenAI functions with this Hugging Face version
+const HF_API_KEY = 'hf_tPYbQioYUJSoUYbaKibSRWUiAqNwqsXdULyour-huggingface-api-key';
+const HF_API_ENDPINGOINT = 'https://api-inference.huggingface.com/models/mistralai/Mistral-7B-Instruct-v0.2';
+
 async function getAIFeedback(wrongDesc, correctDesc, context) {
-    console.log('Sending AI request...', { wrongDesc, correctDesc, context });
+    const prompt = `[INST] As a Filipino Sign Language tutor, explain this error:
+    
+Context: ${context}
+Mistaken Sign: ${wrongDesc}
+Correct Answer: ${correctDesc}
+
+Provide feedback that:
+1. Explains the difference clearly
+2. Gives improvement tips
+3. Uses simple language
+4. Add relevant emojis [/INST]`;
+
     try {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        const response = await fetch(HF_API_ENDPOINT, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer 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'
+                'Authorization': `Bearer ${HF_API_KEY}`,
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                model: 'gpt-4',
-                messages: [
-                    {
-                        role: 'system',
-                        content: 'You are an expert sign language tutor giving constructive feedback.'
-                    },
-                    {
-                        role: 'user',
-                        content: `I chose: '${wrongDesc}', but the correct sign was: '${correctDesc}' in the context of: '${context}'. Help me understand why.`
-                    }
-                ],
-                temperature: 0.7
+                inputs: prompt,
+                parameters: {
+                    max_new_tokens: 250,
+                    temperature: 0.7,
+                    return_full_text: false
+                }
             })
         });
 
-        const data = await response.json();
-        console.log('AI response:', data);
-        return data?.choices?.[0]?.message?.content || '🤖 No response from the AI.';
+        // Handle model loading wait time
+        if (response.status === 503) {
+            const data = await response.json();
+            if (data.estimated_time) {
+                await new Promise(resolve => setTimeout(resolve, data.estimated_time * 1000));
+                return getAIFeedback(wrongDesc, correctDesc, context); // Retry
+            }
+        }
+
+        const result = await response.json();
+        
+        // Handle different response formats
+        if (result.error) {
+            return `⚠️ Error: ${result.error}`;
+        }
+        if (result[0]?.generated_text) {
+            return result[0].generated_text;
+        }
+        return '🤖 AI response format unexpected';
+        
     } catch (error) {
-        console.error('OpenAI feedback error:', error);
-        return '⚠️ Could not connect to OpenAI. Please check your internet or API key.';
+        console.error('Hugging Face error:', error);
+        return '⚠️ Connection error - try again in a moment';
     }
 }
+
+
 
 async function handleOptionClick(optionElement, option) {
     if (answered) return;

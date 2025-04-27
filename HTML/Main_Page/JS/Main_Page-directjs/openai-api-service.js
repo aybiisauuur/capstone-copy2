@@ -1,42 +1,48 @@
-const OPENAI_API_KEY = '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';
-const OPENAI_API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
+const HF_API_KEY = 'your-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-api-key';
+const HF_MODEL_ENDPOINT = 'https://api-inference.huggingface.com/models/mistralai/Mistral-7B-Instruct-v0.2';
 
 async function getAIFeedback(wrongDesc, correctDesc, context) {
-  const prompt = `As a Filipino Sign Language (FSL) tutor, analyze this mistake:
+  const prompt = `[INST] As a sign language expert, analyze this mistake:
+  
+- Context: ${context}
+- User's Sign: ${wrongDesc}
+- Correct Sign: ${correctDesc}
 
-- Question context: ${context}
-- User's Answer: ${wrongDesc}
-- Correct Answer: ${correctDesc}
-
-Provide clear and friendly feedback that:
-1. Explains the mistake simply
-2. Compares the signs
-3. Offers tips for improvement
-4. Uses examples or emojis if helpful`;
+Provide concise feedback comparing these signs. Include:
+1. Key differences
+2. Memory tips
+3. Common mistakes
+4. Emojis for engagement [/INST]`;
 
   try {
-    const response = await fetch(OPENAI_API_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${OPENAI_API_KEY}`
-      },
-      body: JSON.stringify({
-        model: 'gpt-4', // You can switch to 'gpt-3.5-turbo' if needed
-        messages: [
-          {
-            role: 'user',
-            content: prompt
-          }
-        ],
-        temperature: 0.7
-      })
-    });
+      const response = await fetch(HF_API_ENDPOINT, {
+          method: 'POST',
+          headers: {
+              'Authorization': `Bearer ${HF_API_KEY}`,
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              inputs: prompt,
+              parameters: {
+                  max_new_tokens: 300,
+                  temperature: 0.65,
+                  top_p: 0.9,
+                  repetition_penalty: 1.2
+              }
+          })
+      });
 
-    const data = await response.json();
-    return data?.choices?.[0]?.message?.content || '🤖 No response from the AI.';
+      // Handle API errors
+      if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'API request failed');
+      }
+
+      const data = await response.json();
+      return data[0]?.generated_text || '🤖 AI response format unexpected';
+
   } catch (error) {
-    console.error('OpenAI feedback error:', error);
-    return '⚠️ Could not connect to OpenAI. Please check your internet or API key.';
+      console.error('Hugging Face service error:', error);
+      return `⚠️ Error: ${error.message}`;
   }
 }
