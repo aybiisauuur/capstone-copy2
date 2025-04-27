@@ -112,6 +112,9 @@ let score = []; // Added score array
 let shuffledQuestions = [];
 
 const questionText = document.getElementById('question-text');
+const quizContainer = document.getElementById('quiz-container');
+const loadingElement = document.getElementById('loading');
+const loadingText = document.getElementById('loading-text');
 const optionsContainer = document.getElementById('video-options-container');
 const nextBtn = document.getElementById('next-btn');
 const finalAnswerBtn = document.getElementById('final-answer-btn');
@@ -119,16 +122,46 @@ const modal = document.getElementById('quiz-modal');
 const backButton = document.querySelector('.back-button');
 const tryAgainButton = document.querySelector('.try-again-button');
 
+function init() {
+    // Only start the quiz if all elements exist
+    startQuiz();
+
+    nextBtn.addEventListener('click', nextQuestion);
+}
+
+// Start a new quiz
+function startQuiz() {
+    loadingElement.style.display = 'block';
+    quizContainer.style.display = 'block';
+
+    setTimeout(() => {
+        // Shuffle all questions and select first 5
+        shuffledQuestions = [...questions].sort(() => Math.random() - 0.5).slice(0, 8);
+
+        currentQuestion = 0;
+        score = new Array(shuffledQuestions.length).fill(false);
+        userAnswers = new Array(shuffledQuestions.length).fill(null);
+        answered = false;
+
+        initializeProgressBar();
+
+        loadingElement.style.display = 'none';
+        quizContainer.style.display = 'block';
+        loadQuestion();
+    }, 1500);
+}
+
 function initializeProgressBar() {
     const progressBar = document.getElementById('progress-bar');
     progressBar.innerHTML = '';
-    questions.forEach(() => {
+    // Use shuffledQuestions.length instead of questions.length
+    shuffledQuestions.forEach(() => {
         const segment = document.createElement('div');
         segment.className = 'progress-segment';
         progressBar.appendChild(segment);
     });
-    progressStatus = new Array(questions.length).fill(null);
-    score = new Array(questions.length).fill(false); // Initialize score array
+    progressStatus = new Array(shuffledQuestions.length).fill(null);
+    score = new Array(shuffledQuestions.length).fill(false);
 }
 
 function updateProgressBar() {
@@ -142,9 +175,7 @@ function updateProgressBar() {
 }
 
 function loadQuestion() {
-    // Use shuffledQuestions if it exists, otherwise use original questions
-    const questionSet = shuffledQuestions.length > 0 ? shuffledQuestions : questions;
-    const question = questionSet[currentQuestion];
+    const question = shuffledQuestions[currentQuestion];
     
     questionText.textContent = question.question;
     optionsContainer.innerHTML = '';
@@ -220,7 +251,8 @@ function nextQuestion() {
 
     // Move to next question or show results
     currentQuestion++;
-    if (currentQuestion < questions.length) {
+    // Check against shuffledQuestions.length instead of questions.length
+    if (currentQuestion < shuffledQuestions.length) {
         loadQuestion();
     } else {
         showFinalResults();
@@ -267,12 +299,10 @@ tryAgainButton.addEventListener('click', function() {
     score = new Array(questions.length).fill(false);
     progressStatus = new Array(questions.length).fill(null);
     
-    // Shuffle the questions array (without modifying the original)
-    shuffledQuestions = [...questions]; // Create a copy
-    for (let i = shuffledQuestions.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffledQuestions[i], shuffledQuestions[j]] = [shuffledQuestions[j], shuffledQuestions[i]];
-    }
+    // Shuffle the questions again
+    shuffledQuestions = [...questions].sort(() => Math.random() - 0.5).slice(0, 2);
+    score = new Array(shuffledQuestions.length).fill(false);
+    progressStatus = new Array(shuffledQuestions.length).fill(null);
     
     // Reinitialize and load first question
     initializeProgressBar();
@@ -285,6 +315,6 @@ modal.addEventListener('click', function(e) {
     }
 });
 
-// Initialize the quiz
-initializeProgressBar();
-loadQuestion();
+document.addEventListener('DOMContentLoaded', function() {
+    init();
+});
