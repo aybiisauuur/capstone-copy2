@@ -1,25 +1,25 @@
 const allQuestions = [
-    {//goodMorning
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fdaaf40ef88e84bb6b94952f07a98a26c%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=daaf40ef88e84bb6b94952f07a98a26c&alt=media&optimized=true",
-        context: "Identifying morning greeting signs",
+    {//No
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F60e52d6f85a8423682905d3b3815ce55%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=60e52d6f85a8423682905d3b3815ce55&alt=media&optimized=true",
+        context: "",
         options: [
             {
-                choice: "Good Morning",
+                choice: "Yes",
+                correct: false,
+                feedback: "",
+                imageDescription: ""
+            },
+            {
+                choice: "No",
                 correct: true,
-                feedback: "The upward palm movement represents sunrise 🌅",
-                imageDescription: "Hand rises diagonally from shoulder height, palm facing up"
+                feedback: "",
+                imageDescription: ""
             },
             {
-                choice: "Good Afternoon",
+                choice: "Shaking",
                 correct: false,
-                feedback: "This horizontal motion indicates afternoon ↔️ not morning",
-                imageDescription: "Flat hand moving horizontally across chest level"
-            },
-            {
-                choice: "Good Evening",
-                correct: false,
-                feedback: "Downward motion is used for evening 🌙 not morning",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
+                feedback: "",
+                imageDescription: ""
             },
             {
                 choice: "Goodbye",
@@ -29,286 +29,137 @@ const allQuestions = [
             }
         ]
     },
-    {//goodAfternoon
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fd97c585713d542dda1cb425550c76f0c%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=d97c585713d542dda1cb425550c76f0c&alt=media&optimized=true",
-        context: "Identifying afternoon greeting signs",
+    {//Yes
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ffe3c43d5ebf14d97ac3a1a27b58fd154%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=fe3c43d5ebf14d97ac3a1a27b58fd154&alt=media&optimized=true",
+        context: "",
         options: [
             {
-                choice: "Good Morning",
-                correct: false,
-                feedback: "The movement is not related, the upward motion signifies rising 🌅",
-                imageDescription: "Hand rises diagonally from shoulder height, palm facing up"
-            },
-            {
-                choice: "Good Afternoon",
+                choice: "Yes",
                 correct: true,
-                feedback: "The horizontal movement indicates afternoon ↔️",
-                imageDescription: "Flat hand moving horizontally across chest level"
-
+                feedback: "",
+                imageDescription: ""
             },
             {
-                choice: "Good Evening",
+                choice: "No",
                 correct: false,
-                feedback: "Downward motion is used for evening 🌙 not morning",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
+                feedback: "",
+                imageDescription: ""
+            },
+            {
+                choice: "Shaking",
+                correct: false,
+                feedback: "",
+                imageDescription: ""
             },
             {
                 choice: "Goodbye",
                 correct: false,
                 feedback: "waving hands signify 'Goodbye'👋",
                 imageDescription: "Hands height close to face, waving"
-            },
-        ],
+            }
+        ]
     },
-    {//goodEvening
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F96cc65bcccbe45ffa5cb73bd771ff554%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=96cc65bcccbe45ffa5cb73bd771ff554&alt=media&optimized=true",
+    {//Deaf
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fa2a9373b89544bbab28f88b6e696e656%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=a2a9373b89544bbab28f88b6e696e656&alt=media&optimized=true",
         options: [
             {
-                choice: "Good Morning",
+                choice: "Hearing",
                 correct: false,
-                feedback: "The movement is not related, the upward motion signifies rising 🌅",
-                imageDescription: "Hand rises diagonally from shoulder height, palm facing up"
-            },
-            {
-                choice: "Good Afternoon",
-                correct: false,
-                feedback: "This horizontal motion indicates afternoon ↔️ not morning",
-                imageDescription: "Flat hand moving horizontally across chest level"
-            },
-            {
-                choice: "Good Evening",
-                correct: true,
-                feedback: "The downward motion indicates evening 🌙",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
-            },
-            {
-                choice: "Goodbye",
-                correct: false,
-                feedback: "waving hands signify 'Goodbye'👋",
-                imageDescription: "Hands height close to face, waving"
-            },
-        ],
-    },
-    {//goodbye
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fdba4a7e655e04153ae79ebc7ff9e22a6%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=dba4a7e655e04153ae79ebc7ff9e22a6&alt=media&optimized=true",
-        options: [
-            {
-                choice: "Good Morning",
-                correct: false,
-                feedback: "The movement is not related, the upward motion signifies rising 🌅",
-                imageDescription: "Hand rises diagonally from shoulder height, palm facing up"
-            },
-            {
-                choice: "Good Afternoon",
-                correct: false,
-                feedback: "This horizontal motion indicates afternoon ↔️ not morning",
-                imageDescription: "Flat hand moving horizontally across chest level"
-            },
-            {
-                choice: "Good Evening",
-                correct: false,
-                feedback: "Downward motion is used for evening 🌙 not morning",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
-            },
-            {
-                choice: "Goodbye",
-                correct: true,
-                feedback: "Waving hands signify 'Goodbye'👋",
-                imageDescription: "Hands height close to face, waving"
-            },
-        ],
-    },
-    {//Hi/hello
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fd702dd1b2538458098cba218905c9987%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=d702dd1b2538458098cba218905c9987&alt=media&optimized=true",
-        options: [
-            {
-                choice: "Hi / Hello",
-                correct: true,
-                feedback: "The upward motion indicates 'Hi'🙋‍♂️",
-                imageDescription: "Hand rises diagonally from shoulder height, palm facing up"
-            },
-            {
-                choice: "Good Afternoon",
-                correct: false,
-                feedback: "This horizontal motion indicates afternoon ↔️ not morning",
-                imageDescription: "Flat hand moving horizontally across chest level"
-            },
-            {
-                choice: "Good Evening",
-                correct: false,
-                feedback: "Downward motion is used for evening 🌙 not morning",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
-            },
-            {
-                choice: "Goodbye",
-                correct: false,
-                feedback: "waving hands signify 'Goodbye'👋",
-                imageDescription: "Hands height close to face, waving"
-            },
-        ],
-    },
-    {//Thankyou
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fee781b67a8bf4e488174c0156c18914b%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=ee781b67a8bf4e488174c0156c18914b&alt=media&optimized=true",
-        options: [
-            {
-                choice: "Nice to Meet You",
-                correct: false,
-                feedback: "Hands meeting in the middle indicates 'Nice to meet'🤝",
-                imageDescription: "Sweeping the hands and fingers pointing and meeting together in the middle"
-            },
-            {
-                choice: "Good Afternoon",
-                correct: false,
-                feedback: "This horizontal motion indicates afternoon ↔️ not morning",
-                imageDescription: "Flat hand moving horizontally across chest level"
-            },
-            {
-                choice: "Good Evening",
-                correct: false,
-                feedback: "Downward motion is used for evening 🌙 not morning",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
-            },
-            {
-                choice: "Thank You",
-                correct: true,
-                feedback: "The upward motion indicates 'Thank you'☺️",
-                imageDescription: "Hands in front of the persons chin, palm facing each other moving fro and back"
-            },
-        ],
-    },
-    {//YoureWelcome
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F67fae21fb722479283ce276ea388eadf%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=67fae21fb722479283ce276ea388eadf&alt=media&optimized=true",
-        options: [
-            {
-                choice: "Nice to meet you",
-                correct: false,
-                feedback: "Hands meeting in the middle indicates 'Nice to meet'🤝",
-                imageDescription: "Sweeping the hands and fingers pointing and meeting together in the middle"
-            },
-            {
-                choice: "You're Welcome",
-                correct: true,
-                feedback: "The upward motion indicates 'You're welcome'🤗",
-                imageDescription: "Three fingers up from the chin and curving towards the belly"
-            },
-            {
-                choice: "Good Evening",
-                correct: false,
-                feedback: "Downward motion is used for evening 🌙 not morning",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
-            },
-            {
-                choice: "Top of the Morning",
-                correct: false,
-                feedback: "Not a formal sign for 'You're Welcome'😌",
-                imageDescription: "Not a formal Filipino Sign Language (FSL) sign"
-            },
-        ],
-    },
-    {//takecare
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F9aa5c6e3c22a488c81ea9b78cd9d0a51%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=9aa5c6e3c22a488c81ea9b78cd9d0a51&alt=media&optimized=true",
-        options: [
-            {
-                choice: "Take Care",
-                correct: true,
-                feedback: "Hands on top of each other indicates 'Take care'🫂",
-                imageDescription: "Hands on the side, on top of each other circling in front"
-            },
-            {
-                choice: "Are you okay?",
-                correct: false,
-                feedback: "not a greeting 'Are you ok?'😑",
-                imageDescription: "Not a greeting more like a question"
-            },
-            {
-                choice: "What?",
-                correct: false,
-                feedback: "not a greeting 'What?'🙄",
-                imageDescription: "hands palm facing right up, doing a circular motion stationary to position"
-            },
-            {
-                choice: "Mixing",
-                correct: false,
-                feedback: "Not greeting more like an action 'mixing' 🥣",
-                imageDescription: "Used for something else like baking 'mixing'"
-            },
-        ],
-    },
-    {//LongTimeNoSee
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F7c3f41cef37546958629bc8d3e844c2b%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=7c3f41cef37546958629bc8d3e844c2b&alt=media&optimized=true",
-        options: [
-            {
-                choice: "Nice to meet you",
-                correct: false,
-                feedback: "Hands meeting in the middle indicates 'Nice to meet'🤝",
-                imageDescription: "Sweeping the hands and fingers pointing and meeting together in the middle"
-            },
-            {
-                choice: "Salute",
-                correct: false,
-                feedback: "not a greeting more like an action of respect 'Salute'😑",
-                imageDescription: "use to give respect to military or authority"
-            },
-            {
-                choice: "Goodbye",
-                correct: false,
-                feedback: "waving motion is used for saying goodbye 👋 not seeing someone for a long time",
-                imageDescription: "Hand waving from face height"
-            },
-            {
-                choice: "Long time no see",
-                correct: true,
-                feedback: "The upward motion indicates 'Long time no see'🤷‍♂️",
-                imageDescription: "Hands in front of the persons chin, palm facing each other moving fro and back"
-            },
-        ],
-    },
-    {//Seeyoulater
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F75c44265368f48d2a8fd3ed56e3e0821%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=75c44265368f48d2a8fd3ed56e3e0821&alt=media&optimized=true",
-        options: [
-            {
-                choice: "Meet me here?",
-                correct: false,
-                feedback: "Is an indication of saying to see you in a location 📌",
-                imageDescription: "Not much of a greeting sign",
-            },
-            {
-                choice: "Are you okay?",
-                correct: false,
-            },
-            {
-                choice: "See you later",
-                correct: true,
-                feedback: "The action indication of seeing and motion of afternoon/later 'See you later'👋",
-                imageDescription: "Pointing to the eye and motioning it upwards to the middle"
-            },
-            {
-                choice: "You're welcome",
-                correct: false,
-                feedback: "The upward motion indicates 'You're welcome'🤗",
-                imageDescription: "Three fingers up from the chin and curving towards the belly"
-            },
-        ],
-    },
-    {//Nicetomeetyou
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F0299652d0ea94bdab652d539b2616b7d%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=0299652d0ea94bdab652d539b2616b7d&alt=media&optimized=true",
-        options: [
-            {
-                choice: "Nice to meet you",
-                correct: true,
-                feedback: "The upward motion indicates 'Nice to meet you'🤗",
-                imageDescription: "Hands in front of the persons chin, palm facing each other moving fro and back",
             },
             { 
-                choice: "You Are?", 
+                choice: "Hard-of-hearing", 
                 correct: false, 
             },
             { 
-                choice: "See you later", 
+                choice: "Deaf", 
+                correct: true, 
+            },
+            { 
+                choice: "Goodbye",
+                correct: false, 
+            },
+        ],
+    },
+    {//Hearing
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F1c8c0918cc0140fbbabf9e1f32c7bd5f%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=1c8c0918cc0140fbbabf9e1f32c7bd5f&alt=media&optimized=true",
+        options: [
+            {
+                choice: "Hearing",
+                correct: true,
+            },
+            { 
+                choice: "Hard-of-hearing", 
+                correct: false, 
+            },
+            { 
+                choice: "Deaf", 
                 correct: false, 
             },
             { 
                 choice: "Goodbye",
+                correct: false, 
+            },
+        ],
+    },
+    {//Hard of Hearing
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fc565c548515b46a98a11b61ba419cce3%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=c565c548515b46a98a11b61ba419cce3&alt=media&optimized=true",
+        options: [
+            {
+                choice: "Hearing",
+                correct: false,
+            },
+            { 
+                choice: "Hard-of-hearing", 
+                correct: true, 
+            },
+            { 
+                choice: "Deaf", 
+                correct: false, 
+            },
+            { 
+                choice: "Goodbye",
+                correct: false, 
+            },
+        ],
+    },
+    {//FSL
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fad1649a7b94d46c1936d80fd69ef5919%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=ad1649a7b94d46c1936d80fd69ef5919&alt=media&optimized=true",
+        options: [
+            {
+                choice: "Letter F",
+                correct: false,
+            },
+            { 
+                choice: "Hard-of-hearing", 
+                correct: false, 
+            },
+            { 
+                choice: "Deaf", 
+                correct: false, 
+            },
+            { 
+                choice: "Filipino Sign Language (FSL)",
+                correct: true, 
+            },
+        ],
+    },
+    {//My name is
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fbd3db75db59d44c08194f80b28dd57a5%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=bd3db75db59d44c08194f80b28dd57a5&alt=media&optimized=true",
+        options: [
+            {
+                choice: "My name is ____.",
+                correct: true,
+            },
+            { 
+                choice: "What is your name?", 
+                correct: false, 
+            },
+            { 
+                choice: "Fingerspelling", 
+                correct: false, 
+            },
+            { 
+                choice: "Filipino Sign Language (FSL)",
                 correct: false, 
             },
         ],
@@ -378,14 +229,29 @@ function initializeProgressBar() {
 
 // Start a new quiz
 function startQuiz() {
+    // Shuffle questions and options in one operation
+    questions = [...allQuestions]
+        .sort(() => Math.random() - 0.5) // Shuffle questions
+        .map(question => {
+            // Shuffle options while preserving correct answer
+            const correctOption = question.options.find(opt => opt.correct);
+            const incorrectOptions = question.options.filter(opt => !opt.correct);
+            const randomPosition = Math.floor(Math.random() * (incorrectOptions.length + 1));
+            
+            return {
+                ...question,
+                options: [
+                    ...incorrectOptions.slice(0, randomPosition),
+                    correctOption,
+                    ...incorrectOptions.slice(randomPosition)
+                ]
+            };
+        });
+
     loadingElement.style.display = 'block';
     quizContainer.style.display = 'none';
 
     setTimeout(() => {
-        // Shuffle all questions and select first 8
-        const shuffledQuestions = [...allQuestions].sort(() => Math.random() - 0.5);
-        questions = shuffledQuestions.slice(0, 8);
-
         currentQuestionIndex = 0;
         score = 0;
         userAnswers = new Array(questions.length).fill(null);

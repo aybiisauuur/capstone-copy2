@@ -727,6 +727,30 @@ function startQuiz() {
         const shuffledQuestions = [...allQuestions].sort(() => Math.random() - 0.5);
         questions = shuffledQuestions.slice(0, 15);
 
+        // Shuffle options for each selected question while preserving correct answer
+        questions = questions.map(question => {
+            // Find correct option
+            const correctOption = question.options.find(opt => opt.correct);
+            // Get all incorrect options
+            const incorrectOptions = question.options.filter(opt => !opt.correct);
+            // Shuffle incorrect options
+            const shuffledIncorrect = [...incorrectOptions].sort(() => Math.random() - 0.5);
+            // Random position for correct answer (0 to length of shuffled array)
+            const correctPosition = Math.floor(Math.random() * (shuffledIncorrect.length + 1));
+            
+            // Insert correct answer at random position
+            const finalOptions = [
+                ...shuffledIncorrect.slice(0, correctPosition),
+                correctOption,
+                ...shuffledIncorrect.slice(correctPosition)
+            ];
+
+            return {
+                ...question,
+                options: finalOptions
+            };
+        });
+
         currentQuestionIndex = 0;
         score = 0;
         userAnswers = new Array(questions.length).fill(null);

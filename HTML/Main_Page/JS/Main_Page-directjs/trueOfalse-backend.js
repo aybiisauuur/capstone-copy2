@@ -1,7 +1,7 @@
 const quizData = [
     {
         videoUrl: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F0299652d0ea94bdab652d539b2616b7d%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=0299652d0ea94bdab652d539b2616b7d&alt=media&optimized=true",
-        statement: "Nice to meet you?",
+        statement: "Nice to meet you",
         correctAnswer: true
     },
     {
@@ -11,7 +11,7 @@ const quizData = [
     },
     {
         videoUrl: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F75c44265368f48d2a8fd3ed56e3e0821%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=75c44265368f48d2a8fd3ed56e3e0821&alt=media&optimized=true",
-        statement: "See you later?",
+        statement: "See you later",
         correctAnswer: true
     },
     {
@@ -21,7 +21,7 @@ const quizData = [
     },
     {
         videoUrl: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F67fae21fb722479283ce276ea388eadf%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=67fae21fb722479283ce276ea388eadf&alt=media&optimized=true",
-        statement: "Nice to meet you?",
+        statement: "Nice to meet you",
         correctAnswer: false
     },
     {
@@ -79,6 +79,10 @@ const quizData = [
 let currentQuestion = 0;
 let score = [];
 let shuffledQuestions = []; // This will store shuffled questions
+
+const quizContainer = document.getElementById('quiz-container');
+const loadingElement = document.getElementById('loading');
+const loadingText = document.getElementById('loading-text');
 const progressBar = document.getElementById('progressBar');
 const videoElement = document.getElementById('quizVideo');
 const questionText = document.getElementById('questionText');
@@ -88,14 +92,49 @@ const falseBtn = document.getElementById('falseBtn');
 const modal = document.getElementById('quiz-modal');
 const backButton = document.querySelector('.back-button');
 const tryAgainButton = document.querySelector('.try-again-button');
+const trueFalseButtons = document.querySelector('.buttons-container');
+
+function init() {
+    // Only start the quiz if all elements exist
+    startQuiz();
+
+    nextBtn.addEventListener('click', nextQuestion);
+}
+
+// Start a new quiz
+function startQuiz() {
+    loadingElement.style.display = 'block';
+    quizContainer.style.display = 'block';
+    videoElement.style.display = 'none';
+    trueFalseButtons.style.display = 'none';
+
+    setTimeout(() => {
+        // Shuffle all questions and select first 10
+        shuffledQuestions = [...quizData].sort(() => Math.random() - 0.5).slice(0, 10);
+
+        currentQuestion = 0;
+        score = new Array(shuffledQuestions.length).fill(false);
+        userAnswers = new Array(shuffledQuestions.length).fill(null);
+        answered = false;
+
+        initializeProgressBar();
+
+        loadingElement.style.display = 'none';
+        quizContainer.style.display = 'block';
+        videoElement.style.display = 'block';
+        trueFalseButtons.style.display = 'flex';
+        loadQuestion();
+    }, 1500);
+}
 
 function initializeProgressBar() {
     progressBar.innerHTML = '';
-    quizData.forEach(() => {
+    const questionsToShow = shuffledQuestions.length > 0 ? shuffledQuestions.length : 10;
+    for (let i = 0; i < questionsToShow; i++) {
         const segment = document.createElement('div');
         segment.className = 'progress-segment';
         progressBar.appendChild(segment);
-    });
+    }
 }
 
 function checkAnswer(userAnswer) {
@@ -126,9 +165,7 @@ function checkAnswer(userAnswer) {
 
 function loadQuestion() {
     // Use shuffledQuestions if available, otherwise use quizData
-    const currentQuestions = shuffledQuestions.length > 0 ? shuffledQuestions : quizData;
-    const question = currentQuestions[currentQuestion];
-    
+    const question = shuffledQuestions[currentQuestion];
     videoElement.src = question.videoUrl;
     questionText.textContent = `Is this video saying "${question.statement}"?`;
     nextBtn.style.display = 'none';
@@ -145,8 +182,7 @@ function loadQuestion() {
 
 function nextQuestion() {
     currentQuestion++;
-    const currentQuestions = shuffledQuestions.length > 0 ? shuffledQuestions : quizData;
-    if (currentQuestion < currentQuestions.length) {
+    if (currentQuestion < shuffledQuestions.length) {
         loadQuestion();
     } else {
         endQuiz();
@@ -165,16 +201,18 @@ function shuffleQuestions() {
 tryAgainButton.addEventListener('click', function() {
     modal.style.display = 'none';
     
-    // Reset quiz state
+    // Reset quiz state with 10 new random questions
+    shuffledQuestions = [...quizData].sort(() => Math.random() - 0.5).slice(0, 10);
     currentQuestion = 0;
-    score = new Array(quizData.length).fill(false);
+    score = new Array(10).fill(false);
     
-    // Shuffle questions for new attempt
-    shuffleQuestions();
-    
-    // Reinitialize and load first question
     initializeProgressBar();
     loadQuestion();
+});
+
+backButton.addEventListener('click', function() {
+    modal.style.display = 'none';
+    window.history.back();
 });
 
 backButton.addEventListener('click', function() {
@@ -194,15 +232,15 @@ function calculateScore() {
 
 function endQuiz() {
     const userScore = calculateScore();
-    document.getElementById('quiz-score').textContent = userScore;
+    document.getElementById('quiz-score').textContent = `${userScore}/${shuffledQuestions.length}`;
     document.getElementById('quiz-modal').style.display = 'flex';
 }
-
-// Initialize quiz
-initializeProgressBar();
-loadQuestion();
 
 // Event listeners
 trueBtn.addEventListener('click', () => checkAnswer(true));
 falseBtn.addEventListener('click', () => checkAnswer(false));
 nextBtn.addEventListener('click', nextQuestion);
+
+document.addEventListener('DOMContentLoaded', function() {
+    init();
+});
