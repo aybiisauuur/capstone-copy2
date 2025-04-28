@@ -445,7 +445,7 @@ function showQuestion() {
 
 // Replace the OpenAI functions with this Hugging Face version
 const HF_API_KEY = 'hf_tPYbQioYUJSoUYbaKibSRWUiAqNwqsXdULyour-huggingface-api-key';
-const HF_API_ENDPINGOINT = 'https://api-inference.huggingface.com/models/mistralai/Mistral-7B-Instruct-v0.2';
+const HF_API_ENDINGPOINT = 'https://api-inference.huggingface.com/models/mistralai/Mistral-7B-Instruct-v0.2';
 
 async function getAIFeedback(wrongDesc, correctDesc, context) {
     const prompt = `[INST] As a Filipino Sign Language tutor, explain this error:
@@ -461,16 +461,16 @@ Provide feedback that:
 4. Add relevant emojis [/INST]`;
 
     try {
-        const response = await fetch(HF_API_ENDPOINT, {
+        const response = await fetch(HF_API_ENDINGPOINT, {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${HF_API_KEY}`,
+                'Authorization': 'Bearer ${HF_API_KEY}',
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 inputs: prompt,
                 parameters: {
-                    max_new_tokens: 250,
+                    max_new_tokens: 50,
                     temperature: 0.7,
                     return_full_text: false
                 }
@@ -484,6 +484,12 @@ Provide feedback that:
                 await new Promise(resolve => setTimeout(resolve, data.estimated_time * 1000));
                 return getAIFeedback(wrongDesc, correctDesc, context); // Retry
             }
+            return '⚠️ Model is currently loading - please try again later';
+        }
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            return `⚠️ API Error: ${errorData.error || error.Data.message || 'Unknown error'}`;
         }
 
         const result = await response.json();
