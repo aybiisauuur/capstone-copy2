@@ -109,17 +109,28 @@ document.addEventListener('DOMContentLoaded', () => {
         feedbackElement.className = 'feedback-message';
 
         let feedbackText = '';
+        let feedbackClass = '';
+
         if (percentageUnderstood === 100) {
             feedbackText = 'Perfect! You understood everything. Remember to continue practicing!';
+            feedbackClass = 'perfect-feedback';
         } else if (percentageUnderstood >= 80) {
             feedbackText = 'Great job! Keep practicing and you\'ll get there!';
+            feedbackClass = 'great-feedback';
         } else if (percentageUnderstood >= 50) {
             feedbackText = 'More practice! Let\'s go!';
+            feedbackClass = 'good-feedback';
         } else if (percentageUnderstood >= 25) {
             feedbackText = 'Keep on practicing and you\'ll get there!';
+            feedbackClass = 'ok-feedback';
         } else {
             feedbackText = 'Go practice! Please open the modules.';
+            feedbackClass = 'poor-feedback';
         }
+
+        // Add both classes to the element
+        feedbackElement.classList.add('feedback-message', feedbackClass);
+        feedbackElement.innerHTML = `<p>${feedbackText}</p>`;
 
         feedbackElement.innerHTML = `<p>${feedbackText}</p>`;
         summaryContainer.appendChild(feedbackElement);
@@ -194,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Event listeners
-    flashcard.addEventListener('click', function() {
+    flashcard.addEventListener('click', function () {
         this.classList.toggle('flipped');
         if (this.classList.contains('flipped')) {
             video.play();
