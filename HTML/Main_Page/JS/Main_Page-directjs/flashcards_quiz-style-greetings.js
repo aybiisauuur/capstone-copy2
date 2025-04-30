@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const flashcardContainer = document.querySelector('.flashcard-container');
     const instructionText = document.querySelector('p');
     const feedbackButtons = document.querySelector('.feedback-buttons');
-    const navigationButtons = document.querySelectorAll('.row.justify-content-center');
 
     // Flashcards data
     const flashcards = [
@@ -57,7 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
         flashcardContainer.style.display = 'none';
         instructionText.style.display = 'none';
         feedbackButtons.style.display = 'none';
-        navigationButtons.forEach(row => row.style.display = 'none');
+        const buttonGroups = document.querySelectorAll('.button-group');
+        buttonGroups.forEach(group => {
+            group.style.display = 'none';
+        });
 
         // Prepare and show summary
         prepareSummaryContent();
