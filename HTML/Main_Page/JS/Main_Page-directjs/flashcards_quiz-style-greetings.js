@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const flashcardContainer = document.querySelector('.flashcard-container');
     const instructionText = document.querySelector('p');
     const feedbackButtons = document.querySelector('.feedback-buttons');
+    const buttonGroups = document.querySelectorAll('.button-group');
 
     // Flashcards data
     const flashcards = [
@@ -56,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
         flashcardContainer.style.display = 'none';
         instructionText.style.display = 'none';
         feedbackButtons.style.display = 'none';
-        const buttonGroups = document.querySelectorAll('.button-group');
         buttonGroups.forEach(group => {
             group.style.display = 'none';
         });
@@ -202,6 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         instructionText.style.display = 'block';
         feedbackButtons.style.display = 'flex';
         navigationButtons.forEach(row => row.style.display = 'flex');
+        buttonGroups
 
         updateFlashcard();
     }
@@ -248,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
         flashcardContainer.style.display = 'block';
         instructionText.style.display = 'block';
         feedbackButtons.style.display = 'flex';
-        navigationButtons.forEach(row => row.style.display = 'flex');
+        buttonGroups.forEach(group => group.style.display = 'flex'); 
 
         updateFlashcard();
     });
