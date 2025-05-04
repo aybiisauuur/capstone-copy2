@@ -25,7 +25,7 @@ const questions = [
         type: "video",
         video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F9aa5c6e3c22a488c81ea9b78cd9d0a51%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=9aa5c6e3c22a488c81ea9b78cd9d0a51&alt=media&optimized=true",
         question: "Watch the video and answer:",
-        options: ["Good Morning", "Take care", "Good Evening'"],
+        options: ["Good Morning", "Take care", "Good Evening"],
         correct: "Take care"
     },
     {
@@ -83,8 +83,8 @@ const questions = [
     }
 ];
 
-// Quiz Configuration
-const config = {
+ // Quiz Configuration
+ const config = {
     totalQuestions: Math.min(15, questions.length),  // Ensure it doesn't exceed available questions
     shuffleQuestions: true,
     shuffleAnswers: true,
@@ -113,7 +113,7 @@ function initQuiz() {
     resetQuizState();
     setupQuestions();
     showQuestion(0);
-    createProgressBar(); // This will now properly clear and recreate the progress bar
+    createProgressBar();
     domElements.nextButton.disabled = true;
     
     // Make sure progress elements are visible
@@ -238,7 +238,7 @@ function getDefaultQuestionContent(question, index) {
 function createProgressBar() {
     // Clear existing progress segments
     domElements.progressBar.innerHTML = '';
-    domElements.progressBar.style.width = '100%';
+    // domElements.progressBar.style.width = '100%';
     
     // Create new segments
     quizState.selectedQuestions.forEach((_, index) => {
@@ -257,40 +257,45 @@ function updateProgressBar(questionIndex, isCorrect) {
 }
 
 function updateProgress(current) {
-    domElements.progressText.textContent = 
+    document.querySelector('.progress').textContent = 
         `Question ${current} of ${quizState.selectedQuestions.length}`;
 }
 
-
-// Flashcard Functions
+// Updated toggleFlashcard function
 function toggleFlashcard(index) {
-    const card = document.querySelectorAll('.flashcard')[index];
+    const questionElement = document.querySelectorAll('.question')[index];
+    const card = questionElement.querySelector('.flashcard');
+    
+    if (!card) {
+        console.error('Flashcard element not found for index:', index);
+        return;
+    }
+    
     card.classList.toggle('flipped');
     
     if (card.classList.contains('flipped')) {
-        handleFlashcardFlip(card, index);
+        const video = card.querySelector('video');
+        if (video) {
+            video.currentTime = 0;
+            video.play().catch(e => console.log("Video play failed:", e));
+        }
+        
+        const controls = questionElement.querySelector('.flashcard-controls');
+        if (controls) controls.style.display = 'flex';
+        
+        domElements.nextButton.disabled = false;
     } else {
         const video = card.querySelector('video');
         if (video) video.pause();
     }
 }
 
-function handleFlashcardFlip(card, index) {
-    const video = card.querySelector('video');
-    if (video) {
-        video.currentTime = 0;
-        video.play().catch(e => console.log("Video play failed:", e));
-    }
-    
-    const controls = card.parentElement.querySelector('.flashcard-controls');
-    if (controls) controls.style.display = 'flex';
-    
-    domElements.nextButton.disabled = false;
-}
-
+// Updated markFlashcardCorrect function
 function markFlashcardCorrect(index) {
-    const card = document.querySelectorAll('.flashcard')[index];
-    const video = card.querySelector('video');
+    const questionElement = document.querySelectorAll('.question')[index];
+    const card = questionElement.querySelector('.flashcard');
+    const video = card ? card.querySelector('video') : null;
+    
     if (video) video.pause();
     
     const question = quizState.selectedQuestions[index];
@@ -302,9 +307,12 @@ function markFlashcardCorrect(index) {
     nextQuestion();
 }
 
+// Updated markFlashcardWrong function
 function markFlashcardWrong(index) {
-    const card = document.querySelectorAll('.flashcard')[index];
-    const video = card.querySelector('video');
+    const questionElement = document.querySelectorAll('.question')[index];
+    const card = questionElement.querySelector('.flashcard');
+    const video = card ? card.querySelector('video') : null;
+    
     if (video) video.pause();
     
     const question = quizState.selectedQuestions[index];
@@ -326,6 +334,7 @@ function nextQuestion() {
     if (quizState.currentQuestion < quizState.selectedQuestions.length - 1) {
         quizState.currentQuestion++;
         showQuestion(quizState.currentQuestion);
+        domElements.nextButton.disabled = true;
     } else {
         showResults();
     }
