@@ -187,8 +187,6 @@ p {
   margin-bottom: 50px;
 }
 
-#next-button,
-#previous-button,
 #reset-button,
 #shuffle-button {
   padding: 12px 25px;
@@ -200,16 +198,6 @@ p {
   font-family: 'Josefin Sans', sans-serif;
   margin: 2px; /* Adds small space between buttons */
   white-space: nowrap; /* Prevents button text from wrapping */
-}
-
-#next-button:hover {
-  background-color: #1C3150;
-  color: white;
-}
-
-#previous-button:hover {
-  background-color: #EE6B6E;
-  color: white;
 }
 
 #shuffle-button:hover {
@@ -421,8 +409,6 @@ button:disabled {
     align-items: center;
   }
   
-  #next-button,
-  #previous-button,
   #reset-button,
   #shuffle-button {
     width: 100%;

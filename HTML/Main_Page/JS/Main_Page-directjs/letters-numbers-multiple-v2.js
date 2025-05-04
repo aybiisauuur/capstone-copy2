@@ -1,107 +1,357 @@
 const questions = [
+    // Letters N-Z and Numbers 17-1 million
+    // Letters 
     {
-        question: "Which sign says Hello?",
+        question: "Which video shows: Letter N?",
         options: [
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F67fae21fb722479283ce276ea388eadf%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=67fae21fb722479283ce276ea388eadf&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fee781b67a8bf4e488174c0156c18914b%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=ee781b67a8bf4e488174c0156c18914b&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fd702dd1b2538458098cba218905c9987%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=d702dd1b2538458098cba218905c9987&alt=media&optimized=true', correct: true },
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F0299652d0ea94bdab652d539b2616b7d%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=0299652d0ea94bdab652d539b2616b7d&alt=media&optimized=true', correct: false }
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5b7ec1a3240441149334b7f189f4d909%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=5b7ec1a3240441149334b7f189f4d909&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F491dd129527e4d0a89a4f8170e3ccab5%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=491dd129527e4d0a89a4f8170e3ccab5&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fc650704d906a47629b5319f1d8bcbb92%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=c650704d906a47629b5319f1d8bcbb92&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fda68ed21db654f09ac842fb09d54d55e%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=da68ed21db654f09ac842fb09d54d55e&alt=media&optimized=true', 
+            correct: false }
             ],
     },
     {
-        question: "Which sign says See you later?",
+        question: "Which video shows: Letter O?",
         options: [
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fdba4a7e655e04153ae79ebc7ff9e22a6%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=dba4a7e655e04153ae79ebc7ff9e22a6&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F75c44265368f48d2a8fd3ed56e3e0821%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=75c44265368f48d2a8fd3ed56e3e0821&alt=media&optimized=true', correct: true },
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F96cc65bcccbe45ffa5cb73bd771ff554%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=96cc65bcccbe45ffa5cb73bd771ff554&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F67fae21fb722479283ce276ea388eadf%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=67fae21fb722479283ce276ea388eadf&alt=media&optimized=true', correct: false }
-        ],
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5b7ec1a3240441149334b7f189f4d909%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=5b7ec1a3240441149334b7f189f4d909&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F491dd129527e4d0a89a4f8170e3ccab5%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=491dd129527e4d0a89a4f8170e3ccab5&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fc650704d906a47629b5319f1d8bcbb92%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=c650704d906a47629b5319f1d8bcbb92&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fda68ed21db654f09ac842fb09d54d55e%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=da68ed21db654f09ac842fb09d54d55e&alt=media&optimized=true', 
+            correct: false }
+            ],
     },
     {
-        question: "Which sign says Thank you?",
+        question: "Which video shows: Letter P?",
         options: [
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F0299652d0ea94bdab652d539b2616b7d%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=0299652d0ea94bdab652d539b2616b7d&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fdaaf40ef88e84bb6b94952f07a98a26c%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=daaf40ef88e84bb6b94952f07a98a26c&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fdba4a7e655e04153ae79ebc7ff9e22a6%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=dba4a7e655e04153ae79ebc7ff9e22a6&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fee781b67a8bf4e488174c0156c18914b%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=ee781b67a8bf4e488174c0156c18914b&alt=media&optimized=true', correct: true }
-        ],
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5b7ec1a3240441149334b7f189f4d909%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=5b7ec1a3240441149334b7f189f4d909&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F491dd129527e4d0a89a4f8170e3ccab5%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=491dd129527e4d0a89a4f8170e3ccab5&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fc650704d906a47629b5319f1d8bcbb92%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=c650704d906a47629b5319f1d8bcbb92&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fda68ed21db654f09ac842fb09d54d55e%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=da68ed21db654f09ac842fb09d54d55e&alt=media&optimized=true', 
+            correct: true }
+            ],
     },
     {
-        question: "Which sign says Good Evening?",
+        question: "Which video shows: Letter Q?",
         options: [
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fdba4a7e655e04153ae79ebc7ff9e22a6%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=dba4a7e655e04153ae79ebc7ff9e22a6&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F96cc65bcccbe45ffa5cb73bd771ff554%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=96cc65bcccbe45ffa5cb73bd771ff554&alt=media&optimized=true', correct: true },
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F96cc65bcccbe45ffa5cb73bd771ff554%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=96cc65bcccbe45ffa5cb73bd771ff554&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F67fae21fb722479283ce276ea388eadf%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=67fae21fb722479283ce276ea388eadf&alt=media&optimized=true', correct: false }
-        ],
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F4b6e7e1bcee8420bbf510c7861ce36e1%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=4b6e7e1bcee8420bbf510c7861ce36e1&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ff75b399a4163499bba950f0f1bc2fc09%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=f75b399a4163499bba950f0f1bc2fc09&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F76e1875707204d78bd83e663dc72356a%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=76e1875707204d78bd83e663dc72356a&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F491dd129527e4d0a89a4f8170e3ccab5%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=491dd129527e4d0a89a4f8170e3ccab5&alt=media&optimized=true', 
+            correct: false }
+            ],
     },
     {
-        question: "Which sign says Nice to meet you?",
+        question: "Which video shows: Letter R?",
         options: [
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F0299652d0ea94bdab652d539b2616b7d%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=0299652d0ea94bdab652d539b2616b7d&alt=media&optimized=true', correct: true },
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F75c44265368f48d2a8fd3ed56e3e0821%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=75c44265368f48d2a8fd3ed56e3e0821&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F96cc65bcccbe45ffa5cb73bd771ff554%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=96cc65bcccbe45ffa5cb73bd771ff554&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F67fae21fb722479283ce276ea388eadf%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=67fae21fb722479283ce276ea388eadf&alt=media&optimized=true', correct: false }
-        ],
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F17fd031f360441939b33a4e72139a8fe%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=17fd031f360441939b33a4e72139a8fe&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ff75b399a4163499bba950f0f1bc2fc09%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=f75b399a4163499bba950f0f1bc2fc09&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F76e1875707204d78bd83e663dc72356a%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=76e1875707204d78bd83e663dc72356a&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F491dd129527e4d0a89a4f8170e3ccab5%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=491dd129527e4d0a89a4f8170e3ccab5&alt=media&optimized=true', 
+            correct: false }
+            ],
     },
     {
-        question: "Which sign says Good Morning?",
+        question: "Which video shows: Letter S?",
         options: [
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fd9e06a1e9eaf4ded8c96b3941f57bd38%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=d9e06a1e9eaf4ded8c96b3941f57bd38&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F0a97e81c3761491b89ff5f050c892580%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=0a97e81c3761491b89ff5f050c892580&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F8a331bdfb150415a93cd7ded28cd38a2%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=8a331bdfb150415a93cd7ded28cd38a2&alt=media&optimized=true', correct: true },
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F7a3d592fbc7241739897b3d7336a1b74%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=7a3d592fbc7241739897b3d7336a1b74&alt=media&optimized=true', correct: false }
-        ],
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F17fd031f360441939b33a4e72139a8fe%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=17fd031f360441939b33a4e72139a8fe&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5e99509e621f453cbc99f84d2cc8d0f3%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=5e99509e621f453cbc99f84d2cc8d0f3&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5fccd86c89ca4a819eff4375249c331f%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=5fccd86c89ca4a819eff4375249c331f&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fd53ae3657600478b8ed781c05aa09bb7%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=d53ae3657600478b8ed781c05aa09bb7&alt=media&optimized=true', 
+            correct: false }
+            ],
     },
-
     {
-        question: "Which sign says Good Afternoon?",
+        question: "Which video shows: Letter T?",
         options: [
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F3ef3cd35689b42f280a7c2be69efc380%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=3ef3cd35689b42f280a7c2be69efc380&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F8a331bdfb150415a93cd7ded28cd38a2%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=8a331bdfb150415a93cd7ded28cd38a2&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ff29e00c1818c45d5b3cabcb8ebee33b0%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=f29e00c1818c45d5b3cabcb8ebee33b0&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fd9e06a1e9eaf4ded8c96b3941f57bd38%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=d9e06a1e9eaf4ded8c96b3941f57bd38&alt=media&optimized=true', correct: true }
-        ],
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5b7ec1a3240441149334b7f189f4d909%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=5b7ec1a3240441149334b7f189f4d909&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F09d452abb113431c964f677706fdf206%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=09d452abb113431c964f677706fdf206&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fef33a9f1f145467d83930093d7bf016d%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=ef33a9f1f145467d83930093d7bf016d&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5cd17b632bcb4e16a8b8567a1174ce64%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=5cd17b632bcb4e16a8b8567a1174ce64&alt=media&optimized=true', 
+            correct: false }
+            ],
     },
-
     {
-        question: "Which sign says Long Time No See?",
+        question: "Which video shows: Letter U?",
         options: [
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fae3aa044a67e4ecb9a0728d1947a9360%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=ae3aa044a67e4ecb9a0728d1947a9360&alt=media&optimized=true', correct: true },
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F3777c6e27e3f42999eaebbbd9a6c1af8%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=3777c6e27e3f42999eaebbbd9a6c1af8&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fe1ddf2f1c09c4886891edb4dbc6b3448%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=e1ddf2f1c09c4886891edb4dbc6b3448&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F7a3d592fbc7241739897b3d7336a1b74%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=7a3d592fbc7241739897b3d7336a1b74&alt=media&optimized=true', correct: false }
-        ],
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F12ea87b8d6f04cafa323c0fe3c4c3ad7%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=12ea87b8d6f04cafa323c0fe3c4c3ad7&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F471cdb61b53a41b090adbacfca397eea%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=471cdb61b53a41b090adbacfca397eea&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fef33a9f1f145467d83930093d7bf016d%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=ef33a9f1f145467d83930093d7bf016d&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F86a755e9a6854fefb5b816c6cc298cc8%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=86a755e9a6854fefb5b816c6cc298cc8&alt=media&optimized=true', 
+            correct: true }
+            ],
     },
-
     {
-        question: "Which sign says Goodbye?",
+        question: "Which video shows: Letter V?",
         options: [
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fa02fcbe819a24d88bea5918decc1e7c1%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=a02fcbe819a24d88bea5918decc1e7c1&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F7a3d592fbc7241739897b3d7336a1b74%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=7a3d592fbc7241739897b3d7336a1b74&alt=media&optimized=true', correct: true },
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fe1ddf2f1c09c4886891edb4dbc6b3448%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=e1ddf2f1c09c4886891edb4dbc6b3448&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ff29e00c1818c45d5b3cabcb8ebee33b0%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=f29e00c1818c45d5b3cabcb8ebee33b0&alt=media&optimized=true', correct: false }
-        ],
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fa0bf0d4590df4634afb7ae76bcea3e16%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=a0bf0d4590df4634afb7ae76bcea3e16&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F471cdb61b53a41b090adbacfca397eea%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=471cdb61b53a41b090adbacfca397eea&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fef33a9f1f145467d83930093d7bf016d%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=ef33a9f1f145467d83930093d7bf016d&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F86a755e9a6854fefb5b816c6cc298cc8%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=86a755e9a6854fefb5b816c6cc298cc8&alt=media&optimized=true', 
+            correct: false }
+            ],
     },
-
     {
-        question: "Which sign says You're Welcome?",
+        question: "Which video shows: Letter W?",
         options: [
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fae3aa044a67e4ecb9a0728d1947a9360%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=ae3aa044a67e4ecb9a0728d1947a9360&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F8a331bdfb150415a93cd7ded28cd38a2%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=8a331bdfb150415a93cd7ded28cd38a2&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F1330f800fdd3413ca8ee1edb4e30484a%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=1330f800fdd3413ca8ee1edb4e30484a&alt=media&optimized=true', correct: true },
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fa02fcbe819a24d88bea5918decc1e7c1%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=a02fcbe819a24d88bea5918decc1e7c1&alt=media&optimized=true', correct: false }
-        ],
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Feee6e662ad644ef7b7b3d327390529ef%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=eee6e662ad644ef7b7b3d327390529ef&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F471cdb61b53a41b090adbacfca397eea%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=471cdb61b53a41b090adbacfca397eea&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fef33a9f1f145467d83930093d7bf016d%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=ef33a9f1f145467d83930093d7bf016d&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F86a755e9a6854fefb5b816c6cc298cc8%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=86a755e9a6854fefb5b816c6cc298cc8&alt=media&optimized=true', 
+            correct: false }
+            ],
     },
-
     {
-        question: "Which sign says Take Care?",
+        question: "Which video shows: Letter X?",
         options: [
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F3ef3cd35689b42f280a7c2be69efc380%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=3ef3cd35689b42f280a7c2be69efc380&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F0a97e81c3761491b89ff5f050c892580%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=0a97e81c3761491b89ff5f050c892580&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fd9e06a1e9eaf4ded8c96b3941f57bd38%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=d9e06a1e9eaf4ded8c96b3941f57bd38&alt=media&optimized=true', correct: false },
-            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fa02fcbe819a24d88bea5918decc1e7c1%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=a02fcbe819a24d88bea5918decc1e7c1&alt=media&optimized=true', correct: true }
-        ],
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Feee6e662ad644ef7b7b3d327390529ef%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=eee6e662ad644ef7b7b3d327390529ef&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F86a755e9a6854fefb5b816c6cc298cc8%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=86a755e9a6854fefb5b816c6cc298cc8&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F132bfc4a83dc4173bee3c7658289d87f%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=132bfc4a83dc4173bee3c7658289d87f&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F54011d16d83f43a0b08e29cb4bd3b85a%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=54011d16d83f43a0b08e29cb4bd3b85a&alt=media&optimized=true', 
+            correct: false }
+            ],
+    },
+    {
+        question: "Which video shows: Letter Y?",
+        options: [
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Feee6e662ad644ef7b7b3d327390529ef%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=eee6e662ad644ef7b7b3d327390529ef&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F86a755e9a6854fefb5b816c6cc298cc8%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=86a755e9a6854fefb5b816c6cc298cc8&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F132bfc4a83dc4173bee3c7658289d87f%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=132bfc4a83dc4173bee3c7658289d87f&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fb3b72a4324ea4828b05ab836bd08eead%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=b3b72a4324ea4828b05ab836bd08eead&alt=media&optimized=true', 
+            correct: true }
+            ],
+    },
+    {
+        question: "Which video shows: Letter Z?",
+        options: [
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fd4f7fae673114c26aa27b18730e530a0%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=d4f7fae673114c26aa27b18730e530a0&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F6f261a2fc88d4a459ff0229ad9f350db%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=6f261a2fc88d4a459ff0229ad9f350db&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F491dd129527e4d0a89a4f8170e3ccab5%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=491dd129527e4d0a89a4f8170e3ccab5&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fb3b72a4324ea4828b05ab836bd08eead%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=b3b72a4324ea4828b05ab836bd08eead&alt=media&optimized=true', 
+            correct: false }
+            ],
+    },
+    // numbers 17- 1 mill
+    {
+        question: "Which video shows the number 17?",
+        options: [
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F7db247b436bf4ecb8336e18f93461b5a%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=7db247b436bf4ecb8336e18f93461b5a&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F376892c624184e65a4d75cddda95aed8%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=376892c624184e65a4d75cddda95aed8&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ff75b399a4163499bba950f0f1bc2fc09%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=f75b399a4163499bba950f0f1bc2fc09&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F3b18a70499664f8e96b5d6c852f6632f%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=3b18a70499664f8e96b5d6c852f6632f&alt=media&optimized=true', 
+            correct: false }
+            ],
+    },
+    {
+        question: "Which video shows the number 18?",
+        options: [
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ffa1a21fd83d54e1e8dd5b0e9a0df1efb%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=fa1a21fd83d54e1e8dd5b0e9a0df1efb&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F376892c624184e65a4d75cddda95aed8%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=376892c624184e65a4d75cddda95aed8&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Feee6e662ad644ef7b7b3d327390529ef%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=eee6e662ad644ef7b7b3d327390529ef&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F3b18a70499664f8e96b5d6c852f6632f%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=3b18a70499664f8e96b5d6c852f6632f&alt=media&optimized=true', 
+            correct: true }
+            ],
+    },
+    {
+        question: "Which video shows the number 19?",
+        options: [
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fd53ae3657600478b8ed781c05aa09bb7%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=d53ae3657600478b8ed781c05aa09bb7&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fb407e21cce084ae5a0c055a7cf762200%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=b407e21cce084ae5a0c055a7cf762200&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F7052374dd9c74aa2bb8092acf3fdfa7e%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=7052374dd9c74aa2bb8092acf3fdfa7e&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F3b18a70499664f8e96b5d6c852f6632f%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=3b18a70499664f8e96b5d6c852f6632f&alt=media&optimized=true', 
+            correct: false }
+            ],
+    },
+    {
+        question: "Which video shows the number 20?",
+        options: [
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fd53ae3657600478b8ed781c05aa09bb7%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=d53ae3657600478b8ed781c05aa09bb7&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fb407e21cce084ae5a0c055a7cf762200%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=b407e21cce084ae5a0c055a7cf762200&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ff67c038bbf3c4ee38b4bddf7f1a1503e%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=f67c038bbf3c4ee38b4bddf7f1a1503e&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fe4bd8a6532114dc6af5936065dc2e2a6%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=e4bd8a6532114dc6af5936065dc2e2a6&alt=media&optimized=true', 
+            correct: false }
+            ],
+    },
+    {
+        question: "Which video shows the number 30?",
+        options: [
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Feee6e662ad644ef7b7b3d327390529ef%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=eee6e662ad644ef7b7b3d327390529ef&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fb407e21cce084ae5a0c055a7cf762200%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=b407e21cce084ae5a0c055a7cf762200&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ff67c038bbf3c4ee38b4bddf7f1a1503e%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=f67c038bbf3c4ee38b4bddf7f1a1503e&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ffb908eae717c4a56ab677bc582718106%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=fb908eae717c4a56ab677bc582718106&alt=media&optimized=true', 
+            correct: true }
+            ],
+    },
+    {
+        question: "Which video shows the number 40?",
+        options: [
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F97e52d1e50e747c4857ba2218f97e774%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=97e52d1e50e747c4857ba2218f97e774&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fbd66d7209be94c40b3f79c25d106d082%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=bd66d7209be94c40b3f79c25d106d082&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fefc74a7e5ce34e87ad2276e95a0735d6%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=efc74a7e5ce34e87ad2276e95a0735d6&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ff75b399a4163499bba950f0f1bc2fc09%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=f75b399a4163499bba950f0f1bc2fc09&alt=media&optimized=true', 
+            correct: false }
+            ],
+    },
+    {
+        question: "Which video shows the number 50?",
+        options: [
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fe47908419cfd4fd0a84e9f55e1eb8e8c%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=e47908419cfd4fd0a84e9f55e1eb8e8c&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ffc32d4a30ce94fc3910da4ab6acca607%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=fc32d4a30ce94fc3910da4ab6acca607&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fb3d8880ab1fa4b538b5730fafee406d3%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=b3d8880ab1fa4b538b5730fafee406d3&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F28609d7020ff48428fbe89ef85a98fe0%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=28609d7020ff48428fbe89ef85a98fe0&alt=media&optimized=true', 
+            correct: false }
+            ],
+    },
+    {
+        question: "Which video shows the number 60?",
+        options: [
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F0d24e2572969418ab3c85984188de5da%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=0d24e2572969418ab3c85984188de5da&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5089f4e1f0d5480d96eb46ad11c1dabc%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=5089f4e1f0d5480d96eb46ad11c1dabc&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F7052374dd9c74aa2bb8092acf3fdfa7e%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=7052374dd9c74aa2bb8092acf3fdfa7e&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F28609d7020ff48428fbe89ef85a98fe0%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=28609d7020ff48428fbe89ef85a98fe0&alt=media&optimized=true', 
+            correct: true }
+            ],
+    },
+    {
+        question: "Which video shows the number 70?",
+        options: [
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F376892c624184e65a4d75cddda95aed8%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=376892c624184e65a4d75cddda95aed8&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F7db247b436bf4ecb8336e18f93461b5a%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=7db247b436bf4ecb8336e18f93461b5a&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F4653b03f4a45412dbc9b9615cb983c6c%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=4653b03f4a45412dbc9b9615cb983c6c&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fe4bd8a6532114dc6af5936065dc2e2a6%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=e4bd8a6532114dc6af5936065dc2e2a6&alt=media&optimized=true', 
+            correct: false }
+            ],
+    },
+    {
+        question: "Which video shows the number 80?",
+        options: [
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Feb47d20963f440fdae2ddf1cc6648e75%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=eb47d20963f440fdae2ddf1cc6648e75&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ffb908eae717c4a56ab677bc582718106%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=fb908eae717c4a56ab677bc582718106&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ffa1a21fd83d54e1e8dd5b0e9a0df1efb%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=fa1a21fd83d54e1e8dd5b0e9a0df1efb&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F3b18a70499664f8e96b5d6c852f6632f%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=3b18a70499664f8e96b5d6c852f6632f&alt=media&optimized=true', 
+            correct: false }
+            ],
+    },
+    {
+        question: "Which video shows the number 90?",
+        options: [
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5089f4e1f0d5480d96eb46ad11c1dabc%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=5089f4e1f0d5480d96eb46ad11c1dabc&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F2a24363806854b74a52ab4c7450b4752%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=2a24363806854b74a52ab4c7450b4752&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F7052374dd9c74aa2bb8092acf3fdfa7e%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=7052374dd9c74aa2bb8092acf3fdfa7e&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fd53ae3657600478b8ed781c05aa09bb7%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=d53ae3657600478b8ed781c05aa09bb7&alt=media&optimized=true', 
+            correct: false }
+            ],
+    },
+    {
+        question: "Which video shows the number 100?",
+        options: [
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F6ad63600af97441ebc54dd044221ee8c%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=6ad63600af97441ebc54dd044221ee8c&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fe07d4e748fc341bcbd161ab668ab171b%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=e07d4e748fc341bcbd161ab668ab171b&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F25ade37426094a079a567f05af93d9fe%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=25ade37426094a079a567f05af93d9fe&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F03059a88b09a4c75bbba39f2ee592978%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=03059a88b09a4c75bbba39f2ee592978&alt=media&optimized=true', 
+            correct: false }
+            ],
+    },
+    {
+        question: "Which video shows the number 1000?",
+        options: [
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F6ad63600af97441ebc54dd044221ee8c%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=6ad63600af97441ebc54dd044221ee8c&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fe07d4e748fc341bcbd161ab668ab171b%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=e07d4e748fc341bcbd161ab668ab171b&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F25ade37426094a079a567f05af93d9fe%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=25ade37426094a079a567f05af93d9fe&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F03059a88b09a4c75bbba39f2ee592978%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=03059a88b09a4c75bbba39f2ee592978&alt=media&optimized=true', 
+            correct: false }
+            ],
+    },
+    {
+        question: "Which video shows the number 1 000 000 (1 million)?",
+        options: [
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F6ad63600af97441ebc54dd044221ee8c%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=6ad63600af97441ebc54dd044221ee8c&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fe07d4e748fc341bcbd161ab668ab171b%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=e07d4e748fc341bcbd161ab668ab171b&alt=media&optimized=true', 
+            correct: true },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F25ade37426094a079a567f05af93d9fe%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=25ade37426094a079a567f05af93d9fe&alt=media&optimized=true', 
+            correct: false },
+            { video: 'https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F03059a88b09a4c75bbba39f2ee592978%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=03059a88b09a4c75bbba39f2ee592978&alt=media&optimized=true', 
+            correct: false }
+            ],
     },
 ];
 
@@ -112,6 +362,9 @@ let score = []; // Added score array
 let shuffledQuestions = [];
 
 const questionText = document.getElementById('question-text');
+const quizContainer = document.getElementById('quiz-container');
+const loadingElement = document.getElementById('loading');
+const loadingText = document.getElementById('loading-text');
 const optionsContainer = document.getElementById('video-options-container');
 const nextBtn = document.getElementById('next-btn');
 const finalAnswerBtn = document.getElementById('final-answer-btn');
@@ -119,16 +372,46 @@ const modal = document.getElementById('quiz-modal');
 const backButton = document.querySelector('.back-button');
 const tryAgainButton = document.querySelector('.try-again-button');
 
+function init() {
+    // Only start the quiz if all elements exist
+    startQuiz();
+
+    nextBtn.addEventListener('click', nextQuestion);
+}
+
+// Start a new quiz
+function startQuiz() {
+    loadingElement.style.display = 'block';
+    quizContainer.style.display = 'block';
+
+    setTimeout(() => {
+        // Shuffle all questions and select first 15
+        shuffledQuestions = [...questions].sort(() => Math.random() - 0.5).slice(0, 15);
+
+        currentQuestion = 0;
+        score = new Array(shuffledQuestions.length).fill(false);
+        userAnswers = new Array(shuffledQuestions.length).fill(null);
+        answered = false;
+
+        initializeProgressBar();
+
+        loadingElement.style.display = 'none';
+        quizContainer.style.display = 'block';
+        loadQuestion();
+    }, 1500);
+}
+
 function initializeProgressBar() {
     const progressBar = document.getElementById('progress-bar');
     progressBar.innerHTML = '';
-    questions.forEach(() => {
+    // Use shuffledQuestions.length instead of questions.length
+    shuffledQuestions.forEach(() => {
         const segment = document.createElement('div');
         segment.className = 'progress-segment';
         progressBar.appendChild(segment);
     });
-    progressStatus = new Array(questions.length).fill(null);
-    score = new Array(questions.length).fill(false); // Initialize score array
+    progressStatus = new Array(shuffledQuestions.length).fill(null);
+    score = new Array(shuffledQuestions.length).fill(false);
 }
 
 function updateProgressBar() {
@@ -142,9 +425,7 @@ function updateProgressBar() {
 }
 
 function loadQuestion() {
-    // Use shuffledQuestions if it exists, otherwise use original questions
-    const questionSet = shuffledQuestions.length > 0 ? shuffledQuestions : questions;
-    const question = questionSet[currentQuestion];
+    const question = shuffledQuestions[currentQuestion];
     
     questionText.textContent = question.question;
     optionsContainer.innerHTML = '';
@@ -152,7 +433,10 @@ function loadQuestion() {
     finalAnswerBtn.style.display = 'none';
     selectedOption = null;
     
-    question.options.forEach(option => {
+    // Shuffle the options for this question
+    const shuffledOptions = [...question.options].sort(() => Math.random() - 0.5);
+    
+    shuffledOptions.forEach(option => {
         const optionDiv = document.createElement('div');
         optionDiv.className = 'video-option';
         optionDiv.innerHTML = `<video controls><source src="${option.video}" type="video/mp4"></video>`;
@@ -169,6 +453,12 @@ function loadQuestion() {
         });
         optionsContainer.appendChild(optionDiv);
     });
+
+    // clear feedback
+    const existingFeedback = document.getElementById('feedbackText');
+    if (existingFeedback) {
+        existingFeedback.remove();
+    }
     
     updateProgressBar();
 }
@@ -220,7 +510,8 @@ function nextQuestion() {
 
     // Move to next question or show results
     currentQuestion++;
-    if (currentQuestion < questions.length) {
+    // Check against shuffledQuestions.length instead of questions.length
+    if (currentQuestion < shuffledQuestions.length) {
         loadQuestion();
     } else {
         showFinalResults();
@@ -232,12 +523,18 @@ function nextQuestion() {
 }
 
 function calculateScore() {
-    return score.filter(Boolean).length;
+    // Safely count correct answers (handle cases where score array might be empty)
+    return score ? score.filter(Boolean).length : 0;
 }
 
 function showFinalResults() {
     const userScore = calculateScore();
-    document.getElementById('quiz-score').textContent = userScore;
+    const totalQuestions = shuffledQuestions.length;
+    
+    // Clean any existing slashes and display the score
+    const scoreDisplay = `${userScore}/${totalQuestions}`;
+    document.getElementById('quiz-score').textContent = scoreDisplay;
+    
     document.getElementById('quiz-modal').style.display = 'flex';
 }
 
@@ -259,20 +556,15 @@ backButton.addEventListener('click', function() {
 });
 
 tryAgainButton.addEventListener('click', function() {
-    // Hide the modal
     modal.style.display = 'none';
     
     // Reset quiz progress
     currentQuestion = 0;
-    score = new Array(questions.length).fill(false);
-    progressStatus = new Array(questions.length).fill(null);
     
-    // Shuffle the questions array (without modifying the original)
-    shuffledQuestions = [...questions]; // Create a copy
-    for (let i = shuffledQuestions.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffledQuestions[i], shuffledQuestions[j]] = [shuffledQuestions[j], shuffledQuestions[i]];
-    }
+    // Shuffle the questions again and take first 15
+    shuffledQuestions = [...questions].sort(() => Math.random() - 0.5).slice(0, 15);
+    score = new Array(shuffledQuestions.length).fill(false);
+    progressStatus = new Array(shuffledQuestions.length).fill(null);
     
     // Reinitialize and load first question
     initializeProgressBar();
@@ -285,6 +577,6 @@ modal.addEventListener('click', function(e) {
     }
 });
 
-// Initialize the quiz
-initializeProgressBar();
-loadQuestion();
+document.addEventListener('DOMContentLoaded', function() {
+    init();
+});

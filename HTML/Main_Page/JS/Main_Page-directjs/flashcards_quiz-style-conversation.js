@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // DOM elements
     const flashcard = document.querySelector('.flashcard');
     const video = document.querySelector('.card-video');
-    const nextButton = document.getElementById('next-button');
-    const prevButton = document.getElementById('previous-button');
     const shuffleButton = document.getElementById('shuffle-button');
     const resetButton = document.getElementById('reset-button');
     const understoodBtn = document.getElementById('understood-btn');
@@ -220,14 +218,13 @@ document.addEventListener('DOMContentLoaded', () => {
         currentCardIndex = 0;
         viewedCards = new Set();
         cardStatus = {};
-
+    
         // Show all flashcard elements
         flashcardContainer.style.display = 'block';
         instructionText.style.display = 'block';
         feedbackButtons.style.display = 'flex';
-        navigationButtons.forEach(row => row.style.display = 'flex');
-        buttonGroups
-
+        buttonGroups.forEach(group => group.style.display = 'flex'); // This was missing
+        
         updateFlashcard();
     }
 
@@ -240,16 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
             video.pause();
             video.currentTime = 0;
         }
-    });
-
-    nextButton.addEventListener('click', () => {
-        currentCardIndex = (currentCardIndex + 1) % flashcards.length;
-        updateFlashcard();
-    });
-
-    prevButton.addEventListener('click', () => {
-        currentCardIndex = (currentCardIndex - 1 + flashcards.length) % flashcards.length;
-        updateFlashcard();
     });
 
     shuffleButton.addEventListener('click', () => {
@@ -282,9 +269,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!cardStatus) cardStatus = {};
         cardStatus[currentCardIndex] = 'understood';
         viewedCards.add(currentCardIndex);
-
+    
         if (!checkCompletion()) {
-            nextButton.click();
+            // Replace nextButton.click() with direct navigation
+            currentCardIndex = (currentCardIndex + 1) % flashcards.length;
+            updateFlashcard();
         } else {
             showSummary();
         }
@@ -294,9 +283,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!cardStatus) cardStatus = {};
         cardStatus[currentCardIndex] = 'practice';
         viewedCards.add(currentCardIndex);
-
+    
         if (!checkCompletion()) {
-            nextButton.click();
+            // Replace nextButton.click() with direct navigation
+            currentCardIndex = (currentCardIndex + 1) % flashcards.length;
+            updateFlashcard();
         } else {
             showSummary();
         }
@@ -314,8 +305,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 video.currentTime = 0;
             }
         }
-        if (e.code === 'ArrowRight') nextButton.click();
-        if (e.code === 'ArrowLeft') prevButton.click();
     });
 
     // Initialize

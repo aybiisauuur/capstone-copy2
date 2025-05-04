@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // DOM elements
     const flashcard = document.querySelector('.flashcard');
     const video = document.querySelector('.card-video');
-    const nextButton = document.getElementById('next-button');
-    const prevButton = document.getElementById('previous-button');
     const shuffleButton = document.getElementById('shuffle-button');
     const resetButton = document.getElementById('reset-button');
     const understoodBtn = document.getElementById('understood-btn');
@@ -16,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const buttonGroups = document.querySelectorAll('.button-group');
 
     // Flashcards data
-    const flashcards = [
+    let flashcards = [
         { frontText: "Good Morning", videoSrc: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fdaaf40ef88e84bb6b94952f07a98a26c%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=daaf40ef88e84bb6b94952f07a98a26c&alt=media&optimized=true" },
         { frontText: "Good Afternoon", videoSrc: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fd97c585713d542dda1cb425550c76f0c%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=d97c585713d542dda1cb425550c76f0c&alt=media&optimized=true" },
         { frontText: "Good Evening", videoSrc: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F96cc65bcccbe45ffa5cb73bd771ff554%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=96cc65bcccbe45ffa5cb73bd771ff554&alt=media&optimized=true" },
@@ -190,20 +188,18 @@ document.addEventListener('DOMContentLoaded', () => {
         summaryContainer.appendChild(tryAgainBtn);
     }
 
-    // Reset to flashcards view
     function resetToFlashcards() {
         summaryContainer.style.display = 'none';
         currentCardIndex = 0;
         viewedCards = new Set();
         cardStatus = {};
-
+    
         // Show all flashcard elements
         flashcardContainer.style.display = 'block';
         instructionText.style.display = 'block';
         feedbackButtons.style.display = 'flex';
-        navigationButtons.forEach(row => row.style.display = 'flex');
-        buttonGroups
-
+        buttonGroups.forEach(group => group.style.display = 'flex'); // This was missing
+        
         updateFlashcard();
     }
 
@@ -216,16 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
             video.pause();
             video.currentTime = 0;
         }
-    });
-
-    nextButton.addEventListener('click', () => {
-        currentCardIndex = (currentCardIndex + 1) % flashcards.length;
-        updateFlashcard();
-    });
-
-    prevButton.addEventListener('click', () => {
-        currentCardIndex = (currentCardIndex - 1 + flashcards.length) % flashcards.length;
-        updateFlashcard();
     });
 
     shuffleButton.addEventListener('click', () => {
@@ -258,9 +244,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!cardStatus) cardStatus = {};
         cardStatus[currentCardIndex] = 'understood';
         viewedCards.add(currentCardIndex);
-
+    
         if (!checkCompletion()) {
-            nextButton.click();
+            // Replace nextButton.click() with direct navigation
+            currentCardIndex = (currentCardIndex + 1) % flashcards.length;
+            updateFlashcard();
         } else {
             showSummary();
         }
@@ -270,9 +258,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!cardStatus) cardStatus = {};
         cardStatus[currentCardIndex] = 'practice';
         viewedCards.add(currentCardIndex);
-
+    
         if (!checkCompletion()) {
-            nextButton.click();
+            // Replace nextButton.click() with direct navigation
+            currentCardIndex = (currentCardIndex + 1) % flashcards.length;
+            updateFlashcard();
         } else {
             showSummary();
         }
@@ -290,8 +280,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 video.currentTime = 0;
             }
         }
-        if (e.code === 'ArrowRight') nextButton.click();
-        if (e.code === 'ArrowLeft') prevButton.click();
     });
 
     // Initialize

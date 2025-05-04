@@ -1,315 +1,697 @@
+// Letters A-M and Numbers 1-16
 const allQuestions = [
-    {//goodMorning
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fdaaf40ef88e84bb6b94952f07a98a26c%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=daaf40ef88e84bb6b94952f07a98a26c&alt=media&optimized=true",
-        context: "Identifying morning greeting signs",
+    {//A
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5fccd86c89ca4a819eff4375249c331f%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=5fccd86c89ca4a819eff4375249c331f&alt=media&optimized=true",
+        context: "",
         options: [
             {
-                choice: "Good Morning",
+                choice: "A",
                 correct: true,
-                feedback: "The upward palm movement represents sunrise 🌅",
-                imageDescription: "Hand rises diagonally from shoulder height, palm facing up"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
             {
-                choice: "Good Afternoon",
+                choice: "B",
                 correct: false,
-                feedback: "This horizontal motion indicates afternoon ↔️ not morning",
-                imageDescription: "Flat hand moving horizontally across chest level"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
             {
-                choice: "Good Evening",
+                choice: "C",
                 correct: false,
-                feedback: "Downward motion is used for evening 🌙 not morning",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
             {
-                choice: "Goodbye",
+                choice: "D",
                 correct: false,
-                feedback: "waving hands signify 'Goodbye'👋",
-                imageDescription: "Hands height close to face, waving"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             }
         ]
     },
-    {//goodAfternoon
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fd97c585713d542dda1cb425550c76f0c%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=d97c585713d542dda1cb425550c76f0c&alt=media&optimized=true",
-        context: "Identifying afternoon greeting signs",
+    {// B
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F290cea0025474b589dc5cb8eb49f3ba9%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=290cea0025474b589dc5cb8eb49f3ba9&alt=media&optimized=true",
+        context: "",
         options: [
             {
-                choice: "Good Morning",
+                choice: "A",
                 correct: false,
-                feedback: "The movement is not related, the upward motion signifies rising 🌅",
-                imageDescription: "Hand rises diagonally from shoulder height, palm facing up"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
             {
-                choice: "Good Afternoon",
+                choice: "B",
                 correct: true,
-                feedback: "The horizontal movement indicates afternoon ↔️",
-                imageDescription: "Flat hand moving horizontally across chest level"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
 
             },
             {
-                choice: "Good Evening",
+                choice: "C",
                 correct: false,
-                feedback: "Downward motion is used for evening 🌙 not morning",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
             {
-                choice: "Goodbye",
+                choice: "D",
                 correct: false,
-                feedback: "waving hands signify 'Goodbye'👋",
-                imageDescription: "Hands height close to face, waving"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
         ],
     },
-    {//goodEvening
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F96cc65bcccbe45ffa5cb73bd771ff554%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=96cc65bcccbe45ffa5cb73bd771ff554&alt=media&optimized=true",
+    {//C
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F54011d16d83f43a0b08e29cb4bd3b85a%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=54011d16d83f43a0b08e29cb4bd3b85a&alt=media&optimized=true",
         options: [
             {
-                choice: "Good Morning",
+                choice: "A",
                 correct: false,
-                feedback: "The movement is not related, the upward motion signifies rising 🌅",
-                imageDescription: "Hand rises diagonally from shoulder height, palm facing up"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
             {
-                choice: "Good Afternoon",
+                choice: "B",
                 correct: false,
-                feedback: "This horizontal motion indicates afternoon ↔️ not morning",
-                imageDescription: "Flat hand moving horizontally across chest level"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
             {
-                choice: "Good Evening",
+                choice: "C",
                 correct: true,
-                feedback: "The downward motion indicates evening 🌙",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
             {
-                choice: "Goodbye",
+                choice: "D",
                 correct: false,
-                feedback: "waving hands signify 'Goodbye'👋",
-                imageDescription: "Hands height close to face, waving"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
         ],
     },
-    {//goodbye
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fdba4a7e655e04153ae79ebc7ff9e22a6%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=dba4a7e655e04153ae79ebc7ff9e22a6&alt=media&optimized=true",
+    {//D
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5cd17b632bcb4e16a8b8567a1174ce64%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=5cd17b632bcb4e16a8b8567a1174ce64&alt=media&optimized=true",
         options: [
             {
-                choice: "Good Morning",
+                choice: "A",
                 correct: false,
-                feedback: "The movement is not related, the upward motion signifies rising 🌅",
-                imageDescription: "Hand rises diagonally from shoulder height, palm facing up"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
             {
-                choice: "Good Afternoon",
+                choice: "B",
                 correct: false,
-                feedback: "This horizontal motion indicates afternoon ↔️ not morning",
-                imageDescription: "Flat hand moving horizontally across chest level"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
             {
-                choice: "Good Evening",
+                choice: "C",
                 correct: false,
-                feedback: "Downward motion is used for evening 🌙 not morning",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
             {
-                choice: "Goodbye",
+                choice: "D",
                 correct: true,
-                feedback: "Waving hands signify 'Goodbye'👋",
-                imageDescription: "Hands height close to face, waving"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
         ],
     },
-    {//Hi/hello
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fd702dd1b2538458098cba218905c9987%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=d702dd1b2538458098cba218905c9987&alt=media&optimized=true",
+    {// E
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F09d452abb113431c964f677706fdf206%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=09d452abb113431c964f677706fdf206&alt=media&optimized=true",
         options: [
             {
-                choice: "Hi / Hello",
+                choice: "E",
                 correct: true,
-                feedback: "The upward motion indicates 'Hi'🙋‍♂️",
-                imageDescription: "Hand rises diagonally from shoulder height, palm facing up"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
             {
-                choice: "Good Afternoon",
+                choice: "F",
                 correct: false,
-                feedback: "This horizontal motion indicates afternoon ↔️ not morning",
-                imageDescription: "Flat hand moving horizontally across chest level"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
             {
-                choice: "Good Evening",
+                choice: "G",
                 correct: false,
-                feedback: "Downward motion is used for evening 🌙 not morning",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
             {
-                choice: "Goodbye",
+                choice: "H",
                 correct: false,
-                feedback: "waving hands signify 'Goodbye'👋",
-                imageDescription: "Hands height close to face, waving"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
         ],
     },
-    {//Thankyou
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fee781b67a8bf4e488174c0156c18914b%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=ee781b67a8bf4e488174c0156c18914b&alt=media&optimized=true",
+    {// F
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F8bd2f028d37e4e808c8f62e7bca974d7%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=8bd2f028d37e4e808c8f62e7bca974d7&alt=media&optimized=true",
         options: [
             {
-                choice: "Nice to Meet You",
+                choice: "E",
                 correct: false,
-                feedback: "Hands meeting in the middle indicates 'Nice to meet'🤝",
-                imageDescription: "Sweeping the hands and fingers pointing and meeting together in the middle"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
             {
-                choice: "Good Afternoon",
-                correct: false,
-                feedback: "This horizontal motion indicates afternoon ↔️ not morning",
-                imageDescription: "Flat hand moving horizontally across chest level"
-            },
-            {
-                choice: "Good Evening",
-                correct: false,
-                feedback: "Downward motion is used for evening 🌙 not morning",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
-            },
-            {
-                choice: "Thank You",
+                choice: "F",
                 correct: true,
-                feedback: "The upward motion indicates 'Thank you'☺️",
-                imageDescription: "Hands in front of the persons chin, palm facing each other moving fro and back"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
+            },
+            {
+                choice: "G",
+                correct: false,
+                feedback: "No feedback available",
+                imageDescription: "N/A"
+            },
+            {
+                choice: "H",
+                correct: false,
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
         ],
     },
-    {//YoureWelcome
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F67fae21fb722479283ce276ea388eadf%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=67fae21fb722479283ce276ea388eadf&alt=media&optimized=true",
+    {//G
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F62e09cc0c727427bb995cc959baaa951%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=62e09cc0c727427bb995cc959baaa951&alt=media&optimized=true",
         options: [
             {
-                choice: "Nice to meet you",
+                choice: "E",
                 correct: false,
-                feedback: "Hands meeting in the middle indicates 'Nice to meet'🤝",
-                imageDescription: "Sweeping the hands and fingers pointing and meeting together in the middle"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
             {
-                choice: "You're Welcome",
+                choice: "F",
+                correct: false,
+                feedback: "No feedback available",
+                imageDescription: "N/A"
+            },
+            {
+                choice: "G",
                 correct: true,
-                feedback: "The upward motion indicates 'You're welcome'🤗",
-                imageDescription: "Three fingers up from the chin and curving towards the belly"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
             {
-                choice: "Good Evening",
+                choice: "H",
                 correct: false,
-                feedback: "Downward motion is used for evening 🌙 not morning",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
-            },
-            {
-                choice: "Top of the Morning",
-                correct: false,
-                feedback: "Not a formal sign for 'You're Welcome'😌",
-                imageDescription: "Not a formal Filipino Sign Language (FSL) sign"
+                feedback: "No feedback available",
+                imageDescription: "N/A"
             },
         ],
     },
-    {//takecare
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F9aa5c6e3c22a488c81ea9b78cd9d0a51%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=9aa5c6e3c22a488c81ea9b78cd9d0a51&alt=media&optimized=true",
+    {//H
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F12ea87b8d6f04cafa323c0fe3c4c3ad7%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=12ea87b8d6f04cafa323c0fe3c4c3ad7&alt=media&optimized=true",
         options: [
             {
-                choice: "Take Care",
+                choice: "E",
+                correct: false,
+                feedback: "",
+                imageDescription: ""
+            },
+            {
+                choice: "F",
+                correct: false,
+                feedback: "",
+                imageDescription: ""
+            },
+            {
+                choice: "G",
+                correct: false,
+                feedback: "",
+                imageDescription: ""
+            },
+            {
+                choice: "H",
                 correct: true,
-                feedback: "Hands on top of each other indicates 'Take care'🫂",
-                imageDescription: "Hands on the side, on top of each other circling in front"
-            },
-            {
-                choice: "Are you okay?",
-                correct: false,
-                feedback: "not a greeting 'Are you ok?'😑",
-                imageDescription: "Not a greeting more like a question"
-            },
-            {
-                choice: "What?",
-                correct: false,
-                feedback: "not a greeting 'What?'🙄",
-                imageDescription: "hands palm facing right up, doing a circular motion stationary to position"
-            },
-            {
-                choice: "Mixing",
-                correct: false,
-                feedback: "Not greeting more like an action 'mixing' 🥣",
-                imageDescription: "Used for something else like baking 'mixing'"
+                feedback: "",
+                imageDescription: ""
             },
         ],
     },
-    {//LongTimeNoSee
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F7c3f41cef37546958629bc8d3e844c2b%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=7c3f41cef37546958629bc8d3e844c2b&alt=media&optimized=true",
+    {//I
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F65a19409f4ca49778f42efa65a2e0437%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=65a19409f4ca49778f42efa65a2e0437&alt=media&optimized=true",
         options: [
             {
-                choice: "Nice to meet you",
-                correct: false,
-                feedback: "Hands meeting in the middle indicates 'Nice to meet'🤝",
-                imageDescription: "Sweeping the hands and fingers pointing and meeting together in the middle"
-            },
-            {
-                choice: "Salute",
-                correct: false,
-                feedback: "not a greeting more like an action of respect 'Salute'😑",
-                imageDescription: "use to give respect to military or authority"
-            },
-            {
-                choice: "Goodbye",
-                correct: false,
-                feedback: "waving motion is used for saying goodbye 👋 not seeing someone for a long time",
-                imageDescription: "Hand waving from face height"
-            },
-            {
-                choice: "Long time no see",
+                choice: "I",
                 correct: true,
-                feedback: "The upward motion indicates 'Long time no see'🤷‍♂️",
-                imageDescription: "Hands in front of the persons chin, palm facing each other moving fro and back"
+                feedback: "",
+                imageDescription: ""
+            },
+            {
+                choice: "J",
+                correct: false,
+                feedback: "",
+                imageDescription: ""
+            },
+            {
+                choice: "K",
+                correct: false,
+                feedback: "",
+                imageDescription: ""
+            },
+            {
+                choice: "L",
+                correct: false,
+                feedback: "",
+                imageDescription: ""
             },
         ],
     },
-    {//Seeyoulater
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F75c44265368f48d2a8fd3ed56e3e0821%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=75c44265368f48d2a8fd3ed56e3e0821&alt=media&optimized=true",
+    {// J
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F6f261a2fc88d4a459ff0229ad9f350db%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=6f261a2fc88d4a459ff0229ad9f350db&alt=media&optimized=true",
         options: [
             {
-                choice: "Meet me here?",
+                choice: "I",
                 correct: false,
-                feedback: "Is an indication of saying to see you in a location 📌",
-                imageDescription: "Not much of a greeting sign",
+                feedback: "",
+                imageDescription: "",
             },
             {
-                choice: "Are you okay?",
-                correct: false,
-            },
-            {
-                choice: "See you later",
+                choice: "J",
                 correct: true,
-                feedback: "The action indication of seeing and motion of afternoon/later 'See you later'👋",
-                imageDescription: "Pointing to the eye and motioning it upwards to the middle"
             },
             {
-                choice: "You're welcome",
+                choice: "K",
                 correct: false,
-                feedback: "The upward motion indicates 'You're welcome'🤗",
-                imageDescription: "Three fingers up from the chin and curving towards the belly"
+                feedback: "",
+                imageDescription: ""
+            },
+            {
+                choice: "L",
+                correct: false,
+                feedback: "",
+                imageDescription: ""
             },
         ],
     },
-    {//Nicetomeetyou
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F0299652d0ea94bdab652d539b2616b7d%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=0299652d0ea94bdab652d539b2616b7d&alt=media&optimized=true",
+    {// K
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F6073f9a673414f869083f07dff1b3a62%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=6073f9a673414f869083f07dff1b3a62&alt=media&optimized=true",
         options: [
             {
-                choice: "Nice to meet you",
+                choice: "I",
+                correct: false,
+                feedback: "",
+                imageDescription: "",
+            },
+            {
+                choice: "J",
+                correct: false,
+            },
+            {
+                choice: "K",
                 correct: true,
-                feedback: "The upward motion indicates 'Nice to meet you'🤗",
-                imageDescription: "Hands in front of the persons chin, palm facing each other moving fro and back",
             },
-            { 
-                choice: "You Are?", 
-                correct: false, 
+            {
+                choice: "L",
+                correct: false,
             },
-            { 
-                choice: "See you later", 
-                correct: false, 
+        ],
+    },
+    {// L
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F9947ca53a38d4c12be5dffa6c417b1c9%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=9947ca53a38d4c12be5dffa6c417b1c9&alt=media&optimized=true",
+        options: [
+            {
+                choice: "I",
+                correct: false,
+                feedback: "",
+                imageDescription: "",
             },
-            { 
-                choice: "Goodbye",
-                correct: false, 
+            {
+                choice: "J",
+                correct: false,
+            },
+            {
+                choice: "K",
+                correct: false,
+            },
+            {
+                choice: "L",
+                correct: true,
+            },
+        ],
+    },
+    {// M
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5b7ec1a3240441149334b7f189f4d909%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=5b7ec1a3240441149334b7f189f4d909&alt=media&optimized=true",
+        options: [
+            {
+                choice: "M",
+                correct: true,
+            },
+            {
+                choice: "N",
+                correct: false,
+            },
+            {
+                choice: "O",
+                correct: false,
+            },
+            {
+                choice: "p",
+                correct: false,
+            },
+        ],
+    },
+    // numbers 
+    {// 1
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fd032915078144d4297e2016420cd93d2%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=d032915078144d4297e2016420cd93d2&alt=media&optimized=true",
+        options: [
+            {
+                choice: "1",
+                correct: true,
+            },
+            {
+                choice: "2",
+                correct: false,
+            },
+            {
+                choice: "3",
+                correct: false,
+            },
+            {
+                choice: "4",
+                correct: false,
+            },
+        ],
+    },
+    {// 2
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F76e1875707204d78bd83e663dc72356a%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=76e1875707204d78bd83e663dc72356a&alt=media&optimized=true",
+        options: [
+            {
+                choice: "1",
+                correct: false,
+            },
+            {
+                choice: "2",
+                correct: true,
+            },
+            {
+                choice: "3",
+                correct: false,
+            },
+            {
+                choice: "4",
+                correct: false,
+            },
+        ],
+    },
+    {// 3
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Feee6e662ad644ef7b7b3d327390529ef%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=eee6e662ad644ef7b7b3d327390529ef&alt=media&optimized=true",
+        options: [
+            {
+                choice: "1",
+                correct: false,
+            },
+            {
+                choice: "2",
+                correct: false,
+            },
+            {
+                choice: "3",
+                correct: true,
+            },
+            {
+                choice: "4",
+                correct: false,
+            },
+        ],
+    },
+    {// 4
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fbd66d7209be94c40b3f79c25d106d082%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=bd66d7209be94c40b3f79c25d106d082&alt=media&optimized=true",
+        options: [
+            {
+                choice: "1",
+                correct: false,
+            },
+            {
+                choice: "2",
+                correct: false,
+            },
+            {
+                choice: "3",
+                correct: false,
+            },
+            {
+                choice: "4",
+                correct: true,
+            },
+        ],
+    },
+    {// 5
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fe47908419cfd4fd0a84e9f55e1eb8e8c%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=e47908419cfd4fd0a84e9f55e1eb8e8c&alt=media&optimized=true",
+        options: [
+            {
+                choice: "5",
+                correct: true,
+            },
+            {
+                choice: "6",
+                correct: false,
+            },
+            {
+                choice: "7",
+                correct: false,
+            },
+            {
+                choice: "8",
+                correct: false,
+            },
+        ],
+    },
+    {// 6
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5089f4e1f0d5480d96eb46ad11c1dabc%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=5089f4e1f0d5480d96eb46ad11c1dabc&alt=media&optimized=true",
+        options: [
+            {
+                choice: "5",
+                correct: false,
+            },
+            {
+                choice: "6",
+                correct: true,
+            },
+            {
+                choice: "7",
+                correct: false,
+            },
+            {
+                choice: "8",
+                correct: false,
+            },
+        ],
+    },
+    {// 7
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F7db247b436bf4ecb8336e18f93461b5a%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=7db247b436bf4ecb8336e18f93461b5a&alt=media&optimized=true",
+        options: [
+            {
+                choice: "5",
+                correct: false,
+            },
+            {
+                choice: "6",
+                correct: false,
+            },
+            {
+                choice: "7",
+                correct: true,
+            },
+            {
+                choice: "8",
+                correct: false,
+            },
+        ],
+    },
+    {// 8
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ffa1a21fd83d54e1e8dd5b0e9a0df1efb%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=fa1a21fd83d54e1e8dd5b0e9a0df1efb&alt=media&optimized=true",
+        options: [
+            {
+                choice: "5",
+                correct: false,
+            },
+            {
+                choice: "6",
+                correct: false,
+            },
+            {
+                choice: "7",
+                correct: false,
+            },
+            {
+                choice: "8",
+                correct: true,
+            },
+        ],
+    },
+    {// 9
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fd53ae3657600478b8ed781c05aa09bb7%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=d53ae3657600478b8ed781c05aa09bb7&alt=media&optimized=true",
+        options: [
+            {
+                choice: "9",
+                correct: true,
+            },
+            {
+                choice: "10",
+                correct: false,
+            },
+            {
+                choice: "11",
+                correct: false,
+            },
+            {
+                choice: "12",
+                correct: false,
+            },
+        ],
+    },
+    {// 10
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fb407e21cce084ae5a0c055a7cf762200%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=b407e21cce084ae5a0c055a7cf762200&alt=media&optimized=true",
+        options: [
+            {
+                choice: "10",
+                correct: true,
+            },
+            {
+                choice: "20",
+                correct: false,
+            },
+            {
+                choice: "30",
+                correct: false,
+            },
+            {
+                choice: "40",
+                correct: false,
+            },
+        ],
+    },
+    {//11
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F03059a88b09a4c75bbba39f2ee592978%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=03059a88b09a4c75bbba39f2ee592978&alt=media&optimized=true",
+        options: [
+            {
+                choice: "10",
+                correct: false,
+            },
+            {
+                choice: "11",
+                correct: true,
+            },
+            {
+                choice: "12",
+                correct: false,
+            },
+            {
+                choice: "13",
+                correct: false,
+            },
+        ],
+    },
+    {// 12
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ff75b399a4163499bba950f0f1bc2fc09%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=f75b399a4163499bba950f0f1bc2fc09&alt=media&optimized=true",
+        options: [
+            {
+                choice: "10",
+                correct: false,
+            },
+            {
+                choice: "11",
+                correct: false,
+            },
+            {
+                choice: "12",
+                correct: true,
+            },
+            {
+                choice: "13",
+                correct: false,
+            },
+        ],
+    },
+    {// 13
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fe4bd8a6532114dc6af5936065dc2e2a6%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=e4bd8a6532114dc6af5936065dc2e2a6&alt=media&optimized=true",
+        options: [
+            {
+                choice: "10",
+                correct: false,
+            },
+            {
+                choice: "11",
+                correct: false,
+            },
+            {
+                choice: "12",
+                correct: false,
+            },
+            {
+                choice: "13",
+                correct: true,
+            },
+        ],
+    },
+    {// 14
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fefc74a7e5ce34e87ad2276e95a0735d6%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=efc74a7e5ce34e87ad2276e95a0735d6&alt=media&optimized=true",
+        options: [
+            {
+                choice: "14",
+                correct: true,
+            },
+            {
+                choice: "15",
+                correct: false,
+            },
+            {
+                choice: "4",
+                correct: false,
+            },
+            {
+                choice: "5",
+                correct: false,
+            },
+        ],
+    },
+    {// 15
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fb3d8880ab1fa4b538b5730fafee406d3%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=b3d8880ab1fa4b538b5730fafee406d3&alt=media&optimized=true",
+        options: [
+            {
+                choice: "14",
+                correct: false,
+            },
+            {
+                choice: "15",
+                correct: true,
+            },
+            {
+                choice: "4",
+                correct: false,
+            },
+            {
+                choice: "5",
+                correct: false,
+            },
+        ],
+    },
+    {// 16
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F0d24e2572969418ab3c85984188de5da%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=0d24e2572969418ab3c85984188de5da&alt=media&optimized=true",
+        options: [
+            {
+                choice: "16",
+                correct: true,
+            },
+            {
+                choice: "17",
+                correct: false,
+            },
+            {
+                choice: "6",
+                correct: false,
+            },
+            {
+                choice: "7",
+                correct: false,
             },
         ],
     },
@@ -362,7 +744,7 @@ function initializeProgressBar() {
     questions.forEach((question, index) => {
         const segment = document.createElement('div');
         segment.className = 'progress-segment';
-        
+
         if (index < currentQuestionIndex) {
             // Check if the stored option has correct: true
             const userAnswer = userAnswers[index];
@@ -371,7 +753,7 @@ function initializeProgressBar() {
         } else if (index === currentQuestionIndex) {
             segment.classList.add('current');
         }
-        
+
         progressBar.appendChild(segment);
     });
 }
@@ -382,9 +764,33 @@ function startQuiz() {
     quizContainer.style.display = 'none';
 
     setTimeout(() => {
-        // Shuffle all questions and select first 8
+        // Shuffle all questions and select first 15
         const shuffledQuestions = [...allQuestions].sort(() => Math.random() - 0.5);
-        questions = shuffledQuestions.slice(0, 8);
+        questions = shuffledQuestions.slice(0, 15);
+
+        // Shuffle options for each selected question while preserving correct answer
+        questions = questions.map(question => {
+            // Find correct option
+            const correctOption = question.options.find(opt => opt.correct);
+            // Get all incorrect options
+            const incorrectOptions = question.options.filter(opt => !opt.correct);
+            // Shuffle incorrect options
+            const shuffledIncorrect = [...incorrectOptions].sort(() => Math.random() - 0.5);
+            // Random position for correct answer (0 to length of shuffled array)
+            const correctPosition = Math.floor(Math.random() * (shuffledIncorrect.length + 1));
+
+            // Insert correct answer at random position
+            const finalOptions = [
+                ...shuffledIncorrect.slice(0, correctPosition),
+                correctOption,
+                ...shuffledIncorrect.slice(correctPosition)
+            ];
+
+            return {
+                ...question,
+                options: finalOptions
+            };
+        });
 
         currentQuestionIndex = 0;
         score = 0;
@@ -413,7 +819,7 @@ function showQuestion() {
     }
 
     const question = questions[currentQuestionIndex];
-    questionText.textContent = "What is the sign language shown above?"; 
+    questionText.textContent = "What is the letter or number shown above?";
     signVideo.src = question.video;
     signVideo.load();
 
@@ -421,18 +827,18 @@ function showQuestion() {
     question.options.forEach((option) => {
         const optionElement = document.createElement('div');
         optionElement.classList.add('option');
-        
+
         const choiceText = document.createElement('p');
         choiceText.textContent = option.choice;
         optionElement.appendChild(choiceText);
-        
+
         optionElement.dataset.correct = option.correct;
         optionElement.addEventListener('click', () => handleOptionClick(optionElement, option));
         optionsContainer.appendChild(optionElement);
     });
 
     questionCounter.textContent = `${currentQuestionIndex + 1}/${questions.length}`;
-    
+
     // Fix this line - was using currentQuestion instead of currentQuestionIndex
     initializeProgressBar(); // This will update the progress bar correctly
 
@@ -494,16 +900,16 @@ async function handleOptionClick(optionElement, option) {
 
     userAnswers[currentQuestionIndex] = option;
     updateProgress(isCorrect);
-    
+
     // Show basic feedback immediately
-    resultElement.textContent = isCorrect ? 
-        `✅ Correct! ${option.feedback}` : 
+    resultElement.textContent = isCorrect ?
+        `✅ Correct! ${option.feedback}` :
         `❌ Incorrect. ${option.feedback}`;
     resultElement.className = isCorrect ? 'result correct' : 'result wrong';
-    
+
     // Highlight selected option
     optionElement.classList.add(isCorrect ? 'correct' : 'wrong');
-    
+
     // Highlight correct answer if wrong was selected
     if (!isCorrect) {
         const correctOptionElement = Array.from(optionsContainer.children).find(
@@ -512,20 +918,20 @@ async function handleOptionClick(optionElement, option) {
         if (correctOptionElement) {
             correctOptionElement.classList.add('correct');
         }
-        
+
         // Get AI feedback for wrong answers
         try {
             const aiFeedback = await getAIFeedback(
-                option.imageDescription, 
+                option.imageDescription,
                 correctOption.imageDescription,
                 question.context || "sign language recognition"
             );
-            
+
             // Create a new element for AI feedback
             const aiFeedbackElement = document.createElement('div');
             aiFeedbackElement.className = 'ai-feedback';
             aiFeedbackElement.innerHTML = `<strong>AI Feedback:</strong> ${aiFeedback}`;
-            
+
             // Append after the result
             resultElement.appendChild(document.createElement('br'));
             resultElement.appendChild(aiFeedbackElement);
