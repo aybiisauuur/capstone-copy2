@@ -95,7 +95,8 @@ const questions = [
 let quizState = {
     currentQuestion: 0,
     score: 0,
-    selectedQuestions: []
+    selectedQuestions: [],
+    progressStatus: []
 };
 
 // DOM Elements
@@ -234,26 +235,33 @@ function getDefaultQuestionContent(question, index) {
         </div>`;
 }
 
-// Progress Bar
 function createProgressBar() {
-    // Clear existing progress segments
-    domElements.progressBar.innerHTML = '';
-    // domElements.progressBar.style.width = '100%';
+    const progressBar = document.getElementById('progressBar');
+    progressBar.innerHTML = ''; // Clear existing
     
-    // Create new segments
-    quizState.selectedQuestions.forEach((_, index) => {
+    // Initialize progress status array with null values
+    quizState.progressStatus = new Array(quizState.selectedQuestions.length).fill(null);
+    
+    // Create segments based on selected questions
+    quizState.selectedQuestions.forEach(() => {
         const segment = document.createElement('div');
         segment.className = 'progress-segment';
-        domElements.progressBar.appendChild(segment);
+        progressBar.appendChild(segment);
     });
 }
 
 function updateProgressBar(questionIndex, isCorrect) {
-    const segments = document.getElementsByClassName('progress-segment');
-    if (segments[questionIndex]) {
-        segments[questionIndex].classList.remove('correct', 'wrong');
-        segments[questionIndex].classList.add(isCorrect ? 'correct' : 'wrong');
-    }
+    // Update the status in our array
+    quizState.progressStatus[questionIndex] = isCorrect;
+    
+    // Update all segments
+    const segments = document.querySelectorAll('.progress-segment');
+    segments.forEach((segment, index) => {
+        segment.classList.remove('correct', 'incorrect');
+        if (quizState.progressStatus[index] !== null) {
+            segment.classList.add(quizState.progressStatus[index] ? 'correct' : 'incorrect');
+        }
+    });
 }
 
 function updateProgress(current) {
@@ -380,8 +388,12 @@ function lockAnswer(questionIndex) {
     updateProgressBar(questionIndex, isCorrect);
     showFeedback(questionIndex, isCorrect);
     
+    // Highlight correct answer if wrong answer was selected
     if (!isCorrect) {
         highlightCorrectAnswer(questionIndex);
+    } else {
+        // Highlight selected answer as correct
+        options[question.selected].classList.add('correct-answer');
     }
 }
 
@@ -389,8 +401,12 @@ function highlightCorrectAnswer(questionIndex) {
     const question = quizState.selectedQuestions[questionIndex];
     const options = document.querySelectorAll(`#questions .question:nth-child(${questionIndex + 1}) .option`);
     
-    options.forEach(opt => opt.classList.remove('correct-answer'));
+    // First remove any existing highlights
+    options.forEach(opt => {
+        opt.classList.remove('selected', 'correct-answer');
+    });
     
+    // Highlight the correct answer
     if (question.type === 'video-multiple-choice') {
         options[question.correct].classList.add('correct-answer');
     } else {
@@ -398,6 +414,11 @@ function highlightCorrectAnswer(questionIndex) {
         if (correctIndex >= 0) {
             options[correctIndex].classList.add('correct-answer');
         }
+    }
+    
+    // Also highlight the selected answer (if different from correct answer)
+    if (question.selected !== undefined) {
+        options[question.selected].classList.add('selected');
     }
 }
 
@@ -409,7 +430,7 @@ function showFeedback(questionIndex, isCorrect) {
     const existingFeedback = questionDiv.querySelector('.feedback');
     if (existingFeedback) existingFeedback.remove();
     
-    feedbackDiv.textContent = isCorrect ? '✓ Correct!' : '✗ Incorrect! The correct answer is highlighted.';
+    feedbackDiv.textContent = isCorrect ? '✓ Correct!' : '✗ Incorrect!';
     questionDiv.appendChild(feedbackDiv);
 }
 
