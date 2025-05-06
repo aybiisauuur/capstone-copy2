@@ -12,50 +12,97 @@ document.addEventListener('DOMContentLoaded', () => {
     const instructionText = document.querySelector('p');
     const feedbackButtons = document.querySelector('.feedback-buttons');
     const buttonGroups = document.querySelectorAll('.button-group');
+    const loadingElement = document.getElementById('loading');
+    const loadingText = document.getElementById('loading-text');
+    const flashcardInstruction = document.getElementById('instruction');
 
     // Flashcards data - add your questions here
     let flashcards = [
-        {
-            frontText: "Deaf",
-            videoSrc: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fa2a9373b89544bbab28f88b6e696e656%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=a2a9373b89544bbab28f88b6e696e656&alt=media&optimized=true"
-        },
-
-        {
-            frontText: "Filipino Sign Language (FSL)",
-            videoSrc: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fad1649a7b94d46c1936d80fd69ef5919%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=ad1649a7b94d46c1936d80fd69ef5919&alt=media&optimized=true"
-        },
-
-        {
-            frontText: "Hard-of-Hearing",
-            videoSrc: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fc565c548515b46a98a11b61ba419cce3%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=c565c548515b46a98a11b61ba419cce3&alt=media&optimized=true"
-        },
-
-        {
-            frontText: "Hearing",
-            videoSrc: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F1c8c0918cc0140fbbabf9e1f32c7bd5f%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=1c8c0918cc0140fbbabf9e1f32c7bd5f&alt=media&optimized=true"
-        },
-
-        {
-            frontText: "My name is ____.",
-            videoSrc: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fbd3db75db59d44c08194f80b28dd57a5%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=bd3db75db59d44c08194f80b28dd57a5&alt=media&optimized=true"
-        },
-
-        {
-            frontText: "Yes/Agree",
-            videoSrc: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ffe3c43d5ebf14d97ac3a1a27b58fd154%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=fe3c43d5ebf14d97ac3a1a27b58fd154&alt=media&optimized=true"
-        },
-
-        {
-            frontText: "No/Disagree",
-            videoSrc: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F60e52d6f85a8423682905d3b3815ce55%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=60e52d6f85a8423682905d3b3815ce55&alt=media&optimized=true"
-        },
-
+        { frontText: "Deaf", videoSrc: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fa2a9373b89544bbab28f88b6e696e656%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=a2a9373b89544bbab28f88b6e696e656&alt=media&optimized=true"},
+        { frontText: "Filipino Sign Language (FSL)", videoSrc: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fad1649a7b94d46c1936d80fd69ef5919%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=ad1649a7b94d46c1936d80fd69ef5919&alt=media&optimized=true"},
+        { frontText: "Hard-of-Hearing", videoSrc: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fc565c548515b46a98a11b61ba419cce3%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=c565c548515b46a98a11b61ba419cce3&alt=media&optimized=true"},
+        { frontText: "Hearing", videoSrc: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F1c8c0918cc0140fbbabf9e1f32c7bd5f%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=1c8c0918cc0140fbbabf9e1f32c7bd5f&alt=media&optimized=true" },
+        { frontText: "My name is ____.", videoSrc: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fbd3db75db59d44c08194f80b28dd57a5%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=bd3db75db59d44c08194f80b28dd57a5&alt=media&optimized=true" },
+        { frontText: "Yes/Agree", videoSrc: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ffe3c43d5ebf14d97ac3a1a27b58fd154%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=fe3c43d5ebf14d97ac3a1a27b58fd154&alt=media&optimized=true" },
+        { frontText: "No/Disagree", videoSrc: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F60e52d6f85a8423682905d3b3815ce55%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=60e52d6f85a8423682905d3b3815ce55&alt=media&optimized=true" },
     ];
 
     const originalFlashcards = [...flashcards]; // Copy for reset functionality
     let currentCardIndex = 0;
     let cardStatus = {}; // Tracks card status ('understood' or 'practice')
     let viewedCards = new Set(); // Tracks viewed cards
+
+    function init() {
+        // Start the quiz immediately
+        startQuiz();
+    }
+
+    function showLoading(show, message = "Preparing your quiz...") {
+        // Cache DOM elements
+        const instructionElement = document.getElementById('instruction');
+        const contentElements = document.querySelectorAll(
+            '.flashcard, .instruction-text, .feedback-buttons, .button-group'
+        );
+    
+        if (show) {
+            // Show loading state
+            loadingElement.style.display = 'flex';
+            loadingElement.style.flexDirection = 'column';
+            loadingElement.style.alignItems = 'center';
+            loadingElement.style.justifyContent = 'center';
+            loadingText.textContent = message;
+    
+            // Hide content
+            instructionElement.style.visibility = 'hidden';
+            setElementsVisibility(contentElements, false);
+        } else {
+            // Hide loading state
+            loadingElement.style.display = 'none';
+            
+            // Show content
+            instructionElement.style.visibility = 'visible';
+            setElementsVisibility(contentElements, true);
+        }
+    }
+    
+    // Helper function to set visibility for multiple elements
+    function setElementsVisibility(elements, visible) {
+        elements.forEach(el => {
+            el.style.opacity = visible ? '1' : '0';
+            el.style.pointerEvents = visible ? 'auto' : 'none';
+        });
+    }
+
+    function startQuiz() {
+        showLoading(true, "Loading flashcards...");
+
+        // Hide other elements initially
+        document.getElementById('instruction').style.visibility = 'hidden';
+        document.querySelector('.flashcard').style.visibility = 'hidden';
+        document.querySelector('.feedback-buttons').style.visibility = 'hidden';
+        document.querySelectorAll('.button-group').forEach(group => {
+            group.style.visibility = 'hidden';
+        });
+
+        // Simulate loading 
+        setTimeout(() => {
+            // Initialize your flashcards
+            updateFlashcard();
+
+            // Hide loading spinner
+            showLoading(false);
+
+            // Show all elements
+            document.querySelector('.flashcard').style.visibility = 'visible';
+            document.getElementById('instruction').style.visibility = 'visible';
+            document.querySelector('p').style.visibility = 'visible';
+            document.querySelector('.feedback-buttons').style.visibility = 'visible';
+            document.querySelectorAll('.button-group').forEach(group => {
+                group.style.visibility = 'visible';
+            });
+
+        }, 1500);
+    }
 
     // Initialize the flashcard
     function updateFlashcard() {
@@ -77,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function showSummary() {
         // Hide flashcard elements
         flashcardContainer.style.display = 'none';
-        instructionText.style.display = 'none';
+        flashcardInstruction.style.display = 'none';
         feedbackButtons.style.display = 'none';
         buttonGroups.forEach(group => {
             group.style.display = 'none';
@@ -91,6 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Prepare summary content
     function prepareSummaryContent() {
         summaryContainer.innerHTML = '<h3>Flashcard Summary</h3>';
+        summaryContainer.classList.add('summary-animated'); // Add animation class
 
         // Initialize cardStatus if needed
         if (!cardStatus) cardStatus = {};
@@ -152,10 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
             feedbackClass = 'poor-feedback';
         }
 
-        // Add both classes to the element
         feedbackElement.classList.add('feedback-message', feedbackClass);
-        feedbackElement.innerHTML = `<p>${feedbackText}</p>`;
-
         feedbackElement.innerHTML = `<p>${feedbackText}</p>`;
         summaryContainer.appendChild(feedbackElement);
 
@@ -210,22 +255,56 @@ document.addEventListener('DOMContentLoaded', () => {
         tryAgainBtn.textContent = 'Try Again';
         tryAgainBtn.addEventListener('click', resetToFlashcards);
         summaryContainer.appendChild(tryAgainBtn);
+
+        // Animate elements sequentially
+        setTimeout(() => {
+            statsElement.style.opacity = 1;
+            statsElement.style.animation = 'fadeIn 0.5s ease-out forwards';
+
+            setTimeout(() => {
+                feedbackElement.style.opacity = 1;
+                feedbackElement.style.animation = 'fadeIn 0.5s ease-out forwards';
+
+                setTimeout(() => {
+                    listsContainer.style.opacity = 1;
+                    listsContainer.style.animation = 'fadeIn 0.5s ease-out forwards';
+
+                    setTimeout(() => {
+                        tryAgainBtn.style.opacity = 1;
+                        tryAgainBtn.style.animation = 'fadeIn 0.5s ease-out forwards';
+                    }, 200);
+                }, 200);
+            }, 200);
+        }, 0);
     }
 
-    // Reset to flashcards view
     function resetToFlashcards() {
-        summaryContainer.style.display = 'none';
-        currentCardIndex = 0;
-        viewedCards = new Set();
-        cardStatus = {};
-    
-        // Show all flashcard elements
-        flashcardContainer.style.display = 'block';
-        instructionText.style.display = 'block';
-        feedbackButtons.style.display = 'flex';
-        buttonGroups.forEach(group => group.style.display = 'flex'); // This was missing
-        
-        updateFlashcard();
+        // Show loading spinner with message
+        showLoading(true, "Resetting flashcards...");
+
+        // Add a small delay to ensure smooth transition
+        setTimeout(() => {
+            // Reset all flashcard data
+            flashcards = [...originalFlashcards];
+            currentCardIndex = 0;
+            cardStatus = {};
+            viewedCards = new Set();
+            summaryContainer.style.display = 'none';
+
+            // Show all flashcard elements
+            flashcardContainer.style.display = 'block';
+            instructionText.style.display = 'block';
+            feedbackButtons.style.display = 'flex';
+            buttonGroups.forEach(group => group.style.display = 'flex');
+
+            // Update the flashcard
+            updateFlashcard();
+
+            // Hide loading spinner after a brief delay
+            setTimeout(() => {
+                showLoading(false);
+            }, 300);
+        }, 800);
     }
 
     // Event listeners
@@ -240,36 +319,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     shuffleButton.addEventListener('click', () => {
-        // Shuffle the flashcards array
-        for (let i = flashcards.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [flashcards[i], flashcards[j]] = [flashcards[j], flashcards[i]];
-        }
-        currentCardIndex = 0;
-        updateFlashcard();
+        showLoading(true, "Shuffling cards...");
+
+        // Use setTimeout to allow UI to update before heavy operation
+        setTimeout(() => {
+            // Your shuffle logic
+            for (let i = flashcards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [flashcards[i], flashcards[j]] = [flashcards[j], flashcards[i]];
+            }
+            currentCardIndex = 0;
+            updateFlashcard();
+
+            showLoading(false);
+        }, 800); // Small delay to ensure UI updates
     });
 
     resetButton.addEventListener('click', () => {
-        flashcards = [...originalFlashcards];
-        currentCardIndex = 0;
-        cardStatus = {};
-        viewedCards = new Set();
-        summaryContainer.style.display = 'none';
+        showLoading(true, "Resetting cards...");
 
-        // Show all elements
-        flashcardContainer.style.display = 'block';
-        instructionText.style.display = 'block';
-        feedbackButtons.style.display = 'flex';
-        buttonGroups.forEach(group => group.style.display = 'flex');
+        setTimeout(() => {
+            flashcards = [...originalFlashcards];
+            currentCardIndex = 0;
+            cardStatus = {};
+            viewedCards = new Set();
+            summaryContainer.style.display = 'none';
+            updateFlashcard();
 
-        updateFlashcard();
+            showLoading(false);
+        }, 800);
     });
 
     understoodBtn.addEventListener('click', () => {
         if (!cardStatus) cardStatus = {};
         cardStatus[currentCardIndex] = 'understood';
         viewedCards.add(currentCardIndex);
-    
+
         if (!checkCompletion()) {
             // Replace nextButton.click() with direct navigation
             currentCardIndex = (currentCardIndex + 1) % flashcards.length;
@@ -283,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!cardStatus) cardStatus = {};
         cardStatus[currentCardIndex] = 'practice';
         viewedCards.add(currentCardIndex);
-    
+
         if (!checkCompletion()) {
             // Replace nextButton.click() with direct navigation
             currentCardIndex = (currentCardIndex + 1) % flashcards.length;
@@ -308,5 +393,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Initialize
-    updateFlashcard();
+    init();
 });

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <title>Multi-Format Quiz</title>
+    <title>Randomized Quiz</title>
     <link rel="stylesheet" href="CSS/Main_Page-direct/randomQuiz_style.css">
 </head>
 <body>
@@ -19,9 +19,9 @@
             <h1 class="page-title">Random - Quiz</h1>
         </header>                   
         <div class="container">
-            <div class="loading" id="loading">
+            <div id="loading-spinner" class="spinner-container">
                 <div class="spinner"></div>
-                <p id="loading-text">Preparing your quiz...</p>
+                <p>Loading quiz...</p>
             </div>
            <div class="progress">Question 1 of <span id="totalQuestions">15</span></div>
                 <div class="progress-bar" id="progressBar"></div>
@@ -36,6 +36,6 @@
             </div>
         </div>
     </section>
-    <script src="JS/Main_Page-directjs/random-restructured.js"></script>
+    <script src="JS/Main_Page-directjs/randomized-quiz.js"></script>
 </body>
 </html>
