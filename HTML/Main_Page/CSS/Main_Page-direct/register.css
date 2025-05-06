@@ -45,6 +45,11 @@ body {
     font-size: 75px;
 }
 
+.username-container, 
+.phone-container,
+.birthday-container,
+.gender-container,
+.address-container,
 .search-container,
 .password-container,
 .repassword-container {
@@ -73,6 +78,11 @@ body {
     margin-right: 10px;
 }
 
+.text-input,
+.number-input,
+.date-input,
+.gender-input,
+.address-input,
 .search-input,
 .password-input,
 .repassword-input {
@@ -82,7 +92,15 @@ body {
     font-size: 18px;
     font-family: 'Josefin Sans', sans-serif;
     color: rgba(0, 0, 0, 0.7);
+    
 }
+
+/* hiding the arrow btn  */
+.number-input::-webkit-outer-spin-button,
+.number-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+/* end  */
 
 .toggle-password {
     background: transparent;
@@ -131,4 +149,22 @@ body {
 
 .Sign_In-card.light {
     background: #004AAD;
+}
+
+.link-container {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.link-container a {
+    font-family: 'Josefin Sans', sans-serif;
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--primary-color);
+    margin: 0 8px;
+    display: block; /* Make each link appear on a separate line */
+}
+
+.link-container a:hover {
+    text-decoration: underline;
 }

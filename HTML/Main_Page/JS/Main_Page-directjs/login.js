@@ -1,12 +1,6 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCnlzgGB3lSAn8Xf6H-Bx_bJ9QPK6iWJ80",
   authDomain: "senyashub.firebaseapp.com",
@@ -18,11 +12,10 @@ const firebaseConfig = {
   measurementId: "G-R6MYXS2Z0G"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
-// Toggle password visibility
+// password visibility
 document.querySelectorAll('.toggle-password').forEach(button => {
   button.addEventListener('click', function () {
     const input = this.previousElementSibling;
@@ -34,7 +27,7 @@ document.querySelectorAll('.toggle-password').forEach(button => {
 // Submit button
 const signup = document.getElementById('signup');
 signup.addEventListener("click", function (event) {
-  event.preventDefault(); // Prevent default form submission
+  event.preventDefault();
 
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
@@ -44,7 +37,7 @@ signup.addEventListener("click", function (event) {
       // Signed in 
       const user = userCredential.user;
       alert("Logging in...");
-      window.location.href = "index-home.html";
+      window.location.href = "index.html";
     })
     .catch((error) => {
       const errorCode = error.code;
