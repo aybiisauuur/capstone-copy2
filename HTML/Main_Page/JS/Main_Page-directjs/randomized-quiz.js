@@ -540,7 +540,7 @@ function toggleFlashcard(index) {
             video.currentTime = 0;
             video.play().catch(e => console.log("Video play failed:", e));
 
-            // Show caption when video ends
+            // Show caption and Next button when video ends
             video.onended = () => {
                 if (caption) {
                     caption.style.display = 'block';
@@ -549,18 +549,21 @@ function toggleFlashcard(index) {
                         caption.classList.add('show');
                     }, 10); // Tiny delay ensures CSS applies correctly
                 }
+                // Show Next button only after video ends
+                if (nextButton) {
+                    nextButton.style.display = 'block';
+                    nextButton.disabled = false;
+                }
             };
         }
 
-        // Show controls and enable Next button when flipped
+        // Show controls when flipped (but keep Next button hidden initially)
         if (controls) controls.style.display = 'flex';
-        if (nextButton) nextButton.style.display = 'block'; // Show Next button
-        nextButton.disabled = false;
     } else {
         // Hide caption, controls, and Next button when unflipped
         if (caption) caption.style.display = 'none';
         if (controls) controls.style.display = 'none';
-        if (nextButton) nextButton.style.display = 'none'; // Hide Next button
+        if (nextButton) nextButton.style.display = 'none';
 
         if (video) {
             video.pause();
