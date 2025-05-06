@@ -19,6 +19,10 @@ body {
   overflow-x: hidden;
 }
 
+h2 {
+  font-size: 30px;
+}
+
 .top-header {
   position: relative;
   background-color: #004AB3;
@@ -36,7 +40,8 @@ body {
   text-decoration: none;
   color: var(--primary-color);
   transition: opacity 0.2s;
-  z-index: 1; /* Ensure it stays above the title */
+  z-index: 1;
+  /* Ensure it stays above the title */
 }
 
 .back-link:hover,
@@ -51,7 +56,8 @@ body {
 }
 
 .back-text {
-  font-size: clamp(16px, 4vw, 20px); /* Responsive font size */
+  font-size: clamp(16px, 4vw, 20px);
+  /* Responsive font size */
   color: white;
   font-family: 'Josefin Sans', sans-serif;
 }
@@ -60,7 +66,8 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-size: clamp(16px, 4vw, 20px); /* Responsive font size */
+  font-size: clamp(16px, 4vw, 20px);
+  /* Responsive font size */
   color: #fff;
   font-weight: 400;
   margin: 0;
@@ -89,7 +96,69 @@ body {
   min-height: 300px;
   max-height: 480px;
   margin: 30px auto;
-  position: relative; /* Add this */
+  position: relative;
+  /* Add this */
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  /* Changed from absolute to fixed */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  display: none;
+  width: auto;
+  max-width: 80%;
+}
+
+.spinner {
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid var(--primary-color);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+#loading-text {
+  color: #333;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.analysis-status.loading {
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 0.8s linear infinite;
+  margin-right: 8px;
 }
 
 .flashcard {
@@ -122,13 +191,15 @@ body {
 
 .front {
   background: #cae4ff;
-  font-size: clamp(1.5rem, 5vw, 3em); /* Responsive font size */
+  font-size: clamp(1.5rem, 5vw, 3em);
+  /* Responsive font size */
 }
 
 .back {
   background: #fff;
   transform: rotateY(180deg);
-  font-size: clamp(1rem, 3vw, 1.5em); /* Responsive font size */
+  font-size: clamp(1rem, 3vw, 1.5em);
+  /* Responsive font size */
 }
 
 .card-video {
@@ -143,7 +214,8 @@ p {
   text-align: center;
   margin: 1px;
   padding-bottom: 20px;
-  font-size: clamp(1rem, 3vw, 1.2rem); /* Responsive font size */
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  /* Responsive font size */
 }
 
 .flashcard-wrapper {
@@ -168,8 +240,10 @@ p {
 
 
 .container.text-center {
-  padding-bottom: 40px; /* Adds space at the bottom */
-  margin-top: 20px; /* Adds space above the buttons */
+  padding-bottom: 40px;
+  /* Adds space at the bottom */
+  margin-top: 20px;
+  /* Adds space above the buttons */
 }
 
 .controls-container {
@@ -183,8 +257,6 @@ p {
   margin-bottom: 50px;
 }
 
-#next-button,
-#previous-button,
 #reset-button,
 #shuffle-button {
   padding: 12px 25px;
@@ -194,18 +266,10 @@ p {
   font-size: clamp(1rem, 3vw, 1.2em);
   transition: all 0.3s ease;
   font-family: 'Josefin Sans', sans-serif;
-  margin: 2px; /* Adds small space between buttons */
-  white-space: nowrap; /* Prevents button text from wrapping */
-}
-
-#next-button:hover {
-  background-color: #1C3150;
-  color: white;
-}
-
-#previous-button:hover {
-  background-color: #EE6B6E;
-  color: white;
+  margin: 2px;
+  /* Adds small space between buttons */
+  white-space: nowrap;
+  /* Prevents button text from wrapping */
 }
 
 #shuffle-button:hover {
@@ -226,9 +290,11 @@ button:disabled {
 
 /* feedback summary */
 .feedback-buttons {
-  position: relative; /* Make this a positioning context */
+  position: relative;
+  /* Make this a positioning context */
   width: 100%;
-  height: 0; /* Remove height from flow but maintain positioning */
+  height: 0;
+  /* Remove height from flow but maintain positioning */
   margin-top: 20px;
 }
 
@@ -243,21 +309,24 @@ button:disabled {
   display: flex;
   align-items: center;
   gap: 5px;
-  z-index: 10; /* Ensure buttons stay above other elements */
+  z-index: 10;
+  /* Ensure buttons stay above other elements */
 }
 
 .understood-btn {
   background-color: #4CAF50;
   color: white;
   border: none;
-  right: 0; /* Position on the right side */
+  right: 0;
+  /* Position on the right side */
 }
 
 .practice-btn {
   background-color: #f44336;
   color: white;
   border: none;
-  left: 0; /* Position on the left side */
+  left: 0;
+  /* Position on the left side */
 }
 
 .summary-container {
@@ -289,13 +358,37 @@ button:disabled {
 }
 
 .try-again-btn {
-  margin-top: 15px;
-  padding: 10px 20px;
-  background-color: #007bff;
+  padding: 12px 24px;
+  background-color: #004aad;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 500;
+  margin-top: 16px;
   cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.try-again-btn:hover {
+  background-color: #003b8c;
+  color: white;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.try-again-btn:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.try-again-btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(0, 74, 173, 0.3);
 }
 
 /* Summary Stats */
@@ -316,6 +409,31 @@ button:disabled {
 .practice-text {
   color: #f44336;
   font-weight: bold;
+}
+
+/* Add this to your CSS file */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.summary-animated {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.summary-stats,
+.feedback-message,
+.summary-lists-container,
+#try-again-btn {
+  opacity: 0;
+  /* Start invisible for animation */
 }
 
 /* Feedback Messages */
@@ -402,23 +520,21 @@ button:disabled {
   .top-header {
     padding: 10px 15px;
   }
-  
+
   .page-title {
     max-width: 50%;
   }
-  
+
   .flashcard-container {
     height: 50vh;
     margin: 20px auto;
   }
-  
+
   .controls-container {
     flex-direction: column;
     align-items: center;
   }
-  
-  #next-button,
-  #previous-button,
+
   #reset-button,
   #shuffle-button {
     width: 100%;
@@ -430,17 +546,17 @@ button:disabled {
   .back-link {
     gap: 0.5rem;
   }
-  
+
   .back-icon {
     width: 12px;
     height: 16px;
   }
-  
+
   .flashcard-container {
     height: 45vh;
     min-height: 250px;
   }
-  
+
   .card-face {
     padding: 15px;
   }
