@@ -16,40 +16,82 @@ body {
 }
 
 .app-header {
-    background-color: var(--header-bg);
-    border-top: 2px solid var(--border-color);
+    background-color: #004AB3;
     padding: 15px 20px;
     text-align: center;
-}
-
-.app-header {
-    background-color: rgba(217, 217, 217, 0.4);
-    border-top: 2px solid #575757;
-    padding: 15px 20px;
-    text-align: center;
-}
-
-.app-title {
-    color: #000;
+  }
+  
+  .app-title {
+    color: #ffffff;
     font-size: 30px;
     font-weight: 400;
     margin: 0;
-}
+    font: 500 30px 'Josefin Sans', sans-serif;
+  
+  }
 
+  .form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 20px;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #004AB3;
+  }
+  
+  /* Add these new styles */
 .intro-text-container {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+    padding-bottom: 20px;
+
 }
 
+.logo-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.site-logo {
+    height: 90px; /* Adjust as needed */
+    width: auto;
+}
+
+/* Update the existing intro-text style */
 .intro-text {
     color: var(--primary-color);
-    font-size: 75px;
+    font-size: 90px;
+    margin: 0; /* Remove default margins */
+    line-height: 1; /* Better alignment with logo */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .intro-text {
+        font-size: 50px;
+    }
+    .site-logo {
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .intro-text {
+        font-size: 40px;
+    }
+    .site-logo {
+        height: 30px;
+    }
+    .logo-title-wrapper {
+        gap: 10px;
+    }
 }
 
 .username-container, 
-.phone-container,
-.birthday-container,
 .gender-container,
-.address-container,
 .search-container,
 .password-container,
 .repassword-container {
@@ -82,7 +124,6 @@ body {
 .number-input,
 .date-input,
 .gender-input,
-.address-input,
 .search-input,
 .password-input,
 .repassword-input {
@@ -115,7 +156,7 @@ body {
     flex-direction: column;
     align-items: center;
     max-width: 100%;
-    padding: 40px;
+    padding: 20px;
 }
 
 .Sign_In-card {
@@ -153,15 +194,15 @@ body {
 
 .link-container {
     text-align: center;
-    margin-top: 15px;
+    margin-top: 5px;
 }
 
 .link-container a {
     font-family: 'Josefin Sans', sans-serif;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 20px;
     color: var(--primary-color);
-    margin: 0 8px;
+    margin: 0 2px;
     display: block; /* Make each link appear on a separate line */
 }
 

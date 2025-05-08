@@ -8,21 +8,39 @@ body {
 
 .app-header {
     background-color: #004AB3;
-    color: white;
     padding: 15px 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
+    text-align: center;
+  }
 
 .header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+  }
 
 .app-title {
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 400;
     margin: 0;
-    font-size: 1.5rem;
-}
+    transition: color 0.3s ease;
+  }
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+  }
+  .app-logo {
+    height: 40px; /* Adjust as needed */
+    width: auto;
+    margin-right: 10px;
+  }
+
+  .logo-link:hover .app-title {
+    color: #f0f0f0; /* Slightly lighter on hover */
+  }
 
 .profile-container {
     position: relative;
@@ -70,7 +88,7 @@ body {
 
 .profile-content {
     max-width: 800px;
-    margin: 30px auto;
+    margin: 45px auto;
     background: white;
     padding: 30px;
     border-radius: 8px;

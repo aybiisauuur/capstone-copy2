@@ -21,9 +21,14 @@
         <h1 class="app-title">Register</h1>
       </header>
       <div class="intro-text-container">
-        <h2 class="intro-text">SenyasHub</h2>
-      </div>
+        <div class="logo-title-wrapper">
+            <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F30b3625e8b7d46b5a2f09d4addc41139" 
+                 alt="SenyasHub Logo" class="site-logo">
+            <h2 class="intro-text">SenyasHub</h2>
+        </div>
+    </div>
 
+    <div class="form-container">
       <!-- FULL name -->
       <div class="username-container">
         <div class="input-wrapper">
@@ -37,7 +42,7 @@
           />
         </div>
       </div>
-
+    
       <!-- User Email -->
       <div class="search-container">
         <div class="input-wrapper">
@@ -50,36 +55,8 @@
             id="email"
           />
         </div>
-      </div>
-
-      <!-- Phone number -->
-      <div class="phone-container">
-        <div class="input-wrapper">
-          <img src="CSS/pngegg (28) 1.png" alt="Phone Icon" class="icon" />
-          <input
-            type="number"
-            class="number-input"
-            placeholder="Phone Number"
-            aria-label="PhoneID"
-            id="phone"
-          />
-        </div>
-      </div>
-
-      <!-- birthday  -->
-      <div class="birthday-container">
-        <div class="input-wrapper">
-          <img src="CSS/pngegg (28) 1.png" alt="birthday Icon" class="icon" />
-          <input
-            type="date"
-            class="date-input"
-            placeholder="Birthday"
-            aria-label="BirthdayID"
-            id="birthday"
-          />
-        </div>
-      </div>
-
+      </div>  
+    
       <!-- dropdown gender -->
       <div class="gender-container">
         <div class="input-wrapper">
@@ -91,21 +68,7 @@
           </select>
         </div>
       </div>
-
-        <!-- address  -->
-        <div class="address-container">
-            <div class="input-wrapper">
-              <img src="CSS/pngegg (28) 1.png" alt="address Icon" class="icon" />
-              <input
-                type="text"
-                class="address-input"
-                placeholder="Address"
-                aria-label="AddressID"
-                id="address"
-              />
-            </div>
-          </div>
-
+    
       <!-- Password -->
       <div class="password-container">
         <div class="input-wrapper">
@@ -121,7 +84,7 @@
           <button type="button" class="toggle-password">&#128065;</button>
         </div>
       </div>
-
+    
       <!-- Retype Password -->
       <div class="repassword-container">
         <div class="input-wrapper">
@@ -136,11 +99,7 @@
           <button type="button" class="toggle-password">&#128065;</button>
         </div>
       </div>
-
-      <div class="link-container">
-        <a href="login.html" class="Login">AY! may account pala ko .. Login</a>
-    </div>
-
+    
       <main class="content-wrapper">
         <section class="Sign_In-section" aria-label="FSL Categories">
           <button class="Sign_In-card light" id="signup_button">
@@ -148,6 +107,12 @@
           </button>
         </section>
       </main>
+    
+      <div class="link-container">
+        <a href="login.html" class="Login">Already have an account? Login</a>
+      </div>
+    </div>
+    
     </section>
   </body>
 </html>
