@@ -46,18 +46,12 @@ signup.addEventListener("click", function (event) {
     const user = userCredential.user;
     const uid = user.uid;
     const fullName = document.getElementById('name').value;
-    const phone = document.getElementById('phone').value;
-    const birthDate = document.getElementById('birthday').value;
     const gender = document.getElementById('gender').value;
-    const location = document.getElementById('address').value;
 
     // Build the profile
     const profileData = {
       FullName: fullName,
-      PhoneNumber: phone,
-      BirthDate: birthDate,
       Gender: gender,
-      Location: location,
       EmailAdd: email,
       bio: "", // to be eddited n lng sa profile page
     };
