@@ -81,17 +81,14 @@ body {
 }
 
 .phrase-card {
-  background: #fff;
-  border-radius: 12px;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 24px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-bottom: 20px;
-  overflow: hidden;
-  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: auto;
 }
+
 
 .phrase-card:hover {
   transform: translateY(-4px);
@@ -108,6 +105,15 @@ body {
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease;
+}
+
+.phrase-card:hover .card-title {
+  white-space: normal; /* Allow text to wrap */
+  overflow: visible;
+  text-overflow: clip;
+  word-break: break-word; /* Ensure long words break properly */
+  transition-delay: 0.1s;
+
 }
 
 .phrase-card:hover .video-thumbnail {
@@ -138,12 +144,29 @@ body {
 
 .phrase-card .card-title {
   font-size: 18px;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 8px;
-  transition: color 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
 }
 
+.card-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit to 2 lines by default */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 3em; /* Approximate height for 2 lines */
+  line-height: 1.5em;
+  transition: max-height 0.3s ease;
+}
+.phrase-card:hover .card-description {
+  -webkit-line-clamp: unset;
+  max-height: none;
+  overflow: visible;
+}
 .phrase-card:hover .card-title {
   color: #004AB3;
 }
@@ -214,7 +237,6 @@ body {
   border: 0;
 }
 
-/* Add to your CSS file */
 .vid-modal {
   display: none;
   position: fixed;
@@ -224,15 +246,20 @@ body {
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,0,0.8);
+  overflow-y: auto;
+  padding-bottom: 80px; /* Space for footer */
 }
+
 
 .modal-content {
   background: white;
   margin: 5% auto;
   padding: 20px;
-  width: 80%;
+  width: 90%;
   max-width: 800px;
   border-radius: 8px;
+  position: relative;
+  margin-bottom: 100px; /* Extra space at bottom */
 }
 
 .close-modal {
@@ -350,6 +377,46 @@ video {
   background: rgba(255, 255, 255, 0.95);
 }
 
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+  
+  #phraseVideo {
+    max-height: 50vh;
+  }
+}
+
+/* Ensure video fits in container */
+#phraseVideo {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  background: #000;
+}
+
+/* Video title and description styling */
+#videoTitle {
+  margin: 15px 0 10px;
+  font-size: 22px;
+  color: #333;
+  word-wrap: break-word;
+}
+
+#videoDescription {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+}
+
+/* Make sure footer stays below modal */
+.app-footer {
+  z-index: 900; /* Below modal */
+}
 /* Responsive adjustments */
 @media (max-width: 992px) {
   .info-panel {

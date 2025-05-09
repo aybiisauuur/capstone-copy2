@@ -251,23 +251,51 @@
       }
 
       function showVideoModal(videoUrl, title, description) {
-        const videoPlayer = $("#phraseVideo")[0];
-        videoPlayer.src = videoUrl;
-        $("#videoTitle").text(title);
-        $("#videoModal").show();
-        videoPlayer.play();
-      }
+  const videoPlayer = $("#phraseVideo")[0];
+  const modal = $("#videoModal");
+  
+  // Reset video source
+  videoPlayer.pause();
+  videoPlayer.currentTime = 0;
+  videoPlayer.src = videoUrl;
+  
+  // Set content
+  $("#videoTitle").text(title || "");
+  $("#videoDescription").text(description || "");
+  
+  // Show modal
+  modal.show();
+  
+  // Scroll to top of modal
+  modal.scrollTop(0);
+  
+  // Play video when ready
+  videoPlayer.oncanplay = function() {
+    videoPlayer.play().catch(e => console.log("Autoplay prevented:", e));
+  };
+  
+  // Handle errors
+  videoPlayer.onerror = function() {
+    $("#videoTitle").text("Error loading video");
+    $("#videoDescription").text("Sorry, we couldn't load the video. Please try again later.");
+  };
+}
 
-      // Profile dropdown functionality
-      $("#profileBtn").click(function (e) {
-        e.stopPropagation();
-        $("#profileDropdown").toggleClass("show");
-      });
+// Close modal
+$(".close-modal").on("click", function() {
+  const videoPlayer = $("#phraseVideo")[0];
+  videoPlayer.pause();
+  $("#videoModal").hide();
+});
 
-      // Close dropdown when clicking outside
-      $(document).click(function () {
-        $("#profileDropdown").removeClass("show");
-      });
+// Close modal when clicking outside
+$(window).on("click", function(e) {
+  if ($(e.target).is("#videoModal")) {
+    const videoPlayer = $("#phraseVideo")[0];
+    videoPlayer.pause();
+    $("#videoModal").hide();
+  }
+});
 
       // Logout functionality
       $("#logoutBtn").click(function (e) {
