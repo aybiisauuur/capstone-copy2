@@ -1,423 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SenyasHub - Home</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="/HTML/Main_Page/CSS/Main_Page-direct/home.css"
-    />
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  </head>
 
-  <body>
-    <header class="app-header">
-      <div class="header-container">
-        <a href="index.html" class="logo-link">
-          <img 
-            src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F30b3625e8b7d46b5a2f09d4addc41139" 
-            alt="SenyasHub Logo" 
-            class="app-logo"
-          />
-          <h1 class="app-title">SenyasHub</h1>
-        </a>
-        <div class="profile-container">
-          <button class="profile-btn" id="profileBtn">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
-              alt="Profile"
-              class="profile-img"
-              id="profilePictureIcon"
-            />
-          </button>
-          <div class="profile-dropdown" id="profileDropdown">
-            <a href="profile.html">View Profile</a>
-            <a href="login.html" id="logoutBtn">Logout</a>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SenyasHub - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/HTML/Main_Page/CSS/Main_Page-direct/home.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <header class="app-header">
+    <div class="header-container">
+      <a href="index.html" class="logo-link">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F30b3625e8b7d46b5a2f09d4addc41139"
+          alt="SenyasHub Logo" class="app-logo" />
+        <h1 class="app-title">SenyasHub</h1>
+      </a>
+      <div class="profile-container">
+        <button class="profile-btn" id="profileBtn">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile" class="profile-img"
+            id="profilePictureIcon" />
+        </button>
+        <div class="profile-dropdown" id="profileDropdown">
+          <a href="profile.html">View Profile</a>
+          <a href="login.html" id="logoutBtn">Logout</a>
         </div>
       </div>
-    </header>
-
-    <div class="search-container">
-      <div class="search-box">
-        <input
-          type="search"
-          class="search-input"
-          placeholder="What would you like to learn?"
-          aria-label="Search modules"
-        />
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/8a62d0954dce249c2f05faacbad007e4cf7c999f140777f38537ca568c60a08f?placeholderIfAbsent=true&apiKey=ee1a9a673f2d4dc29299c2e9209fb768"
-          alt="Search"
-          class="search-icon nav-icon"
-          width="34"
-          height="34"
-        />
-      </div>
     </div>
+  </header>
 
-    <div
-      class="no-results"
-      style="display: none; text-align: center; margin-top: 20px"
-    >
-      No results found.
+  <div class="search-container">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="What would you like to learn?"
+        aria-label="Search modules" />
+      <img
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/8a62d0954dce249c2f05faacbad007e4cf7c999f140777f38537ca568c60a08f?placeholderIfAbsent=true&apiKey=ee1a9a673f2d4dc29299c2e9209fb768"
+        alt="Search" class="search-icon nav-icon" width="34" height="34" />
     </div>
+  </div>
 
-    <main class="main-content" role="main">
-      <section class="search-results" style="display: none"></section>
-      <section class="info-panel" aria-label="App Information">
-        <p>
-          This app will help you turn your eyes into ears. With this app, you
-          will be able to learn the basics of Filipino Sign Language (FSL).
-        </p>
-        <br />
-        <p>
-          The modules, quizzes, and live chat can only be used or accessed when
-          you have an internet connection.
-        </p>
-        <br />
-        <p>
-          To learn more about this app, please click on the About Us tab located
-          below.
-        </p>
-      </section>
-    </main>
+  <div class="no-results" style="display: none; text-align: center; margin-top: 20px">
+    No results found.
+  </div>
 
-    <div id="videoModal" class="vid-modal" style="display: none">
-      <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <video id="phraseVideo" controls>
-          Your browser does not support the video tag.
-        </video>
-        <h3 id="videoTitle"></h3>
-        <p id="videoDescription"></p>
-      </div>
+  <main class="main-content" role="main">
+    <section class="search-results" style="display: none"></section>
+    <section class="info-panel" aria-label="App Information">
+      <p>
+        This app will help you turn your eyes into ears. With this app, you
+        will be able to learn the basics of Filipino Sign Language (FSL).
+      </p>
+      <br />
+      <p>
+        The modules, quizzes, and live chat can only be used or accessed when
+        you have an internet connection.
+      </p>
+      <br />
+      <p>
+        To learn more about this app, please click on the About Us tab located
+        below.
+      </p>
+    </section>
+  </main>
+
+  <div id="videoModal" class="vid-modal" style="display: none">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <video id="phraseVideo" controls>
+        Your browser does not support the video tag.
+      </video>
+      <h3 id="videoTitle"></h3>
+      <p id="videoDescription"></p>
     </div>
+  </div>
 
-    <footer class="app-footer">
-      <nav class="footer-nav">
-        <ul class="nav-list">
-          <li class="nav-item">
-            <a href="index.html" class="nav-link active">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F45e25a86832c414caad53c69831aefe6"
-                alt=""
-                class="nav-icon"
-              />
-              <span>Home</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="modules-section.html" class="nav-link">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5f960d0d2c9f43379a72dd74267b9d2b"
-                alt=""
-                class="nav-icon"
-              />
-              <span>Modules</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="Quizzes_home-home.html" class="nav-link">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F0674cddbe79f4c5b82486ba63b28758d"
-                alt=""
-                class="nav-icon"
-              />
-              <span>Quizzes</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="chat-section-client.html" class="nav-link">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F44567bd71c43455d89f29e8379fa4244"
-                alt=""
-                class="nav-icon"
-              />
-              <span>Live Chat</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="about_us.html" class="nav-link">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F2fceff1214cb48c8b43e5651ff4022f0"
-                alt=""
-                class="nav-icon"
-              />
-              <span>About</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </footer>
+  <footer class="app-footer">
+    <nav class="footer-nav">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link active">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F45e25a86832c414caad53c69831aefe6"
+              alt="" class="nav-icon" />
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="modules-section.html" class="nav-link">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5f960d0d2c9f43379a72dd74267b9d2b"
+              alt="" class="nav-icon" />
+            <span>Modules</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="Quizzes_home-home.html" class="nav-link">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F0674cddbe79f4c5b82486ba63b28758d"
+              alt="" class="nav-icon" />
+            <span>Quizzes</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="chat-section-client.html" class="nav-link">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F44567bd71c43455d89f29e8379fa4244"
+              alt="" class="nav-icon" />
+            <span>Live Chat</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="about_us.html" class="nav-link">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F2fceff1214cb48c8b43e5651ff4022f0"
+              alt="" class="nav-icon" />
+            <span>About</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </footer>
 
-    <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-      import {
-        getAuth,
-        createUserWithEmailAndPassword,
-        onAuthStateChanged,
-        signOut,
-      } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
-      import {
-        getFirestore,
-        doc,
-        setDoc,
-        getDoc,
-        updateDoc,
-      } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      onAuthStateChanged,
+      signOut,
+    } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+    import {
+      getFirestore,
+      doc,
+      setDoc,
+      getDoc,
+      updateDoc,
+    } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-firestore.js";
 
-      // Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyCnlzgGB3lSAn8Xf6H-Bx_bJ9QPK6iWJ80",
-        authDomain: "senyashub.firebaseapp.com",
-        databaseURL: "https://senyashub-default-rtdb.firebaseio.com",
-        projectId: "senyashub",
-        storageBucket: "senyashub.firebasestorage.app",
-        messagingSenderId: "272537634617",
-        appId: "1:272537634617:web:2763ed67c759373fd30ae8",
-        measurementId: "G-R6MYXS2Z0G",
-      };
+    // Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCnlzgGB3lSAn8Xf6H-Bx_bJ9QPK6iWJ80",
+      authDomain: "senyashub.firebaseapp.com",
+      databaseURL: "https://senyashub-default-rtdb.firebaseio.com",
+      projectId: "senyashub",
+      storageBucket: "senyashub.firebasestorage.app",
+      messagingSenderId: "272537634617",
+      appId: "1:272537634617:web:2763ed67c759373fd30ae8",
+      measurementId: "G-R6MYXS2Z0G",
+    };
 
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const auth = getAuth(app);
-      const db = getFirestore(app);
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
-      $(document).ready(function () {
-        $.getJSON("phrases.json")
-          .done(function (data) {
-            initializeSearch(data);
-          })
-          .fail(function () {
-            console.error("Error loading phrases");
-            initializeSearch(getMockData());
-          });
+    $(document).ready(function () {
+      let allPhraseCards = "";
+      let recentModules = [];
 
-        function initializeSearch(phraseData) {
-          let allPhraseCards = "";
-          phraseData.categories.forEach((category) => {
-            category.phrases.forEach((phrase) => {
-              allPhraseCards += `
-                    <div class="phrase-card" data-video="${phrase.video}">
-                        <div class="video-thumbnail" style="background-image: url('${
-                          phrase.video_thumbnail || phrase.image
-                        }')">
-                            ${
-                              phrase.video
-                                ? '<div class="play-icon">▶</div>'
-                                : ""
-                            }
-                        </div>
-                        <h3 class="card-title">${phrase.title}</h3>
-                        <p>${phrase.description}</p>
-                    </div>
-                `;
-            });
-          });
-
-          // Set up search
-          $(".search-icon, .search-input").on("click keypress", function (e) {
-            if (e.type === "click" || e.key === "Enter") {
-              performSearch(allPhraseCards);
-            }
-          });
-
-          // Set up video playback
-          $(document).on("click", ".phrase-card", function () {
-            const videoUrl = $(this).data("video");
-            if (videoUrl) {
-              showVideoModal(
-                videoUrl,
-                $(this).find(".card-title").text(),
-                $(this).find("p").text()
-              );
-            }
-          });
-
-          // Close modal
-          $(".close-modal").on("click", function () {
-            $("#videoModal").hide();
-            $("#phraseVideo")[0].pause();
-          });
-        }
-
-        function showVideoModal(videoUrl, title, description) {
-          const videoPlayer = $("#phraseVideo")[0];
-          videoPlayer.src = videoUrl;
-          $("#videoTitle").text(title);
-          $("#videoModal").show();
-          videoPlayer.play();
-        }
-        // Profile dropdown functionality
-        $("#profileBtn").click(function (e) {
-          e.stopPropagation();
-          $("#profileDropdown").toggleClass("show");
+      // Load phrases from JSON
+      $.getJSON("phrases.json")
+        .done(function (data) {
+          initializeContent(data);
+        })
+        .fail(function () {
+          console.error("Error loading phrases");
+          initializeContent(getMockData());
         });
 
-        // Close dropdown when clicking outside
-        $(document).click(function () {
-          $("#profileDropdown").removeClass("show");
+      function initializeContent(phraseData) {
+        // Generate all phrase cards from JSON data
+        phraseData.categories.forEach((category) => {
+          category.phrases.forEach((phrase) => {
+            allPhraseCards += `
+          <div class="phrase-card" data-video="${phrase.video}">
+              <div class="video-thumbnail" style="background-image: url('${phrase.video_thumbnail || phrase.image
+              }')">
+                  ${phrase.video
+                ? '<div class="play-icon">▶</div>'
+                : ""
+              }
+              </div>
+              <h3 class="card-title">${phrase.title}</h3>
+          </div>
+        `;
+          });
         });
 
-        // Logout functionality
-        $("#logoutBtn").click(function (e) {
-          e.preventDefault();
-          if (confirm("Are you sure you want to logout?")) {
-            // Here you would typically make an AJAX call to your logout endpoint
-            // For now, we'll just redirect to login page
-            window.location.href = "login.html";
+        // Set up search functionality
+        $(".search-icon").on("click", performSearch);
+        $(".search-input").on("keypress", function (e) {
+          if (e.key === "Enter") {
+            performSearch();
           }
         });
 
-        let allPhraseCards = "";
-        let recentModules = [];
-        const files = [
-          "greetings-subpage.html",
-          "common_phrases_comelec-subpage.html",
-          "questions-subpage.html",
-        ];
+        // Set up video playback
+        $(document).on("click", ".phrase-card", function () {
+          const videoUrl = $(this).data("video");
+          if (videoUrl) {
+            showVideoModal(
+              videoUrl,
+              $(this).find(".card-title").text(),
+              $(this).find("p").text()
+            );
+          }
+        });
 
-        // Load content and initialize search
-        loadContent();
+        // Close modal
+        $(".close-modal").on("click", function () {
+          $("#videoModal").hide();
+          $("#phraseVideo")[0].pause();
+        });
+      }
 
-        function loadContent() {
-          let loadedFiles = 0;
-          files.forEach((file) => {
-            $.get(file)
-              .done(function (data) {
-                // Store the loaded content
-                allPhraseCards += data;
-                loadedFiles++;
-                if (loadedFiles === files.length) {
-                  // Initialize search once all content is loaded
-                  attachSearchFunctionality();
-                }
-              })
-              .fail(function () {
-                console.error(`Failed to load ${file}`);
-              });
-          });
+      function performSearch() {
+        const query = $(".search-input").val().toLowerCase().trim();
+
+        if (!query) {
+          // If search is empty, show default content
+          $(".info-panel").show();
+          $(".recent-section").show();
+          $(".main-content").html(allPhraseCards);
+          $(".no-results").hide();
+          return;
         }
 
-        function attachSearchFunctionality() {
-          // Handle search icon click
-          $(".search-icon").on("click", function () {
-            performSearch();
-          });
+        // Create a temporary div to search through
+        const $tempDiv = $("<div>").html(allPhraseCards);
+        const $filteredCards = $tempDiv.find(".phrase-card").filter(function () {
+          const cardText = $(this).text().toLowerCase();
+          return cardText.includes(query);
+        });
 
-          // Handle Enter key press
-          $(".search-input").on("keypress", function (e) {
-            if (e.key === "Enter") {
-              performSearch();
-            }
-          });
-        }
-
-        function performSearch() {
-          const query = $(".search-input").val().toLowerCase().trim();
-
-          // Clear everything except search bar
+        // Display results
+        if ($filteredCards.length > 0) {
           $(".info-panel").hide();
           $(".recent-section").hide();
-
-          if (query === "") {
-            // If search is empty, restore original content
-            $(".info-panel").show();
-            $(".recent-section").show();
-            $(".no-results").hide();
-            return;
-          }
-
-          // Create a temporary div to parse the HTML content
-          const tempDiv = $("<div>").html(allPhraseCards);
-
-          // Find cards that match the search query
-          const filteredCards = tempDiv
-            .find(".phrase-card")
-            .filter(function () {
-              const cardTitle = $(this)
-                .find(".card-title")
-                .text()
-                .toLowerCase();
-              const cardContent = $(this).text().toLowerCase();
-              return cardTitle.includes(query) || cardContent.includes(query);
-            });
-
-          // Show results or "no results" message
-          if (filteredCards.length > 0) {
-            $(".main-content").html(filteredCards);
-            $(".no-results").hide();
-          } else {
-            $(".main-content").empty();
-            $(".no-results").show();
-          }
+          $(".main-content").html($filteredCards);
+          $(".no-results").hide();
+        } else {
+          $(".info-panel").hide();
+          $(".recent-section").hide();
+          $(".main-content").empty();
+          $(".no-results").show();
         }
+      }
 
-        // Search box styling
-        $(".search-input")
-          .focus(function () {
-            $(".search-box").css("border-color", "#004AB3");
-          })
-          .blur(function () {
-            $(".search-box").css("border-color", "#000");
+      function showVideoModal(videoUrl, title, description) {
+        const videoPlayer = $("#phraseVideo")[0];
+        videoPlayer.src = videoUrl;
+        $("#videoTitle").text(title);
+        $("#videoModal").show();
+        videoPlayer.play();
+      }
+
+      // Profile dropdown functionality
+      $("#profileBtn").click(function (e) {
+        e.stopPropagation();
+        $("#profileDropdown").toggleClass("show");
+      });
+
+      // Close dropdown when clicking outside
+      $(document).click(function () {
+        $("#profileDropdown").removeClass("show");
+      });
+
+      // Logout functionality
+      $("#logoutBtn").click(function (e) {
+        e.preventDefault();
+        if (confirm("Are you sure you want to logout?")) {
+          signOut(auth).then(() => {
+            window.location.href = "login.html";
+          }).catch((error) => {
+            console.error("Logout error:", error);
           });
+        }
+      });
 
-        // Recent modules handling remains the same
-        $(document).on("click", ".recent-item", function () {
-          const moduleName = $(this).find("span").text();
-          if (!recentModules.includes(moduleName)) {
-            recentModules.unshift(moduleName);
-            if (recentModules.length > 5) {
-              recentModules.pop();
-            }
-            updateRecentsList();
-          }
+      // Search box styling
+      $(".search-input")
+        .focus(function () {
+          $(".search-box").css("border-color", "#004AB3");
+        })
+        .blur(function () {
+          $(".search-box").css("border-color", "#000");
         });
 
-        function updateRecentsList() {
-          const recentHTML = `
-            <h2 class="recent-header">Recents</h2>
-            ${recentModules
-              .map(
-                (module) => `
-                <div class="recent-item" tabindex="0" role="button">
-                    <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4a2568b9bcbeee7c939b9432fd286536999385b724f06eefb85f65f0cbb2af57?placeholderIfAbsent=true&apiKey=ee1a9a673f2d4dc29299c2e9209fb768" alt="" class="nav-icon" aria-hidden="true">
-                    <span>${module}</span>
-                </div>
-            `
-              )
-              .join("")}
-        `;
-          $(".recent-section").html(recentHTML);
-        }
-      });
-
-      //Aadd the image icon
-      onAuthStateChanged(auth, async (user) => {
-        if (user) {
-          try {
-            const userDocRef = doc(db, "profile_info", user.uid);
-            const docSnapshot = await getDoc(userDocRef);
-            const data = docSnapshot.data();
-
-            if (data && data.ProfilePicture) {
-              const mainPic = document.getElementById("profilePicture");
-              const iconPic = document.getElementById("profilePictureIcon");
-
-              if (mainPic) mainPic.src = data.ProfilePicture;
-              if (iconPic) iconPic.src = data.ProfilePicture;
-            }
-          } catch (error) {
-            console.error("Failed to load profile picture", error);
+      // Recent modules handling
+      $(document).on("click", ".recent-item", function () {
+        const moduleName = $(this).find("span").text();
+        if (!recentModules.includes(moduleName)) {
+          recentModules.unshift(moduleName);
+          if (recentModules.length > 5) {
+            recentModules.pop();
           }
+          updateRecentsList();
         }
       });
-    </script>
-  </body>
+
+      function updateRecentsList() {
+        const recentHTML = `
+      <h2 class="recent-header">Recents</h2>
+      ${recentModules
+            .map(
+              (module) => `
+          <div class="recent-item" tabindex="0" role="button">
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4a2568b9bcbeee7c939b9432fd286536999385b724f06eefb85f65f0cbb2af57?placeholderIfAbsent=true&apiKey=ee1a9a673f2d4dc29299c2e9209fb768" alt="" class="nav-icon" aria-hidden="true">
+              <span>${module}</span>
+          </div>
+      `
+            )
+            .join("")}
+    `;
+        $(".recent-section").html(recentHTML);
+      }
+    });
+
+    // Add the image icon
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        try {
+          const userDocRef = doc(db, "profile_info", user.uid);
+          const docSnapshot = await getDoc(userDocRef);
+          const data = docSnapshot.data();
+
+          if (data && data.ProfilePicture) {
+            const mainPic = document.getElementById("profilePicture");
+            const iconPic = document.getElementById("profilePictureIcon");
+
+            if (mainPic) mainPic.src = data.ProfilePicture;
+            if (iconPic) iconPic.src = data.ProfilePicture;
+          }
+        } catch (error) {
+          console.error("Failed to load profile picture", error);
+        }
+      }
+    });
+
+    // Mock data function in case JSON fails to load
+    function getMockData() {
+      return {
+        categories: [
+          {
+            name: "Basic Phrases",
+            phrases: [
+              {
+                title: "Hello",
+                description: "A common greeting",
+                video: "path/to/hello.mp4",
+                video_thumbnail: "path/to/hello-thumbnail.jpg"
+              },
+              // Add more mock phrases as needed
+            ]
+          }
+        ]
+      };
+    }
+  </script>
+</body>
 </html>
