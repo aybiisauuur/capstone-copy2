@@ -21,32 +21,29 @@ body {
     text-align: center;
   }
   
-  .app-title {
+.app-title {
     color: #ffffff;
     font-size: 30px;
     font-weight: 400;
     margin: 0;
     font: 500 30px 'Josefin Sans', sans-serif;
-  
-  }
+}
 
-  .form-container {
-    max-width: 800px;
-    margin: 0 auto;
-    margin-top: 20px;
+.form-container {
+    max-width: 600px; /* Reduced from 800px */
+    margin: 20px auto;
     background: white;
-    padding: 30px;
+    padding: 30px 25px; /* Adjusted padding */
     border-radius: 10px;
     box-shadow: 0 0 20px #004AB3;
-  }
-  
+}
+
   /* Add these new styles */
 .intro-text-container {
     display: flex;
     justify-content: center;
-    margin-top: 80px;
-    padding-bottom: 20px;
-
+    margin-top: 30px;
+    padding-bottom: 10px;
 }
 
 .logo-title-wrapper {
@@ -56,38 +53,16 @@ body {
 }
 
 .site-logo {
-    height: 90px; /* Adjust as needed */
+    height: 8vw; /* Changed from fixed px to viewport units */
+    max-height: 90px; /* Maximum size */
     width: auto;
 }
 
-/* Update the existing intro-text style */
 .intro-text {
     color: var(--primary-color);
-    font-size: 90px;
-    margin: 0; /* Remove default margins */
-    line-height: 1; /* Better alignment with logo */
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .intro-text {
-        font-size: 50px;
-    }
-    .site-logo {
-        height: 40px;
-    }
-}
-
-@media (max-width: 480px) {
-    .intro-text {
-        font-size: 40px;
-    }
-    .site-logo {
-        height: 30px;
-    }
-    .logo-title-wrapper {
-        gap: 10px;
-    }
+    font-size: 4vw; /* Changed from fixed px to viewport units */
+    margin: 0;
+    line-height: 1;
 }
 
 .username-container, 
@@ -95,7 +70,7 @@ body {
 .search-container,
 .password-container,
 .repassword-container {
-    padding: 10px 0;
+    padding: 8px 0;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -156,7 +131,7 @@ body {
     flex-direction: column;
     align-items: center;
     max-width: 100%;
-    padding: 20px;
+    padding: 15px 0;
 }
 
 .Sign_In-card {
@@ -208,4 +183,88 @@ body {
 
 .link-container a:hover {
     text-decoration: underline;
+    color: #003882; /* Slightly darker shade for hover */
+    transition: color 0.2s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 25px 20px;
+        margin: 15px auto;
+    }
+    
+    .input-wrapper {
+        padding: 10px 12px;
+    }
+    
+    .intro-text {
+        font-size: 5vw;
+    }
+    
+    .site-logo {
+        height: 10vw;
+    }
+    
+    .text-input,
+    .search-input,
+    .password-input,
+    .repassword-input,
+    .gender-input {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        padding: 20px 15px;
+        margin: 10px auto;
+        border-radius: 8px;
+    }
+    
+    .input-wrapper {
+        padding: 8px 10px;
+        border-radius: 8px;
+    }
+    
+    .intro-text {
+        font-size: 7vw;
+    }
+    
+    .site-logo {
+        height: 12vw;
+    }
+    
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .Sign_In-card {
+        padding: 15px;
+        max-width: 280px;
+    }
+    
+    .Sign_In-title {
+        font-size: 18px;
+    }
+    
+    .link-container a {
+        font-size: 16px;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 360px) {
+    .form-container {
+        padding: 15px 10px;
+    }
+    
+    .intro-text {
+        font-size: 8vw;
+    }
+    
+    .logo-title-wrapper {
+        gap: 8px;
+    }
 }
