@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SenyasHub - Home</title>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="stylesheet" href="/HTML/Main_Page/CSS/Main_Page-direct/home.css" />
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -42,13 +43,13 @@
     </div>
   </div>
 
-  <div class="no-results" style="display: none; text-align: center; margin-top: 20px">
+  <div class="no-results" style="display: none; text-align: center; margin-top: 30px">
     No results found.
   </div>
 
   <main class="main-content" role="main">
     <section class="search-results" style="display: none"></section>
-    <section class="info-panel" aria-label="App Information">
+    <section class="info-panel animate__animated animate__fadeIn" aria-label="App Information">
       <p>
         This app will help you turn your eyes into ears. With this app, you
         will be able to learn the basics of Filipino Sign Language (FSL).
@@ -251,51 +252,51 @@
       }
 
       function showVideoModal(videoUrl, title, description) {
-  const videoPlayer = $("#phraseVideo")[0];
-  const modal = $("#videoModal");
-  
-  // Reset video source
-  videoPlayer.pause();
-  videoPlayer.currentTime = 0;
-  videoPlayer.src = videoUrl;
-  
-  // Set content
-  $("#videoTitle").text(title || "");
-  $("#videoDescription").text(description || "");
-  
-  // Show modal
-  modal.show();
-  
-  // Scroll to top of modal
-  modal.scrollTop(0);
-  
-  // Play video when ready
-  videoPlayer.oncanplay = function() {
-    videoPlayer.play().catch(e => console.log("Autoplay prevented:", e));
-  };
-  
-  // Handle errors
-  videoPlayer.onerror = function() {
-    $("#videoTitle").text("Error loading video");
-    $("#videoDescription").text("Sorry, we couldn't load the video. Please try again later.");
-  };
-}
+        const videoPlayer = $("#phraseVideo")[0];
+        const modal = $("#videoModal");
 
-// Close modal
-$(".close-modal").on("click", function() {
-  const videoPlayer = $("#phraseVideo")[0];
-  videoPlayer.pause();
-  $("#videoModal").hide();
-});
+        // Reset video source
+        videoPlayer.pause();
+        videoPlayer.currentTime = 0;
+        videoPlayer.src = videoUrl;
 
-// Close modal when clicking outside
-$(window).on("click", function(e) {
-  if ($(e.target).is("#videoModal")) {
-    const videoPlayer = $("#phraseVideo")[0];
-    videoPlayer.pause();
-    $("#videoModal").hide();
-  }
-});
+        // Set content
+        $("#videoTitle").text(title || "");
+        $("#videoDescription").text(description || "");
+
+        // Show modal
+        modal.show();
+
+        // Scroll to top of modal
+        modal.scrollTop(0);
+
+        // Play video when ready
+        videoPlayer.oncanplay = function () {
+          videoPlayer.play().catch(e => console.log("Autoplay prevented:", e));
+        };
+
+        // Handle errors
+        videoPlayer.onerror = function () {
+          $("#videoTitle").text("Error loading video");
+          $("#videoDescription").text("Sorry, we couldn't load the video. Please try again later.");
+        };
+      }
+
+      // Close modal
+      $(".close-modal").on("click", function () {
+        const videoPlayer = $("#phraseVideo")[0];
+        videoPlayer.pause();
+        $("#videoModal").hide();
+      });
+
+      // Close modal when clicking outside
+      $(window).on("click", function (e) {
+        if ($(e.target).is("#videoModal")) {
+          const videoPlayer = $("#phraseVideo")[0];
+          videoPlayer.pause();
+          $("#videoModal").hide();
+        }
+      });
 
       // Logout functionality
       $("#logoutBtn").click(function (e) {
@@ -329,6 +330,23 @@ $(window).on("click", function(e) {
           updateRecentsList();
         }
       });
+
+      // Profile dropdown functionality
+      $("#profileBtn").on("click", function (e) {
+        e.stopPropagation(); // Prevent the click from bubbling up
+        $("#profileDropdown").toggle();
+      });
+
+      // Close dropdown when clicking elsewhere
+      $(document).on("click", function () {
+        $("#profileDropdown").hide();
+      });
+
+      // Prevent dropdown from closing when clicking inside it
+      $("#profileDropdown").on("click", function (e) {
+        e.stopPropagation();
+      });
+      This
 
       function updateRecentsList() {
         const recentHTML = `
@@ -390,4 +408,5 @@ $(window).on("click", function(e) {
     }
   </script>
 </body>
+
 </html>
