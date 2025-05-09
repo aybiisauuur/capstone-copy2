@@ -31,6 +31,9 @@ if (isProfilePage) {
     const cancelBtn = document.getElementById('cancelBtn');
     const uploadBtn = document.getElementById('uploadBtn');
     const fileInput = document.getElementById('fileInput');
+    const logoutModal = document.getElementById('logout-modal');
+    const backButton = document.querySelector('.back-button');
+    const logoutButton = document.querySelector('.logout-button');
 
     // Profile dropdown toggle
     profileBtn.addEventListener('click', (e) => {
@@ -43,17 +46,48 @@ if (isProfilePage) {
         profileDropdown.classList.remove('show');
     });
 
-    // Logout 
-    logoutBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (confirm("Are you sure you want to logout?")) {
+    // Logout button click handler
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            // Show custom modal
+            if (logoutModal) {
+                logoutModal.style.display = 'block';
+            }
+        });
+    }
+
+    // Back button click handler (closes modal)
+    if (backButton) {
+        backButton.addEventListener('click', function () {
+            if (logoutModal) {
+                logoutModal.style.display = 'none';
+            }
+        });
+    }
+
+    // Logout confirmation handler
+    if (logoutButton) {
+        logoutButton.addEventListener('click', function () {
             signOut(auth).then(() => {
                 window.location.href = "login.html";
             }).catch((error) => {
                 console.error("Logout error:", error);
+                if (logoutModal) {
+                    logoutModal.style.display = 'none';
+                }
             });
-        }
-    });
+        });
+    }
+
+    // Close modal when clicking outside modal content
+    if (logoutModal) {
+        logoutModal.addEventListener('click', function (e) {
+            if (e.target === logoutModal) { // Clicked on the backdrop (outside modal content)
+                logoutModal.style.display = 'none';
+            }
+        });
+    }
 
     // User authentication monitoring
     onAuthStateChanged(auth, async (user) => {
@@ -72,7 +106,7 @@ if (isProfilePage) {
                     document.getElementById('userEmail').textContent = data.EmailAdd || user.email || "No email";
                     document.getElementById('EmailAdd').value = user.email || data.EmailAdd || "";
                     document.getElementById('EmailAdd').disabled = true;
-                    document.getElementById('EmailAdd').classList.add('disabled-field'); 
+                    document.getElementById('EmailAdd').classList.add('disabled-field');
 
                     // Load profile picture if available
                     if (data.ProfilePicture) {

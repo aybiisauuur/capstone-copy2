@@ -78,6 +78,18 @@
     </div>
   </div>
 
+  <!-- logout modal -->
+  <div id="logout-modal" class="modal">
+    <div class="modal-content">
+      <h2>Logout</h2>
+      <p>Are you sure you want to logout?</p>
+      <div class="modal-buttons">
+        <button class="modal-button back-button">Back</button>
+        <button class="modal-button logout-button">Logout</button>
+      </div>
+    </div>
+  </div>
+
   <footer class="app-footer">
     <nav class="footer-nav">
       <ul class="nav-list">
@@ -177,7 +189,7 @@
         phraseData.categories.forEach((category) => {
           category.phrases.forEach((phrase) => {
             allPhraseCards += `
-          <div class="phrase-card" data-video="${phrase.video}">
+          <div class="phrase-card animate__animated animate__fadeInRight" data-video="${phrase.video}">
               <div class="video-thumbnail" style="background-image: url('${phrase.video_thumbnail || phrase.image
               }')">
                   ${phrase.video
@@ -301,12 +313,30 @@
       // Logout functionality
       $("#logoutBtn").click(function (e) {
         e.preventDefault();
-        if (confirm("Are you sure you want to logout?")) {
-          signOut(auth).then(() => {
-            window.location.href = "login.html";
-          }).catch((error) => {
-            console.error("Logout error:", error);
-          });
+
+        // Show the custom modal
+        $('#logout-modal').css('display', 'block');
+      });
+
+      // When user clicks back button
+      $('.back-button').click(function () {
+        $('#logout-modal').css('display', 'none');
+      });
+
+      // When user confirms logout
+      $('.logout-button').click(function () {
+        signOut(auth).then(() => {
+          window.location.href = "login.html";
+        }).catch((error) => {
+          console.error("Logout error:", error);
+          $('#logout-modal').css('display', 'none');
+        });
+      });
+
+      // Close modal when clicking outside of it (optional)
+      $(window).click(function (e) {
+        if (e.target === document.getElementById('logout-modal')) {
+          $('#logout-modal').css('display', 'none');
         }
       });
 
@@ -318,18 +348,6 @@
         .blur(function () {
           $(".search-box").css("border-color", "#000");
         });
-
-      // Recent modules handling
-      $(document).on("click", ".recent-item", function () {
-        const moduleName = $(this).find("span").text();
-        if (!recentModules.includes(moduleName)) {
-          recentModules.unshift(moduleName);
-          if (recentModules.length > 5) {
-            recentModules.pop();
-          }
-          updateRecentsList();
-        }
-      });
 
       // Profile dropdown functionality
       $("#profileBtn").on("click", function (e) {
@@ -347,23 +365,6 @@
         e.stopPropagation();
       });
       This
-
-      function updateRecentsList() {
-        const recentHTML = `
-      <h2 class="recent-header">Recents</h2>
-      ${recentModules
-            .map(
-              (module) => `
-          <div class="recent-item" tabindex="0" role="button">
-              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4a2568b9bcbeee7c939b9432fd286536999385b724f06eefb85f65f0cbb2af57?placeholderIfAbsent=true&apiKey=ee1a9a673f2d4dc29299c2e9209fb768" alt="" class="nav-icon" aria-hidden="true">
-              <span>${module}</span>
-          </div>
-      `
-            )
-            .join("")}
-    `;
-        $(".recent-section").html(recentHTML);
-      }
     });
 
     // Add the image icon
