@@ -352,7 +352,7 @@ function init() {
 function startQuiz() {
     // Show loading spinner
     if (spinner) spinner.style.display = 'flex';
-    
+
     // Hide questions temporarily
     document.getElementById('questions').style.display = 'none';
     document.querySelector('.progress').style.display = 'none';
@@ -362,7 +362,7 @@ function startQuiz() {
 
     setTimeout(() => {
         questions = [...questionsData];
-        
+
         if (config.shuffleQuestions) {
             questions = shuffleArray(questions).slice(0, config.totalQuestions);
         } else {
@@ -373,7 +373,7 @@ function startQuiz() {
         showQuestion(currentQuestionIndex);
         initializeProgressBar();
         nextButton.disabled = true;
-        
+
         // Hide spinner when done
         if (spinner) spinner.style.display = 'none';
     }, 800);
@@ -409,12 +409,12 @@ function initializeProgressBar() {
 function renderQuestions() {
     const container = document.getElementById('questions');
     container.innerHTML = '';
-    
+
     questions.forEach((question, index) => {
         const questionElement = createQuestionElement(question, index);
         container.appendChild(questionElement);
     });
-    
+
     // Show questions again
     container.style.display = 'block';
     progressText.style.display = 'block';
@@ -536,11 +536,17 @@ function toggleFlashcard(index) {
         // Hide caption initially
         if (caption) caption.style.display = 'none';
 
+        // Show Next button but keep it disabled initially
+        if (nextButton) {
+            nextButton.style.display = 'block'; // or whatever display value it should have
+            nextButton.disabled = true;
+        }
+
         if (video) {
             video.currentTime = 0;
             video.play().catch(e => console.log("Video play failed:", e));
 
-            // Show caption and Next button when video ends
+            // Show caption and enable Next button when video ends
             video.onended = () => {
                 if (caption) {
                     caption.style.display = 'block';
@@ -549,21 +555,24 @@ function toggleFlashcard(index) {
                         caption.classList.add('show');
                     }, 10); // Tiny delay ensures CSS applies correctly
                 }
-                // Show Next button only after video ends
                 if (nextButton) {
-                    nextButton.style.display = 'block';
                     nextButton.disabled = false;
                 }
             };
         }
 
-        // Show controls when flipped (but keep Next button hidden initially)
+        // Show controls when flipped
         if (controls) controls.style.display = 'flex';
     } else {
-        // Hide caption, controls, and Next button when unflipped
+        // Hide caption and controls when unflipped
         if (caption) caption.style.display = 'none';
         if (controls) controls.style.display = 'none';
-        if (nextButton) nextButton.style.display = 'none';
+
+        // Hide Next button when unflipped
+        if (nextButton) {
+            nextButton.style.display = 'none';
+            nextButton.disabled = true; // Also disable it for next use
+        }
 
         if (video) {
             video.pause();

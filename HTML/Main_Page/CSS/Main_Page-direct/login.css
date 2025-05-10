@@ -10,45 +10,66 @@
 
 body {
     font-family: 'Josefin Sans', sans-serif;
-    background: #fff;
+    background-color: #F8F9FF;
     min-height: 100vh;
     margin: 0;
 }
 
 .app-header {
-    background-color: var(--header-bg);
-    border-top: 2px solid var(--border-color);
+    background-color: #004AB3;
     padding: 15px 20px;
     text-align: center;
-}
-
-.app-header {
-    background-color: rgba(217, 217, 217, 0.4);
-    border-top: 2px solid #575757;
-    padding: 15px 20px;
-    text-align: center;
-}
-
+  }
+  
 .app-title {
-    color: #000;
+    color: #ffffff;
     font-size: 30px;
     font-weight: 400;
     margin: 0;
+    font: 500 30px 'Josefin Sans', sans-serif;
+}
+  
+.form-container {
+    max-width: 650px; /* Reduced from 800px */
+    margin: 20px auto;
+    background: white;
+    padding: 30px 25px; /* Adjusted padding */
+    border-radius: 10px;
+    box-shadow: 0 0 20px #004AB3;
 }
 
+
+/* Add these new styles */
 .intro-text-container {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 78px;
+    padding-bottom: 30px;
+}
+
+.logo-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.site-logo {
+    height: 8vw; /* Changed from fixed px to viewport units */
+    max-height: 90px; /* Maximum size */
+    width: auto;
 }
 
 .intro-text {
     color: var(--primary-color);
-    font-size: 75px;
+    font-size: 5vw; /* Changed from fixed px to viewport units */
+    margin: 0;
+    line-height: 1;
 }
 
 .search-container,
 .password-container,
 .repassword-container {
-    padding: 10px 0;
+    padding: 10px 0; /* Reduced from 10px */
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -97,7 +118,7 @@ body {
     flex-direction: column;
     align-items: center;
     max-width: 100%;
-    padding: 40px;
+    padding: 15px 0;
 }
 
 .Sign_In-card {
@@ -141,13 +162,95 @@ body {
 .link-container a {
     font-family: 'Josefin Sans', sans-serif;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 20px;
     color: var(--primary-color);
-    margin: 0 8px;
-    display: block; /* Make each link appear on a separate line */
+    margin: 8px 0; /* Changed to add vertical spacing */
+    display: block;
+    padding: 2px 0; /* Added padding */
 }
+
 
 .link-container a:hover {
     text-decoration: underline;
+    color: #003882; /* Slightly darker shade for hover */
+    transition: color 0.2s ease;
 }
 
+@media (max-width: 768px) {
+    .form-container {
+        padding: 25px 20px;
+        margin: 15px auto;
+    }
+    
+    .input-wrapper {
+        padding: 10px 12px;
+    }
+    
+    .intro-text {
+        font-size: 5vw;
+    }
+    
+    .site-logo {
+        height: 10vw;
+    }
+    
+    .text-input,
+    .search-input,
+    .password-input {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        padding: 20px 15px;
+        margin: 10px auto;
+        border-radius: 8px;
+    }
+    
+    .input-wrapper {
+        padding: 8px 10px;
+        border-radius: 8px;
+    }
+    
+    .intro-text {
+        font-size: 7vw;
+    }
+    
+    .site-logo {
+        height: 12vw;
+    }
+    
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .Sign_In-card {
+        padding: 15px;
+        max-width: 280px;
+    }
+    
+    .Sign_In-title {
+        font-size: 18px;
+    }
+    
+    .link-container a {
+        font-size: 16px;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 360px) {
+    .form-container {
+        padding: 15px 10px;
+    }
+    
+    .intro-text {
+        font-size: 8vw;
+    }
+    
+    .logo-title-wrapper {
+        gap: 8px;
+    }
+}

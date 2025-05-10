@@ -465,12 +465,46 @@ function loadQuestion() {
 
 function confirmFinalAnswer() {
     if (!selectedOption) return;
-    
+
+    // Get all option elements
+    const options = document.querySelectorAll('.video-option');
+    const question = shuffledQuestions[currentQuestion];
+
+    // 1. Remove 'selected' class and mark as correct/incorrect
     selectedOption.element.classList.remove('selected');
     selectedOption.element.classList.add(selectedOption.correct ? 'correct' : 'incorrect');
-    progressStatus[currentQuestion] = selectedOption.correct;
-    score[currentQuestion] = selectedOption.correct; // Update score array
 
+    // 2. Find and highlight the correct answer (if wrong was selected)
+    if (!selectedOption.correct) {
+        question.options.forEach((option, index) => {
+            if (option === question.correct) {
+                options[index].classList.add('correct');
+            }
+        });
+    }
+
+    // 3. Play the correct video (regardless of user's choice)
+    question.options.forEach((option, index) => {
+        if (option === question.correct) {
+            const correctVideo = options[index].querySelector('video');
+            if (correctVideo) {
+                // Pause all videos first
+                document.querySelectorAll('.video-option video').forEach(vid => vid.pause());
+
+                // Play correct video
+                correctVideo.currentTime = 0;
+                correctVideo.play().catch(e => console.log("Video play error:", e));
+            }
+        }
+    });
+
+    // 4. Lock all options to prevent further interaction
+    options.forEach(opt => opt.classList.add('locked'));
+
+    progressStatus[currentQuestion] = selectedOption.correct;
+    score[currentQuestion] = selectedOption.correct;
+
+    // Disable all options
     document.querySelectorAll('.video-option').forEach(opt => {
         opt.style.pointerEvents = 'none';
     });
@@ -484,9 +518,9 @@ function confirmFinalAnswer() {
     // Display new feedback message
     const feedbackText = document.createElement('div');
     feedbackText.id = 'feedbackText';
-    feedbackText.textContent = selectedOption.correct 
-        ? (Math.random() < 0.5 ? 'Correct! Good job!' : 'Correct Answer!') 
-        : 'Wrong answer, sorry!' ;
+    feedbackText.textContent = selectedOption.correct
+        ? (Math.random() < 0.5 ? 'Correct! Good job!' : 'Correct Answer!')
+        : 'Wrong answer, here is the correct sign:';
     feedbackText.className = selectedOption.correct ? 'feedback-correct' : 'feedback-wrong';
     questionText.parentNode.insertBefore(feedbackText, questionText.nextSibling);
 
