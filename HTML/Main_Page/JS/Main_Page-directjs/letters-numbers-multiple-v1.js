@@ -1,3 +1,5 @@
+import runGemini from './greetings-mchoice-v2.js';
+
 // Letters A-M and Numbers 1-16
 const allQuestions = [
     {//A
@@ -697,9 +699,6 @@ const allQuestions = [
     },
 ];
 
-const OPENAI_API_KEY = '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';
-const OPENAI_API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
-
 // DOM Elements
 const quizContainer = document.getElementById('quiz-container');
 const loadingElement = document.getElementById('loading');
@@ -744,7 +743,7 @@ function initializeProgressBar() {
     questions.forEach((question, index) => {
         const segment = document.createElement('div');
         segment.className = 'progress-segment';
-
+        
         if (index < currentQuestionIndex) {
             // Check if the stored option has correct: true
             const userAnswer = userAnswers[index];
@@ -753,7 +752,7 @@ function initializeProgressBar() {
         } else if (index === currentQuestionIndex) {
             segment.classList.add('current');
         }
-
+        
         progressBar.appendChild(segment);
     });
 }
@@ -764,33 +763,9 @@ function startQuiz() {
     quizContainer.style.display = 'none';
 
     setTimeout(() => {
-        // Shuffle all questions and select first 15
+        // Shuffle all questions and select first 8
         const shuffledQuestions = [...allQuestions].sort(() => Math.random() - 0.5);
-        questions = shuffledQuestions.slice(0, 15);
-
-        // Shuffle options for each selected question while preserving correct answer
-        questions = questions.map(question => {
-            // Find correct option
-            const correctOption = question.options.find(opt => opt.correct);
-            // Get all incorrect options
-            const incorrectOptions = question.options.filter(opt => !opt.correct);
-            // Shuffle incorrect options
-            const shuffledIncorrect = [...incorrectOptions].sort(() => Math.random() - 0.5);
-            // Random position for correct answer (0 to length of shuffled array)
-            const correctPosition = Math.floor(Math.random() * (shuffledIncorrect.length + 1));
-
-            // Insert correct answer at random position
-            const finalOptions = [
-                ...shuffledIncorrect.slice(0, correctPosition),
-                correctOption,
-                ...shuffledIncorrect.slice(correctPosition)
-            ];
-
-            return {
-                ...question,
-                options: finalOptions
-            };
-        });
+        questions = shuffledQuestions.slice(0, 8);
 
         currentQuestionIndex = 0;
         score = 0;
@@ -819,7 +794,7 @@ function showQuestion() {
     }
 
     const question = questions[currentQuestionIndex];
-    questionText.textContent = "What is the letter or number shown above?";
+    questionText.textContent = "What is the sign language shown above?"; 
     signVideo.src = question.video;
     signVideo.load();
 
@@ -827,18 +802,18 @@ function showQuestion() {
     question.options.forEach((option) => {
         const optionElement = document.createElement('div');
         optionElement.classList.add('option');
-
+        
         const choiceText = document.createElement('p');
         choiceText.textContent = option.choice;
         optionElement.appendChild(choiceText);
-
+        
         optionElement.dataset.correct = option.correct;
         optionElement.addEventListener('click', () => handleOptionClick(optionElement, option));
         optionsContainer.appendChild(optionElement);
     });
 
     questionCounter.textContent = `${currentQuestionIndex + 1}/${questions.length}`;
-
+    
     // Fix this line - was using currentQuestion instead of currentQuestionIndex
     initializeProgressBar(); // This will update the progress bar correctly
 
@@ -849,37 +824,17 @@ function showQuestion() {
     optionsContainer.style.pointerEvents = 'auto';
 }
 
-async function getAIFeedback(wrongDesc, correctDesc, context) {
-    console.log('Sending AI request...', { wrongDesc, correctDesc, context });
-    try {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer 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'
-            },
-            body: JSON.stringify({
-                model: 'gpt-4',
-                messages: [
-                    {
-                        role: 'system',
-                        content: 'You are an expert sign language tutor giving constructive feedback.'
-                    },
-                    {
-                        role: 'user',
-                        content: `I chose: '${wrongDesc}', but the correct sign was: '${correctDesc}' in the context of: '${context}'. Help me understand why.`
-                    }
-                ],
-                temperature: 0.7
-            })
-        });
+async function getAIFeedback(mistakenSign, correctSign, context = "sign language recognition") {
+    const userQuery = `Context: ${context}
+Mistaken Sign: ${mistakenSign}
+Correct Sign: ${correctSign}`;
 
-        const data = await response.json();
-        console.log('AI response:', data);
-        return data?.choices?.[0]?.message?.content || '🤖 No response from the AI.';
+    try {
+        const feedback = await runGemini(userQuery);
+        return feedback;
     } catch (error) {
-        console.error('OpenAI feedback error:', error);
-        return '⚠️ Could not connect to OpenAI. Please check your internet or API key.';
+        console.error("Error from Gemini:", error);
+        return "Sorry, I couldn't generate feedback at this time.";
     }
 }
 
@@ -900,16 +855,16 @@ async function handleOptionClick(optionElement, option) {
 
     userAnswers[currentQuestionIndex] = option;
     updateProgress(isCorrect);
-
-    // Show basic feedback immediately
-    resultElement.textContent = isCorrect ?
-        `✅ Correct! ${option.feedback}` :
-        `❌ Incorrect. ${option.feedback}`;
-    resultElement.className = isCorrect ? 'result correct' : 'result wrong';
-
+    
+    if (resultElement) {
+        resultElement.textContent = isCorrect ? 
+            `✅ Correct! ${option.feedback}` : 
+            `❌ Incorrect. ${option.feedback}`;
+      }
+      
     // Highlight selected option
     optionElement.classList.add(isCorrect ? 'correct' : 'wrong');
-
+    
     // Highlight correct answer if wrong was selected
     if (!isCorrect) {
         const correctOptionElement = Array.from(optionsContainer.children).find(
@@ -918,20 +873,20 @@ async function handleOptionClick(optionElement, option) {
         if (correctOptionElement) {
             correctOptionElement.classList.add('correct');
         }
-
+        
         // Get AI feedback for wrong answers
         try {
             const aiFeedback = await getAIFeedback(
-                option.imageDescription,
+                option.imageDescription, 
                 correctOption.imageDescription,
                 question.context || "sign language recognition"
             );
-
+            
             // Create a new element for AI feedback
             const aiFeedbackElement = document.createElement('div');
             aiFeedbackElement.className = 'ai-feedback';
             aiFeedbackElement.innerHTML = `<strong>AI Feedback:</strong> ${aiFeedback}`;
-
+            
             // Append after the result
             resultElement.appendChild(document.createElement('br'));
             resultElement.appendChild(aiFeedbackElement);

@@ -1,3 +1,5 @@
+import runGemini from './greetings-mchoice-v2.js';
+
 const allQuestions = [
     {//No
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F60e52d6f85a8423682905d3b3815ce55%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=60e52d6f85a8423682905d3b3815ce55&alt=media&optimized=true",
@@ -166,8 +168,7 @@ const allQuestions = [
     },
 ];
 
-const OPENAI_API_KEY = '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';
-const OPENAI_API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
+
 
 // DOM Elements
 const quizContainer = document.getElementById('quiz-container');
@@ -229,29 +230,14 @@ function initializeProgressBar() {
 
 // Start a new quiz
 function startQuiz() {
-    // Shuffle questions and options in one operation
-    questions = [...allQuestions]
-        .sort(() => Math.random() - 0.5) // Shuffle questions
-        .map(question => {
-            // Shuffle options while preserving correct answer
-            const correctOption = question.options.find(opt => opt.correct);
-            const incorrectOptions = question.options.filter(opt => !opt.correct);
-            const randomPosition = Math.floor(Math.random() * (incorrectOptions.length + 1));
-            
-            return {
-                ...question,
-                options: [
-                    ...incorrectOptions.slice(0, randomPosition),
-                    correctOption,
-                    ...incorrectOptions.slice(randomPosition)
-                ]
-            };
-        });
-
     loadingElement.style.display = 'block';
     quizContainer.style.display = 'none';
 
     setTimeout(() => {
+        // Shuffle all questions and select first 8
+        const shuffledQuestions = [...allQuestions].sort(() => Math.random() - 0.5);
+        questions = shuffledQuestions.slice(0, 8);
+
         currentQuestionIndex = 0;
         score = 0;
         userAnswers = new Array(questions.length).fill(null);
@@ -309,37 +295,17 @@ function showQuestion() {
     optionsContainer.style.pointerEvents = 'auto';
 }
 
-async function getAIFeedback(wrongDesc, correctDesc, context) {
-    console.log('Sending AI request...', { wrongDesc, correctDesc, context });
-    try {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer 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'
-            },
-            body: JSON.stringify({
-                model: 'gpt-4',
-                messages: [
-                    {
-                        role: 'system',
-                        content: 'You are an expert sign language tutor giving constructive feedback.'
-                    },
-                    {
-                        role: 'user',
-                        content: `I chose: '${wrongDesc}', but the correct sign was: '${correctDesc}' in the context of: '${context}'. Help me understand why.`
-                    }
-                ],
-                temperature: 0.7
-            })
-        });
+async function getAIFeedback(mistakenSign, correctSign, context = "sign language recognition") {
+    const userQuery = `Context: ${context}
+Mistaken Sign: ${mistakenSign}
+Correct Sign: ${correctSign}`;
 
-        const data = await response.json();
-        console.log('AI response:', data);
-        return data?.choices?.[0]?.message?.content || '🤖 No response from the AI.';
+    try {
+        const feedback = await runGemini(userQuery);
+        return feedback;
     } catch (error) {
-        console.error('OpenAI feedback error:', error);
-        return '⚠️ Could not connect to OpenAI. Please check your internet or API key.';
+        console.error("Error from Gemini:", error);
+        return "Sorry, I couldn't generate feedback at this time.";
     }
 }
 
@@ -361,12 +327,12 @@ async function handleOptionClick(optionElement, option) {
     userAnswers[currentQuestionIndex] = option;
     updateProgress(isCorrect);
     
-    // Show basic feedback immediately
-    resultElement.textContent = isCorrect ? 
-        `✅ Correct! ${option.feedback}` : 
-        `❌ Incorrect. ${option.feedback}`;
-    resultElement.className = isCorrect ? 'result correct' : 'result wrong';
-    
+    if (resultElement) {
+        resultElement.textContent = isCorrect ? 
+            `✅ Correct! ${option.feedback}` : 
+            `❌ Incorrect. ${option.feedback}`;
+      }
+      
     // Highlight selected option
     optionElement.classList.add(isCorrect ? 'correct' : 'wrong');
     

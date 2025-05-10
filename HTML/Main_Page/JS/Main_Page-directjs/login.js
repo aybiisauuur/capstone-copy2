@@ -36,7 +36,7 @@ signup.addEventListener("click", function (event) {
     .then((userCredential) => {
       // Signed in 
       const user = userCredential.user;
-      alert("Logging in...");
+      // alert("Logging in..."); //avoid too many alerts. distracting. dapat deretso at error lang mag aaleert
       window.location.href = "index.html";
     })
     .catch((error) => {

@@ -1,3 +1,5 @@
+import runGemini from './greetings-mchoice-v2.js';
+
 const allQuestions = [
     {//goodMorning
         video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fdaaf40ef88e84bb6b94952f07a98a26c%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=daaf40ef88e84bb6b94952f07a98a26c&alt=media&optimized=true",
@@ -315,9 +317,6 @@ const allQuestions = [
     },
 ];
 
-const OPENAI_API_KEY = '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';
-const OPENAI_API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
-
 // DOM Elements
 const quizContainer = document.getElementById('quiz-container');
 const loadingElement = document.getElementById('loading');
@@ -443,73 +442,19 @@ function showQuestion() {
     optionsContainer.style.pointerEvents = 'auto';
 }
 
-// Replace the OpenAI functions with this Hugging Face version
-const HF_API_KEY = 'hf_tPYbQioYUJSoUYbaKibSRWUiAqNwqsXdULyour-huggingface-api-key';
-const HF_API_ENDINGPOINT = 'https://api-inference.huggingface.com/models/mistralai/Mistral-7B-Instruct-v0.2';
-
-async function getAIFeedback(wrongDesc, correctDesc, context) {
-    const prompt = `[INST] As a Filipino Sign Language tutor, explain this error:
-    
-Context: ${context}
-Mistaken Sign: ${wrongDesc}
-Correct Answer: ${correctDesc}
-
-Provide feedback that:
-1. Explains the difference clearly
-2. Gives improvement tips
-3. Uses simple language
-4. Add relevant emojis [/INST]`;
+async function getAIFeedback(mistakenSign, correctSign, context = "sign language recognition") {
+    const userQuery = `Context: ${context}
+Mistaken Sign: ${mistakenSign}
+Correct Sign: ${correctSign}`;
 
     try {
-        const response = await fetch(HF_API_ENDINGPOINT, {
-            method: 'POST',
-            headers: {
-                'Authorization': 'Bearer ${HF_API_KEY}',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                inputs: prompt,
-                parameters: {
-                    max_new_tokens: 50,
-                    temperature: 0.7,
-                    return_full_text: false
-                }
-            })
-        });
-
-        // Handle model loading wait time
-        if (response.status === 503) {
-            const data = await response.json();
-            if (data.estimated_time) {
-                await new Promise(resolve => setTimeout(resolve, data.estimated_time * 1000));
-                return getAIFeedback(wrongDesc, correctDesc, context); // Retry
-            }
-            return '⚠️ Model is currently loading - please try again later';
-        }
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            return `⚠️ API Error: ${errorData.error || error.Data.message || 'Unknown error'}`;
-        }
-
-        const result = await response.json();
-        
-        // Handle different response formats
-        if (result.error) {
-            return `⚠️ Error: ${result.error}`;
-        }
-        if (result[0]?.generated_text) {
-            return result[0].generated_text;
-        }
-        return '🤖 AI response format unexpected';
-        
+        const feedback = await runGemini(userQuery);
+        return feedback;
     } catch (error) {
-        console.error('Hugging Face error:', error);
-        return '⚠️ Connection error - try again in a moment';
+        console.error("Error from Gemini:", error);
+        return "Sorry, I couldn't generate feedback at this time.";
     }
 }
-
-
 
 async function handleOptionClick(optionElement, option) {
     if (answered) return;
@@ -529,12 +474,12 @@ async function handleOptionClick(optionElement, option) {
     userAnswers[currentQuestionIndex] = option;
     updateProgress(isCorrect);
     
-    // Show basic feedback immediately
-    resultElement.textContent = isCorrect ? 
-        `✅ Correct! ${option.feedback}` : 
-        `❌ Incorrect. ${option.feedback}`;
-    resultElement.className = isCorrect ? 'result correct' : 'result wrong';
-    
+    if (resultElement) {
+        resultElement.textContent = isCorrect ? 
+            `✅ Correct! ${option.feedback}` : 
+            `❌ Incorrect. ${option.feedback}`;
+      }
+      
     // Highlight selected option
     optionElement.classList.add(isCorrect ? 'correct' : 'wrong');
     

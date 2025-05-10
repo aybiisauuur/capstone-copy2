@@ -1,3 +1,5 @@
+import runGemini from './greetings-mchoice-v2.js';
+
 const allQuestions = [
     // A: common words
     {//change, correct, update
@@ -656,9 +658,6 @@ const allQuestions = [
     },
 ];
 
-const OPENAI_API_KEY = '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';
-const OPENAI_API_ENDPOINT = 'https://api.openai.com/v1/chat/completions';
-
 // DOM Elements
 const quizContainer = document.getElementById('quiz-container');
 const loadingElement = document.getElementById('loading');
@@ -808,37 +807,17 @@ function showQuestion() {
     optionsContainer.style.pointerEvents = 'auto';
 }
 
-async function getAIFeedback(wrongDesc, correctDesc, context) {
-    console.log('Sending AI request...', { wrongDesc, correctDesc, context });
-    try {
-        const response = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer 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'
-            },
-            body: JSON.stringify({
-                model: 'gpt-4',
-                messages: [
-                    {
-                        role: 'system',
-                        content: 'You are an expert sign language tutor giving constructive feedback.'
-                    },
-                    {
-                        role: 'user',
-                        content: `I chose: '${wrongDesc}', but the correct sign was: '${correctDesc}' in the context of: '${context}'. Help me understand why.`
-                    }
-                ],
-                temperature: 0.7
-            })
-        });
+async function getAIFeedback(mistakenSign, correctSign, context = "sign language recognition") {
+    const userQuery = `Context: ${context}
+Mistaken Sign: ${mistakenSign}
+Correct Sign: ${correctSign}`;
 
-        const data = await response.json();
-        console.log('AI response:', data);
-        return data?.choices?.[0]?.message?.content || '🤖 No response from the AI.';
+    try {
+        const feedback = await runGemini(userQuery);
+        return feedback;
     } catch (error) {
-        console.error('OpenAI feedback error:', error);
-        return '⚠️ Could not connect to OpenAI. Please check your internet or API key.';
+        console.error("Error from Gemini:", error);
+        return "Sorry, I couldn't generate feedback at this time.";
     }
 }
 

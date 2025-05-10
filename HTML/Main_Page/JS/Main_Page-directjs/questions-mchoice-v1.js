@@ -155,6 +155,8 @@ let selectedOption = null;
 let answerSubmitted = false;
 let userAnswers = [];
 
+let answered = []
+
 // Initialize the app
 function init() {
     // Start the quiz immediately
@@ -387,6 +389,20 @@ tryAgainBtn.addEventListener('click', () => {
     resultsModal.style.display = 'none';
     startQuiz(); // This will reshuffle questions and reset the quiz
 });
+
+async function getAIFeedback(mistakenSign, correctSign, context = "sign language recognition") {
+    const userQuery = `Context: ${context}
+Mistaken Sign: ${mistakenSign}
+Correct Sign: ${correctSign}`;
+
+    try {
+        const feedback = await runGemini(userQuery);
+        return feedback;
+    } catch (error) {
+        console.error("Error from Gemini:", error);
+        return "Sorry, I couldn't generate feedback at this time.";
+    }
+}
 
 // Start the app
 init();
