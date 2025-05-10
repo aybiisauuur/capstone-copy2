@@ -206,36 +206,42 @@ function loadQuestion() {
 
 function confirmFinalAnswer() {
     if (!selectedOption) return;
-    
-    // Remove selected class and add correct/incorrect class
+
+    // Get all option elements
+    const options = document.querySelectorAll('.video-option');
+    const question = shuffledQuestions[currentQuestion];
+
+    // 1. Remove 'selected' class and mark as correct/incorrect
     selectedOption.element.classList.remove('selected');
     selectedOption.element.classList.add(selectedOption.correct ? 'correct' : 'incorrect');
-    
-    // If answer is wrong, find and highlight the correct option
+
+    // 2. Find and highlight the correct answer (if wrong was selected)
     if (!selectedOption.correct) {
-        const question = shuffledQuestions[currentQuestion];
-        const correctOptionIndex = question.options.findIndex(option => option.correct);
-        const options = document.querySelectorAll('.video-option');
-        
-        if (correctOptionIndex !== -1 && options[correctOptionIndex]) {
-            const correctOptionElement = options[correctOptionIndex];
-            correctOptionElement.classList.add('correct');
-            
-            // Play the correct video
-            const correctVideo = correctOptionElement.querySelector('video');
+        question.options.forEach((option, index) => {
+            if (option === question.correct) {
+                options[index].classList.add('correct');
+            }
+        });
+    }
+
+    // 3. Play the correct video (regardless of user's choice)
+    question.options.forEach((option, index) => {
+        if (option === question.correct) {
+            const correctVideo = options[index].querySelector('video');
             if (correctVideo) {
-                // Pause all other videos first
-                document.querySelectorAll('.video-option video').forEach(video => {
-                    if (video !== correctVideo) video.pause();
-                });
-                
-                // Play the correct video
+                // Pause all videos first
+                document.querySelectorAll('.video-option video').forEach(vid => vid.pause());
+
+                // Play correct video
                 correctVideo.currentTime = 0;
-                correctVideo.play().catch(e => console.log("Video play failed:", e));
+                correctVideo.play().catch(e => console.log("Video play error:", e));
             }
         }
-    }
-    
+    });
+
+    // 4. Lock all options to prevent further interaction
+    options.forEach(opt => opt.classList.add('locked'));
+
     progressStatus[currentQuestion] = selectedOption.correct;
     score[currentQuestion] = selectedOption.correct;
 
@@ -253,8 +259,8 @@ function confirmFinalAnswer() {
     // Display new feedback message
     const feedbackText = document.createElement('div');
     feedbackText.id = 'feedbackText';
-    feedbackText.textContent = selectedOption.correct 
-        ? (Math.random() < 0.5 ? 'Correct! Good job!' : 'Correct Answer!') 
+    feedbackText.textContent = selectedOption.correct
+        ? (Math.random() < 0.5 ? 'Correct! Good job!' : 'Correct Answer!')
         : 'Wrong answer, here is the correct sign:';
     feedbackText.className = selectedOption.correct ? 'feedback-correct' : 'feedback-wrong';
     questionText.parentNode.insertBefore(feedbackText, questionText.nextSibling);
