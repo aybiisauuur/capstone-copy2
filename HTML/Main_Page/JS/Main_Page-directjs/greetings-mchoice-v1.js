@@ -301,17 +301,17 @@ const allQuestions = [
                 feedback: "The upward motion indicates 'Nice to meet you'🤗",
                 imageDescription: "Hands in front of the persons chin, palm facing each other moving fro and back",
             },
-            { 
-                choice: "You Are?", 
-                correct: false, 
+            {
+                choice: "You Are?",
+                correct: false,
             },
-            { 
-                choice: "See you later", 
-                correct: false, 
+            {
+                choice: "See you later",
+                correct: false,
             },
-            { 
+            {
                 choice: "Goodbye",
-                correct: false, 
+                correct: false,
             },
         ],
     },
@@ -361,7 +361,7 @@ function initializeProgressBar() {
     questions.forEach((question, index) => {
         const segment = document.createElement('div');
         segment.className = 'progress-segment';
-        
+
         if (index < currentQuestionIndex) {
             // Check if the stored option has correct: true
             const userAnswer = userAnswers[index];
@@ -370,7 +370,7 @@ function initializeProgressBar() {
         } else if (index === currentQuestionIndex) {
             segment.classList.add('current');
         }
-        
+
         progressBar.appendChild(segment);
     });
 }
@@ -412,7 +412,7 @@ function showQuestion() {
     }
 
     const question = questions[currentQuestionIndex];
-    questionText.textContent = "What is the sign language shown above?"; 
+    questionText.textContent = "What is the sign language shown above?";
     signVideo.src = question.video;
     signVideo.load();
 
@@ -420,18 +420,18 @@ function showQuestion() {
     question.options.forEach((option) => {
         const optionElement = document.createElement('div');
         optionElement.classList.add('option');
-        
+
         const choiceText = document.createElement('p');
         choiceText.textContent = option.choice;
         optionElement.appendChild(choiceText);
-        
+
         optionElement.dataset.correct = option.correct;
         optionElement.addEventListener('click', () => handleOptionClick(optionElement, option));
         optionsContainer.appendChild(optionElement);
     });
 
     questionCounter.textContent = `${currentQuestionIndex + 1}/${questions.length}`;
-    
+
     // Fix this line - was using currentQuestion instead of currentQuestionIndex
     initializeProgressBar(); // This will update the progress bar correctly
 
@@ -473,16 +473,16 @@ async function handleOptionClick(optionElement, option) {
 
     userAnswers[currentQuestionIndex] = option;
     updateProgress(isCorrect);
-    
+
     if (resultElement) {
-        resultElement.textContent = isCorrect ? 
-            `✅ Correct! ${option.feedback}` : 
+        resultElement.textContent = isCorrect ?
+            `✅ Correct! ${option.feedback}` :
             `❌ Incorrect. ${option.feedback}`;
-      }
-      
+    }
+
     // Highlight selected option
     optionElement.classList.add(isCorrect ? 'correct' : 'wrong');
-    
+
     // Highlight correct answer if wrong was selected
     if (!isCorrect) {
         const correctOptionElement = Array.from(optionsContainer.children).find(
@@ -491,25 +491,43 @@ async function handleOptionClick(optionElement, option) {
         if (correctOptionElement) {
             correctOptionElement.classList.add('correct');
         }
-        
+
+        // Create loading spinner for AI feedback
+        const aiLoadingSpinner = document.createElement('div');
+        aiLoadingSpinner.className = 'ai-loading-spinner';
+        aiLoadingSpinner.innerHTML = `
+            <div class="spinner"></div>
+            <span>Getting AI feedback...</span>
+        `;
+        resultElement.appendChild(document.createElement('br'));
+        resultElement.appendChild(aiLoadingSpinner);
+
         // Get AI feedback for wrong answers
         try {
             const aiFeedback = await getAIFeedback(
-                option.imageDescription, 
+                option.imageDescription,
                 correctOption.imageDescription,
                 question.context || "sign language recognition"
             );
-            
+
+            // Remove loading spinner
+            aiLoadingSpinner.remove();
+
             // Create a new element for AI feedback
             const aiFeedbackElement = document.createElement('div');
             aiFeedbackElement.className = 'ai-feedback';
             aiFeedbackElement.innerHTML = `<strong>AI Feedback:</strong> ${aiFeedback}`;
-            
+
             // Append after the result
-            resultElement.appendChild(document.createElement('br'));
             resultElement.appendChild(aiFeedbackElement);
         } catch (error) {
             console.error('Error getting AI feedback:', error);
+            // Remove loading spinner and show error message
+            aiLoadingSpinner.remove();
+            const errorElement = document.createElement('div');
+            errorElement.className = 'ai-feedback-error';
+            errorElement.textContent = "Couldn't load AI feedback. Please try again.";
+            resultElement.appendChild(errorElement);
         }
     }
 

@@ -375,6 +375,45 @@ button {
     border-left: 3px solid #6c757d;
 }
 
+/* AI Loading Spinner Styles */
+.ai-loading-spinner {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    color: #666;
+}
+
+.ai-loading-spinner .spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top-color: #4a6fa5;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.ai-feedback {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    border-left: 4px solid #4a6fa5;
+}
+
+.ai-feedback-error {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #fff3f3;
+    border-radius: 5px;
+    border-left: 4px solid #ff6b6b;
+    color: #d32f2f;
+}
+
 .initial-feedback {
     padding: 15px;
     border-radius: 8px;
