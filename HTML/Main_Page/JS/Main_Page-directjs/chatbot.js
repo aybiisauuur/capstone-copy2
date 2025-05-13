@@ -7,8 +7,9 @@ import {
   HarmBlockThreshold,
   HarmCategory,
 } from '@google/genai';
+require('dotenv').config();
 
-const ai = new GoogleGenAI({ apiKey: "AIzaSyC8vFlXCn2gNaxjxoTjwGcOSN57fiigmew" });
+//const ai = new GoogleGenAI({ apiKey: "AIzaSyC8vFlXCn2gNaxjxoTjwGcOSN57fiigmew" });
 
 async function main() {
   const ai = new GoogleGenAI({

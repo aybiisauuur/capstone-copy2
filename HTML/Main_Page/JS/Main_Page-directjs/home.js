@@ -35,6 +35,11 @@ $(document).ready(function () {
     let allPhraseCards = "";
     let recentModules = [];
 
+    //chatbot
+    async function sendMessage(){
+        
+    }
+
     // Load phrases from JSON
     $.getJSON("phrases.json")
         .done(function (data) {

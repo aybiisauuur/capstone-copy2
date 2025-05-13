@@ -4,5 +4,5 @@ docs/
 export.scss
 export/
 server.js
-
+.env
 

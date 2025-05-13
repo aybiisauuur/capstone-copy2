@@ -323,10 +323,11 @@ video {
 
 .main-content {
   display: flex;
+  flex-direction: row;
   gap: 30px;
   flex: 1;
   max-height: calc(100vh - 250px);
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding: 30px;
   box-sizing: border-box;
@@ -334,20 +335,109 @@ video {
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #004AAD rgba(0, 0, 0, 0.1);
-
-  /* Smooth scrolling for non-touch devices */
   scroll-behavior: smooth;
-
-  /* Modern flex layout with wrapping */
   flex-wrap: wrap;
   align-content: flex-start;
-
   position: relative;
   z-index: 1;
+  margin-top: 40px;
   margin-bottom: 80px;
 }
 
-/* Custom scrollbar for WebKit browsers */
+/* Welcome section styles */
+.welcome-container {
+  flex: 0 0 100%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.welcome-title {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-subtitle {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+}
+
+/* Digital art container */
+.digital-art-container {
+  flex: 1;
+  max-width: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+}
+
+.digital-art {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.digital-art:hover {
+  transform: scale(1.02);
+}
+
+/* Info panel container */
+.info-panel-container {
+  flex: 1;
+  max-width: 45%;
+  min-width: 300px;
+}
+
+/* Info panel with speech bubble effect */
+.info-panel {
+  flex: 1 1 70%;
+  background: rgba(255, 255, 255, 0.85);
+  margin: 15px;
+  padding: 20px 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: clamp(16px, 2vw, 22px);
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  max-width: 1000px;
+  min-width: 280px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  color: #333;
+  position: relative;
+}
+
+.info-panel:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.info-panel::after {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-right-color: rgba(255, 255, 255, 0.85);
+  border-left: 0;
+  transition: border-right-color 0.3s ease;
+}
+
+.info-panel:hover::after {
+  border-right-color: rgba(255, 255, 255, 0.95);
+}
+
+/* Custom scrollbar */
 .main-content::-webkit-scrollbar {
   width: 8px;
 }
@@ -362,43 +452,64 @@ video {
   border-radius: 10px;
 }
 
-.info-panel {
-  flex: 1 1 70%;
-  /* More flexible sizing */
-  background: rgba(255, 255, 255, 0.85);
-  /* Increased opacity for better readability */
-  margin: 15px;
-  padding: 20px 25px;
-  /* More balanced padding */
-  border-radius: 10px;
-  /* Smoother corners */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  /* Softer, more modern shadow */
-  font-size: clamp(20px, 2.5vw, 30px);
-  /* Responsive font sizing */
-  letter-spacing: 0.5px;
-  /* Slightly tighter letter spacing */
-  line-height: 1.3;
-  /* Better line spacing for readability */
-  max-width: 1000px;
-  min-width: 280px;
-  /* Prevent becoming too narrow */
-  backdrop-filter: blur(4px);
-  /* Subtle blur effect for modern look */
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  /* Light border for depth */
-  transition: all 0.3s ease;
-  /* Smooth transitions for hover effects */
-  color: #333;
-  /* Better contrast */
-  position: relative;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+    max-height: none;
+    overflow-y: visible;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+  }
+
+  .welcome-title {
+    font-size: 2rem;
+  }
+
+  .welcome-subtitle {
+    font-size: 1rem;
+  }
+
+  .digital-art-container,
+  .info-panel-container {
+    max-width: 100%;
+    min-width: auto;
+  }
+
+  .info-panel {
+    font-size: 16px;
+    margin: 15px 0;
+    max-width: 100%;
+  }
+
+  .info-panel::after {
+    left: 50%;
+    top: -20px;
+    transform: translateX(-50%);
+    border: 20px solid transparent;
+    border-bottom-color: rgba(255, 255, 255, 0.85);
+    border-top: 0;
+  }
+
+  .info-panel:hover::after {
+    border-bottom-color: rgba(255, 255, 255, 0.95);
+  }
 }
 
-/* Hover effects for better interactivity */
-.info-panel:hover {
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.95);
+@media (max-width: 480px) {
+  .main-content {
+    padding: 15px;
+    gap: 20px;
+  }
+
+  .welcome-title {
+    font-size: 1.8rem;
+  }
+
+  .info-panel {
+    padding: 15px 20px;
+  }
 }
 
 
@@ -422,7 +533,7 @@ video {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 #logout-modal-content {
@@ -433,7 +544,7 @@ video {
   width: 80%;
   max-width: 400px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .modal-buttons {
@@ -459,7 +570,7 @@ video {
 .back-button:hover {
   background-color: #d0d0d0;
   transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .logout-button {
@@ -470,7 +581,7 @@ video {
 .logout-button:hover {
   background-color: #d32f2f;
   transform: translateY(-1px);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .modal-button:hover {
@@ -541,8 +652,10 @@ video {
 .floating-chat-head {
   position: fixed;
   right: 20px;
-  top: 50%; /* Position at vertical center */
-  transform: translateY(-50%); /* Center vertically precisely */
+  top: 50%;
+  /* Position at vertical center */
+  transform: translateY(-50%);
+  /* Center vertically precisely */
   width: 60px;
   height: 60px;
   background-color: #004AB3;
@@ -554,7 +667,8 @@ video {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   z-index: 999;
   transition: all 0.3s ease;
-  border: 2px solid white; /* Makes it stand out from the background */
+  border: 2px solid white;
+  /* Makes it stand out from the background */
 }
 
 /* Responsive adjustments */
@@ -564,6 +678,7 @@ video {
     height: 50px;
     right: 10px;
   }
+
   .floating-chat-head img {
     width: 30px;
     height: 30px;
@@ -572,7 +687,8 @@ video {
 
 /* Keep the rest of your existing chat head styles */
 .floating-chat-head:hover {
-  transform: translateY(-50%) scale(1.1); /* Maintain vertical centering while scaling */
+  transform: translateY(-50%) scale(1.1);
+  /* Maintain vertical centering while scaling */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -583,9 +699,17 @@ video {
 }
 
 @keyframes pulse {
-  0% { transform: translateY(-50%) scale(1); }
-  50% { transform: translateY(-50%) scale(1.1); }
-  100% { transform: translateY(-50%) scale(1); }
+  0% {
+    transform: translateY(-50%) scale(1);
+  }
+
+  50% {
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
 }
 
 .floating-chat-head.pulse {
@@ -606,7 +730,7 @@ video {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.7);
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .chatbot-modal-content {
