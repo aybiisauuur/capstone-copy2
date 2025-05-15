@@ -1,5 +1,6 @@
 // Pre-configured FSL videos and AI-generated questions
-const FSL_QUIZ_DATA = [
+import runGemini from './greetings-mchoice-v2.js';
+const allQuestions = [
     {
         videoUrl: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Faea548e6c24a4551a40b0a9dc8fe373d%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=aea548e6c24a4551a40b0a9dc8fe373d&alt=media&optimized=true",
         sign: "What?",
@@ -128,7 +129,7 @@ const FSL_QUIZ_DATA = [
     },
 ];
 
-// DOM elements
+// DOM Elements
 const quizContainer = document.getElementById('quiz-container');
 const loadingElement = document.getElementById('loading');
 const loadingText = document.getElementById('loading-text');
@@ -154,8 +155,8 @@ let score = 0;
 let selectedOption = null;
 let answerSubmitted = false;
 let userAnswers = [];
-
-let answered = []
+let answered = false;
+let retryQuestions = [];
 
 // Initialize the app
 function init() {
@@ -173,9 +174,9 @@ function initializeProgressBar() {
         segment.className = 'progress-segment';
         
         if (index < currentQuestionIndex) {
-            // Check if the user's answer was correct
+            // Check if the stored option has correct: true
             const userAnswer = userAnswers[index];
-            const isCorrect = userAnswer === questions[index].correctAnswer;
+            const isCorrect = userAnswer ? userAnswer.correct : false;
             segment.classList.add(isCorrect ? 'correct' : 'incorrect');
         } else if (index === currentQuestionIndex) {
             segment.classList.add('current');
@@ -190,15 +191,40 @@ function startQuiz() {
     loadingElement.style.display = 'block';
     quizContainer.style.display = 'none';
 
-    // Simulate loading time
     setTimeout(() => {
-        // Shuffle all questions and select first 10
-        const shuffledQuestions = [...FSL_QUIZ_DATA].sort(() => Math.random() - 0.5);
-        questions = shuffledQuestions.slice(0, 10); // Take first 10 from shuffled array
-        
+        // Shuffle all questions and select first 15
+        const shuffledQuestions = [...allQuestions].sort(() => Math.random() - 0.5);
+        questions = shuffledQuestions.slice(0, 15);
+
+        // Shuffle options for each selected question while preserving correct answer
+        questions = questions.map(question => {
+            const correctAnswer = question.correctAnswer;
+            const options = [...question.options];
+            
+            // Shuffle options
+            for (let i = options.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [options[i], options[j]] = [options[j], options[i]];
+            }
+            
+            return {
+                ...question,
+                options: options.map(opt => ({
+                    choice: opt,
+                    correct: opt === correctAnswer,
+                    feedback: opt === correctAnswer ? 
+                        `The correct answer is ${correctAnswer}.` : 
+                        `The correct answer was ${correctAnswer}.`
+                }))
+            };
+        });
+
         currentQuestionIndex = 0;
         score = 0;
         userAnswers = new Array(questions.length).fill(null);
+        answered = false;
+
+        initializeProgressBar();
 
         loadingElement.style.display = 'none';
         quizContainer.style.display = 'block';
@@ -207,82 +233,39 @@ function startQuiz() {
     }, 800);
 }
 
-function updateProgress() {
+function updateProgress(isCorrect) {
     const segments = progressBar.querySelectorAll('.progress-segment');
     const currentSegment = segments[currentQuestionIndex];
-    
-    // Remove any existing classes
-    currentSegment.classList.remove('current', 'correct', 'incorrect');
-    
-    // Check if the user's answer was correct
-    const userAnswer = userAnswers[currentQuestionIndex];
-    const isCorrect = userAnswer === questions[currentQuestionIndex].correctAnswer;
-    
-    // Add the appropriate class
     currentSegment.classList.add(isCorrect ? 'correct' : 'incorrect');
 }
 
-// Display the current question
 function showQuestion() {
     if (currentQuestionIndex >= questions.length) {
-        // Quiz finished
         endQuiz();
         return;
     }
 
     const question = questions[currentQuestionIndex];
-    questionText.textContent = question.question;
+    questionText.textContent = question.question; 
     signVideo.src = question.videoUrl;
-
-    // Load the video (important for some browsers)
     signVideo.load();
 
-    // Clear previous options
     optionsContainer.innerHTML = '';
-
-    // Create new options (shuffled)
-    const shuffledOptions = [...question.options].sort(() => Math.random() - 0.5);
-
-    shuffledOptions.forEach((option) => {
+    question.options.forEach((option) => {
         const optionElement = document.createElement('div');
         optionElement.classList.add('option');
-        optionElement.textContent = option;
-        optionElement.dataset.option = option;
-
-        // If this question was already answered, show the user's previous choice
-        if (userAnswers[currentQuestionIndex] !== null) {
-            if (option === question.correctAnswer) {
-                optionElement.classList.add('correct');
-            } else if (option === userAnswers[currentQuestionIndex] && userAnswers[currentQuestionIndex] !== question.correctAnswer) {
-                optionElement.classList.add('wrong');
-            }
-        }
-
-        optionElement.addEventListener('click', () => selectOption(optionElement));
-
+        
+        const choiceText = document.createElement('p');
+        choiceText.textContent = option.choice;
+        optionElement.appendChild(choiceText);
+        
+        optionElement.dataset.correct = option.correct;
+        optionElement.addEventListener('click', () => handleOptionClick(optionElement, option));
         optionsContainer.appendChild(optionElement);
     });
 
-    // If this question was already answered, show the result
-    if (userAnswers[currentQuestionIndex] !== null) {
-        const isCorrect = userAnswers[currentQuestionIndex] === question.correctAnswer;
-        resultElement.textContent = isCorrect
-            ? "Correct! Good job! 🎉"
-            : `Wrong answer, sorry! The correct answer is: ${question.correctAnswer}`;
-        resultElement.className = isCorrect ? 'result correct' : 'result wrong';
-        nextBtn.style.display = 'block';
-    } else {
-        // Reset state for new question
-        selectedOption = null;
-        answerSubmitted = false;
-        resultElement.textContent = '';
-        resultElement.className = 'result';
-        nextBtn.style.display = 'none';
-    }
-
     questionCounter.textContent = `${currentQuestionIndex + 1}/${questions.length}`;
-
-    initializeProgressBar(); 
+    initializeProgressBar();
 
     resultElement.textContent = '';
     resultElement.className = 'result';
@@ -291,72 +274,100 @@ function showQuestion() {
     optionsContainer.style.pointerEvents = 'auto';
 }
 
-// Handle option selection
-function selectOption(optionElement) {
-    if (answerSubmitted || userAnswers[currentQuestionIndex] !== null) return;
+async function getAIFeedback(mistakenSign, correctSign, context = "sign language recognition") {
+    const userQuery = `Context: ${context}
+Mistaken Sign: ${mistakenSign}
+Correct Sign: ${correctSign}`;
 
-    // Remove selected class from all options
-    document.querySelectorAll('.option').forEach(opt => {
-        opt.classList.remove('selected');
-    });
-
-    // Add selected class to clicked option
-    optionElement.classList.add('selected');
-    selectedOption = optionElement.dataset.option;
-
-    // Automatically check the answer when an option is selected
-    checkAnswer();
-    updateProgress();
+    try {
+        const feedback = await runGemini(userQuery);
+        return feedback;
+    } catch (error) {
+        console.error("Error from Gemini:", error);
+        return "Sorry, I couldn't generate feedback at this time.";
+    }
 }
 
-function checkAnswer() {
-    if (!selectedOption || answerSubmitted || userAnswers[currentQuestionIndex] !== null) return;
+async function handleOptionClick(optionElement, option) {
+    if (answered) return;
 
-    answerSubmitted = true;
-    const currentQuestion = questions[currentQuestionIndex];
-    const isCorrect = selectedOption === currentQuestion.correctAnswer;
+    answered = true;
+    optionsContainer.style.pointerEvents = 'none';
+    nextBtn.style.display = 'flex';
 
-    // Store user's answer
-    userAnswers[currentQuestionIndex] = selectedOption;
+    const isCorrect = option.correct;
+    const question = questions[currentQuestionIndex];
+    const correctOption = question.options.find(opt => opt.correct);
 
-    // Update score if correct
     if (isCorrect) {
         score++;
     }
 
-    // Show correct/wrong answers
-    document.querySelectorAll('.option').forEach(opt => {
-        if (opt.dataset.option === currentQuestion.correctAnswer) {
-            opt.classList.add('correct');
-        } else if (opt.dataset.option === selectedOption && !isCorrect) {
-            opt.classList.add('wrong');
+    userAnswers[currentQuestionIndex] = option;
+    updateProgress(isCorrect);
+
+    if (resultElement) {
+        resultElement.textContent = isCorrect ?
+            `✅ Correct! ${option.feedback}` :
+            `❌ Incorrect. ${option.feedback}`;
+    }
+
+    // Highlight selected option
+    optionElement.classList.add(isCorrect ? 'correct' : 'wrong');
+
+    // Highlight correct answer if wrong was selected
+    if (!isCorrect) {
+        const correctOptionElement = Array.from(optionsContainer.children).find(
+            el => el.dataset.correct === 'true'
+        );
+        if (correctOptionElement) {
+            correctOptionElement.classList.add('correct');
         }
-    });
 
-    // Show result
-    resultElement.textContent = isCorrect
-        ? "Correct! Good job! 🎉"
-        : `Wrong answer, sorry! The correct answer is: ${currentQuestion.correctAnswer}`;
-    resultElement.className = isCorrect ? 'result correct' : 'result wrong';
+        // Create loading spinner for AI feedback
+        const aiLoadingSpinner = document.createElement('div');
+        aiLoadingSpinner.className = 'ai-loading-spinner';
+        aiLoadingSpinner.innerHTML = `
+            <div class="spinner"></div>
+            <span>Getting AI feedback...</span>
+        `;
+        resultElement.appendChild(document.createElement('br'));
+        resultElement.appendChild(aiLoadingSpinner);
 
-    // Update the progress bar
-    updateProgress();
+        // Get AI feedback for wrong answers
+        try {
+            const aiFeedback = await getAIFeedback(
+                option.choice,
+                correctOption.choice,
+                question.sign
+            );
 
-    // Force the Next button to be visible
-    nextBtn.style.display = 'block';
-    nextBtn.style.visibility = 'visible';
-    scoreDisplay.textContent = `Score: ${score} out of ${currentQuestionIndex + 1}`;
+            // Remove loading spinner
+            aiLoadingSpinner.remove();
+
+            // Create a new element for AI feedback
+            const aiFeedbackElement = document.createElement('div');
+            aiFeedbackElement.className = 'ai-feedback';
+            aiFeedbackElement.innerHTML = `<strong>AI Feedback:</strong> ${aiFeedback}`;
+
+            // Append after the result
+            resultElement.appendChild(aiFeedbackElement);
+        } catch (error) {
+            console.error('Error getting AI feedback:', error);
+            // Remove loading spinner and show error message
+            aiLoadingSpinner.remove();
+            const errorElement = document.createElement('div');
+            errorElement.className = 'ai-feedback-error';
+            errorElement.textContent = "Couldn't load AI feedback. Please try again.";
+            resultElement.appendChild(errorElement);
+        }
+    }
+
+    scoreDisplay.textContent = `Score: ${score}/${currentQuestionIndex + 1}`;
 }
 
 // Move to next question
 function nextQuestion() {
-    // First check if we need to submit the current answer
-    if (!answerSubmitted && selectedOption) {
-        checkAnswer();
-        return;
-    }
-
-    // Then move to next question
     currentQuestionIndex++;
 
     // Hide next button again until next answer
@@ -373,7 +384,7 @@ function endQuiz() {
     resultElement.textContent = '';
     resultElement.className = 'result';
     nextBtn.style.display = 'none';
-    
+
     // Show modal with final score
     finalScoreDisplay.textContent = `Your score: ${score} out of ${questions.length}`;
     resultsModal.style.display = 'flex';
@@ -390,19 +401,4 @@ tryAgainBtn.addEventListener('click', () => {
     startQuiz(); // This will reshuffle questions and reset the quiz
 });
 
-async function getAIFeedback(mistakenSign, correctSign, context = "sign language recognition") {
-    const userQuery = `Context: ${context}
-Mistaken Sign: ${mistakenSign}
-Correct Sign: ${correctSign}`;
-
-    try {
-        const feedback = await runGemini(userQuery);
-        return feedback;
-    } catch (error) {
-        console.error("Error from Gemini:", error);
-        return "Sorry, I couldn't generate feedback at this time.";
-    }
-}
-
-// Start the app
 init();

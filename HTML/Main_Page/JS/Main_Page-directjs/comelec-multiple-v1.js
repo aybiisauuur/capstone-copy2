@@ -838,16 +838,16 @@ async function handleOptionClick(optionElement, option) {
 
     userAnswers[currentQuestionIndex] = option;
     updateProgress(isCorrect);
-    
-    // Show basic feedback immediately
-    resultElement.textContent = isCorrect ? 
-        `✅ Correct! ${option.feedback}` : 
-        `❌ Incorrect. ${option.feedback}`;
-    resultElement.className = isCorrect ? 'result correct' : 'result wrong';
-    
+
+    if (resultElement) {
+        resultElement.textContent = isCorrect ?
+            `✅ Correct! ${option.feedback}` :
+            `❌ Incorrect. ${option.feedback}`;
+    }
+
     // Highlight selected option
     optionElement.classList.add(isCorrect ? 'correct' : 'wrong');
-    
+
     // Highlight correct answer if wrong was selected
     if (!isCorrect) {
         const correctOptionElement = Array.from(optionsContainer.children).find(
@@ -856,25 +856,43 @@ async function handleOptionClick(optionElement, option) {
         if (correctOptionElement) {
             correctOptionElement.classList.add('correct');
         }
-        
+
+        // Create loading spinner for AI feedback
+        const aiLoadingSpinner = document.createElement('div');
+        aiLoadingSpinner.className = 'ai-loading-spinner';
+        aiLoadingSpinner.innerHTML = `
+            <div class="spinner"></div>
+            <span>Getting AI feedback...</span>
+        `;
+        resultElement.appendChild(document.createElement('br'));
+        resultElement.appendChild(aiLoadingSpinner);
+
         // Get AI feedback for wrong answers
         try {
             const aiFeedback = await getAIFeedback(
-                option.imageDescription, 
+                option.imageDescription,
                 correctOption.imageDescription,
                 question.context || "sign language recognition"
             );
-            
+
+            // Remove loading spinner
+            aiLoadingSpinner.remove();
+
             // Create a new element for AI feedback
             const aiFeedbackElement = document.createElement('div');
             aiFeedbackElement.className = 'ai-feedback';
             aiFeedbackElement.innerHTML = `<strong>AI Feedback:</strong> ${aiFeedback}`;
-            
+
             // Append after the result
-            resultElement.appendChild(document.createElement('br'));
             resultElement.appendChild(aiFeedbackElement);
         } catch (error) {
             console.error('Error getting AI feedback:', error);
+            // Remove loading spinner and show error message
+            aiLoadingSpinner.remove();
+            const errorElement = document.createElement('div');
+            errorElement.className = 'ai-feedback-error';
+            errorElement.textContent = "Couldn't load AI feedback. Please try again.";
+            resultElement.appendChild(errorElement);
         }
     }
 

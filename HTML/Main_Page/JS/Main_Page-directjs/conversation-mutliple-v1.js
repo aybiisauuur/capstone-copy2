@@ -1,168 +1,208 @@
 import runGemini from './greetings-mchoice-v2.js';
 
 const allQuestions = [
-    {//No
+    {// No
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F60e52d6f85a8423682905d3b3815ce55%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=60e52d6f85a8423682905d3b3815ce55&alt=media&optimized=true",
         context: "",
         options: [
             {
                 choice: "Yes",
                 correct: false,
-                feedback: "",
-                imageDescription: ""
+                feedback: "This sign shows a head shake, which means 'No' 🙅‍♂️, not 'Yes'",
+                imageDescription: "Head shaking side to side"
             },
             {
                 choice: "No",
                 correct: true,
-                feedback: "",
-                imageDescription: ""
+                feedback: "Correct! Head shaking means 'No' 🙅‍♂️",
+                imageDescription: "Head shaking side to side"
             },
             {
                 choice: "Shaking",
                 correct: false,
-                feedback: "",
-                imageDescription: ""
+                feedback: "While the head is shaking, this specifically means 'No' 🙅‍♂️",
+                imageDescription: "Head shaking side to side"
             },
             {
                 choice: "Goodbye",
                 correct: false,
-                feedback: "waving hands signify 'Goodbye'👋",
-                imageDescription: "Hands height close to face, waving"
+                feedback: "This is actually 'No' 🙅‍♂️ (waving hands signify 'Goodbye' 👋)",
+                imageDescription: "Head shaking side to side"
             }
         ]
     },
-    {//Yes
+    {// Yes
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ffe3c43d5ebf14d97ac3a1a27b58fd154%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=fe3c43d5ebf14d97ac3a1a27b58fd154&alt=media&optimized=true",
         context: "",
         options: [
             {
                 choice: "Yes",
                 correct: true,
-                feedback: "",
-                imageDescription: ""
+                feedback: "Correct! Nodding means 'Yes' 👍",
+                imageDescription: "Head nodding up and down"
             },
             {
                 choice: "No",
                 correct: false,
-                feedback: "",
-                imageDescription: ""
+                feedback: "This is nodding for 'Yes' 👍, not shaking for 'No' 🙅‍♂️",
+                imageDescription: "Head nodding up and down"
             },
             {
                 choice: "Shaking",
                 correct: false,
-                feedback: "",
-                imageDescription: ""
+                feedback: "The head is nodding (up-down) for 'Yes' 👍, not shaking (side-side)",
+                imageDescription: "Head nodding up and down"
             },
             {
                 choice: "Goodbye",
                 correct: false,
-                feedback: "waving hands signify 'Goodbye'👋",
-                imageDescription: "Hands height close to face, waving"
+                feedback: "This is nodding for 'Yes' 👍 (waving hands signify 'Goodbye' 👋)",
+                imageDescription: "Head nodding up and down"
             }
         ]
     },
-    {//Deaf
+    {// Deaf
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fa2a9373b89544bbab28f88b6e696e656%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=a2a9373b89544bbab28f88b6e696e656&alt=media&optimized=true",
         options: [
             {
                 choice: "Hearing",
                 correct: false,
+                feedback: "This sign points to the ear for 'Deaf' 🦻, not 'Hearing' 👂",
+                imageDescription: "Finger pointing to ear"
             },
             { 
                 choice: "Hard-of-hearing", 
-                correct: false, 
+                correct: false,
+                feedback: "This is the sign for 'Deaf' 🦻 (a different sign is used for 'Hard-of-hearing')",
+                imageDescription: "Finger pointing to ear" 
             },
             { 
                 choice: "Deaf", 
-                correct: true, 
+                correct: true,
+                feedback: "Correct! Pointing to the ear signifies 'Deaf' 🦻",
+                imageDescription: "Finger pointing to ear" 
             },
             { 
                 choice: "Goodbye",
-                correct: false, 
+                correct: false,
+                feedback: "This is 'Deaf' 🦻 (waving hands signify 'Goodbye' 👋)",
+                imageDescription: "Finger pointing to ear" 
             },
         ],
     },
-    {//Hearing
+    {// Hearing
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F1c8c0918cc0140fbbabf9e1f32c7bd5f%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=1c8c0918cc0140fbbabf9e1f32c7bd5f&alt=media&optimized=true",
         options: [
             {
                 choice: "Hearing",
                 correct: true,
+                feedback: "Correct! This is the sign for 'Hearing' 👂",
+                imageDescription: "Hand cupping ear"
             },
             { 
                 choice: "Hard-of-hearing", 
-                correct: false, 
+                correct: false,
+                feedback: "This is the sign for 'Hearing' 👂 (a different sign is used for 'Hard-of-hearing')",
+                imageDescription: "Hand cupping ear" 
             },
             { 
                 choice: "Deaf", 
-                correct: false, 
+                correct: false,
+                feedback: "This is 'Hearing' 👂 (pointing to ear signifies 'Deaf' 🦻)",
+                imageDescription: "Hand cupping ear" 
             },
             { 
                 choice: "Goodbye",
-                correct: false, 
+                correct: false,
+                feedback: "This is 'Hearing' 👂 (waving hands signify 'Goodbye' 👋)",
+                imageDescription: "Hand cupping ear" 
             },
         ],
     },
-    {//Hard of Hearing
+    {// Hard of Hearing
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fc565c548515b46a98a11b61ba419cce3%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=c565c548515b46a98a11b61ba419cce3&alt=media&optimized=true",
         options: [
             {
                 choice: "Hearing",
                 correct: false,
+                feedback: "This is 'Hard-of-hearing' 🎧 (cupping ear is 'Hearing' 👂)",
+                imageDescription: "Hand moving between ear and mouth"
             },
             { 
                 choice: "Hard-of-hearing", 
-                correct: true, 
+                correct: true,
+                feedback: "Correct! Moving between ear and mouth means 'Hard-of-hearing' 🎧",
+                imageDescription: "Hand moving between ear and mouth" 
             },
             { 
                 choice: "Deaf", 
-                correct: false, 
+                correct: false,
+                feedback: "This is 'Hard-of-hearing' 🎧 (pointing to ear is 'Deaf' 🦻)",
+                imageDescription: "Hand moving between ear and mouth" 
             },
             { 
                 choice: "Goodbye",
-                correct: false, 
+                correct: false,
+                feedback: "This is 'Hard-of-hearing' 🎧 (waving hands signify 'Goodbye' 👋)",
+                imageDescription: "Hand moving between ear and mouth" 
             },
         ],
     },
-    {//FSL
+    {// FSL
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fad1649a7b94d46c1936d80fd69ef5919%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=ad1649a7b94d46c1936d80fd69ef5919&alt=media&optimized=true",
         options: [
             {
                 choice: "Letter F",
                 correct: false,
+                feedback: "This is signing 'FSL' (Filipino Sign Language) 🤟, not just the letter F",
+                imageDescription: "Hand forming FSL sign"
             },
             { 
                 choice: "Hard-of-hearing", 
-                correct: false, 
+                correct: false,
+                feedback: "This is the sign for 'FSL' (Filipino Sign Language) 🤟",
+                imageDescription: "Hand forming FSL sign" 
             },
             { 
                 choice: "Deaf", 
-                correct: false, 
+                correct: false,
+                feedback: "This is 'FSL' (Filipino Sign Language) 🤟 (pointing to ear is 'Deaf' 🦻)",
+                imageDescription: "Hand forming FSL sign" 
             },
             { 
                 choice: "Filipino Sign Language (FSL)",
-                correct: true, 
+                correct: true,
+                feedback: "Correct! This is the sign for Filipino Sign Language (FSL) 🤟",
+                imageDescription: "Hand forming FSL sign" 
             },
         ],
     },
-    {//My name is
+    {// My name is
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fbd3db75db59d44c08194f80b28dd57a5%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=bd3db75db59d44c08194f80b28dd57a5&alt=media&optimized=true",
         options: [
             {
                 choice: "My name is ____.",
                 correct: true,
+                feedback: "Correct! This is how you sign 'My name is ____.' ✋",
+                imageDescription: "Hand tapping chest then spelling"
             },
             { 
                 choice: "What is your name?", 
-                correct: false, 
+                correct: false,
+                feedback: "This is 'My name is ____.' ✋ (a different sign is used for asking names)",
+                imageDescription: "Hand tapping chest then spelling" 
             },
             { 
                 choice: "Fingerspelling", 
-                correct: false, 
+                correct: false,
+                feedback: "This includes fingerspelling but specifically means 'My name is ____.' ✋",
+                imageDescription: "Hand tapping chest then spelling" 
             },
             { 
                 choice: "Filipino Sign Language (FSL)",
-                correct: false, 
+                correct: false,
+                feedback: "This is 'My name is ____.' ✋ (different from the FSL sign 🤟)",
+                imageDescription: "Hand tapping chest then spelling" 
             },
         ],
     },
@@ -326,16 +366,16 @@ async function handleOptionClick(optionElement, option) {
 
     userAnswers[currentQuestionIndex] = option;
     updateProgress(isCorrect);
-    
+
     if (resultElement) {
-        resultElement.textContent = isCorrect ? 
-            `✅ Correct! ${option.feedback}` : 
+        resultElement.textContent = isCorrect ?
+            `✅ Correct! ${option.feedback}` :
             `❌ Incorrect. ${option.feedback}`;
-      }
-      
+    }
+
     // Highlight selected option
     optionElement.classList.add(isCorrect ? 'correct' : 'wrong');
-    
+
     // Highlight correct answer if wrong was selected
     if (!isCorrect) {
         const correctOptionElement = Array.from(optionsContainer.children).find(
@@ -344,25 +384,43 @@ async function handleOptionClick(optionElement, option) {
         if (correctOptionElement) {
             correctOptionElement.classList.add('correct');
         }
-        
+
+        // Create loading spinner for AI feedback
+        const aiLoadingSpinner = document.createElement('div');
+        aiLoadingSpinner.className = 'ai-loading-spinner';
+        aiLoadingSpinner.innerHTML = `
+            <div class="spinner"></div>
+            <span>Getting AI feedback...</span>
+        `;
+        resultElement.appendChild(document.createElement('br'));
+        resultElement.appendChild(aiLoadingSpinner);
+
         // Get AI feedback for wrong answers
         try {
             const aiFeedback = await getAIFeedback(
-                option.imageDescription, 
+                option.imageDescription,
                 correctOption.imageDescription,
                 question.context || "sign language recognition"
             );
-            
+
+            // Remove loading spinner
+            aiLoadingSpinner.remove();
+
             // Create a new element for AI feedback
             const aiFeedbackElement = document.createElement('div');
             aiFeedbackElement.className = 'ai-feedback';
             aiFeedbackElement.innerHTML = `<strong>AI Feedback:</strong> ${aiFeedback}`;
-            
+
             // Append after the result
-            resultElement.appendChild(document.createElement('br'));
             resultElement.appendChild(aiFeedbackElement);
         } catch (error) {
             console.error('Error getting AI feedback:', error);
+            // Remove loading spinner and show error message
+            aiLoadingSpinner.remove();
+            const errorElement = document.createElement('div');
+            errorElement.className = 'ai-feedback-error';
+            errorElement.textContent = "Couldn't load AI feedback. Please try again.";
+            resultElement.appendChild(errorElement);
         }
     }
 
