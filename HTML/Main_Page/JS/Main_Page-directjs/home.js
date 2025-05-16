@@ -30,60 +30,60 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Function to update UI based on auth state
-function updateUI(user) {
-    const profileDropdown = document.getElementById('profileDropdown');
-    const userGreeting = document.getElementById('userGreeting');
-
-    if (user) {
-        // User is logged in
-        profileDropdown.innerHTML = `
-            <a href="profile.html">View Profile</a>
-            <a href="login.html" id="logoutBtn">Logout</a>
-        `;
-        userGreeting.style.display = 'block';
-
-        // Load user data
-        loadUserData(user.uid);
-    } else {
-        // User is not logged in
-        profileDropdown.innerHTML = `
-            <a href="login.html" id="loginLink">Login</a>
-            <a href="register.html" id="registerLink">Register</a>
-        `;
-        userGreeting.style.display = 'none';
-    }
-}
-
-// Function to load user data
-async function loadUserData(userId) {
-    try {
-        const userDocRef = doc(db, "profile_info", userId);
-        const docSnapshot = await getDoc(userDocRef);
-
-        if (docSnapshot.exists()) {
-            const data = docSnapshot.data();
-
-            // Update profile picture
-            const iconPic = document.getElementById("profilePictureIcon");
-            if (data.ProfilePicture && iconPic) {
-                iconPic.src = data.ProfilePicture;
-            }
-
-            // Update user name in greeting - now using FullName
-            const userNameElement = document.getElementById('userName');
-            if (data.FullName && userNameElement) {
-                userNameElement.textContent = data.FullName;
-            }
-        }
-    } catch (error) {
-        console.error("Failed to load user data", error);
-    }
-}
-
 $(document).ready(function () {
     let allPhraseCards = "";
     let recentModules = [];
+
+    // Function to update UI based on auth state (jQuery version)
+    function updateUI(user) {
+        const $profileDropdown = $('#profileDropdown');
+        const $userGreeting = $('#userGreeting');
+
+        if (user) {
+            // User is logged in
+            $profileDropdown.html(`
+            <a href="profile.html">View Profile</a>
+            <a href="login.html" id="logoutBtn">Logout</a>
+        `);
+            $userGreeting.css('display', 'block');
+
+            // Load user data
+            loadUserData(user.uid);
+        } else {
+            // User is not logged in
+            $profileDropdown.html(`
+            <a href="login.html" id="loginLink">Login</a>
+            <a href="register.html" id="registerLink">Register</a>
+        `);
+            $userGreeting.css('display', 'none');
+        }
+    }
+
+    // Function to load user data (jQuery version)
+    async function loadUserData(userId) {
+        try {
+            const userDocRef = doc(db, "profile_info", userId);
+            const docSnapshot = await getDoc(userDocRef);
+
+            if (docSnapshot.exists()) {
+                const data = docSnapshot.data();
+
+                // Update profile picture
+                const $iconPic = $("#profilePictureIcon");
+                if (data.ProfilePicture && $iconPic.length) {
+                    $iconPic.attr('src', data.ProfilePicture);
+                }
+
+                // Update user name in greeting
+                const $userNameElement = $('#userName');
+                if (data.FullName && $userNameElement.length) {
+                    $userNameElement.text(data.FullName);
+                }
+            }
+        } catch (error) {
+            console.error("Failed to load user data", error);
+        }
+    }
 
     // Check auth state when page loads
     onAuthStateChanged(auth, (user) => {
@@ -230,19 +230,20 @@ $(document).ready(function () {
         }
     });
 
-    // Logout functionality
+    // Logout functionality - updated with proper delegation
     $(document).on('click', '#logoutBtn', function (e) {
         e.preventDefault();
-        $('#logout-modal').css('display', 'block'); 
+        e.stopPropagation();
+        $('#logout-modal').show();
     });
 
-    // When user clicks back button
+    // Back button handler
     $(document).on('click', '.back-button', function (e) {
         e.preventDefault();
         $('#logout-modal').hide();
     });
 
-    // When user confirms logout
+    // Logout confirmation handler
     $(document).on('click', '.logout-button', function (e) {
         e.preventDefault();
         signOut(auth).then(() => {
@@ -253,7 +254,7 @@ $(document).ready(function () {
         });
     });
 
-    // Close modal when clicking outside of it
+    // Close modal when clicking outside
     $(document).on('click', '#logout-modal .modal-overlay', function (e) {
         $('#logout-modal').hide();
     });
@@ -262,6 +263,7 @@ $(document).ready(function () {
     $(document).on('click', '#logout-modal .modal-content', function (e) {
         e.stopPropagation();
     });
+
 
     // Close modal when clicking outside of it (optional)
     $(window).click(function (e) {
