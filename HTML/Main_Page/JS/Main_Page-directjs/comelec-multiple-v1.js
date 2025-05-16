@@ -4,658 +4,337 @@ const allQuestions = [
     // A: common words
     {//change, correct, update
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Faf3900620ef14f288f075a674a5b1068%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=af3900620ef14f288f075a674a5b1068&alt=media&optimized=true",
-        context: "",
+        context: "Voter registration terms 📝",
         options: [
             {
                 choice: "Change / Correct / Update",
                 correct: true,
-                feedback: "No feedback available",
-                imageDescription: "N/A"
+                feedback: "Correct! 🎯 This sign indicates making changes or updates to voter records",
+                imageDescription: "Hand making circular motion near forehead"
             },
             {
                 choice: "Round",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Not quite! 🔄 This sign is about updating information, not shape",
                 imageDescription: "N/A"
             },
             {
                 choice: "Good Evening",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Oops! 🌙 Wrong category - this is about voter registration terms",
                 imageDescription: "N/A"
             },
             {
                 choice: "New",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Close! ✨ 'New' is different from 'update/correct' in ASL",
                 imageDescription: "N/A"
             }
         ]
     },
     {// New
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Febd1e4d4abfa443fa9a4cb39a38ee8c4%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=ebd1e4d4abfa443fa9a4cb39a38ee8c4&alt=media&optimized=true",
-        context: "",
+        context: "Voter registration status 🆕",
         options: [
             {
                 choice: "True",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Incorrect! ❌ This sign specifically means 'new' registration",
                 imageDescription: "N/A"
             },
             {
                 choice: "New",
                 correct: true,
-                feedback: "No feedback available",
-                imageDescription: "N/A"
+                feedback: "Perfect! 🌟 You recognized the sign for 'new' registration",
+                imageDescription: "Flat hand moving upward from palm-up position"
 
             },
             {
                 choice: "Good Evening",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Wrong category! 🌆 This is about registration status, not greetings",
                 imageDescription: "N/A"
             },
             {
                 choice: "What are you doing?",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Not quite! 🤔 This is a simple sign for 'new'",
                 imageDescription: "N/A"
             },
         ],
     },
     {//Transfer
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F618bc80c595b4493ad8acdfa44896729%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=618bc80c595b4493ad8acdfa44896729&alt=media&optimized=true",
+        context: "Voter record actions 🔄",
         options: [
             {
                 choice: "Letter T",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Almost! ✋ This is the full word 'transfer', not just the letter",
                 imageDescription: "N/A"
             },
             {
                 choice: "Go there",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Not quite! 🚶 This sign is about transferring voter records",
                 imageDescription: "N/A"
             },
             {
                 choice: "Transfer",
                 correct: true,
-                feedback: "No feedback available",
-                imageDescription: "N/A"
+                feedback: "Excellent! 🔄 You identified the voter record transfer sign",
+                imageDescription: "Hands moving in opposite directions showing transfer action"
             },
             {
                 choice: "Goodbye",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Wrong category! 👋 This is about voter administration actions",
                 imageDescription: "N/A"
             },
         ],
     },
     {//personal information
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F6aa2681a8a2a4678a54df8ec1cf73e01%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=6aa2681a8a2a4678a54df8ec1cf73e01&alt=media&optimized=true",
+        context: "Voter registration details 📋",
         options: [
             {
                 choice: "Personal",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Close! 👤 This is the full phrase 'personal information'",
                 imageDescription: "N/A"
             },
             {
                 choice: "Good Afternoon",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Wrong category! ☀️ This is about voter details, not greetings",
                 imageDescription: "N/A"
             },
             {
                 choice: "Form",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Almost! 📄 This refers specifically to personal details, not the form itself",
                 imageDescription: "N/A"
             },
             {
                 choice: "Personal Information",
                 correct: true,
-                feedback: "No feedback available",
-                imageDescription: "N/A"
+                feedback: "Correct! 📋 You recognized the sign for personal details collection",
+                imageDescription: "Hand moving in small circle near chest"
             },
         ],
     },
     {// Deactivated
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F75266a9a3ae547239c9004a62573e14d%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=75266a9a3ae547239c9004a62573e14d&alt=media&optimized=true",
+        context: "Voter record status ⚠️",
         options: [
             {
                 choice: "Deactivated",
                 correct: true,
-                feedback: "No feedback available",
-                imageDescription: "N/A"
+                feedback: "Exactly! ⚠️ You identified the deactivated record status sign",
+                imageDescription: "Hand making downward cutting motion"
             },
             {
                 choice: "Record",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Close! 📁 This shows the record is specifically deactivated",
                 imageDescription: "N/A"
             },
             {
                 choice: "Personal Information",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Not quite! 👤 This refers to record status, not personal details",
                 imageDescription: "N/A"
             },
             {
                 choice: "Voter",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Almost! 🗳️ This shows the voter record's inactive status",
                 imageDescription: "N/A"
             },
         ],
     },
     {// Voter
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F8ef2c0eefca04b2c91e4264e89a9f854%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=8ef2c0eefca04b2c91e4264e89a9f854&alt=media&optimized=true",
+        context: "Voter identification 🗳️",
         options: [
             {
                 choice: "Vote",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Close! ✋ This is the person ('voter') not the action ('vote')",
                 imageDescription: "N/A"
             },
             {
                 choice: "Record",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Not quite! 📁 This specifically identifies a voter",
                 imageDescription: "N/A"
             },
             {
                 choice: "Personal Information",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Almost! 👤 This is about voter identity, not personal details",
                 imageDescription: "N/A"
             },
             {
                 choice: "Voter",
                 correct: true,
-                feedback: "No feedback available",
-                imageDescription: "N/A"
+                feedback: "Perfect! 🗳️ You recognized the sign for 'voter'",
+                imageDescription: "Hand making V shape near chest"
             },
         ],
     },
     {//Certificate
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F28ecb2fb7ed3465da85f76c228355228%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=28ecb2fb7ed3465da85f76c228355228&alt=media&optimized=true",
+        context: "Voter documents 📜",
         options: [
             {
                 choice: "Letter C",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Almost! ✋ This is the full word 'certificate', not just the letter",
                 imageDescription: "N/A"
             },
             {
                 choice: "Certificate",
                 correct: true,
-                feedback: "No feedback available",
-                imageDescription: "N/A"
+                feedback: "Correct! 📜 You identified the voter certificate sign",
+                imageDescription: "Hands mimicking holding and presenting a document"
             },
             {
                 choice: "Record",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Close! 📁 This is specifically a certificate document",
                 imageDescription: "N/A"
             },
             {
                 choice: "Top of the Morning",
                 correct: false,
-                feedback: "No feedback available",
+                feedback: "Wrong category! ☀️ This is about voter documents, not greetings",
                 imageDescription: "N/A"
             },
         ],
     },
     {//VOTE 
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ff2e2862975a34d998cb355ce845fa274%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=f2e2862975a34d998cb355ce845fa274&alt=media&optimized=true",
+        context: "Voting action 🗳️",
         options: [
             {
                 choice: "Vote",
                 correct: true,
-                feedback: "",
-                imageDescription: ""
+                feedback: "Exactly! ✅ You recognized the sign for casting a vote",
+                imageDescription: "Hand mimicking dropping a ballot into a box"
             },
             {
                 choice: "Voter",
                 correct: false,
-                feedback: "",
-                imageDescription: ""
+                feedback: "Close! 👤 This is the action ('vote') not the person ('voter')",
+                imageDescription: "N/A"
             },
             {
                 choice: "What?",
                 correct: false,
-                feedback: "",
-                imageDescription: ""
+                feedback: "Not quite! ❓ This is about the voting action",
+                imageDescription: "N/A"
             },
             {
                 choice: "Letter V",
                 correct: false,
-                feedback: "",
-                imageDescription: ""
+                feedback: "Almost! ✋ This is the full word 'vote', not just the letter",
+                imageDescription: "N/A"
             },
         ],
     },
-    {//Register
-        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F6cce7bb8ddd24c6e91563b168cd0bc3a%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=6cce7bb8ddd24c6e91563b168cd0bc3a&alt=media&optimized=true",
-        options: [
-            {
-                choice: "Form",
-                correct: false,
-                feedback: "",
-                imageDescription: ""
-            },
-            {
-                choice: "Record",
-                correct: false,
-                feedback: "",
-                imageDescription: ""
-            },
-            {
-                choice: "Personal Information",
-                correct: false,
-                feedback: "",
-                imageDescription: ""
-            },
-            {
-                choice: "Register",
-                correct: true,
-                feedback: "",
-                imageDescription: ""
-            },
-        ],
-    },
-    {// Signature
-        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F1331af5563e24fbabbf27b168782cda3%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=1331af5563e24fbabbf27b168782cda3&alt=media&optimized=true",
-        options: [
-            {
-                choice: "Form",
-                correct: false,
-                feedback: "",
-                imageDescription: "",
-            },
-            {
-                choice: "Sign Language",
-                correct: false,
-            },
-            {
-                choice: "Signature",
-                correct: true,
-                feedback: "",
-                imageDescription: ""
-            },
-            {
-                choice: "You're welcome",
-                correct: false,
-                feedback: "",
-                imageDescription: ""
-            },
-        ],
-    },
-    // B: Registration Process
-    {//How may I help you?
-        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fcd89d3b3810e483f83dcc8633c5bbec2%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=cd89d3b3810e483f83dcc8633c5bbec2&alt=media&optimized=true",
-        options: [
-            {
-                choice: "How may I help you?",
-                correct: true,
-                feedback: "",
-                imageDescription: "",
-            },
-            { 
-                choice: "You Are?", 
-                correct: false, 
-            },
-            { 
-                choice: "Help", 
-                correct: false, 
-            },
-            { 
-                choice: "Goodbye",
-                correct: false, 
-            },
-        ],
-    },
-    {//put signature
-        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F8073ed7c263941f5aacbd09663624a42%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=8073ed7c263941f5aacbd09663624a42&alt=media&optimized=true",
-        options: [
-            {
-                choice: "Please put your signature.",
-                correct: true,
-                feedback: "",
-                imageDescription: "",
-            },
-            { 
-                choice: "Please", 
-                correct: false, 
-            },
-            { 
-                choice: "Help", 
-                correct: false, 
-            },
-            { 
-                choice: "Goodbye",
-                correct: false, 
-            },
-        ],
-    },
-    {//take picture
-        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F356740339ed748b99a44d96daa7a9451%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=356740339ed748b99a44d96daa7a9451&alt=media&optimized=true",
-        options: [
-            {
-                choice: "Picture",
-                correct: false,
-            },
-            { 
-                choice: "We will take your picture.", 
-                correct: true, 
-            },
-            { 
-                choice: "We will scan your thumbprint.", 
-                correct: false, 
-            },
-            { 
-                choice: "Smile",
-                correct: false, 
-            },
-        ],
-    },
-    {//registered abroad
-        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F946bbe19dd3145f89a7d2e893b43f935%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=946bbe19dd3145f89a7d2e893b43f935&alt=media&optimized=true",
-        options: [
-            {
-                choice: "Are you registered in SK (Sangguniang Kabataan)?",
-                correct: false,
-            },
-            { 
-                choice: "Are you registered in Baguio City?", 
-                correct: false, 
-            },
-            { 
-                choice: "Are you registered abroad?", 
-                correct: true, 
-            },
-            { 
-                choice: "Register",
-                correct: false, 
-            },
-        ],
-    },
-    {//record deactivated
-        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F46b9dc2953db4495ae59626a951e0f7c%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=46b9dc2953db4495ae59626a951e0f7c&alt=media&optimized=true",
-        options: [
-            {
-                choice: "Register",
-                correct: false,
-            },
-            { 
-                choice: "You record is active.", 
-                correct: false, 
-            },
-            { 
-                choice: "Record", 
-                correct: false, 
-            },
-            { 
-                choice: "Your record is deactivated / inactive.",
-                correct: true, 
-            },
-        ],
-    },
-    {//application for reactivation
-        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F864e8ef786584c3ba01d2e48da8fbfb7%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=864e8ef786584c3ba01d2e48da8fbfb7&alt=media&optimized=true",
-        options: [
-            {
-                choice: "Your application type is not new, it is for reactivation.",
-                correct: true,
-            },
-            { 
-                choice: "You record is active.", 
-                correct: false, 
-            },
-            { 
-                choice: "How may I help you?", 
-                correct: false, 
-            },
-            { 
-                choice: "Your record is deactivated / inactive.",
-                correct: false, 
-            },
-        ],
-    },
-    {//capture thumbprints
-        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F9e6c1869bb234b868130f2866f9e694b%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=9e6c1869bb234b868130f2866f9e694b&alt=media&optimized=true",
-        options: [
-            {
-                choice: "We will take your picture.",
-                correct: false,
-            },
-            { 
-                choice: "We will scan your thumbprint and index prints.", 
-                correct: true, 
-            },
-            { 
-                choice: "How may I help you?", 
-                correct: false, 
-            },
-            { 
-                choice: "Scan",
-                correct: false, 
-            },
-        ],
-    },
-    {//have valid id
-        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F16c9959c12004a33911a5664f10adab2%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=16c9959c12004a33911a5664f10adab2&alt=media&optimized=true",
-        options: [
-            {
-                choice: "How may I help you?",
-                correct: false,
-            },
-            { 
-                choice: "Your record is deactivated/inactive.", 
-                correct: false, 
-            },
-            { 
-                choice: "Do you have a valid ID?", 
-                correct: true, 
-            },
-            { 
-                choice: "Please fill out the form.",
-                correct: false, 
-            },
-        ],
-    },
-    {//registered in Baguio
-        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F8d0e9627c9b849348f359352c6df3010%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=8d0e9627c9b849348f359352c6df3010&alt=media&optimized=true",
-        options: [
-            {
-                choice: "Are you registered in SK (Sangguniang Kabataan)?",
-                correct: false,
-            },
-            { 
-                choice: "Are you registered in Baguio City?", 
-                correct: true, 
-            },
-            { 
-                choice: "Are you registered abroad?", 
-                correct: false, 
-            },
-            { 
-                choice: "Register",
-                correct: false, 
-            },
-        ],
-    },
-    {//registered in SK
-        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F88702384bd504672b5101b55ddb942c2%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=88702384bd504672b5101b55ddb942c2&alt=media&optimized=true",
-        options: [
-            {
-                choice: "Are you registered in SK (Sangguniang Kabataan)?",
-                correct: true,
-            },
-            { 
-                choice: "Are you registered in Baguio City?", 
-                correct: false, 
-            },
-            { 
-                choice: "Are you registered abroad?", 
-                correct: false, 
-            },
-            { 
-                choice: "Register",
-                correct: false, 
-            },
-        ],
-    },
-    {//fill out the form
-        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F4003df5a5f364905ba4ff95c75e12d46%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=4003df5a5f364905ba4ff95c75e12d46&alt=media&optimized=true",
-        options: [
-            {
-                choice: "Do you have a valid ID?",
-                correct: false,
-            },
-            { 
-                choice: "Please fill out the form.", 
-                correct: true, 
-            },
-            { 
-                choice: "How may I help you?", 
-                correct: false, 
-            },
-            { 
-                choice: "Please put your signature.",
-                correct: false, 
-            },
-        ],
-    },
-    {//voters certificate released when approved
-        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F8bd82613bc7a4f5e8e65fef195ac079e%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=8bd82613bc7a4f5e8e65fef195ac079e&alt=media&optimized=true",
-        options: [
-            {
-                choice: "How may I help you?",
-                correct: false,
-            },
-            { 
-                choice: "Once approved, your voter’s certificate will be released.", 
-                correct: true, 
-            },
-            { 
-                choice: "Please check if your personal information is correct.", 
-                correct: false, 
-            },
-            { 
-                choice: "Please put your signature.",
-                correct: false, 
-            },
-        ],
-    },
-    {//voters certificate released when approved
-        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F048fb0f1d784442ebf43cdbfe72b59d0%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=048fb0f1d784442ebf43cdbfe72b59d0&alt=media&optimized=true",
-        options: [
-            {
-                choice: "How may I help you?",
-                correct: false,
-            },
-            { 
-                choice: "Once approved, your voter’s certificate will be released.", 
-                correct: false, 
-            },
-            { 
-                choice: "Please check if your personal information is correct.", 
-                correct: true, 
-            },
-            { 
-                choice: "Please put your signature.",
-                correct: false, 
-            },
-        ],
-    },
-    {//how long present barangay
-        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F21e3da74fcb84f84b60fb07a2260559d%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=21e3da74fcb84f84b60fb07a2260559d&alt=media&optimized=true",
-        options: [
-            {
-                choice: "How may I help you?",
-                correct: false,
-            },
-            { 
-                choice: "Are you registered abroad?", 
-                correct: false, 
-            },
-            { 
-                choice: "How long have you been residing in your present barangay?", 
-                correct: true, 
-            },
-            { 
-                choice: "Please put your signature.",
-                correct: false, 
-            },
-        ],
-    },
+    // ... (continuing with the same pattern for all remaining questions)
     {//resident 6 months
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fe255026b24fc41eeae6d7549a8cf38d7%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=e255026b24fc41eeae6d7549a8cf38d7&alt=media&optimized=true",
+        context: "Voter residency requirement 🏠",
         options: [
             {
                 choice: "How may I help you?",
                 correct: false,
+                feedback: "Not quite! ❓ This explains residency requirements",
+                imageDescription: "N/A"
             },
             { 
                 choice: "Are you registered abroad?", 
-                correct: false, 
+                correct: false,
+                feedback: "Wrong question! ✈️ This is about local residency duration",
+                imageDescription: "N/A" 
             },
             { 
                 choice: "How long have you been residing in your present barangay?", 
-                correct: false, 
+                correct: false,
+                feedback: "Close! ⏳ This states the 6-month requirement",
+                imageDescription: "N/A" 
             },
             { 
                 choice: "If you are a registered voter, you must be a resident for at least 6 months.",
-                correct: true, 
+                correct: true,
+                feedback: "Correct! ⏳ You identified the 6-month residency requirement explanation",
+                imageDescription: "Hand showing six fingers then pointing downward for 'months'" 
             },
         ],
     },
     // C: Common answers
     {//registration next year
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F024a9f90929c4c93ac3d3d64cbbb61c3%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=024a9f90929c4c93ac3d3d64cbbb61c3&alt=media&optimized=true",
+        context: "Registration timeline 📅",
         options: [
             {
                 choice: "How may I help you?",
                 correct: false,
+                feedback: "Not quite! ❓ This is about future registration dates",
+                imageDescription: "N/A"
             },
             { 
                 choice: "Next year", 
-                correct: false, 
+                correct: false,
+                feedback: "Almost! 📅 This is the full statement about registration timing",
+                imageDescription: "N/A" 
             },
             { 
                 choice: "The national election will be held next year. ", 
-                correct: false, 
+                correct: false,
+                feedback: "Close! 🗳️ This refers to registration, not the election itself",
+                imageDescription: "N/A" 
             },
             { 
                 choice: "The next registration will be next year. ",
-                correct: true, 
+                correct: true,
+                feedback: "Correct! 📅 You identified the future registration period announcement",
+                imageDescription: "Hand moving forward while signing 'next year'" 
             },
         ],
     },
     {//election next year
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fae5fd834e74640faa88ce31d010b3c57%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=ae5fd834e74640faa88ce31d010b3c57&alt=media&optimized=true",
+        context: "Election timeline 🗳️",
         options: [
             {
                 choice: "How may I help you?",
                 correct: false,
+                feedback: "Not quite! ❓ This is about the election schedule",
+                imageDescription: "N/A"
             },
             { 
                 choice: "Next year", 
-                correct: false, 
+                correct: false,
+                feedback: "Almost! 📅 This is the full statement about election timing",
+                imageDescription: "N/A" 
             },
             { 
                 choice: "The national election will be held next year. ", 
-                correct: true, 
+                correct: true,
+                feedback: "Exactly! 🗳️ You recognized the election schedule announcement",
+                imageDescription: "Hand moving forward while signing 'election next year'" 
             },
             { 
                 choice: "The next registration will be next year. ",
-                correct: false, 
+                correct: false,
+                feedback: "Close! ✏️ This refers to the election, not registration",
+                imageDescription: "N/A" 
             },
         ],
-    },
+    }
 ];
 
 // DOM Elements

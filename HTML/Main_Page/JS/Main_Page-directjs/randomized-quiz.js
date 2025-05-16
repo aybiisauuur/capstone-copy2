@@ -1,3 +1,5 @@
+import runGemini from './greetings-mchoice-v2.js';
+
 // At least 30 Questions 
 const questionsData = [
     // greetings
@@ -458,10 +460,10 @@ function getVideoQuestionContent(question, index) {
         <h3>${question.question}</h3>
         <div class="options">
             ${question.options.map((option, i) => `
-                <div class="option" onclick="selectAnswer(${index}, ${i})">${option}</div>
+                <div class="option" data-index="${i}">${option}</div>
             `).join('')}
         </div>
-        <button class="final-answer" onclick="lockAnswer(${index})" disabled>Final Answer</button>`;
+        <button class="final-answer" data-index="${index}">Final Answer</button>`;
 }
 
 function getVideoMultipleChoiceContent(question, index) {
@@ -469,7 +471,7 @@ function getVideoMultipleChoiceContent(question, index) {
         <h3>${question.question}</h3>
         <div class="video-options-grid">
             ${question.options.map((videoUrl, i) => `
-                <div class="option video-option" onclick="selectAnswer(${index}, ${i})">
+                <div class="option video-option" data-index="${i}">
                     <video controls controlsList="nodownload">
                         <source src="${videoUrl}" type="video/mp4">
                         Your browser does not support HTML5 video.
@@ -477,12 +479,12 @@ function getVideoMultipleChoiceContent(question, index) {
                 </div>
             `).join('')}
         </div>
-        <button class="final-answer" onclick="lockAnswer(${index})" disabled>Final Answer</button>`;
+        <button class="final-answer" data-index="${index}">Final Answer</button>`;
 }
 
 function getFlashcardContent(question, index) {
     return `
-        <div class="flashcard" onclick="toggleFlashcard(${index})">
+        <div class="flashcard" data-index="${index}">
             <div class="flashcard-inner">
                 <div class="flashcard-front">
                     <h3>${question.front} Click to flip the flashcard.</h3>
@@ -496,11 +498,11 @@ function getFlashcardContent(question, index) {
             </div>
         </div>
         <div class="flashcard-caption" style="display: none;">
-                    ${question.caption}
-                </div>
+            ${question.caption}
+        </div>
         <div class="flashcard-controls" style="display: none;">
-            <button onclick="markFlashcardCorrect(${index})"> ✔ I understood</button>
-            <button onclick="markFlashcardWrong(${index})">✘ Need help</button>
+            <button class="flashcard-correct" data-index="${index}"> ✔ I understood</button>
+            <button class="flashcard-wrong" data-index="${index}">✘ Need help</button>
         </div>`;
 }
 
@@ -509,13 +511,53 @@ function getDefaultQuestionContent(question, index) {
         <h3>${question.question}</h3>
         <div class="options">
             ${question.options.map((option, i) => `
-                <div class="option" onclick="selectAnswer(${index}, ${i})">${option}</div>
+                <div class="option" data-index="${i}">${option}</div>
             `).join('')}
         </div>`;
 }
 
 function updateProgress(current) {
     progressText.textContent = `Question ${current} of ${questions.length}`;
+}
+
+function setupEventListeners() {
+    // Event delegation for option clicks
+    questionsContainer.addEventListener('click', (e) => {
+        const option = e.target.closest('.option');
+        if (option) {
+            const questionElement = option.closest('.question');
+            const questionIndex = parseInt(questionElement.id.split('-')[1]);
+            const optionIndex = parseInt(option.dataset.index);
+            selectAnswer(questionIndex, optionIndex);
+        }
+
+        const finalAnswerBtn = e.target.closest('.final-answer');
+        if (finalAnswerBtn) {
+            const questionIndex = parseInt(finalAnswerBtn.dataset.index);
+            lockAnswer(questionIndex);
+        }
+
+        const flashcard = e.target.closest('.flashcard');
+        if (flashcard) {
+            const questionIndex = parseInt(flashcard.dataset.index);
+            toggleFlashcard(questionIndex);
+        }
+
+        const correctBtn = e.target.closest('.flashcard-correct');
+        if (correctBtn) {
+            const questionIndex = parseInt(correctBtn.dataset.index);
+            markFlashcardCorrect(questionIndex);
+        }
+
+        const wrongBtn = e.target.closest('.flashcard-wrong');
+        if (wrongBtn) {
+            const questionIndex = parseInt(wrongBtn.dataset.index);
+            markFlashcardWrong(questionIndex);
+        }
+    });
+
+    // Next button event listener
+    nextButton.addEventListener('click', nextQuestion);
 }
 
 function toggleFlashcard(index) {
@@ -530,33 +572,22 @@ function toggleFlashcard(index) {
     const caption = questionElement.querySelector('.flashcard-caption');
     const video = card.querySelector('video');
     const controls = questionElement.querySelector('.flashcard-controls');
-    const nextButton = document.getElementById('nextButton'); // Get the Next button
 
     if (card.classList.contains('flipped')) {
         // Hide caption initially
         if (caption) caption.style.display = 'none';
 
-        // Show Next button but keep it disabled initially
-        if (nextButton) {
-            nextButton.style.display = 'block'; // or whatever display value it should have
-            nextButton.disabled = true;
-        }
-
         if (video) {
             video.currentTime = 0;
             video.play().catch(e => console.log("Video play failed:", e));
 
-            // Show caption and enable Next button when video ends
+            // Show caption when video ends
             video.onended = () => {
                 if (caption) {
                     caption.style.display = 'block';
-                    // Trigger animation by adding class after a small delay
                     setTimeout(() => {
                         caption.classList.add('show');
-                    }, 10); // Tiny delay ensures CSS applies correctly
-                }
-                if (nextButton) {
-                    nextButton.disabled = false;
+                    }, 10);
                 }
             };
         }
@@ -568,15 +599,9 @@ function toggleFlashcard(index) {
         if (caption) caption.style.display = 'none';
         if (controls) controls.style.display = 'none';
 
-        // Hide Next button when unflipped
-        if (nextButton) {
-            nextButton.style.display = 'none';
-            nextButton.disabled = true; // Also disable it for next use
-        }
-
         if (video) {
             video.pause();
-            video.onended = null; // Clean up event listener
+            video.onended = null;
         }
     }
 }
@@ -641,6 +666,20 @@ function selectAnswer(questionIndex, answerIndex) {
     }
 }
 
+async function getAIFeedback(mistakenSign, correctSign, context = "sign language recognition") {
+    const userQuery = `Context: ${context}
+Mistaken Sign: ${mistakenSign}
+Correct Sign: ${correctSign}`;
+
+    try {
+        const feedback = await runGemini(userQuery);
+        return feedback;
+    } catch (error) {
+        console.error("Error from Gemini:", error);
+        return "Sorry, I couldn't generate feedback at this time.";
+    }
+}
+
 function lockAnswer(questionIndex) {
     const question = questions[questionIndex];
     const questionElement = document.getElementById(`question-${questionIndex}`);
@@ -656,7 +695,6 @@ function lockAnswer(questionIndex) {
 
     if (isCorrect) {
         score++;
-        // Remove selected class and add correct-answer class
         options[question.selected].classList.remove('selected');
         options[question.selected].classList.add('correct-answer');
     }
@@ -668,6 +706,45 @@ function lockAnswer(questionIndex) {
 
     if (!isCorrect) {
         highlightCorrectAnswer(questionIndex);
+        
+        const feedbackDiv = questionElement.querySelector('.feedback');
+        if (feedbackDiv) {
+            const aiLoadingSpinner = document.createElement('div');
+            aiLoadingSpinner.className = 'ai-loading-spinner';
+            aiLoadingSpinner.innerHTML = `
+                <div class="spinner"></div>
+                <span>Getting AI feedback...</span>
+            `;
+            feedbackDiv.appendChild(document.createElement('br'));
+            feedbackDiv.appendChild(aiLoadingSpinner);
+
+            let mistakenSign, correctSign;
+            
+            if (question.type === 'video-multiple-choice') {
+                mistakenSign = question.options[question.selected];
+                correctSign = question.options[question.correct];
+            } else {
+                mistakenSign = question.options[question.selected];
+                correctSign = question.correct;
+            }
+
+            getAIFeedback(mistakenSign, correctSign, question.context || "sign language recognition")
+                .then(feedback => {
+                    aiLoadingSpinner.remove();
+                    const aiFeedbackElement = document.createElement('div');
+                    aiFeedbackElement.className = 'ai-feedback';
+                    aiFeedbackElement.innerHTML = `<strong>AI Feedback:</strong> ${feedback}`;
+                    feedbackDiv.appendChild(aiFeedbackElement);
+                })
+                .catch(error => {
+                    console.error('Error getting AI feedback:', error);
+                    aiLoadingSpinner.remove();
+                    const errorElement = document.createElement('div');
+                    errorElement.className = 'ai-feedback-error';
+                    errorElement.textContent = "Couldn't load AI feedback. Please try again.";
+                    feedbackDiv.appendChild(errorElement);
+                });
+        }
     }
 
     nextButton.disabled = false;
@@ -682,7 +759,6 @@ function highlightCorrectAnswer(questionIndex) {
         opt.classList.remove('selected', 'correct-answer');
     });
 
-    // Highlight correct answer in green
     if (question.type === 'video-multiple-choice') {
         options[question.correct].classList.add('correct-answer');
     } else {
@@ -692,7 +768,6 @@ function highlightCorrectAnswer(questionIndex) {
         }
     }
 
-    // If user selected a wrong answer, keep it highlighted in red
     if (question.selected !== undefined &&
         (question.type === 'video-multiple-choice'
             ? question.selected !== question.correct
@@ -735,8 +810,10 @@ function showResults() {
     resultsContainer.innerHTML = `
         <h2>Quiz Complete!</h2>
         <p>You scored ${score} out of ${questions.length}.</p>
-        <button onclick="restartQuiz()">Try Again</button>
+        <button id="restartButton">Try Again</button>
     `;
+
+    document.getElementById('restartButton').addEventListener('click', restartQuiz);
 }
 
 function restartQuiz() {
@@ -752,8 +829,14 @@ function restartQuiz() {
     navigationContainer.style.display = 'flex';
     nextButton.disabled = true;
 
-    startQuiz(); // This will now shuffle questions again if config.shuffleQuestions is true
+    startQuiz();
 }
 
 // Initialize the quiz when the page loads
-window.onload = init;
+window.onload = function() {
+    init();
+    setupEventListeners();
+};
+
+// Expose necessary functions to the global scope
+window.restartQuiz = restartQuiz;

@@ -238,83 +238,94 @@ const allQuestions = [
     },
     {//LongTimeNoSee
         video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F7c3f41cef37546958629bc8d3e844c2b%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=7c3f41cef37546958629bc8d3e844c2b&alt=media&optimized=true",
+        context: "FSL Greetings 🤟",
         options: [
             {
                 choice: "Nice to meet you",
                 correct: false,
-                feedback: "Hands meeting in the middle indicates 'Nice to meet'🤝",
-                imageDescription: "Sweeping the hands and fingers pointing and meeting together in the middle"
+                feedback: "Not quite! 🤝 In FSL, 'Nice to meet you' uses a different hand motion where palms briefly touch",
+                imageDescription: "Both hands with palms facing inward meet briefly at chest level"
             },
             {
                 choice: "Salute",
                 correct: false,
-                feedback: "not a greeting more like an action of respect 'Salute'😑",
-                imageDescription: "use to give respect to military or authority"
+                feedback: "No! ✋ In Filipino Sign Language, this isn't the military salute. The hand motion is different for 'Long time no see'",
+                imageDescription: "Hand flat against forehead (military salute gesture)"
             },
             {
                 choice: "Goodbye",
                 correct: false,
-                feedback: "waving motion is used for saying goodbye 👋 not seeing someone for a long time",
-                imageDescription: "Hand waving from face height"
+                feedback: "Close! 👋 While both are greetings, 'Goodbye' in FSL uses a wave motion, not this back-and-forth movement near the chin",
+                imageDescription: "Hand waving side-to-side at shoulder height"
             },
             {
                 choice: "Long time no see",
                 correct: true,
-                feedback: "The upward motion indicates 'Long time no see'🤷‍♂️",
-                imageDescription: "Hands in front of the persons chin, palm facing each other moving fro and back"
+                feedback: "Perfect! 🎉 You recognized the FSL sign for 'Long time no see' (hands moving back and forth near chin)",
+                imageDescription: "Both hands palms facing each other, moving horizontally back and forth at chin level"
             },
         ],
     },
     {//Seeyoulater
         video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F75c44265368f48d2a8fd3ed56e3e0821%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=75c44265368f48d2a8fd3ed56e3e0821&alt=media&optimized=true",
+        context: "FSL Parting Phrases ✌️",
         options: [
             {
                 choice: "Meet me here?",
                 correct: false,
-                feedback: "Is an indication of saying to see you in a location 📌",
-                imageDescription: "Not much of a greeting sign",
+                feedback: "Not exactly! 📍 In FSL, this would involve pointing to a location, not the eye-to-side motion",
+                imageDescription: "Index finger pointing downward to indicate location"
             },
             {
                 choice: "Are you okay?",
                 correct: false,
+                feedback: "Incorrect! ❓ The FSL sign for 'Are you okay?' uses different hand shapes near the forehead",
+                imageDescription: "Thumb and index finger forming 'O' shape moving from forehead outward"
             },
             {
                 choice: "See you later",
                 correct: true,
-                feedback: "The action indication of seeing and motion of afternoon/later 'See you later'👋",
-                imageDescription: "Pointing to the eye and motioning it upwards to the middle"
+                feedback: "Excellent! 👁️ You identified the FSL sign for 'Kitakits' (point to eye then outward)",
+                imageDescription: "Index finger pointing to eye then arcing outward"
             },
             {
                 choice: "You're welcome",
                 correct: false,
-                feedback: "The upward motion indicates 'You're welcome'🤗",
-                imageDescription: "Three fingers up from the chin and curving towards the belly"
+                feedback: "No! 🙏 In FSL, 'You're welcome' is signed with flat palms moving from chest outward",
+                imageDescription: "Flat palms moving from chest outward in a giving motion"
             },
         ],
     },
     {//Nicetomeetyou
         video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F0299652d0ea94bdab652d539b2616b7d%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=0299652d0ea94bdab652d539b2616b7d&alt=media&optimized=true",
+        context: "FSL Introductions 🤝",
         options: [
             {
                 choice: "Nice to meet you",
                 correct: true,
-                feedback: "The upward motion indicates 'Nice to meet you'🤗",
-                imageDescription: "Hands in front of the persons chin, palm facing each other moving fro and back",
+                feedback: "Correct! 🌟 You recognized the FSL sign for 'Ikinagagalak kitang makilala' (palms touching then separating gracefully)",
+                imageDescription: "Palms touching briefly then separating outward with graceful motion"
             },
             {
                 choice: "You Are?",
                 correct: false,
+                feedback: "Not quite! 👤 The FSL sign for 'You are?' involves pointing then a question facial expression",
+                imageDescription: "Index finger pointing upward with questioning head tilt"
             },
             {
                 choice: "See you later",
                 correct: false,
+                feedback: "Close! 👋 But this is the greeting sign, not the parting phrase",
+                imageDescription: "N/A"
             },
             {
                 choice: "Goodbye",
                 correct: false,
+                feedback: "Incorrect! ✋ 'Goodbye' in FSL uses a different waving motion",
+                imageDescription: "Hand waving side-to-side at shoulder height"
             },
         ],
-    },
+    }
 ];
 
 // DOM Elements

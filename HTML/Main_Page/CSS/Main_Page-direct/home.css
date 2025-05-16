@@ -36,6 +36,44 @@ body {
   text-align: center;
 }
 
+#userGreeting {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  order: 1; 
+  margin-right: 0; 
+  margin-left: 15px; 
+}
+
+#userGreeting #userName {
+  font-weight: 700;
+  color: #fff;
+  margin-left: 5px;
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+    #userGreeting {
+        font-size: 14px;
+        margin-right: 10px;
+    }
+}
+
+/* Optional animation when greeting appears */
+@keyframes fadeInGreeting {
+    from { opacity: 0; transform: translateX(10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+#userGreeting {
+    animation: fadeInGreeting 0.4s ease-out forwards;
+}
+
 .logo-link {
   display: flex;
   align-items: center;
@@ -962,6 +1000,10 @@ video {
 
 .profile-container {
   position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+  align-items: center;
 }
 
 .profile-btn {
@@ -989,6 +1031,7 @@ video {
 .profile-dropdown {
   display: none;
   position: absolute;
+  top: calc(100% + 5px);
   right: 0;
   background-color: var(--background-white);
   min-width: 180px;

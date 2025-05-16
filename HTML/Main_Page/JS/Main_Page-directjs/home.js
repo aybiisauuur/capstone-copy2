@@ -30,16 +30,81 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+// Function to update UI based on auth state
+function updateUI(user) {
+    const profileDropdown = document.getElementById('profileDropdown');
+    const userGreeting = document.getElementById('userGreeting');
+
+    if (user) {
+        // User is logged in
+        profileDropdown.innerHTML = `
+            <a href="profile.html">View Profile</a>
+            <a href="login.html" id="logoutBtn">Logout</a>
+        `;
+        userGreeting.style.display = 'block';
+
+        // Load user data
+        loadUserData(user.uid);
+    } else {
+        // User is not logged in
+        profileDropdown.innerHTML = `
+            <a href="login.html" id="loginLink">Login</a>
+            <a href="register.html" id="registerLink">Register</a>
+        `;
+        userGreeting.style.display = 'none';
+    }
+}
+
+// Function to load user data
+async function loadUserData(userId) {
+    try {
+        const userDocRef = doc(db, "profile_info", userId);
+        const docSnapshot = await getDoc(userDocRef);
+
+        if (docSnapshot.exists()) {
+            const data = docSnapshot.data();
+
+            // Update profile picture
+            const iconPic = document.getElementById("profilePictureIcon");
+            if (data.ProfilePicture && iconPic) {
+                iconPic.src = data.ProfilePicture;
+            }
+
+            // Update user name in greeting - now using FullName
+            const userNameElement = document.getElementById('userName');
+            if (data.FullName && userNameElement) {
+                userNameElement.textContent = data.FullName;
+            }
+        }
+    } catch (error) {
+        console.error("Failed to load user data", error);
+    }
+}
 
 $(document).ready(function () {
     let allPhraseCards = "";
     let recentModules = [];
 
-    //chatbot
-    async function sendMessage(){
-        
-    }
+    // Check auth state when page loads
+    onAuthStateChanged(auth, (user) => {
+        updateUI(user);
 
+        // Also update profile picture if user is logged in
+        if (user) {
+            const userDocRef = doc(db, "profile_info", user.uid);
+            getDoc(userDocRef).then((docSnapshot) => {
+                const data = docSnapshot.data();
+                const iconPic = document.getElementById("profilePictureIcon");
+                if (data && data.ProfilePicture && iconPic) {
+                    iconPic.src = data.ProfilePicture;
+                }
+            }).catch(error => {
+                console.error("Failed to load profile picture", error);
+            });
+        }
+    });
+
+    // Rest of your existing code...
     // Load phrases from JSON
     $.getJSON("phrases.json")
         .done(function (data) {
@@ -166,25 +231,36 @@ $(document).ready(function () {
     });
 
     // Logout functionality
-    $("#logoutBtn").click(function (e) {
+    $(document).on('click', '#logoutBtn', function (e) {
         e.preventDefault();
-        // Show the custom modal
-        $('#logout-modal').css('display', 'block');
+        $('#logout-modal').css('display', 'block'); 
     });
 
     // When user clicks back button
-    $('.back-button').click(function () {
-        $('#logout-modal').css('display', 'none');
+    $(document).on('click', '.back-button', function (e) {
+        e.preventDefault();
+        $('#logout-modal').hide();
     });
 
     // When user confirms logout
-    $('.logout-button').click(function () {
+    $(document).on('click', '.logout-button', function (e) {
+        e.preventDefault();
         signOut(auth).then(() => {
             window.location.href = "login.html";
         }).catch((error) => {
             console.error("Logout error:", error);
-            $('#logout-modal').css('display', 'none');
+            $('#logout-modal').hide();
         });
+    });
+
+    // Close modal when clicking outside of it
+    $(document).on('click', '#logout-modal .modal-overlay', function (e) {
+        $('#logout-modal').hide();
+    });
+
+    // Prevent modal from closing when clicking inside content
+    $(document).on('click', '#logout-modal .modal-content', function (e) {
+        e.stopPropagation();
     });
 
     // Close modal when clicking outside of it (optional)
@@ -218,27 +294,6 @@ $(document).ready(function () {
     $("#profileDropdown").on("click", function (e) {
         e.stopPropagation();
     });
-});
-
-// Add the image icon
-onAuthStateChanged(auth, async (user) => {
-    if (user) {
-        try {
-            const userDocRef = doc(db, "profile_info", user.uid);
-            const docSnapshot = await getDoc(userDocRef);
-            const data = docSnapshot.data();
-
-            if (data && data.ProfilePicture) {
-                const mainPic = document.getElementById("profilePicture");
-                const iconPic = document.getElementById("profilePictureIcon");
-
-                if (mainPic) mainPic.src = data.ProfilePicture;
-                if (iconPic) iconPic.src = data.ProfilePicture;
-            }
-        } catch (error) {
-            console.error("Failed to load profile picture", error);
-        }
-    }
 });
 
 // Mock data function in case JSON fails to load
