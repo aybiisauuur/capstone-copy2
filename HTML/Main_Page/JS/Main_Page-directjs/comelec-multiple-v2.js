@@ -757,7 +757,7 @@ function confirmFinalAnswer() {
     feedbackText.id = 'feedbackText';
     feedbackText.textContent = selectedOption.correct
         ? (Math.random() < 0.5 ? 'Correct! Good job!' : 'Correct Answer!')
-        : 'Wrong answer, here is the correct sign:';
+        : 'Wrong answer, sorry!';
     feedbackText.className = selectedOption.correct ? 'feedback-correct' : 'feedback-wrong';
     questionText.parentNode.insertBefore(feedbackText, questionText.nextSibling);
 
