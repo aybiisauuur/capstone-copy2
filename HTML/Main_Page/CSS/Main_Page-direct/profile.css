@@ -52,7 +52,7 @@ body {
   cursor: pointer;
   padding: 0.25rem;
   border-radius: 50%;
-  transition: all var(--transition-fast);
+  transition: all 0.2s ease;
 }
 
 .profile-btn:hover {
@@ -72,27 +72,28 @@ body {
   display: none;
   position: absolute;
   right: 0;
-  background-color: var(--background-white);
+  top: calc(100% + 5px);
+  background-color: white;
   min-width: 180px;
-  box-shadow: var(--shadow-lg);
-  border-radius: var(--border-radius-sm);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
   overflow: hidden;
   z-index: 1001;
   animation: fadeInDown 0.3s ease;
 }
 
 .profile-dropdown a {
-  color: var(--text-dark);
+  color: #2c3e50;
   padding: 0.75rem 1rem;
   text-decoration: none;
   display: block;
-  transition: all var(--transition-fast);
+  transition: all 0.2s ease;
   border-left: 3px solid transparent;
 }
 
 .profile-dropdown a:hover {
   background-color: #f5f5f5;
-  border-left-color: var(--primary-color);
+  border-left-color: #004AB3;
   padding-left: 1.25rem;
 }
 
@@ -223,6 +224,7 @@ input.disabled-field {
     font-weight: bold;
     font-size: 1rem;
     margin-top: 20px;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .save-btn:hover {
@@ -240,6 +242,7 @@ input.disabled-field {
     font-size: 1rem;
     margin-top: 20px;
     margin-left: 10px;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .cancel-btn:hover {

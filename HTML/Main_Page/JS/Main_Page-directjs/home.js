@@ -32,9 +32,8 @@ const db = getFirestore(app);
 
 $(document).ready(function () {
     let allPhraseCards = "";
-    let recentModules = [];
 
-    // Function to update UI based on auth state (jQuery version)
+    // Function to update UI based on auth state 
     function updateUI(user) {
         const $profileDropdown = $('#profileDropdown');
         const $userGreeting = $('#userGreeting');
@@ -47,8 +46,14 @@ $(document).ready(function () {
         `);
             $userGreeting.css('display', 'block');
 
-            // Load user data
             loadUserData(user.uid);
+
+            // Add click handler for the logout button
+            $(document).off('click', '#logoutBtn').on('click', '#logoutBtn', function (e) {
+                e.preventDefault();
+                $('#logout-modal').show(); // Show the modal
+            });
+
         } else {
             // User is not logged in
             $profileDropdown.html(`
@@ -104,7 +109,6 @@ $(document).ready(function () {
         }
     });
 
-    // Rest of your existing code...
     // Load phrases from JSON
     $.getJSON("phrases.json")
         .done(function (data) {
@@ -243,7 +247,7 @@ $(document).ready(function () {
         $('#logout-modal').hide();
     });
 
-    // Logout confirmation handler
+    // Logout confirmation handler (when "Logout" inside modal is clicked)
     $(document).on('click', '.logout-button', function (e) {
         e.preventDefault();
         signOut(auth).then(() => {
@@ -255,21 +259,16 @@ $(document).ready(function () {
     });
 
     // Close modal when clicking outside
-    $(document).on('click', '#logout-modal .modal-overlay', function (e) {
-        $('#logout-modal').hide();
-    });
-
-    // Prevent modal from closing when clicking inside content
-    $(document).on('click', '#logout-modal .modal-content', function (e) {
-        e.stopPropagation();
-    });
-
-
-    // Close modal when clicking outside of it (optional)
-    $(window).click(function (e) {
-        if (e.target === document.getElementById('logout-modal')) {
-            $('#logout-modal').css('display', 'none');
+    $(document).on('click', '#logout-modal', function (e) {
+        if (e.target === this) { // Clicked on the backdrop (outside modal content)
+            $(this).hide();
         }
+    });
+
+    // Optional: Close modal when "Back" button is clicked
+    $(document).on('click', '.back-button', function (e) {
+        e.preventDefault();
+        $('#logout-modal').hide();
     });
 
     // Search box styling

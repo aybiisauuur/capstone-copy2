@@ -350,15 +350,26 @@ video {
 
 .main-content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 30px;
   flex: 1;
-  padding-right: 180px;
+  max-height: calc(100vh - 250px);
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
   box-sizing: border-box;
   width: 100%;
   overflow-y: auto;
-  margin-top: 20px;
+  scrollbar-width: thin;
+  scrollbar-color: #004AAD rgba(0, 0, 0, 0.1);
+  scroll-behavior: smooth;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  position: relative;
+  z-index: 1;
   margin-bottom: 80px;
 }
+
 .content-wrapper {
   display: flex;
   gap: 100px;
