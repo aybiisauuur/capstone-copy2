@@ -159,20 +159,20 @@ const allQuestions = [
             {
                 choice: "E",
                 correct: false,
-                feedback: "No feedback available",
-                imageDescription: "N/A"
+                feedback: "Not quite! ❌ E has all fingers curled, not just two",
+                imageDescription: "Hand with fingers curled down over thumb"
             },
             {
                 choice: "F",
                 correct: true,
-                feedback: "No feedback available",
-                imageDescription: "N/A"
+                feedback: "Correct! Good job!",
+                imageDescription: "Form the letter 'F' by touching the tip of the index finger and thumb together, while the other three fingers are extended upward."
             },
             {
                 choice: "G",
                 correct: false,
-                feedback: "No feedback available",
-                imageDescription: "N/A"
+                feedback: "❌ Try again! That's not the correct letter.",
+                imageDescription: "👉 Extend the index finger and thumb parallel to each other to form the letter 'G'"
             },
             {
                 choice: "H",
@@ -188,26 +188,26 @@ const allQuestions = [
             {
                 choice: "E",
                 correct: false,
-                feedback: "No feedback available",
-                imageDescription: "N/A"
+                feedback: "Not quite! ❌ E has all fingers curled, not just two",
+                imageDescription: "Hand with fingers curled down over thumb"
             },
             {
                 choice: "F",
                 correct: false,
-                feedback: "No feedback available",
-                imageDescription: "N/A"
+                feedback: "Not quite! ❌ F is formed with three fingers",
+                imageDescription: "Form the letter 'F' by touching the tip of the index finger and thumb together, while the other three fingers are extended upward."
             },
             {
                 choice: "G",
                 correct: true,
-                feedback: "No feedback available",
-                imageDescription: "N/A"
+                feedback: "Awesome! 👍 That's the letter G with index finger extended and thumb is parallel",
+                imageDescription: "👉 Extend the index finger and thumb parallel to each other to form the letter 'G'"
             },
             {
                 choice: "H",
                 correct: false,
-                feedback: "No feedback available",
-                imageDescription: "N/A"
+                feedback: "❌ Nope, try again! 🤞",
+                imageDescription: "✌️ Two fingers extended side by side, representing the letter H"
             },
         ],
     },
@@ -217,26 +217,26 @@ const allQuestions = [
             {
                 choice: "E",
                 correct: false,
-                feedback: "",
-                imageDescription: ""
+                feedback: "Not quite! ❌ E has all fingers curled, not just two",
+                imageDescription: "Hand with fingers curled down over thumb"
             },
             {
                 choice: "F",
                 correct: false,
-                feedback: "",
-                imageDescription: ""
+                feedback: "Not quite! ❌ F is formed with three fingers",
+                imageDescription: "Form the letter 'F' by touching the tip of the index finger and thumb together, while the other three fingers are extended upward."
             },
             {
                 choice: "G",
                 correct: false,
-                feedback: "",
-                imageDescription: ""
+                feedback: "❌ Nope, try again! 🤞",
+                imageDescription: "👉 Extend the index finger and thumb parallel to each other to form the letter 'G'"
             },
             {
                 choice: "H",
                 correct: true,
-                feedback: "",
-                imageDescription: ""
+                feedback: "Correct, great job!",
+                imageDescription: "✌️ Two fingers extended side by side, representing the letter H"
             },
         ],
     },
@@ -246,26 +246,26 @@ const allQuestions = [
             {
                 choice: "I",
                 correct: true,
-                feedback: "",
-                imageDescription: ""
+                feedback: "✅ Correct! Well done! 👏",
+                imageDescription: "Pinky finger extended upward, other fingers curled down — the sign for letter I"
             },
             {
                 choice: "J",
                 correct: false,
-                feedback: "",
-                imageDescription: ""
+                feedback: "❌ Not quite! Try again! 👉 Draw the letter J with your pinky",
+                imageDescription: "Pinky finger draws a 'J' shape in the air"
             },
             {
                 choice: "K",
                 correct: false,
-                feedback: "",
-                imageDescription: ""
+                feedback: "❌ Nope! Keep practicing! ✌️ The sign for K is two fingers extended",
+                imageDescription: "Index and middle fingers extended upward, thumb between them — sign for letter K"
             },
             {
                 choice: "L",
                 correct: false,
-                feedback: "",
-                imageDescription: ""
+                feedback: "❌ Close! 👍 The sign for L looks like an 'L' shape with your hand",
+                imageDescription: "Thumb and index finger form an L shape, other fingers curled"
             },
         ],
     },
@@ -275,24 +275,26 @@ const allQuestions = [
             {
                 choice: "I",
                 correct: false,
-                feedback: "",
-                imageDescription: "",
+                feedback: "❌ Nope! Keep practicing! ✌️ The sign for I is pinky finger extended upward",
+                imageDescription: "Pinky finger extended upward, other fingers curled down — the sign for letter I"
             },
             {
                 choice: "J",
                 correct: true,
+                feedback: "✅ Correct! Well done! 👏",
+                imageDescription: "Pinky finger draws a 'J' shape in the air"
             },
             {
                 choice: "K",
                 correct: false,
-                feedback: "",
-                imageDescription: ""
+                feedback: "❌ Nope! Keep practicing! ✌️ The sign for K is two fingers extended",
+                imageDescription: "Index and middle fingers extended upward, thumb between them — sign for letter K"
             },
             {
                 choice: "L",
                 correct: false,
-                feedback: "",
-                imageDescription: ""
+                feedback: "❌ Close! 👍 The sign for L looks like an 'L' shape with your hand",
+                imageDescription: "Thumb and index finger form an L shape, other fingers curled"
             },
         ],
     },
@@ -302,20 +304,26 @@ const allQuestions = [
             {
                 choice: "I",
                 correct: false,
-                feedback: "",
-                imageDescription: "",
+                feedback: "❌ Nope! Keep practicing! ✌️ The sign for I is pinky finger extended upward",
+                imageDescription: "Pinky finger extended upward, other fingers curled down — the sign for letter I"
             },
             {
                 choice: "J",
                 correct: false,
+                feedback: "❌ Not quite! Try again! 👉 Draw the letter J with your pinky",
+                imageDescription: "Pinky finger draws a 'J' shape in the air"
             },
             {
                 choice: "K",
                 correct: true,
+                feedback: "✅ Correct! Well done! 👏",
+                imageDescription: "Index and middle fingers extended upward, thumb between them — sign for letter K"
             },
             {
                 choice: "L",
                 correct: false,
+                feedback: "❌ Close! 👍 The sign for L looks like an 'L' shape with your hand",
+                imageDescription: "Thumb and index finger form an L shape, other fingers curled"
             },
         ],
     },
@@ -325,20 +333,26 @@ const allQuestions = [
             {
                 choice: "I",
                 correct: false,
-                feedback: "",
-                imageDescription: "",
+                feedback: "❌ Nope! Keep practicing! ✌️ The sign for I is pinky finger extended upward",
+                imageDescription: "Pinky finger extended upward, other fingers curled down — the sign for letter I"
             },
             {
                 choice: "J",
                 correct: false,
+                feedback: "❌ Not quite! Try again! 👉 Draw the letter J with your pinky",
+                imageDescription: "Pinky finger draws a 'J' shape in the air"
             },
             {
                 choice: "K",
                 correct: false,
+                feedback: "❌ Nope! Keep practicing! ✌️ The sign for K is two fingers extended",
+                imageDescription: "Index and middle fingers extended upward, thumb between them — sign for letter K"
             },
             {
                 choice: "L",
                 correct: true,
+                feedback: "✅ Correct! Well done! 👏",
+                imageDescription: "Thumb and index finger form an L shape, other fingers curled"
             },
         ],
     },
@@ -348,18 +362,26 @@ const allQuestions = [
             {
                 choice: "M",
                 correct: true,
+                feedback: "✅ Correct! Nice! ✋ The thumb is tucked under the three fingers — this is M",
+                imageDescription: "Three fingers folded over the thumb forming the letter M"
             },
             {
                 choice: "N",
                 correct: false,
+                feedback: "❌ Not quite! The letter N has two fingers over the thumb ✌️",
+                imageDescription: "Two fingers folded over the thumb forming the letter N"
             },
             {
                 choice: "O",
                 correct: false,
+                feedback: "❌ Nope! The letter O forms a circle with all fingers 🤏",
+                imageDescription: "All fingers touch to form a round O shape"
             },
             {
                 choice: "p",
                 correct: false,
+                feedback: "❌ Incorrect! The letter P is formed differently 👌",
+                imageDescription: "Index finger points downward, middle finger extended, thumb out"
             },
         ],
     },
@@ -399,18 +421,26 @@ const allQuestions = [
             {
                 choice: "1",
                 correct: false,
+                feedback: "Oops! ✋ Only one finger for number 1",
+                imageDescription: "Index finger extended upward"
             },
             {
                 choice: "2",
                 correct: true,
+                feedback: "Perfect! 🎯 That's the number two with index and middle finger up!",
+                imageDescription: "Two fingers extended upward"
             },
             {
                 choice: "3",
                 correct: false,
+                feedback: "Oops! ✋ Three fingers would be for number 3",
+                imageDescription: "Three fingers extended (incorrect)"
             },
             {
                 choice: "4",
                 correct: false,
+                feedback: "Close! 🤏 But one is just a single finger",
+                imageDescription: "Four fingers extended (incorrect)"
             },
         ],
     },
@@ -420,18 +450,26 @@ const allQuestions = [
             {
                 choice: "1",
                 correct: false,
+                feedback: "Oops! ✋ Only one finger for number 1",
+                imageDescription: "Index finger extended upward"
             },
             {
                 choice: "2",
                 correct: false,
+                feedback: "Not quite! ❌ Two fingers upward for number 2",
+                imageDescription: "Two fingers extended (incorrect)"
             },
             {
                 choice: "3",
                 correct: true,
+                feedback: "Perfect! 🎯 That's the number three with three fingers extended",
+                imageDescription: "Three fingers extended"
             },
             {
                 choice: "4",
                 correct: false,
+                feedback: "Close! 🤏 But three is just three fingers",
+                imageDescription: "Four fingers extended (incorrect)"
             },
         ],
     },
@@ -441,18 +479,26 @@ const allQuestions = [
             {
                 choice: "1",
                 correct: false,
+                feedback: "Oops! ✋ Only one finger for number 1",
+                imageDescription: "Index finger extended upward"
             },
             {
                 choice: "2",
                 correct: false,
+                feedback: "Not quite! ❌ Two fingers upward for number 2",
+                imageDescription: "Two fingers extended (incorrect)"
             },
             {
                 choice: "3",
                 correct: false,
+                feedback: "Oops! ✋ Three fingers would be for number 3",
+                imageDescription: "Three fingers extended (incorrect)"
             },
             {
                 choice: "4",
                 correct: true,
+                feedback: "Perfect! 🎯 That's the number four",
+                imageDescription: "Four fingers extended"
             },
         ],
     },
@@ -462,18 +508,26 @@ const allQuestions = [
             {
                 choice: "5",
                 correct: true,
+                feedback: "👍 Correct! The hand shows all five fingers open for number 5.",
+                imageDescription: "Open hand with all five fingers extended."
             },
             {
                 choice: "6",
                 correct: false,
+                feedback: "❌ Not quite! Number 6 is shown by touching the thumb to the pinky finger.",
+                imageDescription: "Thumb touching the pinky finger, other fingers extended."
             },
             {
                 choice: "7",
                 correct: false,
+                feedback: "❌ Nope! Number 7 is thumb touching the ring finger.",
+                imageDescription: "Thumb touching the ring finger, other fingers extended."
             },
             {
                 choice: "8",
                 correct: false,
+                feedback: "❌ Incorrect! Number 8 is thumb touching the middle finger.",
+                imageDescription: "Thumb touching the middle finger, other fingers extended."
             },
         ],
     },
@@ -483,18 +537,26 @@ const allQuestions = [
             {
                 choice: "5",
                 correct: false,
+                feedback: "❌ Not quite! Number 5 is shown by extending all fingers",
+                imageDescription: "Open hand with all five fingers extended."
             },
             {
                 choice: "6",
                 correct: true,
+                feedback: "👍 Correct! The thumb touches the pinky finger with others extended",
+                imageDescription: "Thumb touching the pinky finger, other fingers extended."
             },
             {
                 choice: "7",
                 correct: false,
+                feedback: "❌ Nope! Number 7 is thumb touching the ring finger.",
+                imageDescription: "Thumb touching the ring finger, other fingers extended."
             },
             {
                 choice: "8",
                 correct: false,
+                feedback: "❌ Incorrect! Number 8 is thumb touching the middle finger.",
+                imageDescription: "Thumb touching the middle finger, other fingers extended."
             },
         ],
     },
@@ -504,18 +566,26 @@ const allQuestions = [
             {
                 choice: "5",
                 correct: false,
+                feedback: "❌ Not quite! Number 5 is shown by extending all fingers",
+                imageDescription: "Open hand with all five fingers extended."
             },
             {
                 choice: "6",
                 correct: false,
+                feedback: "❌ Not quite! Number 6 is shown by touching the thumb to the pinky finger.",
+                imageDescription: "Thumb touching the pinky finger, other fingers extended."
             },
             {
                 choice: "7",
                 correct: true,
+                feedback: "👍 Correct! The thumb touches the ring finger with others extended",
+                imageDescription: "Thumb touching the ring finger, other fingers extended."
             },
             {
                 choice: "8",
                 correct: false,
+                feedback: "❌ Incorrect! Number 8 is thumb touching the middle finger.",
+                imageDescription: "Thumb touching the middle finger, other fingers extended."
             },
         ],
     },
@@ -525,18 +595,27 @@ const allQuestions = [
             {
                 choice: "5",
                 correct: false,
+                feedback: "❌ Not quite! Number 5 is shown by extending all fingers",
+                imageDescription: "Open hand with all five fingers extended."
             },
             {
                 choice: "6",
                 correct: false,
+                feedback: "❌ Not quite! Number 6 is shown by touching the thumb to the pinky finger.",
+                imageDescription: "Thumb touching the pinky finger, other fingers extended."
             },
             {
                 choice: "7",
                 correct: false,
+                feedback: "❌ Nope! Number 7 is thumb touching the ring finger.",
+                imageDescription: "Thumb touching the ring finger, other fingers extended."
+
             },
             {
                 choice: "8",
                 correct: true,
+                feedback: "👍 Correct! The thumb touches the middle finger with others extended",
+                imageDescription: "Thumb touching the middle finger, other fingers extended."
             },
         ],
     },
@@ -546,18 +625,26 @@ const allQuestions = [
             {
                 choice: "9",
                 correct: true,
+                feedback: "👍 Correct! Number 9 is shown by touching the thumb to the index finger.",
+                imageDescription: "Thumb touching the index finger, other fingers extended."
             },
             {
                 choice: "10",
                 correct: false,
+                feedback: "❌ Not quite! Number 10 is shown by making a fist and shaking it.",
+                imageDescription: "Closed fist shaking side to side."
             },
             {
                 choice: "11",
                 correct: false,
+                feedback: "❌ Nope! Number 11 is shown by flicking the index finger.",
+                imageDescription: "Index finger flicking upward."
             },
             {
                 choice: "12",
                 correct: false,
+                feedback: "❌ Incorrect! Number 12 is shown by flicking the index and middle fingers.",
+                imageDescription: "Index and middle fingers flicking upward."
             },
         ],
     },
@@ -567,18 +654,26 @@ const allQuestions = [
             {
                 choice: "10",
                 correct: true,
+                feedback: "🎉 Correct! Number 10 is shown by making a fist and shaking it",
+                imageDescription: "Closed fist shaking side to side"
             },
             {
                 choice: "20",
                 correct: false,
+                feedback: "❌ Nope! Number 20 is signed differently using both hands.",
+                imageDescription: "Index and thumb extended doing letter 'G' shape shaking and moving forward"
             },
             {
                 choice: "30",
                 correct: false,
+                feedback: "❌ Incorrect! Number 30 involves more finger movements.",
+                imageDescription: "Fingers forming '3' shape moving forward"
             },
             {
                 choice: "40",
                 correct: false,
+                feedback: "❌ Not right! Number 40 is signed with a different handshape.",
+                imageDescription: "Four fingers extended moving forward"
             },
         ],
     },
@@ -588,18 +683,26 @@ const allQuestions = [
             {
                 choice: "10",
                 correct: false,
+                feedback: "❌ Not quite! Number 10 is shown by making a fist and shaking it.",
+                imageDescription: "Closed fist shaking side to side."
             },
             {
                 choice: "11",
                 correct: true,
+                feedback: "🎉 Correct! Number 11 is signed by extending the index finger and flicking it twice.",
+                imageDescription: "Index finger extended flicking twice."
             },
             {
                 choice: "12",
                 correct: false,
+                feedback: "❌ Incorrect! Number 12 is signed by extending index and middle fingers.",
+                imageDescription: "Index and middle fingers extended and flicked."
             },
             {
                 choice: "13",
                 correct: false,
+                feedback: "❌ No, number 13 uses three fingers.",
+                imageDescription: "Index, middle, and ring fingers extended and flicked"
             },
         ],
     },
@@ -609,18 +712,26 @@ const allQuestions = [
             {
                 choice: "10",
                 correct: false,
+                feedback: "❌ Not quite! Number 10 is shown by making a fist and shaking it.",
+                imageDescription: "Closed fist shaking side to side."
             },
             {
                 choice: "11",
                 correct: false,
+                feedback: "Incorrect! ❌ Number 11 is signed by extending the index finger and flicking it twice.",
+                imageDescription: "Index finger extended flicking twice"
             },
             {
                 choice: "12",
                 correct: true,
+                feedback: "Correct! 🎉 Number 12 is signed by extending index and middle fingers.",
+                imageDescription: "Index and middle fingers extended and flicked."
             },
             {
                 choice: "13",
                 correct: false,
+                feedback: "❌ No, number 13 uses three fingers.",
+                imageDescription: "Index, middle, and ring fingers extended and flicked"
             },
         ],
     },
@@ -630,18 +741,26 @@ const allQuestions = [
             {
                 choice: "10",
                 correct: false,
+                feedback: "❌ Not quite! Number 10 is shown by making a fist and shaking it.",
+                imageDescription: "Closed fist shaking side to side."
             },
             {
                 choice: "11",
                 correct: false,
+                feedback: "Incorrect! ❌ Number 11 is signed by extending the index finger and flicking it twice.",
+                imageDescription: "Index finger extended flicking twice"
             },
             {
                 choice: "12",
                 correct: false,
+                feedback: "❌ Incorrect! Number 12 is signed by extending index and middle fingers.",
+                imageDescription: "Index and middle fingers extended and flicked."
             },
             {
                 choice: "13",
                 correct: true,
+                feedback: "Correct! 🎉 number 13 uses three fingers.",
+                imageDescription: "Index, middle, and ring fingers extended and flicked"
             },
         ],
     },
@@ -651,18 +770,26 @@ const allQuestions = [
             {
                 choice: "14",
                 correct: true,
+                feedback: "🎉 Correct! Number 14 is signed by extending the thumb and three fingers.",
+                imageDescription: "Thumb and index, middle, ring fingers extended and flicked"
             },
             {
                 choice: "15",
                 correct: false,
+                feedback: "❌ Almost! Number 15 uses the thumb and all four fingers extended.",
+                imageDescription: "Open hand with all fingers extended and flicked"
             },
             {
                 choice: "4",
                 correct: false,
+                feedback: "❌ Incorrect! Number 4 is shown by extending four fingers without the thumb.",
+                imageDescription: "Index, middle, ring, and pinky fingers extended"
             },
             {
                 choice: "5",
                 correct: false,
+                feedback: "❌ Not quite! Number 5 is an open hand with all fingers spread out.",
+                imageDescription: "Open hand with fingers spread"
             },
         ],
     },
@@ -672,18 +799,26 @@ const allQuestions = [
             {
                 choice: "14",
                 correct: false,
+                feedback: "❌ Not quite! Number 14 is s signed by extending the thumb and three fingers",
+                imageDescription: "Thumb and index, middle, ring fingers extended and flicked"
             },
             {
                 choice: "15",
                 correct: true,
+                feedback: "🎉 Correct! Number 14 is signed by extending the thumb and three fingers.",
+                imageDescription: "Open hand with all fingers extended and flicked"
             },
             {
                 choice: "4",
                 correct: false,
+                feedback: "Close! 🤏 But three is just three fingers",
+                imageDescription: "Four fingers extended (incorrect)"
             },
             {
                 choice: "5",
                 correct: false,
+                feedback: "❌ Not quite! Number 5 is shown by extending all fingers",
+                imageDescription: "Open hand with all five fingers extended."
             },
         ],
     },
@@ -695,25 +830,25 @@ const allQuestions = [
                 choice: "16",
                 correct: true,
                 feedback: "Excellent! 🎉 You recognized the number 16 correctly!",
-                imageDescription: "Thumb extended with other fingers closed, then shaking motion"
+                imageDescription: "Pinky finger touching thumb, then flicking pinky against thumb twice"
             },
             {
                 choice: "17",
                 correct: false,
                 feedback: "Not quite! ❌ 17 has a different movement pattern",
-                imageDescription: "Similar but incorrect hand movement"
+                imageDescription: "Ring finger touching thumb, then flicking ring finger against thumb twice"
             },
             {
                 choice: "6",
                 correct: false,
                 feedback: "Oops! ✋ 6 is just the first part of this sign",
-                imageDescription: "Static hand position (missing movement)"
+                imageDescription: "Thumb touching the pinky finger, other fingers extended."
             },
             {
                 choice: "7",
                 correct: false,
-                feedback: "Close! 🤏 But 16 includes both the handshape and movement",
-                imageDescription: "Incorrect number gesture"
+                feedback: "Close! 🤏 Number 7 is thumb touching the ring finger",
+                imageDescription: "Thumb touching the ring finger, other fingers extended."
             },
         ],
     },
@@ -763,7 +898,7 @@ function initializeProgressBar() {
     questions.forEach((question, index) => {
         const segment = document.createElement('div');
         segment.className = 'progress-segment';
-        
+
         if (index < currentQuestionIndex) {
             // Check if the stored option has correct: true
             const userAnswer = userAnswers[index];
@@ -772,7 +907,7 @@ function initializeProgressBar() {
         } else if (index === currentQuestionIndex) {
             segment.classList.add('current');
         }
-        
+
         progressBar.appendChild(segment);
     });
 }
@@ -814,7 +949,7 @@ function showQuestion() {
     }
 
     const question = questions[currentQuestionIndex];
-    questionText.textContent = "What is the sign language shown above?"; 
+    questionText.textContent = "What is the sign language shown above?";
     signVideo.src = question.video;
     signVideo.load();
 
@@ -822,18 +957,18 @@ function showQuestion() {
     question.options.forEach((option) => {
         const optionElement = document.createElement('div');
         optionElement.classList.add('option');
-        
+
         const choiceText = document.createElement('p');
         choiceText.textContent = option.choice;
         optionElement.appendChild(choiceText);
-        
+
         optionElement.dataset.correct = option.correct;
         optionElement.addEventListener('click', () => handleOptionClick(optionElement, option));
         optionsContainer.appendChild(optionElement);
     });
 
     questionCounter.textContent = `${currentQuestionIndex + 1}/${questions.length}`;
-    
+
     // Fix this line - was using currentQuestion instead of currentQuestionIndex
     initializeProgressBar(); // This will update the progress bar correctly
 
