@@ -126,30 +126,32 @@ body {
 }
 
 
-.category-card:hover,
-.category-card:focus {
-    transform: translateY(-5px);
-    box-shadow: var(--card-hover-shadow, 0 6px 8px rgba(0, 0, 0, 0.15));
-    /* Use a fallback */
-    outline: none;
-}
-
+/* Update the category card colors */
 .category-card.light {
-    background: rgba(0, 74, 173, 0.4);
+    background: rgba(251, 209, 162, 0.9); /* #fbd1a2 with 90% opacity */
 }
 
 .category-card.medium {
-    background: rgba(0, 74, 173, 0.5);
+    background: rgba(125, 207, 182, 0.9); /* #7dcfb6 with 90% opacity */
 }
 
 .category-card.dark {
-    background: rgba(0, 74, 173, 0.6);
+    background: rgba(0, 178, 202, 0.9); /* #00b2ca with 90% opacity */
 }
 
 .category-card.bit_dark {
-    background: rgba(0, 74, 173, 0.6);
+    background: rgba(29, 78, 137, 0.9); /* #1d4e89 with 90% opacity */
+    color: white; /* White text for better contrast */
 }
 
+/* Add new color classes */
+.category-card.orange {
+    background: rgba(247, 146, 86, 0.9); /* #f79256 with 90% opacity */
+}
+
+.category-card.teal {
+    background: rgba(0, 178, 202, 0.9); /* #00b2ca with 90% opacity */
+}
 .category-icon {
     width: 60px;
     height: auto;
