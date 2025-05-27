@@ -335,21 +335,7 @@ function showQuestion() {
     optionsContainer.style.pointerEvents = 'auto';
 }
 
-async function getAIFeedback(mistakenSign, correctSign, context = "sign language recognition") {
-    const userQuery = `Context: ${context}
-Mistaken Sign: ${mistakenSign}
-Correct Sign: ${correctSign}`;
-
-    try {
-        const feedback = await runGemini(userQuery);
-        return feedback;
-    } catch (error) {
-        console.error("Error from Gemini:", error);
-        return "Sorry, I couldn't generate feedback at this time.";
-    }
-}
-
-async function handleOptionClick(optionElement, option) {
+function handleOptionClick(optionElement, option) {
     if (answered) return;
 
     answered = true;
@@ -367,16 +353,15 @@ async function handleOptionClick(optionElement, option) {
     userAnswers[currentQuestionIndex] = option;
     updateProgress(isCorrect);
 
-    if (resultElement) {
-        resultElement.textContent = isCorrect ?
-            `✅ Correct! ${option.feedback}` :
-            `❌ Incorrect. ${option.feedback}`;
-    }
+    // Show feedback
+    resultElement.innerHTML = isCorrect
+        ? `✅ Correct! ${option.feedback}`
+        : `❌ Incorrect. ${option.feedback}`;
 
     // Highlight selected option
     optionElement.classList.add(isCorrect ? 'correct' : 'wrong');
 
-    // Highlight correct answer if wrong was selected
+    // If wrong, highlight correct answer and show imageDescription
     if (!isCorrect) {
         const correctOptionElement = Array.from(optionsContainer.children).find(
             el => el.dataset.correct === 'true'
@@ -385,48 +370,18 @@ async function handleOptionClick(optionElement, option) {
             correctOptionElement.classList.add('correct');
         }
 
-        // Create loading spinner for AI feedback
-        const aiLoadingSpinner = document.createElement('div');
-        aiLoadingSpinner.className = 'ai-loading-spinner';
-        aiLoadingSpinner.innerHTML = `
-            <div class="spinner"></div>
-            <span>Getting AI feedback...</span>
-        `;
-        resultElement.appendChild(document.createElement('br'));
-        resultElement.appendChild(aiLoadingSpinner);
-
-        // Get AI feedback for wrong answers
-        try {
-            const aiFeedback = await getAIFeedback(
-                option.imageDescription,
-                correctOption.imageDescription,
-                question.context || "sign language recognition"
-            );
-
-            // Remove loading spinner
-            aiLoadingSpinner.remove();
-
-            // Create a new element for AI feedback
-            const aiFeedbackElement = document.createElement('div');
-            aiFeedbackElement.className = 'ai-feedback';
-            aiFeedbackElement.innerHTML = `<strong>AI Feedback:</strong> ${aiFeedback}`;
-
-            // Append after the result
-            resultElement.appendChild(aiFeedbackElement);
-        } catch (error) {
-            console.error('Error getting AI feedback:', error);
-            // Remove loading spinner and show error message
-            aiLoadingSpinner.remove();
-            const errorElement = document.createElement('div');
-            errorElement.className = 'ai-feedback-error';
-            errorElement.textContent = "Couldn't load AI feedback. Please try again.";
-            resultElement.appendChild(errorElement);
+        // Show correct sign's imageDescription (if available)
+        if (correctOption.imageDescription && correctOption.imageDescription !== "N/A") {
+            const imageDescriptionElement = document.createElement('div');
+            imageDescriptionElement.className = 'image-description';
+            imageDescriptionElement.innerHTML = `<strong>Explanation:</strong> ${correctOption.imageDescription}`;
+            resultElement.appendChild(document.createElement('br'));
+            resultElement.appendChild(imageDescriptionElement);
         }
     }
 
-    scoreDisplay.textContent = `Score: ${score}/${currentQuestionIndex + 1}`;
+  scoreDisplay.textContent = `Score: ${score}/${questions.length}`;
 }
-
 // Move to next question
 function nextQuestion() {
     currentQuestionIndex++;

@@ -1,41 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Randomized Quiz</title>
-    <link rel="stylesheet" href="../CSS/randomQuiz_style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../CSS/randomQuiz_style.css" />
+  </head>
+  <body>
     <section class="quiz" role="main">
-        <header class="top-header" role="banner">
-            <a href="Quizzes_home-home.html" class="back-link" aria-label="Back to previous page">
-                <img
-                src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F4f58b895b87b443ba782586860e6d12c"
-                alt="" class="back-icon" aria-hidden="true">
-                <span class="back-text">Quiz - Type</span>
-            </a>
-            <h1 class="page-title">Random - Quiz</h1>
-        </header>                   
-        <div class="container">
-            <div id="loading-spinner" class="spinner-container">
-                <div class="spinner"></div>
-                <p>Loading quiz...</p>
-            </div>
-           <div class="progress">Question 1 of <span id="totalQuestions">15</span></div>
-                <div class="progress-bar" id="progressBar"></div>
-            <div id="questions">
-            </div>
-            <div class="navigation">
-                <button onclick="nextQuestion()" id="nextButton" disabled>Next Question</button>
-            </div>
-            <div class="results" style="display: none;">
-                <h2>Quiz Complete!</h2>
-                <button onclick="restartQuiz()">Try Again</button>
-            </div>
+      <header class="top-header" role="banner">
+        <a
+          href="Quizzes_home-home.html"
+          class="back-link"
+          aria-label="Back to previous page"
+        >
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F4f58b895b87b443ba782586860e6d12c"
+            alt=""
+            class="back-icon"
+            aria-hidden="true"
+          />
+          <span class="back-text">Quiz - Type</span>
+        </a>
+        <h1 class="page-title">Random - Quiz</h1>
+      </header>
+      <div class="container">
+        <div id="loading-spinner" class="spinner-container">
+          <div class="spinner"></div>
+          <p>Loading quiz...</p>
         </div>
+        <div class="progress">
+          Question 1 of <span id="totalQuestions">15</span>
+        </div>
+        <div class="progress-bar" id="progressBar"></div>
+        <div id="questions"></div>
+        <div id="ai-feedback-container"></div>
+        <div class="navigation">
+          <button onclick="nextQuestion()" id="nextButton" disabled>
+            Next Question
+          </button>
+        </div>
+        <div class="results" style="display: none">
+          <h2>Quiz Complete!</h2>
+          <button onclick="restartQuiz()">Try Again</button>
+        </div>
+      </div>
     </section>
     <script type="module" src="../JS/randomized-quiz.js"></script>
-</body>
+  </body>
 </html>

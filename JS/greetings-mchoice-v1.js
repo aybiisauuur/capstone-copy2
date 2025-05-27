@@ -1,328 +1,773 @@
 import runGemini from './greetings-mchoice-v2.js';
 
 const allQuestions = [
-    {//goodMorning
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fdaaf40ef88e84bb6b94952f07a98a26c%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=daaf40ef88e84bb6b94952f07a98a26c&alt=media&optimized=true",
-        context: "Identifying morning greeting signs",
+    // A: common words
+    {//change, correct, update
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Faf3900620ef14f288f075a674a5b1068%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=af3900620ef14f288f075a674a5b1068&alt=media&optimized=true",
+        context: "Voter registration terms 📝",
         options: [
             {
-                choice: "Good Morning",
+                choice: "Change / Correct / Update",
                 correct: true,
-                feedback: "The upward palm movement represents sunrise 🌅",
-                imageDescription: "Hand rises diagonally from shoulder height, palm facing up"
+                feedback: "Both hands are in an X handshape, then twist your hands as if you are flipping or changing positions",
+                imageDescription: "Hand making circular motion in X handshape"
             },
             {
-                choice: "Good Afternoon",
+                choice: "Round",
                 correct: false,
-                feedback: "This horizontal motion indicates afternoon ↔️ not morning",
-                imageDescription: "Flat hand moving horizontally across chest level"
+                feedback: "Not quite! 🔄 This sign is about updating information, not shape",
+                imageDescription: "N/A"
             },
             {
                 choice: "Good Evening",
                 correct: false,
-                feedback: "Downward motion is used for evening 🌙 not morning",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
+                feedback: "Oops! 🌙 Wrong category - this is about voter registration terms",
+                imageDescription: "N/A"
             },
             {
-                choice: "Goodbye",
+                choice: "New",
                 correct: false,
-                feedback: "waving hands signify 'Goodbye'👋",
-                imageDescription: "Hands height close to face, waving"
+                feedback: "Close! ✨ 'New' is different from 'update/correct' in FSL",
+                imageDescription: "N/A"
             }
         ]
     },
-    {//goodAfternoon
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fd97c585713d542dda1cb425550c76f0c%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=d97c585713d542dda1cb425550c76f0c&alt=media&optimized=true",
-        context: "Identifying afternoon greeting signs",
+    {// New
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Febd1e4d4abfa443fa9a4cb39a38ee8c4%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=ebd1e4d4abfa443fa9a4cb39a38ee8c4&alt=media&optimized=true",
+        context: "Voter registration status 🆕",
         options: [
             {
-                choice: "Good Morning",
+                choice: "True",
                 correct: false,
-                feedback: "The movement is not related, the upward motion signifies rising 🌅",
-                imageDescription: "Hand rises diagonally from shoulder height, palm facing up"
+                feedback: "Incorrect! ❌ This sign specifically means 'new' registration",
+                imageDescription: "N/A"
             },
             {
-                choice: "Good Afternoon",
+                choice: "New",
                 correct: true,
-                feedback: "The horizontal movement indicates afternoon ↔️",
-                imageDescription: "Flat hand moving horizontally across chest level"
+                feedback: "Perfect! 🌟 New is signed by using your curved hand to scoop into your other flat hand, like you're showing something just arrived",
+                imageDescription: "Flat hand moving upward from palm-up position"
 
             },
             {
                 choice: "Good Evening",
                 correct: false,
-                feedback: "Downward motion is used for evening 🌙 not morning",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
+                feedback: "Wrong category! 🌆 This is about registration status, not greetings",
+                imageDescription: "N/A"
+            },
+            {
+                choice: "What are you doing?",
+                correct: false,
+                feedback: "Not quite! 🤔 This is a simple sign for 'new'",
+                imageDescription: "N/A"
+            },
+        ],
+    },
+    {//Transfer
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F618bc80c595b4493ad8acdfa44896729%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=618bc80c595b4493ad8acdfa44896729&alt=media&optimized=true",
+        context: "Voter record actions 🔄",
+        options: [
+            {
+                choice: "Letter T",
+                correct: false,
+                feedback: "Almost! ✋ This is the full word 'transfer', not just the letter",
+                imageDescription: "N/A"
+            },
+            {
+                choice: "Go there",
+                correct: false,
+                feedback: "Not quite! 🚶 This sign is about transferring voter records",
+                imageDescription: "N/A"
+            },
+            {
+                choice: "Transfer",
+                correct: true,
+                feedback: "Excellent! 🔄 This is done by moving both hands in a T handshape, as if shifting something from one place to another",
+                imageDescription: "Hands moving in T handshape showing transfer action"
             },
             {
                 choice: "Goodbye",
                 correct: false,
-                feedback: "waving hands signify 'Goodbye'👋",
-                imageDescription: "Hands height close to face, waving"
+                feedback: "Wrong category! 👋 This is about voter administration actions",
+                imageDescription: "N/A"
             },
         ],
     },
-    {//goodEvening
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F96cc65bcccbe45ffa5cb73bd771ff554%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=96cc65bcccbe45ffa5cb73bd771ff554&alt=media&optimized=true",
+    {//personal information
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F6aa2681a8a2a4678a54df8ec1cf73e01%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=6aa2681a8a2a4678a54df8ec1cf73e01&alt=media&optimized=true",
+        context: "Voter registration details 📋",
         options: [
             {
-                choice: "Good Morning",
+                choice: "Personal",
                 correct: false,
-                feedback: "The movement is not related, the upward motion signifies rising 🌅",
-                imageDescription: "Hand rises diagonally from shoulder height, palm facing up"
+                feedback: "Close! 👤 This is the full phrase 'personal information'",
+                imageDescription: "N/A"
             },
             {
                 choice: "Good Afternoon",
                 correct: false,
-                feedback: "This horizontal motion indicates afternoon ↔️ not morning",
-                imageDescription: "Flat hand moving horizontally across chest level"
+                feedback: "Wrong category! ☀️ This is about voter details, not greetings",
+                imageDescription: "N/A"
             },
             {
-                choice: "Good Evening",
-                correct: true,
-                feedback: "The downward motion indicates evening 🌙",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
-            },
-            {
-                choice: "Goodbye",
+                choice: "Form",
                 correct: false,
-                feedback: "waving hands signify 'Goodbye'👋",
-                imageDescription: "Hands height close to face, waving"
+                feedback: "Almost! 📄 This refers specifically to personal details, not the form itself",
+                imageDescription: "N/A"
+            },
+            {
+                choice: "Personal Information",
+                correct: true,
+                feedback: "This is made by doing handshape P pointing to yourself to show personal, then spreading both hands in front of you as if showing or laying out details, to represent information.",
+                imageDescription: "Hand moving in small circle near chest"
             },
         ],
     },
-    {//goodbye
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fdba4a7e655e04153ae79ebc7ff9e22a6%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=dba4a7e655e04153ae79ebc7ff9e22a6&alt=media&optimized=true",
+    {// Deactivated
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F75266a9a3ae547239c9004a62573e14d%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=75266a9a3ae547239c9004a62573e14d&alt=media&optimized=true",
+        context: "Voter record status ⚠️",
         options: [
             {
-                choice: "Good Morning",
-                correct: false,
-                feedback: "The movement is not related, the upward motion signifies rising 🌅",
-                imageDescription: "Hand rises diagonally from shoulder height, palm facing up"
-            },
-            {
-                choice: "Good Afternoon",
-                correct: false,
-                feedback: "This horizontal motion indicates afternoon ↔️ not morning",
-                imageDescription: "Flat hand moving horizontally across chest level"
-            },
-            {
-                choice: "Good Evening",
-                correct: false,
-                feedback: "Downward motion is used for evening 🌙 not morning",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
-            },
-            {
-                choice: "Goodbye",
+                choice: "Deactivated",
                 correct: true,
-                feedback: "Waving hands signify 'Goodbye'👋",
-                imageDescription: "Hands height close to face, waving"
+                feedback: "Exactly! ⚠️ This is shown by making a motion like closing or turning off something",
+                imageDescription: "Hand making downward cutting motion"
+            },
+            {
+                choice: "Record",
+                correct: false,
+                feedback: "Close! 📁 This shows the record is specifically deactivated",
+                imageDescription: "N/A"
+            },
+            {
+                choice: "Personal Information",
+                correct: false,
+                feedback: "Not quite! 👤 This refers to record status, not personal details",
+                imageDescription: "N/A"
+            },
+            {
+                choice: "Voter",
+                correct: false,
+                feedback: "Almost! 🗳️ This shows the voter record's inactive status",
+                imageDescription: "N/A"
             },
         ],
     },
-    {//Hi/hello
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fd702dd1b2538458098cba218905c9987%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=d702dd1b2538458098cba218905c9987&alt=media&optimized=true",
+    {// Voter
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F8ef2c0eefca04b2c91e4264e89a9f854%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=8ef2c0eefca04b2c91e4264e89a9f854&alt=media&optimized=true",
+        context: "Voter identification 🗳️",
         options: [
             {
-                choice: "Hi / Hello",
+                choice: "Vote",
+                correct: false,
+                feedback: "Close! ✋ This is the person ('voter') not the action ('vote')",
+                imageDescription: "N/A"
+            },
+            {
+                choice: "Record",
+                correct: false,
+                feedback: "Not quite! 📁 This specifically identifies a voter",
+                imageDescription: "N/A"
+            },
+            {
+                choice: "Personal Information",
+                correct: false,
+                feedback: "Almost! 👤 This is about voter identity, not personal details",
+                imageDescription: "N/A"
+            },
+            {
+                choice: "Voter",
                 correct: true,
-                feedback: "The upward motion indicates 'Hi'🙋‍♂️",
-                imageDescription: "Hand rises diagonally from shoulder height, palm facing up"
-            },
-            {
-                choice: "Good Afternoon",
-                correct: false,
-                feedback: "This horizontal motion indicates afternoon ↔️ not morning",
-                imageDescription: "Flat hand moving horizontally across chest level"
-            },
-            {
-                choice: "Good Evening",
-                correct: false,
-                feedback: "Downward motion is used for evening 🌙 not morning",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
-            },
-            {
-                choice: "Goodbye",
-                correct: false,
-                feedback: "waving hands signify 'Goodbye'👋",
-                imageDescription: "Hands height close to face, waving"
+                feedback: "Perfect! 🗳️ You recognized the sign for 'voter', by handshape V and placing both flat hands upright (palms facing each other) and moving them down together, as if outlining the shape of a person.",
+                imageDescription: "Hand making V shape near chest"
             },
         ],
     },
-    {//Thankyou
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fee781b67a8bf4e488174c0156c18914b%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=ee781b67a8bf4e488174c0156c18914b&alt=media&optimized=true",
+    {//Certificate
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F28ecb2fb7ed3465da85f76c228355228%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=28ecb2fb7ed3465da85f76c228355228&alt=media&optimized=true",
+        context: "Voter documents 📜",
         options: [
             {
-                choice: "Nice to Meet You",
+                choice: "Letter C",
                 correct: false,
-                feedback: "Hands meeting in the middle indicates 'Nice to meet'🤝",
-                imageDescription: "Sweeping the hands and fingers pointing and meeting together in the middle"
+                feedback: "Almost! ✋ This is the full word 'certificate', not just the letter",
+                imageDescription: "N/A"
             },
             {
-                choice: "Good Afternoon",
-                correct: false,
-                feedback: "This horizontal motion indicates afternoon ↔️ not morning",
-                imageDescription: "Flat hand moving horizontally across chest level"
-            },
-            {
-                choice: "Good Evening",
-                correct: false,
-                feedback: "Downward motion is used for evening 🌙 not morning",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
-            },
-            {
-                choice: "Thank You",
+                choice: "Certificate",
                 correct: true,
-                feedback: "The upward motion indicates 'Thank you'☺️",
-                imageDescription: "Hands in front of the persons chin, palm facing each other moving fro and back"
+                feedback: "This is done by creating C handshape",
+                imageDescription: "Hands mimicking holding and presenting a document"
             },
-        ],
-    },
-    {//YoureWelcome
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F67fae21fb722479283ce276ea388eadf%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=67fae21fb722479283ce276ea388eadf&alt=media&optimized=true",
-        options: [
             {
-                choice: "Nice to meet you",
+                choice: "Record",
                 correct: false,
-                feedback: "Hands meeting in the middle indicates 'Nice to meet'🤝",
-                imageDescription: "Sweeping the hands and fingers pointing and meeting together in the middle"
-            },
-            {
-                choice: "You're Welcome",
-                correct: true,
-                feedback: "The upward motion indicates 'You're welcome'🤗",
-                imageDescription: "Three fingers up from the chin and curving towards the belly"
-            },
-            {
-                choice: "Good Evening",
-                correct: false,
-                feedback: "Downward motion is used for evening 🌙 not morning",
-                imageDescription: "Hand moves downward from forehead with palm facing body"
+                feedback: "Close! 📁 This is specifically a certificate document",
+                imageDescription: "N/A"
             },
             {
                 choice: "Top of the Morning",
                 correct: false,
-                feedback: "Not a formal sign for 'You're Welcome'😌",
-                imageDescription: "Not a formal Filipino Sign Language (FSL) sign"
+                feedback: "Wrong category! ☀️ This is about voter documents, not greetings",
+                imageDescription: "N/A"
             },
         ],
     },
-    {//takecare
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F9aa5c6e3c22a488c81ea9b78cd9d0a51%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=9aa5c6e3c22a488c81ea9b78cd9d0a51&alt=media&optimized=true",
+    {//VOTE 
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ff2e2862975a34d998cb355ce845fa274%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=f2e2862975a34d998cb355ce845fa274&alt=media&optimized=true",
+        context: "Voting action 🗳️",
         options: [
             {
-                choice: "Take Care",
+                choice: "Vote",
                 correct: true,
-                feedback: "Hands on top of each other indicates 'Take care'🫂",
-                imageDescription: "Hands on the side, on top of each other circling in front"
+                feedback: "You recognized the sign for casting a vote, creating V handshape and mimicking dropping ballot into a box",
+                imageDescription: "Hand mimicking dropping a ballot into a box"
             },
             {
-                choice: "Are you okay?",
+                choice: "Voter",
                 correct: false,
-                feedback: "not a greeting 'Are you ok?'😑",
-                imageDescription: "Not a greeting more like a question"
+                feedback: "Close! 👤 This is the action ('vote') not the person ('voter')",
+                imageDescription: "N/A"
             },
             {
                 choice: "What?",
                 correct: false,
-                feedback: "not a greeting 'What?'🙄",
-                imageDescription: "hands palm facing right up, doing a circular motion stationary to position"
+                feedback: "Not quite! ❓ This is about the voting action",
+                imageDescription: "N/A"
             },
             {
-                choice: "Mixing",
+                choice: "Letter V",
                 correct: false,
-                feedback: "Not greeting more like an action 'mixing' 🥣",
-                imageDescription: "Used for something else like baking 'mixing'"
+                feedback: "Almost! ✋ This is the full word 'vote', not just the letter",
+                imageDescription: "N/A"
             },
         ],
     },
-    {//LongTimeNoSee
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F7c3f41cef37546958629bc8d3e844c2b%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=7c3f41cef37546958629bc8d3e844c2b&alt=media&optimized=true",
-        context: "FSL Greetings 🤟",
-        options: [
+    // register
+    {
+        "video": "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F6cce7bb8ddd24c6e91563b168cd0bc3a%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=6cce7bb8ddd24c6e91563b168cd0bc3a&alt=media&optimized=true",
+        "options": [
             {
-                choice: "Nice to meet you",
+                choice: "Form",
                 correct: false,
-                feedback: "Not quite! 🤝 In FSL, 'Nice to meet you' uses a different hand motion where palms briefly touch",
-                imageDescription: "Both hands with palms facing inward meet briefly at chest level"
+                feedback: "Not quite, try again! The sign for Form looks different.",
+                imageDescription: "Hands held flat and open, showing the shape of a paper form."
             },
             {
-                choice: "Salute",
+                choice: "Record",
                 correct: false,
-                feedback: "No! ✋ In Filipino Sign Language, this isn't the military salute. The hand motion is different for 'Long time no see'",
-                imageDescription: "Hand flat against forehead (military salute gesture)"
+                feedback: "Almost there! The sign for Record is different.",
+                imageDescription: "One hand making a shape like holding a device or writing to show recording."
             },
             {
-                choice: "Goodbye",
+                choice: "Personal Information",
                 correct: false,
-                feedback: "Close! 👋 While both are greetings, 'Goodbye' in FSL uses a wave motion, not this back-and-forth movement near the chin",
-                imageDescription: "Hand waving side-to-side at shoulder height"
+                feedback: "Close, but that’s not the sign here. Personal Information uses a different gesture.",
+                imageDescription: "Pointing to the chest then spreading hands to show information."
             },
             {
-                choice: "Long time no see",
+                choice: "Register",
                 correct: true,
-                feedback: "Perfect! 🎉 You recognized the FSL sign for 'Long time no see' (hands moving back and forth near chin)",
-                imageDescription: "Both hands palms facing each other, moving horizontally back and forth at chin level"
-            },
-        ],
+                feedback: "Good job! You chose the sign for Register.",
+                imageDescription: "Hands moving as if filling out a form, showing the action of registering."
+            }
+        ]
     },
-    {//Seeyoulater
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F75c44265368f48d2a8fd3ed56e3e0821%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=75c44265368f48d2a8fd3ed56e3e0821&alt=media&optimized=true",
-        context: "FSL Parting Phrases ✌️",
-        options: [
+    {
+        "video": "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F1331af5563e24fbabbf27b168782cda3%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=1331af5563e24fbabbf27b168782cda3&alt=media&optimized=true",
+        "options": [
             {
-                choice: "Meet me here?",
+                choice: "Form",
                 correct: false,
-                feedback: "Not exactly! 📍 In FSL, this would involve pointing to a location, not the eye-to-side motion",
-                imageDescription: "Index finger pointing downward to indicate location"
+                feedback: "Not quite! The sign for Form is different.",
+                imageDescription: "Hands open flat, showing the shape of a paper form."
             },
             {
-                choice: "Are you okay?",
+                choice: "Sign Language",
                 correct: false,
-                feedback: "Incorrect! ❓ The FSL sign for 'Are you okay?' uses different hand shapes near the forehead",
-                imageDescription: "Thumb and index finger forming 'O' shape moving from forehead outward"
+                feedback: "Nope! That’s not the sign for Sign Language.",
+                imageDescription: "Hands moving near the face to represent communication."
             },
             {
-                choice: "See you later",
+                choice: "Signature",
                 correct: true,
-                feedback: "Excellent! 👁️ You identified the FSL sign for 'Kitakits' (point to eye then outward)",
-                imageDescription: "Index finger pointing to eye then arcing outward"
+                feedback: "Great! You picked the sign for Signature ✍️.",
+                imageDescription: "Dominant hand mimics writing a signature on the palm of the other hand."
             },
             {
                 choice: "You're welcome",
                 correct: false,
-                feedback: "No! 🙏 In FSL, 'You're welcome' is signed with flat palms moving from chest outward",
-                imageDescription: "Flat palms moving from chest outward in a giving motion"
-            },
-        ],
+                feedback: "Try again! This sign means something else.",
+                imageDescription: "Hand moves forward with W handshape from the chest as a polite gesture."
+            }
+        ]
     },
-    {//Nicetomeetyou
-        video: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F0299652d0ea94bdab652d539b2616b7d%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=0299652d0ea94bdab652d539b2616b7d&alt=media&optimized=true",
-        context: "FSL Introductions 🤝",
+    // B: Registration Process
+    {//How may I help you?
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fcd89d3b3810e483f83dcc8633c5bbec2%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=cd89d3b3810e483f83dcc8633c5bbec2&alt=media&optimized=true",
         options: [
             {
-                choice: "Nice to meet you",
+                choice: "How may I help you?",
                 correct: true,
-                feedback: "Correct! 🌟 You recognized the FSL sign for 'Ikinagagalak kitang makilala' (palms touching then separating gracefully)",
-                imageDescription: "Palms touching briefly then separating outward with graceful motion"
+                feedback: "Good! This is the sign for 'How may I help you?'.",
+                imageDescription: "Hands moving forward with a questioning expression."
             },
             {
                 choice: "You Are?",
                 correct: false,
-                feedback: "Not quite! 👤 The FSL sign for 'You are?' involves pointing then a question facial expression",
-                imageDescription: "Index finger pointing upward with questioning head tilt"
+                feedback: "Not this one. Try again!",
+                imageDescription: "Pointing gesture asking 'You are?'"
             },
             {
-                choice: "See you later",
+                choice: "Help",
                 correct: false,
-                feedback: "Close! 👋 But this is the greeting sign, not the parting phrase",
-                imageDescription: "N/A"
+                feedback: "Nope! This sign means 'Help' which looks different.",
+                imageDescription: "One hand lifting the other to show help."
             },
             {
                 choice: "Goodbye",
                 correct: false,
-                feedback: "Incorrect! ✋ 'Goodbye' in FSL uses a different waving motion",
-                imageDescription: "Hand waving side-to-side at shoulder height"
+                feedback: "Not correct. The sign for 'Goodbye' is different.",
+                imageDescription: "Hand waving to say goodbye."
+            },
+        ],
+    },
+    {//put signature
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F8073ed7c263941f5aacbd09663624a42%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=8073ed7c263941f5aacbd09663624a42&alt=media&optimized=true",
+        options: [
+            {
+                choice: "Please put your signature.",
+                correct: true,
+                feedback: "This is the sign for 'Please put your signature.' ✍️",
+                imageDescription: "Dominant hand mimics writing on the other hand",
+            },
+            {
+                choice: "Please",
+                correct: false,
+                feedback: "Not this one. The sign for 'Please' is different",
+                imageDescription: "Flat hand moving in a circular motion on chest"
+            },
+            {
+                choice: "Help",
+                correct: false,
+                feedback: "Nope! This sign means 'Help' which looks different",
+                imageDescription: "One hand lifting the other as a helping gesture."
+            },
+            {
+                choice: "Goodbye",
+                correct: false,
+                feedback: "Not correct. This sign is for 'Goodbye'",
+                imageDescription: "Hand waving side to side."
+            },
+        ],
+    },
+    {//take picture
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F356740339ed748b99a44d96daa7a9451%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=356740339ed748b99a44d96daa7a9451&alt=media&optimized=true",
+        options: [
+            {
+                choice: "Picture",
+                correct: false,
+                feedback: "Not this one. The sign for 'Picture' is different.",
+                imageDescription: "Hands framing a photo shape."
+            },
+            {
+                choice: "We will take your picture.",
+                correct: true,
+                feedback: "Well done! This sign means 'We will take your picture.' 📸",
+                imageDescription: "Hands mimicking holding a camera and taking a photo"
+            },
+            {
+                choice: "We will scan your thumbprint.",
+                correct: false,
+                feedback: "Nope! This sign means scanning thumbprint",
+                imageDescription: "Hand pressing thumb onto a scanner"
+            },
+            {
+                choice: "Smile",
+                correct: false,
+                feedback: "Not correct. This sign means 'Smile'",
+                imageDescription: "Hand movement near mouth to show smiling"
+            },
+        ],
+    },
+    {//registered abroad
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F946bbe19dd3145f89a7d2e893b43f935%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=946bbe19dd3145f89a7d2e893b43f935&alt=media&optimized=true",
+        options: [
+            {
+                choice: "Are you registered in SK (Sangguniang Kabataan)?",
+                correct: false,
+                feedback: "This is not the sign for SK registration.",
+                imageDescription: "Fingerspell SK registration."
+            },
+            {
+                choice: "Are you registered in Baguio City?",
+                correct: false,
+                feedback: "Not correct for this sign.",
+                imageDescription: "Gesture for Baguio handshape B and shivering mimicking coldness, to show Baguio is a cold place"
+            },
+            {
+                choice: "Are you registered abroad?",
+                correct: true,
+                feedback: "Good! This sign means 'Are you registered abroad?'. 🌍",
+                imageDescription: "Hand pointing outward indicating abroad, doing sign for 'other' and 'country', with C handshape circular motion near elbow"
+            },
+            {
+                choice: "Register",
+                correct: false,
+                feedback: "Not the sign for 'Register' here.",
+                imageDescription: "Sign for registration R handshape"
+            },
+        ],
+    },
+    {//record deactivated
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F46b9dc2953db4495ae59626a951e0f7c%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=46b9dc2953db4495ae59626a951e0f7c&alt=media&optimized=true",
+        options: [
+            {
+                choice: "Register",
+                correct: false,
+                feedback: "This sign is not for 'Register'.",
+                imageDescription: "Sign for registration R handshape"
+            },
+            {
+                choice: "You record is active.",
+                correct: false,
+                feedback: "This sign is not for active records.",
+                imageDescription: "Hand gesture indicating active."
+            },
+            {
+                choice: "Record",
+                correct: false,
+                feedback: "Not correct for 'Record'.",
+                imageDescription: "Sign for record with open hands going down"
+            },
+            {
+                choice: "Your record is deactivated / inactive.",
+                correct: true,
+                feedback: "This sign means 'Your record is deactivated or inactive.' ❌",
+                imageDescription: "Hands closing or stopping action."
+            },
+        ],
+    },
+    {//application for reactivation
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F864e8ef786584c3ba01d2e48da8fbfb7%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=864e8ef786584c3ba01d2e48da8fbfb7&alt=media&optimized=true",
+        options: [
+            {
+                choice: "Your application type is not new, it is for reactivation.",
+                correct: true,
+                feedback: "This means your application is for reactivation.",
+                imageDescription: "Hands showing reactivation sign as if reopening something with both hands facing down and reopening"
+            },
+            {
+                choice: "You record is active.",
+                correct: false,
+                feedback: "This sign means something else.",
+                imageDescription: "Sign indicating active record."
+            },
+            {
+                choice: "How may I help you?",
+                correct: false,
+                feedback: "Not the sign for asking help here.",
+                imageDescription: "Questioning hand gesture"
+            },
+            {
+                choice: "Your record is deactivated / inactive.",
+                correct: false,
+                feedback: "Different sign, try again!",
+                imageDescription: "Inactive record gesture with hands placed downward and imitating closing gesture"
+            },
+        ],
+    },
+    {//capture thumbprints
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F9e6c1869bb234b868130f2866f9e694b%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=9e6c1869bb234b868130f2866f9e694b&alt=media&optimized=true",
+        options: [
+            {
+                choice: "We will take your picture.",
+                correct: false,
+                feedback: "This sign is for scanning thumbprints.",
+                imageDescription: "Gesture taking picture"
+            },
+            {
+                choice: "We will scan your thumbprint and index prints.",
+                correct: true,
+                feedback: "This sign means scanning thumb and index prints. 👍",
+                imageDescription: "Hand showing scanning of thumb and index fingers"
+            },
+            {
+                choice: "How may I help you?",
+                correct: false,
+                feedback: "This sign means something else.",
+                imageDescription: "Hands open, palms facing up with questioning expression"
+            },
+            {
+                choice: "Scan your fingerprint",
+                correct: false,
+                feedback: "Different sign from this one, not quite close",
+                imageDescription: "Not complete sentence"
+            },
+        ],
+    },
+    { // have valid id
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F16c9959c12004a33911a5664f10adab2%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=16c9959c12004a33911a5664f10adab2&alt=media&optimized=true",
+        options: [
+            {
+                choice: "How may I help you?",
+                correct: false,
+                feedback: "This sign does not mean 'How may I help you?'. Try again!",
+                imageDescription: "Hands open, palms facing up with questioning expression"
+            },
+            {
+                choice: "Your record is deactivated/inactive.",
+                correct: false,
+                feedback: "This sign is not 'Your record is deactivated/inactive.' Please try another option.",
+                imageDescription: "Hands making a stopping or closing gesture"
+            },
+            {
+                choice: "Do you have a valid ID?",
+                correct: true,
+                feedback: "Yes! This is the sign for 'Do you have a valid ID?'.",
+                imageDescription: "Hand gestures mimicking showing or presenting an ID card, fingerspelling ID"
+            },
+            {
+                choice: "Please fill out the form.",
+                correct: false,
+                feedback: "This sign means 'Please fill out the form,' which is different from the video.",
+                imageDescription: "Hand motion indicating writing or filling a form"
+            }
+        ]
+    },
+    {//registered in Baguio
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F8d0e9627c9b849348f359352c6df3010%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=8d0e9627c9b849348f359352c6df3010&alt=media&optimized=true",
+        options: [
+            {
+                choice: "Are you registered in SK (Sangguniang Kabataan)?",
+                correct: false,
+                feedback: "This is not the sign for SK registration.",
+                imageDescription: "Fingerspell 'S' and 'K' near the chest and 'R' for register"
+            },
+            {
+                choice: "Are you registered in Baguio City?",
+                correct: true,
+                feedback: "This is the FSL sign for 'Are you registered in Baguio City?'",
+                imageDescription: "Gesture for Baguio handshape B and shivering mimicking coldness, to show Baguio is a cold place"
+            },
+            {
+                choice: "Are you registered abroad?",
+                correct: false,
+                feedback: "This sign refers to being registered outside the country. Try again!",
+                imageDescription: "Hand pointing outward indicating abroad, doing sign for 'other' and 'country', with C handshape circular motion near elbow"
+            },
+            {
+                choice: "Register",
+                correct: false,
+                feedback: "This sign means 'Register' in general, not the specific question asked.",
+                imageDescription: "Hand signing a writing motion or enlisting gesture"
+            },
+        ],
+    },
+    {//registered in SK
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F88702384bd504672b5101b55ddb942c2%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=88702384bd504672b5101b55ddb942c2&alt=media&optimized=true",
+        options: [
+            {
+                choice: "Are you a registered voter as SK (Sangguniang Kabataan)?",
+                correct: true,
+                feedback: "This is the FSL sign for asking about SK registration",
+                imageDescription: "Fingerspell 'S' and 'K' near the chest and 'R' for register"
+            },
+            {
+                choice: "Are you registered in Baguio City?",
+                correct: false,
+                feedback: "Not correct for this sign.",
+                imageDescription: "Gesture for Baguio handshape B and shivering mimicking coldness, to show Baguio is a cold place"
+            },
+            {
+                choice: "Are you registered abroad?",
+                correct: false,
+                feedback: "Not correct for this sign.",
+                imageDescription: "Hand pointing outward indicating abroad, doing sign for 'other' and 'country', with C handshape circular motion near elbow"
+            },
+            {
+                choice: "Register",
+                correct: false,
+                feedback: "This sign means 'Register' in general, not the specific question asked.",
+                imageDescription: "Sign for registration R handshape"
+            },
+        ],
+    },
+    {//fill out the form
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F4003df5a5f364905ba4ff95c75e12d46%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=4003df5a5f364905ba4ff95c75e12d46&alt=media&optimized=true",
+        options: [
+            {
+                choice: "Do you have a valid ID?",
+                correct: false,
+                feedback: "Wrong ❌ Try again!",
+                imageDescription: "Hand gestures mimicking showing or presenting an ID card, fingerspelling ID"
+            },
+            {
+                choice: "Please fill out the form.",
+                correct: true,
+                feedback: "Good job! This is the FSL sign for filling out a form",
+                imageDescription: "Hand motion indicating writing or filling a form"
+            },
+            {
+                choice: "How may I help you?",
+                correct: false,
+                feedback: "This sign does not mean 'How may I help you?'. Try again!",
+                imageDescription: "Hands open, palms facing up with questioning expression"
+            },
+            {
+                choice: "Please put your signature.",
+                correct: false,
+                feedback: "This sign does indicate putting your signature ❌ Try again! ✍️",
+                imageDescription: "Dominant hand mimics writing on the other hand",
+            },
+        ],
+    },
+    {//voters certificate released when approved
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F8bd82613bc7a4f5e8e65fef195ac079e%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=8bd82613bc7a4f5e8e65fef195ac079e&alt=media&optimized=true",
+        options: [
+            {
+                choice: "How may I help you?",
+                correct: false,
+                feedback: "This sign does not mean 'How may I help you?'. Try again!",
+                imageDescription: "Hands open, palms facing up with questioning expression"
+            },
+            {
+                choice: "Once approved, your voter’s certificate will be released.",
+                correct: true,
+                feedback: "Great! This is the FSL sign for certificate release after approval",
+                imageDescription: "Hand gesture suggesting approval followed by a motion of giving or releasing a document"
+            },
+            {
+                choice: "Please check if your personal information is correct.",
+                correct: false,
+                feedback: "This sign is used to verify personal information, not the correct answer in this context",
+                imageDescription: "Hand motion resembling checking or scanning over a document, followed by gestures pointing to oneself"
+            },
+            {
+                choice: "Please put your signature.",
+                correct: false,
+                feedback: "This sign does not indicate putting your signature ❌ Try again! ✍️",
+                imageDescription: "Dominant hand mimics writing on the other hand",
+            },
+        ],
+    },
+    {//how long present barangay
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F21e3da74fcb84f84b60fb07a2260559d%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=21e3da74fcb84f84b60fb07a2260559d&alt=media&optimized=true",
+        options: [
+            {
+                choice: "How may I help you?",
+                correct: false,
+                feedback: "This sign does not mean 'How may I help you?'. Try again!",
+                imageDescription: "Hands open, palms facing up with questioning expression"
+            },
+            {
+                choice: "Are you registered abroad?",
+                correct: false,
+                feedback: "Not correct for this sign.",
+                imageDescription: "Hand pointing outward indicating abroad, doing sign for 'other' and 'country', with C handshape circular motion near elbow"
+            },
+            {
+                choice: "How long have you been residing in your present barangay?",
+                correct: true,
+                feedback: "This asks how long have you been living in present barangay",
+                imageDescription: "Sign 'HOW' by using thumbs going in opposite direction, followed by 'LONG' using a slow upward motion from wrist to shoulder with L handshape, and 'LIVE' by doing Y handshape facing down near chest, then sign 'BARANGAY' by outlining a small community or group with both hands."
+            },
+            {
+                choice: "Please put your signature.",
+                correct: false,
+                feedback: "This sign does not indicate putting your signature ❌ Try again! ✍️",
+                imageDescription: "Dominant hand mimics writing on the other hand",
+            },
+        ],
+    },
+    {//resident 6 months
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fe255026b24fc41eeae6d7549a8cf38d7%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=e255026b24fc41eeae6d7549a8cf38d7&alt=media&optimized=true",
+        context: "Voter residency requirement 🏠",
+        options: [
+            {
+                choice: "How may I help you?",
+                correct: false,
+                feedback: "Not quite! ❓ This explains residency requirements",
+                imageDescription: "Hands open, palms facing up with questioning expression"
+            },
+            {
+                choice: "Are you registered abroad?",
+                correct: false,
+                feedback: "Wrong question! ✈️ This is about local residency duration",
+                imageDescription: "Hand pointing outward indicating abroad, doing sign for 'other' and 'country', with C handshape circular motion near elbow"
+            },
+            {
+                choice: "How long have you been residing in your present barangay?",
+                correct: false,
+                feedback: "Close! ⏳ This states the 6-month requirement",
+                imageDescription: "Sign 'HOW' by using thumbs going in opposite direction, followed by 'LONG' using a slow upward motion from wrist to shoulder with L handshape, and 'LIVE' by doing Y handshape facing down near chest, then sign 'BARANGAY' by outlining a small community or group with both hands."
+            },
+            {
+                choice: "If you are a registered voter, you must be a resident for at least 6 months.",
+                correct: true,
+                feedback: "Great job! ⏳ You identified the 6-month residency requirement explanation",
+                imageDescription: "Hand showing six fingers then pointing downward for 'months'"
+            },
+        ],
+    },
+    // C: Common answers
+    {//registration next year
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F024a9f90929c4c93ac3d3d64cbbb61c3%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=024a9f90929c4c93ac3d3d64cbbb61c3&alt=media&optimized=true",
+        context: "Registration timeline 📅",
+        options: [
+            {
+                choice: "How may I help you?",
+                correct: false,
+                feedback: "Not quite! ❓ This is about future registration dates",
+                imageDescription: "Hands open, palms facing up with questioning expression"
+            },
+            {
+                choice: "Next year",
+                correct: false,
+                feedback: "Almost! 📅 This is the full statement about registration timing",
+                imageDescription: "Sign 'NEXT' by holding one hand flat and moving the other hand in an arc over it to land forward, then sign 'YEAR' by making closed fists with both hands and circling the dominant fist over the non-dominant before placing it on top"
+            },
+            {
+                choice: "The national election will be held next year. ",
+                correct: false,
+                feedback: "Close! 🗳️ This refers to registration, not the election itself",
+                imageDescription: "Sign 'ELECTION' by mimicking placing a ballot into a box, then sign 'NEXT YEAR' using an arc motion forward for 'next' and circling closed fists for 'year'."
+            },
+            {
+                choice: "The next registration will be next year. ",
+                correct: true,
+                feedback: "Good! 📅 You identified the future registration period announcement",
+                imageDescription: "Hand moving forward while signing 'next year'"
+            },
+        ],
+    },
+    {//election next year
+        video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fae5fd834e74640faa88ce31d010b3c57%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=ae5fd834e74640faa88ce31d010b3c57&alt=media&optimized=true",
+        context: "Election timeline 🗳️",
+        options: [
+            {
+                choice: "How may I help you?",
+                correct: false,
+                feedback: "Not quite! ❓ This is about the election schedule",
+                imageDescription: "Hands open, palms facing up with questioning expression"
+            },
+            {
+                choice: "Next year",
+                correct: false,
+                feedback: "Almost! 📅 This is the full statement about election timing",
+                imageDescription: "Sign 'NEXT' by holding one hand flat and moving the other hand in an arc over it to land forward, then sign 'YEAR' by making closed fists with both hands and circling the dominant fist over the non-dominant before placing it on top"
+            },
+            {
+                choice: "The national election will be held next year. ",
+                correct: true,
+                feedback: "Exactly! 🗳️ You recognized the election schedule announcement",
+                imageDescription: "Sign 'ELECTION' by mimicking placing a ballot into a box, then sign 'NEXT YEAR' using an arc motion forward for 'next' and circling closed fists for 'year'"
+            },
+            {
+                choice: "The next registration will be next year. ",
+                correct: false,
+                feedback: "Close! ✏️ This refers to the election, not registration",
+                imageDescription: "Sign 'REGISTRATION' with letter R handshape, then sign 'NEXT YEAR' with a forward hand motion followed by circling closed fists"
             },
         ],
     }
@@ -392,9 +837,33 @@ function startQuiz() {
     quizContainer.style.display = 'none';
 
     setTimeout(() => {
-        // Shuffle all questions and select first 8
+        // Shuffle all questions and select first 15
         const shuffledQuestions = [...allQuestions].sort(() => Math.random() - 0.5);
-        questions = shuffledQuestions.slice(0, 8);
+        questions = shuffledQuestions.slice(0, 15);
+
+        // Shuffle options for each selected question while preserving correct answer
+        questions = questions.map(question => {
+            // Find correct option
+            const correctOption = question.options.find(opt => opt.correct);
+            // Get all incorrect options
+            const incorrectOptions = question.options.filter(opt => !opt.correct);
+            // Shuffle incorrect options
+            const shuffledIncorrect = [...incorrectOptions].sort(() => Math.random() - 0.5);
+            // Random position for correct answer (0 to length of shuffled array)
+            const correctPosition = Math.floor(Math.random() * (shuffledIncorrect.length + 1));
+
+            // Insert correct answer at random position
+            const finalOptions = [
+                ...shuffledIncorrect.slice(0, correctPosition),
+                correctOption,
+                ...shuffledIncorrect.slice(correctPosition)
+            ];
+
+            return {
+                ...question,
+                options: finalOptions
+            };
+        });
 
         currentQuestionIndex = 0;
         score = 0;
@@ -453,21 +922,7 @@ function showQuestion() {
     optionsContainer.style.pointerEvents = 'auto';
 }
 
-async function getAIFeedback(mistakenSign, correctSign, context = "sign language recognition") {
-    const userQuery = `Context: ${context}
-Mistaken Sign: ${mistakenSign}
-Correct Sign: ${correctSign}`;
-
-    try {
-        const feedback = await runGemini(userQuery);
-        return feedback;
-    } catch (error) {
-        console.error("Error from Gemini:", error);
-        return "Sorry, I couldn't generate feedback at this time.";
-    }
-}
-
-async function handleOptionClick(optionElement, option) {
+function handleOptionClick(optionElement, option) {
     if (answered) return;
 
     answered = true;
@@ -485,16 +940,15 @@ async function handleOptionClick(optionElement, option) {
     userAnswers[currentQuestionIndex] = option;
     updateProgress(isCorrect);
 
-    if (resultElement) {
-        resultElement.textContent = isCorrect ?
-            `✅ Correct! ${option.feedback}` :
-            `❌ Incorrect. ${option.feedback}`;
-    }
+    // Show feedback
+    resultElement.innerHTML = isCorrect
+        ? `✅ Correct! ${option.feedback}`
+        : `❌ Incorrect. ${option.feedback}`;
 
     // Highlight selected option
     optionElement.classList.add(isCorrect ? 'correct' : 'wrong');
 
-    // Highlight correct answer if wrong was selected
+    // If wrong, highlight correct answer and show imageDescription
     if (!isCorrect) {
         const correctOptionElement = Array.from(optionsContainer.children).find(
             el => el.dataset.correct === 'true'
@@ -503,46 +957,17 @@ async function handleOptionClick(optionElement, option) {
             correctOptionElement.classList.add('correct');
         }
 
-        // Create loading spinner for AI feedback
-        const aiLoadingSpinner = document.createElement('div');
-        aiLoadingSpinner.className = 'ai-loading-spinner';
-        aiLoadingSpinner.innerHTML = `
-            <div class="spinner"></div>
-            <span>Getting AI feedback...</span>
-        `;
-        resultElement.appendChild(document.createElement('br'));
-        resultElement.appendChild(aiLoadingSpinner);
-
-        // Get AI feedback for wrong answers
-        try {
-            const aiFeedback = await getAIFeedback(
-                option.imageDescription,
-                correctOption.imageDescription,
-                question.context || "sign language recognition"
-            );
-
-            // Remove loading spinner
-            aiLoadingSpinner.remove();
-
-            // Create a new element for AI feedback
-            const aiFeedbackElement = document.createElement('div');
-            aiFeedbackElement.className = 'ai-feedback';
-            aiFeedbackElement.innerHTML = `<strong>AI Feedback:</strong> ${aiFeedback}`;
-
-            // Append after the result
-            resultElement.appendChild(aiFeedbackElement);
-        } catch (error) {
-            console.error('Error getting AI feedback:', error);
-            // Remove loading spinner and show error message
-            aiLoadingSpinner.remove();
-            const errorElement = document.createElement('div');
-            errorElement.className = 'ai-feedback-error';
-            errorElement.textContent = "Couldn't load AI feedback. Please try again.";
-            resultElement.appendChild(errorElement);
+        // Show correct sign's imageDescription (if available)
+        if (correctOption.imageDescription && correctOption.imageDescription !== "N/A") {
+            const imageDescriptionElement = document.createElement('div');
+            imageDescriptionElement.className = 'image-description';
+            imageDescriptionElement.innerHTML = `<strong>Explanation:</strong> ${correctOption.imageDescription}`;
+            resultElement.appendChild(document.createElement('br'));
+            resultElement.appendChild(imageDescriptionElement);
         }
     }
 
-    scoreDisplay.textContent = `Score: ${score}/${currentQuestionIndex + 1}`;
+  scoreDisplay.textContent = `Score: ${score}/${questions.length}`;
 }
 
 // Move to next question
@@ -565,7 +990,7 @@ function endQuiz() {
     nextBtn.style.display = 'none';
 
     // Show modal with final score
-    finalScoreDisplay.textContent = `Your score: ${score} out of ${questions.length}`;
+    finalScoreDisplay.textContent = `Your score: ${score}/${questions.length}`;
     resultsModal.style.display = 'flex';
 }
 

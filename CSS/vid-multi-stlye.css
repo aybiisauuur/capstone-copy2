@@ -205,12 +205,12 @@ h1 {
 
 .video-option.selected {
     box-shadow: 0 0 0 6px #007bff !important;
-    animation: shake 0.5s ease;
+    animation: pulse 2s ease;
 }
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    20%, 60% { transform: translateX(-3px); }
-    40%, 80% { transform: translateX(3px); }
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    20%, 60% { transform: scale(1.05); }
+    40%, 80% { transform: scale(1); }
 }
 
 .video-option.locked {
@@ -219,7 +219,7 @@ h1 {
 
 .video-option.correct {
     box-shadow: 0 0 0 6px #4CAF50;
-    animation: shake 0.5s ease;
+    animation: pulse 2s ease;
 }
 
 .video-option.incorrect {
