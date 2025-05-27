@@ -542,7 +542,7 @@ async function handleOptionClick(optionElement, option) {
         }
     }
 
-    scoreDisplay.textContent = `Score: ${score}/${currentQuestionIndex + 1}`;
+    scoreDisplay.textContent = `Score: ${score}/${questions.length}`;
 }
 
 // Move to next question
@@ -565,7 +565,7 @@ function endQuiz() {
     nextBtn.style.display = 'none';
 
     // Show modal with final score
-    finalScoreDisplay.textContent = `Your score: ${score} out of ${questions.length}`;
+    finalScoreDisplay.textContent = `Your score: ${score}/${questions.length}`;
     resultsModal.style.display = 'flex';
 }
 

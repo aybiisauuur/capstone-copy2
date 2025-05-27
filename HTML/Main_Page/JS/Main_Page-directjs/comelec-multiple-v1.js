@@ -9,7 +9,7 @@ const allQuestions = [
             {
                 choice: "Change / Correct / Update",
                 correct: true,
-                feedback: "Correct! 🎯 Both hands are in an X handshape, then twist your hands as if you are flipping or changing positions",
+                feedback: "Both hands are in an X handshape, then twist your hands as if you are flipping or changing positions",
                 imageDescription: "Hand making circular motion in X handshape"
             },
             {
@@ -118,7 +118,7 @@ const allQuestions = [
             {
                 choice: "Personal Information",
                 correct: true,
-                feedback: "Correct! 📋 This is made by doing handshape P pointing to yourself to show personal, then spreading both hands in front of you as if showing or laying out details, to represent information.",
+                feedback: "This is made by doing handshape P pointing to yourself to show personal, then spreading both hands in front of you as if showing or laying out details, to represent information.",
                 imageDescription: "Hand moving in small circle near chest"
             },
         ],
@@ -196,7 +196,7 @@ const allQuestions = [
             {
                 choice: "Certificate",
                 correct: true,
-                feedback: "Correct! 📜 This is done by creating C handshape",
+                feedback: "This is done by creating C handshape",
                 imageDescription: "Hands mimicking holding and presenting a document"
             },
             {
@@ -220,7 +220,7 @@ const allQuestions = [
             {
                 choice: "Vote",
                 correct: true,
-                feedback: "Exactly! ✅ You recognized the sign for casting a vote, creating V handshape and mimicking dropping ballot into a box",
+                feedback: "You recognized the sign for casting a vote, creating V handshape and mimicking dropping ballot into a box",
                 imageDescription: "Hand mimicking dropping a ballot into a box"
             },
             {
@@ -268,7 +268,7 @@ const allQuestions = [
             {
                 choice: "Register",
                 correct: true,
-                feedback: "Good job! ✅ You chose the sign for Register.",
+                feedback: "Good job! You chose the sign for Register.",
                 imageDescription: "Hands moving as if filling out a form, showing the action of registering."
             }
         ]
@@ -279,25 +279,25 @@ const allQuestions = [
             {
                 choice: "Form",
                 correct: false,
-                feedback: "❌ Not quite! The sign for Form is different.",
+                feedback: "Not quite! The sign for Form is different.",
                 imageDescription: "Hands open flat, showing the shape of a paper form."
             },
             {
                 choice: "Sign Language",
                 correct: false,
-                feedback: "❌ Nope! That’s not the sign for Sign Language.",
+                feedback: "Nope! That’s not the sign for Sign Language.",
                 imageDescription: "Hands moving near the face to represent communication."
             },
             {
                 choice: "Signature",
                 correct: true,
-                feedback: "✅ Great! You picked the sign for Signature ✍️.",
+                feedback: "Great! You picked the sign for Signature ✍️.",
                 imageDescription: "Dominant hand mimics writing a signature on the palm of the other hand."
             },
             {
                 choice: "You're welcome",
                 correct: false,
-                feedback: "❌ Try again! This sign means something else.",
+                feedback: "Try again! This sign means something else.",
                 imageDescription: "Hand moves forward with W handshape from the chest as a polite gesture."
             }
         ]
@@ -309,25 +309,25 @@ const allQuestions = [
             {
                 choice: "How may I help you?",
                 correct: true,
-                feedback: "✅ Good! This is the sign for 'How may I help you?'.",
+                feedback: "Good! This is the sign for 'How may I help you?'.",
                 imageDescription: "Hands moving forward with a questioning expression."
             },
             {
                 choice: "You Are?",
                 correct: false,
-                feedback: "❌ Not this one. Try again!",
+                feedback: "Not this one. Try again!",
                 imageDescription: "Pointing gesture asking 'You are?'"
             },
             {
                 choice: "Help",
                 correct: false,
-                feedback: "❌ Nope! This sign means 'Help' which looks different.",
+                feedback: "Nope! This sign means 'Help' which looks different.",
                 imageDescription: "One hand lifting the other to show help."
             },
             {
                 choice: "Goodbye",
                 correct: false,
-                feedback: "❌ Not correct. The sign for 'Goodbye' is different.",
+                feedback: "Not correct. The sign for 'Goodbye' is different.",
                 imageDescription: "Hand waving to say goodbye."
             },
         ],
@@ -338,25 +338,25 @@ const allQuestions = [
             {
                 choice: "Please put your signature.",
                 correct: true,
-                feedback: "✅ Correct! This is the sign for 'Please put your signature.' ✍️",
+                feedback: "This is the sign for 'Please put your signature.' ✍️",
                 imageDescription: "Dominant hand mimics writing on the other hand",
             },
             {
                 choice: "Please",
                 correct: false,
-                feedback: "❌ Not this one. The sign for 'Please' is different",
+                feedback: "Not this one. The sign for 'Please' is different",
                 imageDescription: "Flat hand moving in a circular motion on chest"
             },
             {
                 choice: "Help",
                 correct: false,
-                feedback: "❌ Nope! This sign means 'Help' which looks different",
+                feedback: "Nope! This sign means 'Help' which looks different",
                 imageDescription: "One hand lifting the other as a helping gesture."
             },
             {
                 choice: "Goodbye",
                 correct: false,
-                feedback: "❌ Not correct. This sign is for 'Goodbye'",
+                feedback: "Not correct. This sign is for 'Goodbye'",
                 imageDescription: "Hand waving side to side."
             },
         ],
@@ -367,25 +367,25 @@ const allQuestions = [
             {
                 choice: "Picture",
                 correct: false,
-                feedback: "❌ Not this one. The sign for 'Picture' is different.",
+                feedback: "Not this one. The sign for 'Picture' is different.",
                 imageDescription: "Hands framing a photo shape."
             },
             {
                 choice: "We will take your picture.",
                 correct: true,
-                feedback: "✅ Well done! This sign means 'We will take your picture.' 📸",
+                feedback: "Well done! This sign means 'We will take your picture.' 📸",
                 imageDescription: "Hands mimicking holding a camera and taking a photo"
             },
             {
                 choice: "We will scan your thumbprint.",
                 correct: false,
-                feedback: "❌ Nope! This sign means scanning thumbprint",
+                feedback: "Nope! This sign means scanning thumbprint",
                 imageDescription: "Hand pressing thumb onto a scanner"
             },
             {
                 choice: "Smile",
                 correct: false,
-                feedback: "❌ Not correct. This sign means 'Smile'",
+                feedback: "Not correct. This sign means 'Smile'",
                 imageDescription: "Hand movement near mouth to show smiling"
             },
         ],
@@ -396,25 +396,25 @@ const allQuestions = [
             {
                 choice: "Are you registered in SK (Sangguniang Kabataan)?",
                 correct: false,
-                feedback: "❌ This is not the sign for SK registration.",
+                feedback: "This is not the sign for SK registration.",
                 imageDescription: "Fingerspell SK registration."
             },
             {
                 choice: "Are you registered in Baguio City?",
                 correct: false,
-                feedback: "❌ Not correct for this sign.",
+                feedback: "Not correct for this sign.",
                 imageDescription: "Gesture for Baguio handshape B and shivering mimicking coldness, to show Baguio is a cold place"
             },
             {
                 choice: "Are you registered abroad?",
                 correct: true,
-                feedback: "✅ Correct! This sign means 'Are you registered abroad?'. 🌍",
+                feedback: "Good! This sign means 'Are you registered abroad?'. 🌍",
                 imageDescription: "Hand pointing outward indicating abroad, doing sign for 'other' and 'country', with C handshape circular motion near elbow"
             },
             {
                 choice: "Register",
                 correct: false,
-                feedback: "❌ Not the sign for 'Register' here.",
+                feedback: "Not the sign for 'Register' here.",
                 imageDescription: "Sign for registration R handshape"
             },
         ],
@@ -425,25 +425,25 @@ const allQuestions = [
             {
                 choice: "Register",
                 correct: false,
-                feedback: "❌ This sign is not for 'Register'.",
+                feedback: "This sign is not for 'Register'.",
                 imageDescription: "Sign for registration R handshape"
             },
             {
                 choice: "You record is active.",
                 correct: false,
-                feedback: "❌ This sign is not for active records.",
+                feedback: "This sign is not for active records.",
                 imageDescription: "Hand gesture indicating active."
             },
             {
                 choice: "Record",
                 correct: false,
-                feedback: "❌ Not correct for 'Record'.",
+                feedback: "Not correct for 'Record'.",
                 imageDescription: "Sign for record with open hands going down"
             },
             {
                 choice: "Your record is deactivated / inactive.",
                 correct: true,
-                feedback: "✅ Correct! This sign means 'Your record is deactivated or inactive.' ❌",
+                feedback: "This sign means 'Your record is deactivated or inactive.' ❌",
                 imageDescription: "Hands closing or stopping action."
             },
         ],
@@ -454,25 +454,25 @@ const allQuestions = [
             {
                 choice: "Your application type is not new, it is for reactivation.",
                 correct: true,
-                feedback: "✅ Correct! This means your application is for reactivation.",
+                feedback: "This means your application is for reactivation.",
                 imageDescription: "Hands showing reactivation sign as if reopening something with both hands facing down and reopening"
             },
             {
                 choice: "You record is active.",
                 correct: false,
-                feedback: "❌ This sign means something else.",
+                feedback: "This sign means something else.",
                 imageDescription: "Sign indicating active record."
             },
             {
                 choice: "How may I help you?",
                 correct: false,
-                feedback: "❌ Not the sign for asking help here.",
+                feedback: "Not the sign for asking help here.",
                 imageDescription: "Questioning hand gesture"
             },
             {
                 choice: "Your record is deactivated / inactive.",
                 correct: false,
-                feedback: "❌ Different sign, try again!",
+                feedback: "Different sign, try again!",
                 imageDescription: "Inactive record gesture with hands placed downward and imitating closing gesture"
             },
         ],
@@ -483,25 +483,25 @@ const allQuestions = [
             {
                 choice: "We will take your picture.",
                 correct: false,
-                feedback: "❌ This sign is for scanning thumbprints.",
+                feedback: "This sign is for scanning thumbprints.",
                 imageDescription: "Gesture taking picture"
             },
             {
                 choice: "We will scan your thumbprint and index prints.",
                 correct: true,
-                feedback: "✅ Correct! This sign means scanning thumb and index prints. 👍",
+                feedback: "This sign means scanning thumb and index prints. 👍",
                 imageDescription: "Hand showing scanning of thumb and index fingers"
             },
             {
                 choice: "How may I help you?",
                 correct: false,
-                feedback: "❌ This sign means something else.",
+                feedback: "This sign means something else.",
                 imageDescription: "Hands open, palms facing up with questioning expression"
             },
             {
                 choice: "Scan your fingerprint",
                 correct: false,
-                feedback: "❌ Different sign from this one, not quite close",
+                feedback: "Different sign from this one, not quite close",
                 imageDescription: "Not complete sentence"
             },
         ],
@@ -512,25 +512,25 @@ const allQuestions = [
             {
                 choice: "How may I help you?",
                 correct: false,
-                feedback: "❌ This sign does not mean 'How may I help you?'. Try again!",
+                feedback: "This sign does not mean 'How may I help you?'. Try again!",
                 imageDescription: "Hands open, palms facing up with questioning expression"
             },
             {
                 choice: "Your record is deactivated/inactive.",
                 correct: false,
-                feedback: "❌ This sign is not 'Your record is deactivated/inactive.' Please try another option.",
+                feedback: "This sign is not 'Your record is deactivated/inactive.' Please try another option.",
                 imageDescription: "Hands making a stopping or closing gesture"
             },
             {
                 choice: "Do you have a valid ID?",
                 correct: true,
-                feedback: "✅ Correct! This is the sign for 'Do you have a valid ID?'.",
+                feedback: "Yes! This is the sign for 'Do you have a valid ID?'.",
                 imageDescription: "Hand gestures mimicking showing or presenting an ID card, fingerspelling ID"
             },
             {
                 choice: "Please fill out the form.",
                 correct: false,
-                feedback: "❌ This sign means 'Please fill out the form,' which is different from the video.",
+                feedback: "This sign means 'Please fill out the form,' which is different from the video.",
                 imageDescription: "Hand motion indicating writing or filling a form"
             }
         ]
@@ -541,25 +541,25 @@ const allQuestions = [
             {
                 choice: "Are you registered in SK (Sangguniang Kabataan)?",
                 correct: false,
-                feedback: "❌ This is not the sign for SK registration.",
+                feedback: "This is not the sign for SK registration.",
                 imageDescription: "Fingerspell 'S' and 'K' near the chest and 'R' for register"
             },
             {
                 choice: "Are you registered in Baguio City?",
                 correct: true,
-                feedback: "✅ Correct! This is the FSL sign for 'Are you registered in Baguio City?'",
+                feedback: "This is the FSL sign for 'Are you registered in Baguio City?'",
                 imageDescription: "Gesture for Baguio handshape B and shivering mimicking coldness, to show Baguio is a cold place"
             },
             {
                 choice: "Are you registered abroad?",
                 correct: false,
-                feedback: "❌ This sign refers to being registered outside the country. Try again!",
+                feedback: "This sign refers to being registered outside the country. Try again!",
                 imageDescription: "Hand pointing outward indicating abroad, doing sign for 'other' and 'country', with C handshape circular motion near elbow"
             },
             {
                 choice: "Register",
                 correct: false,
-                feedback: "❌ This sign means 'Register' in general, not the specific question asked.",
+                feedback: "This sign means 'Register' in general, not the specific question asked.",
                 imageDescription: "Hand signing a writing motion or enlisting gesture"
             },
         ],
@@ -568,27 +568,27 @@ const allQuestions = [
         video: "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F88702384bd504672b5101b55ddb942c2%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=88702384bd504672b5101b55ddb942c2&alt=media&optimized=true",
         options: [
             {
-                choice: "Are you registered in SK (Sangguniang Kabataan)?",
+                choice: "Are you a registered voter as SK (Sangguniang Kabataan)?",
                 correct: true,
-                feedback: "✅ Correct! This is the FSL sign for asking about SK registration",
+                feedback: "This is the FSL sign for asking about SK registration",
                 imageDescription: "Fingerspell 'S' and 'K' near the chest and 'R' for register"
             },
             {
                 choice: "Are you registered in Baguio City?",
                 correct: false,
-                feedback: "❌ Not correct for this sign.",
+                feedback: "Not correct for this sign.",
                 imageDescription: "Gesture for Baguio handshape B and shivering mimicking coldness, to show Baguio is a cold place"
             },
             {
                 choice: "Are you registered abroad?",
                 correct: false,
-                feedback: "❌ Not correct for this sign.",
+                feedback: "Not correct for this sign.",
                 imageDescription: "Hand pointing outward indicating abroad, doing sign for 'other' and 'country', with C handshape circular motion near elbow"
             },
             {
                 choice: "Register",
                 correct: false,
-                feedback: "❌ This sign means 'Register' in general, not the specific question asked.",
+                feedback: "This sign means 'Register' in general, not the specific question asked.",
                 imageDescription: "Sign for registration R handshape"
             },
         ],
@@ -605,13 +605,13 @@ const allQuestions = [
             {
                 choice: "Please fill out the form.",
                 correct: true,
-                feedback: "✅ Correct! This is the FSL sign for filling out a form",
+                feedback: "Good job! This is the FSL sign for filling out a form",
                 imageDescription: "Hand motion indicating writing or filling a form"
             },
             {
                 choice: "How may I help you?",
                 correct: false,
-                feedback: "❌ This sign does not mean 'How may I help you?'. Try again!",
+                feedback: "This sign does not mean 'How may I help you?'. Try again!",
                 imageDescription: "Hands open, palms facing up with questioning expression"
             },
             {
@@ -628,25 +628,25 @@ const allQuestions = [
             {
                 choice: "How may I help you?",
                 correct: false,
-                feedback: "❌ This sign does not mean 'How may I help you?'. Try again!",
+                feedback: "This sign does not mean 'How may I help you?'. Try again!",
                 imageDescription: "Hands open, palms facing up with questioning expression"
             },
             {
                 choice: "Once approved, your voter’s certificate will be released.",
                 correct: true,
-                feedback: "Correct! ✅ This is the FSL sign for certificate release after approval",
+                feedback: "Great! This is the FSL sign for certificate release after approval",
                 imageDescription: "Hand gesture suggesting approval followed by a motion of giving or releasing a document"
             },
             {
                 choice: "Please check if your personal information is correct.",
                 correct: false,
-                feedback: "❌ This sign is used to verify personal information, not the correct answer in this context",
+                feedback: "This sign is used to verify personal information, not the correct answer in this context",
                 imageDescription: "Hand motion resembling checking or scanning over a document, followed by gestures pointing to oneself"
             },
             {
                 choice: "Please put your signature.",
                 correct: false,
-                feedback: "This sign does indicate putting your signature ❌ Try again! ✍️",
+                feedback: "This sign does not indicate putting your signature ❌ Try again! ✍️",
                 imageDescription: "Dominant hand mimics writing on the other hand",
             },
         ],
@@ -657,25 +657,25 @@ const allQuestions = [
             {
                 choice: "How may I help you?",
                 correct: false,
-                feedback: "❌ This sign does not mean 'How may I help you?'. Try again!",
+                feedback: "This sign does not mean 'How may I help you?'. Try again!",
                 imageDescription: "Hands open, palms facing up with questioning expression"
             },
             {
                 choice: "Are you registered abroad?",
                 correct: false,
-                feedback: "❌ Not correct for this sign.",
+                feedback: "Not correct for this sign.",
                 imageDescription: "Hand pointing outward indicating abroad, doing sign for 'other' and 'country', with C handshape circular motion near elbow"
             },
             {
                 choice: "How long have you been residing in your present barangay?",
                 correct: true,
-                feedback: "Correct! This asks how long have you been living in present barangay",
+                feedback: "This asks how long have you been living in present barangay",
                 imageDescription: "Sign 'HOW' by using thumbs going in opposite direction, followed by 'LONG' using a slow upward motion from wrist to shoulder with L handshape, and 'LIVE' by doing Y handshape facing down near chest, then sign 'BARANGAY' by outlining a small community or group with both hands."
             },
             {
                 choice: "Please put your signature.",
                 correct: false,
-                feedback: "This sign does indicate putting your signature ❌ Try again! ✍️",
+                feedback: "This sign does not indicate putting your signature ❌ Try again! ✍️",
                 imageDescription: "Dominant hand mimics writing on the other hand",
             },
         ],
@@ -705,7 +705,7 @@ const allQuestions = [
             {
                 choice: "If you are a registered voter, you must be a resident for at least 6 months.",
                 correct: true,
-                feedback: "Correct! ⏳ You identified the 6-month residency requirement explanation",
+                feedback: "Great job! ⏳ You identified the 6-month residency requirement explanation",
                 imageDescription: "Hand showing six fingers then pointing downward for 'months'"
             },
         ],
@@ -736,7 +736,7 @@ const allQuestions = [
             {
                 choice: "The next registration will be next year. ",
                 correct: true,
-                feedback: "Correct! 📅 You identified the future registration period announcement",
+                feedback: "Good! 📅 You identified the future registration period announcement",
                 imageDescription: "Hand moving forward while signing 'next year'"
             },
         ],
@@ -1011,7 +1011,7 @@ async function handleOptionClick(optionElement, option) {
         }
     }
 
-    scoreDisplay.textContent = `Score: ${score}/${currentQuestionIndex + 1}`;
+    scoreDisplay.textContent = `Score: ${score}/${questions.length}`;
 }
 
 // Move to next question
@@ -1034,7 +1034,7 @@ function endQuiz() {
     nextBtn.style.display = 'none';
 
     // Show modal with final score
-    finalScoreDisplay.textContent = `Your score: ${score} out of ${questions.length}`;
+    finalScoreDisplay.textContent = `Your score: ${score}/${questions.length}`;
     resultsModal.style.display = 'flex';
 }
 

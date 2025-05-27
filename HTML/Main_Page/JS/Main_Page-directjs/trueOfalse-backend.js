@@ -42,7 +42,7 @@ const quizData = [
     {
         videoUrl: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fee781b67a8bf4e488174c0156c18914b%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=ee781b67a8bf4e488174c0156c18914b&alt=media&optimized=true",
         statement: "Thank you",
-        correctAnswer: false
+        correctAnswer: true
     },
     {
         videoUrl: "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2Fdba4a7e655e04153ae79ebc7ff9e22a6%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=dba4a7e655e04153ae79ebc7ff9e22a6&alt=media&optimized=true",
@@ -208,11 +208,6 @@ tryAgainButton.addEventListener('click', function() {
     
     initializeProgressBar();
     loadQuestion();
-});
-
-backButton.addEventListener('click', function() {
-    modal.style.display = 'none';
-    window.history.back();
 });
 
 backButton.addEventListener('click', function() {
