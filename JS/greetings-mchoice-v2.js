@@ -2,9 +2,9 @@ import { GoogleGenerativeAI,HarmCategory,HarmBlockThreshold } from "https://esm.
 
 // const MODEL_NAME = "gemini-1.5-pro";
 const MODEL_NAME = "models/gemini-2.5-flash-preview-04-17";
-const API_KEY = "AIzaSyATctNVqgore2AdbdwuZhdeiY3ryvTGuIk"; // account ni faith calica pag naubos yung quota change the env
+const googleApiKey = process.env.GOOGLE_API_KEY; // account ni faith calica pag naubos yung quota change the env
 async function run(userQuery) {
-    const genAI = new GoogleGenerativeAI(API_KEY);
+    const genAI = new GoogleGenerativeAI(googleApiKey);
     const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 
 const generationConfig = {
