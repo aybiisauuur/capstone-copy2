@@ -1,0 +1,256 @@
+:root {
+    --primary-color: #004AAD;
+    --text-color: #000;
+    --nav-text-color: rgba(0, 0, 0, 0.4);
+    --border-color: #575757;
+    --header-bg: rgba(217, 217, 217, 0.4);
+    --card-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    --card-hover-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+}
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #F8F9FF;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.app-header {
+    background-color: #004AB3;
+    padding: 15px 20px;
+    text-align: center;
+  }
+  
+.app-title {
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 400;
+    margin: 0;
+    font: 500 30px 'Josefin Sans', sans-serif;
+}
+  
+.form-container {
+    max-width: 650px; /* Reduced from 800px */
+    margin: 20px auto;
+    background: white;
+    padding: 30px 25px; /* Adjusted padding */
+    border-radius: 10px;
+    box-shadow: 0 0 20px #004AB3;
+}
+
+
+/* Add these new styles */
+.intro-text-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 78px;
+    padding-bottom: 30px;
+}
+
+.logo-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.site-logo {
+    height: 8vw; /* Changed from fixed px to viewport units */
+    max-height: 90px; /* Maximum size */
+    width: auto;
+}
+
+.intro-text {
+    color: var(--primary-color);
+    font-size: 5vw; /* Changed from fixed px to viewport units */
+    margin: 0;
+    line-height: 1;
+}
+
+.search-container,
+.password-container,
+.repassword-container {
+    padding: 10px 0; /* Reduced from 10px */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.input-wrapper {
+    max-width: 400px;
+    width: 90%;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    position: relative;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.search-input,
+.password-input,
+.repassword-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-family: 'Josefin Sans', sans-serif;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.toggle-password {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.Sign_In-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+    padding: 15px 0;
+}
+
+.Sign_In-card {
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: var(--card-shadow, 0 4px 6px rgba(0, 0, 0, 0.1));
+    padding: 20px;
+    width: 100%;
+    max-width: 320px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    margin-bottom: 20px;
+    background-color: var(--primary-color);
+}
+
+.Sign_In-card:hover,
+.Sign_In-card:focus {
+    transform: translateY(-5px);
+    box-shadow: var(--card-hover-shadow, 0 6px 8px rgba(0, 0, 0, 0.15));
+    outline: none;
+}
+
+.Sign_In-title {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    margin: 0;
+    text-align: center;
+}
+
+.Sign_In-card.light {
+    background: #004AAD;
+}
+
+.link-container {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.link-container a {
+    font-family: 'Josefin Sans', sans-serif;
+    text-decoration: none;
+    font-size: 20px;
+    color: var(--primary-color);
+    margin: 8px 0; /* Changed to add vertical spacing */
+    display: block;
+    padding: 2px 0; /* Added padding */
+}
+
+
+.link-container a:hover {
+    text-decoration: underline;
+    color: #003882; /* Slightly darker shade for hover */
+    transition: color 0.2s ease;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        padding: 25px 20px;
+        margin: 15px auto;
+    }
+    
+    .input-wrapper {
+        padding: 10px 12px;
+    }
+    
+    .intro-text {
+        font-size: 5vw;
+    }
+    
+    .site-logo {
+        height: 10vw;
+    }
+    
+    .text-input,
+    .search-input,
+    .password-input {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-container {
+        padding: 20px 15px;
+        margin: 10px auto;
+        border-radius: 8px;
+    }
+    
+    .input-wrapper {
+        padding: 8px 10px;
+        border-radius: 8px;
+    }
+    
+    .intro-text {
+        font-size: 7vw;
+    }
+    
+    .site-logo {
+        height: 12vw;
+    }
+    
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .Sign_In-card {
+        padding: 15px;
+        max-width: 280px;
+    }
+    
+    .Sign_In-title {
+        font-size: 18px;
+    }
+    
+    .link-container a {
+        font-size: 16px;
+    }
+}
+
+/* For very small screens */
+@media (max-width: 360px) {
+    .form-container {
+        padding: 15px 10px;
+    }
+    
+    .intro-text {
+        font-size: 8vw;
+    }
+    
+    .logo-title-wrapper {
+        gap: 8px;
+    }
+}

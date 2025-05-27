@@ -1,0 +1,365 @@
+:root {
+    --primary-color: #0056b3;
+    --secondary-color: #f8f9fa;
+    --accent-color: #ffc107;
+    --text-color: #333;
+    --correct-color: #28a745;
+    --wrong-color: #dc3545;
+}
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    color: var(--text-color);
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.top-header {
+    position: relative;
+    background-color: #004AB3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 15px 20px;
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    gap: 1.188rem;
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: opacity 0.2s;
+}
+
+.back-link:hover,
+.back-link:focus {
+    opacity: 0.8;
+}
+.back-icon {
+    width: 15px;
+    height: 20px;
+    margin-bottom: 5px;
+}
+.back-text {
+    font-size: 20px;
+    color: white;
+}
+.page-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 20px;
+    color: #fff;
+    font-weight: 400;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.top-header {
+    background-color: #004AB3;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.app-title {
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 20px; 
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.progress-bar {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 15px;
+    /* Reduced from 25px */
+    width: 100%;
+}
+
+.progress-segment {
+    height: 10px;
+    flex: 1;
+    min-width: 25px;
+    /* Minimum segment width */
+    background-color: #555;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+.progress-segment.correct {
+    background-color: #4CAF50;
+}
+
+.progress-segment.incorrect {
+    background-color: #f44336;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    background: black;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+video {
+    width: 100%;
+    display: block;
+}
+
+.question-container {
+    margin: 30px 0;
+    padding: 20px;
+    background: var(--secondary-color);
+    border-radius: 8px;
+    border-left: 5px solid var(--primary-color);
+}
+
+.question-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.option {
+    padding: 12px 15px;
+    background: white;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.option:hover {
+    background: #f0f0f0;
+}
+
+.option.selected {
+    border-color: var(--primary-color);
+    background: #e7f1ff;
+}
+
+.option.correct {
+    border-color: var(--correct-color);
+    background: #e6ffed;
+}
+
+.option.correct::after {
+    content: "✓";
+    color: var(--correct-color);
+    font-weight: bold;
+    position: absolute;
+    right: 15px;
+}
+
+.option.wrong {
+    border-color: var(--wrong-color);
+    background: #ffebee;
+}
+
+.option.wrong::after {
+    content: "✗";
+    color: var(--wrong-color);
+    font-weight: bold;
+    position: absolute;
+    right: 15px;
+}
+
+.controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.next-btn {
+    background: #004aad;
+    color: #ffffff;
+    display: none;
+}
+
+.next-btn:hover {
+    background: #5390e0;
+}
+
+.result {
+    text-align: center;
+    font-size: 1.1rem;
+    margin: 20px 0;
+    min-height: 24px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.result.correct {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: var(--correct-color);
+}
+
+.result.wrong {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: var(--wrong-color);
+}
+
+.score-display {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    display: none;
+}
+
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--primary-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 20px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+
+  .modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 90%;
+  }
+
+  .modal h2 {
+    color: #004aad;
+    margin-bottom: 10px;
+  }
+
+  .modal p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .modal-buttons {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+
+  #back-btn {
+    background-color: #f1f1f1;
+    color: #333;
+  }
+
+  #back-btn:hover {
+    background-color: #ddd;
+  }
+
+  #try-again-btn {
+    background-color: #004aad;
+    color: white;
+  }
+
+  #try-again-btn:hover {
+    background-color: #4271af;
+  }
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.question-counter {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #6c757d;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+
+    .question-container {
+        padding: 15px;
+    }
+
+    button {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+}

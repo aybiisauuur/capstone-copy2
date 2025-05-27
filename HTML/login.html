@@ -1,0 +1,187 @@
+<!-- login naging index  -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SenyasHub - Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="../CSS/home.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <header class="app-header">
+    <div class="header-container">
+      <a href="./login.html" class="logo-link">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F30b3625e8b7d46b5a2f09d4addc41139"
+          alt="SenyasHub Logo" class="app-logo" />
+        <h1 class="app-title">SenyasHub</h1>
+      </a>
+      <div class="profile-container">
+        <div id="userGreeting" class="user-greeting" style="display: none;">
+          Hello,<span id="userName"></span>
+        </div>
+        <button class="profile-btn" id="profileBtn">
+          <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Profile" class="profile-img"
+            id="profilePictureIcon" />
+        </button>
+        <div class="profile-dropdown" id="profileDropdown">
+          <!-- Default content (will be updated by JavaScript) -->
+          <a href="../index.html" id="loginLink">Login</a>
+          <a href="../HTML/register.html" id="registerLink">Register</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="search-container">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="What would you like to learn?"
+        aria-label="Search modules" />
+      <img
+        src="https://cdn.builder.io/api/v1/image/assets/TEMP/8a62d0954dce249c2f05faacbad007e4cf7c999f140777f38537ca568c60a08f?placeholderIfAbsent=true&apiKey=ee1a9a673f2d4dc29299c2e9209fb768"
+        alt="Search" class="search-icon nav-icon" width="34" height="34" />
+    </div>
+  </div>
+
+  <div class="no-results" style="display: none; text-align: center; margin-top: 30px">
+    No results found.
+  </div>
+
+  <main class="main-content" role="main">
+    <div class="content-wrapper">
+      <!-- Left Column - Digital Art -->
+      <div class="left-column">
+        <div class="digital-art-container animate__animated animate__fadeIn">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fcd28aa1a246c42a9969d52ebec33137d"
+            alt="Digital Art" class="digital-art animate__animated animate__fadeIn" />
+        </div>
+      </div>
+
+      <!-- Right Column - Welcome and Info -->
+      <div class="right-column">
+        <div class="welcome-container animate__animated animate__fadeIn">
+          <h1 class="welcome-title">Welcome to SenyasHub!</h1>
+          <p class="welcome-subtitle">From now on, you won't be worried about sending the wrong signals.</p>
+        </div>
+
+        <div class="info-panel-container">
+          <section class="info-panel animate__animated animate__fadeIn" aria-label="App Information">
+            <p>
+              This app will help you turn your eyes into ears. With this app, you
+              will be able to learn the basics of Filipino Sign Language (FSL).
+            </p>
+            <br />
+            <p>
+              The modules, quizzes, and live chat can only be used or accessed when
+              you have an internet connection.
+            </p>
+            <br />
+            <p>
+              To learn more about this app, please click on the About Us tab located
+              below.
+            </p>
+          </section>
+        </div>
+      </div>
+
+      <section class="search-results" style="display: none"></section>
+    </div>
+  </main>
+
+  <div id="videoModal" class="vid-modal" style="display: none">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <video id="phraseVideo" controls>
+        Your browser does not support the video tag.
+      </video>
+      <h3 id="videoTitle"></h3>
+      <p id="videoDescription"></p>
+    </div>
+  </div>
+
+  <!-- logout modal -->
+  <div id="logout-modal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <h2>Logout</h2>
+      <p>Are you sure you want to logout?</p>
+      <div class="modal-buttons">
+        <button class="modal-button back-button">Back</button>
+        <button class="modal-button logout-button">Logout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Chat Head
+  <div id="chatHead" class="floating-chat-head">
+    <img src="https://cdn-icons-png.flaticon.com/512/4089/4089678.png" alt="Chat with FSL Tutor" />
+  </div> -->
+
+  <!-- Chatbot Modal 
+  <div id="chatbotModal" class="modal">
+    <div class="modal-content chatbot-modal-content">
+      <span class="close-chatbot">&times;</span>
+      <h2>FSL Tutor</h2>
+      <div id="chatbotMessages" class="chatbot-messages"></div>
+      <div class="chatbot-input-container">
+        <input type="text" id="chatbotInput" placeholder="Ask about Filipino Sign Language..." />
+        <button id="sendChatbotMessage">Send</button>
+      </div>
+    </div>
+  </div> -->
+
+  <footer class="app-footer">
+    <nav class="footer-nav">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="../HTML/login.html" class="nav-link active">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F45e25a86832c414caad53c69831aefe6"
+              alt="" class="nav-icon" />
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="../HTML/modules-section.html" class="nav-link">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F5f960d0d2c9f43379a72dd74267b9d2b"
+              alt="" class="nav-icon" />
+            <span>Modules</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="../HTML/Quizzes_home-home.html" class="nav-link">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F0674cddbe79f4c5b82486ba63b28758d"
+              alt="" class="nav-icon" />
+            <span>Quizzes</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="../HTML/chat-section-client.html" class="nav-link">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F44567bd71c43455d89f29e8379fa4244"
+              alt="" class="nav-icon" />
+            <span>Live Chat</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="../HTML/about_us.html" class="nav-link">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F2fceff1214cb48c8b43e5651ff4022f0"
+              alt="" class="nav-icon" />
+            <span>About</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </footer>
+  <script type="module" src="../JS/home.js"></script>
+</body>
+
+</html>
