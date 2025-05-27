@@ -211,12 +211,60 @@ body {
   display: flex;
 }
 
+/* Add these styles to your existing CSS */
+
 .modal-content {
   width: 80%;
   max-width: 800px;
   position: relative;
 }
 
+video {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.video-nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.nav-btn {
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 120px;
+  font-weight: 500;
+}
+
+.prev-btn {
+  background-color: #ff4444; /* Red color */
+  margin-right: auto; /* Aligns to the left */
+}
+
+.prev-btn:hover {
+  background-color: #cc0000;
+  transform: translateY(-2px);
+}
+
+.next-btn {
+  background-color: #44cc44; /* Green color */
+  margin-left: auto; /* Aligns to the right */
+}
+
+.next-btn:hover {
+  background-color: #00aa00;
+  transform: translateY(-2px);
+}
+
+/* Adjust close button position */
 .close-modal {
   position: absolute;
   right: -40px;
@@ -227,6 +275,24 @@ body {
   font-size: 30px;
   cursor: pointer;
   padding: 10px;
+  z-index: 11;
+}
+
+@media (max-width: 768px) {
+  .video-nav-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .prev-btn, .next-btn {
+    width: 100%;
+    margin: 0 !important;
+  }
+  
+  .close-modal {
+    right: 0;
+    top: -50px;
+  }
 }
 
 
