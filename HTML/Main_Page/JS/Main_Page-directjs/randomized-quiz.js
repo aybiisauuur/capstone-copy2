@@ -19,7 +19,7 @@ const questionsData = [
     },
     {
         type: "video-multiple-choice",
-        question: "Which video shows the Sign Language for See you Later?",
+        question: "Which video shows the Sign Language for \"See you Later\"?",
         options: [
             "https://cdn.builder.io/o/assets%2Ffa2701a192bc4724a7c3ede9e2d95cb2%2F75c44265368f48d2a8fd3ed56e3e0821%2Fcompressed?apiKey=fa2701a192bc4724a7c3ede9e2d95cb2&token=75c44265368f48d2a8fd3ed56e3e0821&alt=media&optimized=true",
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F03059a88b09a4c75bbba39f2ee592978%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=03059a88b09a4c75bbba39f2ee592978&alt=media&optimized=true",
@@ -30,7 +30,7 @@ const questionsData = [
     },
     {
         type: "video-multiple-choice",
-        question: "Which video shows the Sign Language for Take Care?",
+        question: "Which video shows the Sign Language for \"Take Care\"?",
         options: [
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fa02fcbe819a24d88bea5918decc1e7c1%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=a02fcbe819a24d88bea5918decc1e7c1&alt=media&optimized=true",
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F7a3d592fbc7241739897b3d7336a1b74%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=7a3d592fbc7241739897b3d7336a1b74&alt=media&optimized=true",
@@ -88,7 +88,7 @@ const questionsData = [
     },
     {
         type: "video-multiple-choice",
-        question: "Which video shows the Sign Language for What are you doing?",
+        question: "Which video shows the Sign Language for \"What are you doing?\" ?",
         options: [
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F24e928cbba594eb6ad79b7ca8f0d8481%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=24e928cbba594eb6ad79b7ca8f0d8481&alt=media&optimized=true",
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F9e199843ced94714bfd3e7535b8b9f82%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=9e199843ced94714bfd3e7535b8b9f82&alt=media&optimized=true",
@@ -99,7 +99,7 @@ const questionsData = [
     },
     {
         type: "video-multiple-choice",
-        question: "Which video shows the Sign Language for Where are you going?",
+        question: "Which video shows the Sign Language for \"Where are you going?\" ?",
         options: [
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F24e928cbba594eb6ad79b7ca8f0d8481%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=24e928cbba594eb6ad79b7ca8f0d8481&alt=media&optimized=true",
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F345add533ac84c7599493c02a7766ab7%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=345add533ac84c7599493c02a7766ab7&alt=media&optimized=true",
@@ -143,7 +143,7 @@ const questionsData = [
     // conversation
     {
         type: "video-multiple-choice",
-        question: "Which video shows the Sign Language for Deaf?",
+        question: "Which video shows the Sign Language for \"Deaf\"?",
         options: [
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fa2a9373b89544bbab28f88b6e696e656%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=a2a9373b89544bbab28f88b6e696e656&alt=media&optimized=true",
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F1c8c0918cc0140fbbabf9e1f32c7bd5f%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=1c8c0918cc0140fbbabf9e1f32c7bd5f&alt=media&optimized=true",
@@ -154,7 +154,7 @@ const questionsData = [
     },
     {
         type: "video-multiple-choice",
-        question: "Which video shows the Sign Language for Hearing?",
+        question: "Which video shows the Sign Language for \"Hearing\"?",
         options: [
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fa2a9373b89544bbab28f88b6e696e656%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=a2a9373b89544bbab28f88b6e696e656&alt=media&optimized=true",
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F1c8c0918cc0140fbbabf9e1f32c7bd5f%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=1c8c0918cc0140fbbabf9e1f32c7bd5f&alt=media&optimized=true",
@@ -165,7 +165,7 @@ const questionsData = [
     },
     {
         type: "video-multiple-choice",
-        question: "Which video shows the Sign Language for Hard-of-Hearing?",
+        question: "Which video shows the Sign Language for \"Hard-of-Hearing\"?",
         options: [
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fa2a9373b89544bbab28f88b6e696e656%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=a2a9373b89544bbab28f88b6e696e656&alt=media&optimized=true",
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F1c8c0918cc0140fbbabf9e1f32c7bd5f%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=1c8c0918cc0140fbbabf9e1f32c7bd5f&alt=media&optimized=true",
@@ -198,7 +198,7 @@ const questionsData = [
     // COMELEC Phrases
     {
         type: "video-multiple-choice",
-        question: "Which video shows the Sign Language for Vote?",
+        question: "Which video shows the Sign Language for \"Vote\"?",
         options: [
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F28ecb2fb7ed3465da85f76c228355228%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=28ecb2fb7ed3465da85f76c228355228&alt=media&optimized=true",
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ff2e2862975a34d998cb355ce845fa274%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=f2e2862975a34d998cb355ce845fa274&alt=media&optimized=true",
@@ -209,7 +209,7 @@ const questionsData = [
     },
     {
         type: "video-multiple-choice",
-        question: "Which video shows the Sign Language for Voter?",
+        question: "Which video shows the Sign Language for \"Voter\"?",
         options: [
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F28ecb2fb7ed3465da85f76c228355228%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=28ecb2fb7ed3465da85f76c228355228&alt=media&optimized=true",
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Ff2e2862975a34d998cb355ce845fa274%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=f2e2862975a34d998cb355ce845fa274&alt=media&optimized=true",
@@ -267,7 +267,7 @@ const questionsData = [
     // Letters and Numbers
     {
         type: "video-multiple-choice",
-        question: "Which video shows the Sign Language for the letter G?",
+        question: "Which video shows the Sign Language for the letter \"G\"?",
         options: [
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F62e09cc0c727427bb995cc959baaa951%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=62e09cc0c727427bb995cc959baaa951&alt=media&optimized=true",
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F6f261a2fc88d4a459ff0229ad9f350db%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=6f261a2fc88d4a459ff0229ad9f350db&alt=media&optimized=true",
@@ -278,7 +278,7 @@ const questionsData = [
     },
     {
         type: "video-multiple-choice",
-        question: "Which video shows the Sign Language for the letter E?",
+        question: "Which video shows the Sign Language for the letter \"E\"?",
         options: [
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F290cea0025474b589dc5cb8eb49f3ba9%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=290cea0025474b589dc5cb8eb49f3ba9&alt=media&optimized=true",
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F09d452abb113431c964f677706fdf206%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=09d452abb113431c964f677706fdf206&alt=media&optimized=true",
@@ -289,7 +289,7 @@ const questionsData = [
     },
     {
         type: "video-multiple-choice",
-        question: "Which video shows the Sign Language for the letter D?",
+        question: "Which video shows the Sign Language for the letter \"D\"?",
         options: [
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F6073f9a673414f869083f07dff1b3a62%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=6073f9a673414f869083f07dff1b3a62&alt=media&optimized=true",
             "https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F9947ca53a38d4c12be5dffa6c417b1c9%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=9947ca53a38d4c12be5dffa6c417b1c9&alt=media&optimized=true",
