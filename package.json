@@ -25,6 +25,10 @@
   },
   "homepage": "https://github.com/aybiisauuur/capstone-copy2#readme",
   "devDependencies": {
-    "@types/node": "^22.15.17"
-  }
+    "@tailwindcss/cli": "^4.1.7",
+    "@types/node": "^22.15.17",
+    "tailwindcss": "^4.1.7"
+  },
+  "main": "index.js",
+  "type": "commonjs"
 }
