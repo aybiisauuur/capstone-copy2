@@ -7,8 +7,6 @@
   <title>Questions</title>
   <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../CSS/questions-section.css">
-  <link rel="icon" type="image/png" href="/IMG/logo.png" sizes="32x32" />
-  
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
@@ -179,6 +177,10 @@
             <source src="" type="video/mp4">
             Your browser does not support the video tag.
           </video>
+          <div class="video-nav-buttons">
+            <button class="nav-btn prev-btn" style="background-color: #ff4444;">Previous</button>
+            <button class="nav-btn next-btn" style="background-color: #44cc44;">Next</button>
+          </div>
         </div>
       </div>
     </main>
@@ -187,26 +189,26 @@
       <nav class="footer-nav">
           <ul class="nav-list">
               <li class="nav-item">
-                  <a href="index.html" class="nav-link">
+                  <a href="./login.html" class="nav-link">
                       <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F23a4ffa75dce425a87cc23acd4eec51a"
                           alt="" class="nav-icon">
                       <span>Home</span>
                   </a>
               </li>
               <li class="nav-item">
-                  <a href="modules-section.html" class="nav-link active">
+                  <a href="./modules-section.html" class="nav-link active">
                       <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Fe57b29d71bbc4781b603f3ebe2836462" alt="" class="nav-icon">
                       <span>Modules</span>
                   </a>
               </li>
               <li class="nav-item">
-                  <a href="Quizzes_home-home.html" class="nav-link ">
+                  <a href="./Quizzes_home-home.html" class="nav-link ">
                       <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F0674cddbe79f4c5b82486ba63b28758d" alt="" class="nav-icon">
                       <span>Quizzes</span>
                   </a>
               </li>
               <li class="nav-item">
-                  <a href="chat-section-client.html" class="nav-link">
+                  <a href="./chat-section-client.html" class="nav-link">
                       <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F44567bd71c43455d89f29e8379fa4244"
                           alt="" class="nav-icon">
                       <span>Live Chat</span>
@@ -214,7 +216,7 @@
               </li>
               </li>
               <li class="nav-item">
-                  <a href="about_us.html" class="nav-link ">
+                  <a href="./about_us.html" class="nav-link ">
                       <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F2fceff1214cb48c8b43e5651ff4022f0"
                           alt="" class="nav-icon">
                       <span>About</span>
@@ -226,62 +228,101 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-      $(document).ready(function () {
-        // Category button click
-        /*$('.category-btn').click(function () {
-          // Toggle active state for category buttons
-          $('.category-btn').removeClass('active').attr('aria-selected', 'false');
-          $(this).addClass('active').attr('aria-selected', 'true');
+       $(document).ready(function () {
+    // Store all video cards and current video index
+    let videoCards = $('.phrase-card');
+    let currentVideoIndex = 0;
+    
+    // Category button click
+    $('.category-btn').click(function () {
+      // Toggle active state for category buttons
+      $('.category-btn').removeClass('active').attr('aria-selected', 'false');
+      $(this).addClass('active').attr('aria-selected', 'true');
 
-          const category = $(this).text().toLowerCase();
-          if (category === 'all') {
-            // Show all cards if "All" is selected
-            $('.phrase-card').show();
-          } else {
-            // Hide all cards and show only the selected category
-            $('.phrase-card').hide();
-            $(`.phrase-card[data-category="${category}"]`).show();
-          }
-        });*/
+      const category = $(this).data('category');
+      if (category === 'all-phrases') {
+        // Show all cards if "All" is selected
+        videoCards = $('.phrase-card');
+        $('.phrase-card').show();
+      } else {
+        // Hide all cards and show only the selected category
+        $('.phrase-card').hide();
+        videoCards = $(`.phrase-card[data-category="${category}"]`);
+        videoCards.show();
+      }
+    });
 
-        $('.category-btn').click(function () {
-          // Toggle active state for category buttons
-          $('.category-btn').removeClass('active').attr('aria-selected', 'false');
-          $(this).addClass('active').attr('aria-selected', 'true');
+    // Handle video modal
+    $('.phrase-card').click(function () {
+      currentVideoIndex = videoCards.index($(this));
+      const videoUrl = $(this).data('video-url');
+      openVideoModal(videoUrl);
+    });
 
-          const category = $(this).data('category');
+    // Open video modal with specific video
+    function openVideoModal(videoUrl) {
+      const modal = $('.video-modal');
+      const video = modal.find('video');
+      
+      video.attr('src', videoUrl);
+      modal.addClass('active');
+      video[0].play();
+    }
 
-          if (category === 'all-phrases') {
-            // Show all cards if "All" is selected
-            $('.phrase-card').show();
-          } else {
-            // Hide all cards and show only the selected category
-            $('.phrase-card').hide();
-            $(`.phrase-card[data-category="${category}"]`).show();
-          }
-        });
+    // Close video modal
+    $('.close-modal').click(function () {
+      closeVideoModal();
+    });
 
-        // Handle video modal
-        $('.phrase-card').click(function () {
-          const videoUrl = $(this).data('video-url');
-          const modal = $('.video-modal');
-          const video = modal.find('video');
+    function closeVideoModal() {
+      const modal = $('.video-modal');
+      const video = modal.find('video');
 
-          video.attr('src', videoUrl);
-          modal.addClass('active');
-          video[0].play();
-        });
+      modal.removeClass('active');
+      video[0].pause();
+      video[0].currentTime = 0;
+    }
 
-        // Close video modal
-        $('.close-modal').click(function () {
-          const modal = $('.video-modal');
-          const video = modal.find('video');
+    // Next video button
+    $('.next-btn').click(function(e) {
+      e.stopPropagation(); // Prevent event bubbling
+      navigateVideo(1); // 1 means next
+    });
 
-          modal.removeClass('active');
-          video[0].pause();
-          video[0].currentTime = 0;
-        });
-      });
+    // Previous video button
+    $('.prev-btn').click(function(e) {
+      e.stopPropagation(); // Prevent event bubbling
+      navigateVideo(-1); // -1 means previous
+    });
+
+    // Handle keyboard navigation
+    $(document).keydown(function(e) {
+      if ($('.video-modal').hasClass('active')) {
+        if (e.key === 'ArrowRight') {
+          navigateVideo(1);
+        } else if (e.key === 'ArrowLeft') {
+          navigateVideo(-1);
+        } else if (e.key === 'Escape') {
+          closeVideoModal();
+        }
+      }
+    });
+
+    // Navigate between videos
+    function navigateVideo(direction) {
+      // Calculate new index with wrapping
+      currentVideoIndex += direction;
+      if (currentVideoIndex >= videoCards.length) {
+        currentVideoIndex = 0;
+      } else if (currentVideoIndex < 0) {
+        currentVideoIndex = videoCards.length - 1;
+      }
+      
+      // Get the new video URL and open it
+      const newVideoUrl = $(videoCards[currentVideoIndex]).data('video-url');
+      openVideoModal(newVideoUrl);
+    }
+  });
 
     </script>
 </body>
