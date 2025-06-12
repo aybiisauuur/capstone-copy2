@@ -1117,20 +1117,196 @@ video {
   }
 }
 
-/* Responsive adjustments */
+/* Extra Small Devices (phones, 320px and up) */
+@media (max-width: 480px) {
+  .app-title {
+    font-size: 1.5rem;
+  }
+
+  .app-logo {
+    height: 30px;
+  }
+
+  .search-input {
+    font-size: 1rem;
+  }
+
+  .search-box {
+    padding: 10px 15px;
+  }
+
+  .welcome-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .welcome-subtitle {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .content-wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .left-column, 
+  .right-column {
+    min-width: 100%;
+  }
+
+  .digital-art-container {
+    padding-top: 20px;
+  }
+
+  .info-panel {
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+
+  .nav-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav-link span {
+    font-size: 0.7rem;
+  }
+
+  .profile-img {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  #userGreeting {
+    font-size: 0.8rem;
+  }
+}
+
+/* Small Devices (portrait tablets, 481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .app-title {
+    font-size: 1.8rem;
+  }
+
+  .welcome-title {
+    font-size: 2.2rem;
+  }
+
+  .welcome-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .search-input {
+    font-size: 1.2rem;
+  }
+
+  .content-wrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .info-panel {
+    font-size: 1rem;
+  }
+}
+
+/* Prevent horizontal scrolling */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Touch-friendly elements */
+button, 
+a, 
+.nav-link, 
+.search-input {
+  min-height: 44px; /* Recommended minimum touch target size */
+}
+
+/* Responsive typography */
+html {
+  font-size: 16px;
+}
+
 @media (max-width: 768px) {
-  .main-content {
-    gap: 15px;
-    padding: 20px;
-    max-height: calc(100vh - 200px);
+  html {
+    font-size: 14px;
   }
 }
 
 @media (max-width: 480px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+/* Responsive header */
+@media (max-width: 600px) {
+  .header-container {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .logo-link {
+    margin-bottom: 10px;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .profile-container {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+  }
+}
+
+/* Footer adjustments for very small screens */
+@media (max-width: 350px) {
+  .nav-list {
+    flex-wrap: wrap;
+  }
+  
+  .nav-item {
+    flex: 0 0 50%;
+    margin-bottom: 5px;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 480px) and (orientation: landscape) {
   .main-content {
-    gap: 10px;
-    padding: 15px;
-    max-height: calc(100vh - 180px);
+    max-height: calc(100vh - 150px);
+  }
+  
+  .digital-art-container {
+    padding-top: 10px;
+  }
+  
+  .info-panel {
+    padding: 10px;
+  }
+}
+
+/* Very small height devices */
+@media (max-height: 400px) {
+  .search-container {
+    padding: 10px;
+    height: auto;
+  }
+  
+  .main-content {
+    padding: 10px;
+  }
+  
+  .welcome-title {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+  }
+  
+  .welcome-subtitle {
+    font-size: 0.9rem;
   }
 }
 

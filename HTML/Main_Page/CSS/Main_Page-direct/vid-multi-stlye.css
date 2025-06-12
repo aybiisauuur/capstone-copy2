@@ -60,11 +60,14 @@ body {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 20px;
+    font-size: clamp(16px, 4vw, 20px);
     color: #fff;
     font-weight: 400;
     margin: 0;
     white-space: nowrap;
+    max-width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .app-title {
@@ -538,4 +541,172 @@ button {
     .video-options-container {
         grid-template-columns: 1fr;
     }
+}
+
+/* Mobile Responsive Styles Only */
+@media (max-width: 767px) {
+    
+    .container {
+        width: calc(100% - 50px);
+        margin-top: 13px;
+        padding: 13px;
+        border-left-width: 3px;
+    }
+    
+    #instruction {
+    font-size: 20px;
+    }
+    #question-text {
+        font-size: 15px;
+        padding: 8px 3px;
+    }
+    
+    .video-options-container {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .video-option video {
+        height: auto;
+        min-height: 180px;
+    }
+    
+    .progress-segment {
+        height: 4px;
+        min-width: 8px;
+    }
+    
+    button {
+        padding: 8px 15px;
+        font-size: 12px;
+        width: 100%;
+        max-width: 250px;
+    }
+    
+    .next-btn,
+    #final-answer-btn {
+        margin: 15px auto;
+        padding: 10px 15px;
+    }
+    
+    .result,
+    .ai-feedback,
+    .initial-feedback,
+    .analysis-status {
+        font-size: 12px;
+        padding: 6px;
+        margin: 8px 0;
+    }
+    
+    .feedback-correct,
+    .feedback-wrong {
+        font-size: 15px;
+        margin: 8px auto;
+    }
+    
+    .modal-content {
+        padding: 12px;
+        width: 80%;
+    }
+    
+    .modal h2 {
+        font-size: 15px;
+    }
+    
+    .modal p {
+        font-size: 12px;
+    }
+    
+    .modal-button {
+        padding: 6px 10px;
+        font-size: 12px;
+        min-width: 100px;
+    }
+    
+    .question-counter {
+        font-size: 12px;
+    }
+}
+
+/* Extra small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+    #question-text {
+        font-size: 12px;
+    }
+
+    #instruction {
+    font-size: 15px;
+    }
+    
+    .video-option video {
+        min-height: 130px;
+    }
+    
+    .feedback-correct,
+    .feedback-wrong {
+        font-size: 12px;
+    }
+    
+    button {
+        padding: 6px 14px;
+        font-size: 11px;
+        max-width: 200px;
+    }
+}
+
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+  .top-header {
+    padding: 10px 15px;
+  }
+
+  .page-title {
+    max-width: 50%;
+    font-size: clamp(14px, 4vw, 18px);
+  }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .top-header {
+    padding: 8px 10px;
+  }
+
+  .back-link {
+    gap: 0.5rem;
+  }
+
+  .back-icon {
+    width: 10px;
+    height: 14px;
+  }
+
+  .back-text {
+    font-size: clamp(14px, 4vw, 16px);
+  }
+}
+
+/* Very small devices (phones under 360px) */
+@media (max-width: 359.98px) {
+
+  .back-link {
+    gap: 0.3rem;
+  }
+
+  .back-icon {
+    width: 8px;
+    height: 12px;
+  }
+
+  .page-title {
+    max-width: 40%;
+  }
+}
+
+/* Orientation-specific adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .top-header {
+    padding: 5px 10px;
+  }
 }

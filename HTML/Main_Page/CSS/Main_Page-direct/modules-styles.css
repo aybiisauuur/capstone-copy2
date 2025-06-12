@@ -149,45 +149,6 @@ body {
 .categories-section::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 74, 173, 0.5);
 }
-@media (max-width: 991px) {
-  .content-wrapper {
-      grid-template-columns: 1fr;
-      height: auto;
-  }
-  
-  .intro-section {
-      padding: 20px;
-      align-items: center;
-      text-align: center;
-  }
-  
-  .intro-text {
-      max-width: 100%;
-      margin-bottom: 30px;
-  }
-  
-  .categories-section {
-      padding-right: 0;
-      max-height: 60vh;
-  }
-}
-
-@media (max-width: 768px) {
-  .intro-text {
-      font-size: 1.5rem;
-  }
-  
-  .category-card {
-      flex-direction: column;
-      text-align: center;
-      padding: 20px;
-  }
-  
-  .category-title {
-      font-size: 1.2rem;
-  }
-}
-
 
 .app-footer {
     background-color: #004AAD;
@@ -330,64 +291,180 @@ body {
     border: 0;
   }
 
-@media (min-width: 769px) {
-  body {
-      overflow: hidden;
-  }
+/* Existing CSS remains the same until the media queries */
 
-  .main-content {
-      overflow-y: hidden;
-  }
-}
-
+/* Mobile Responsiveness Adjustments */
 @media (max-width: 991px) {
-    .content-wrapper {
-        flex-direction: column;
-        gap: 20px;
-        overflow-y: auto;
-    }
-
-    .categories-section {
-        margin-left: 0;
-    }
-
-    .category-card {
-        padding: 20px;
-    }
-
-    .nav-list {
-        flex-wrap: wrap;
-        padding: 0 20px;
-    }
+  .content-wrapper {
+    grid-template-columns: 1fr;
+      height: auto;
+      padding: 15px;
+      gap: 15px;
+  }
+  
+  .intro-section {
+      padding: 15px;
+      align-items: center;
+      text-align: center;
+  }
+  
+  .intro-text {
+      max-width: 100%;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+      line-height: 1.4;
+  }
+  
+  .categories-section {
+      padding-right: 0;
+      max-height: none;
+      gap: 15px;
+  }
+  
+  .category-card {
+      min-height: 100px;
+      padding: 15px;
+  }
+  
+  .category-icon {
+      width: 50px;
+      height: 50px;
+  }
+  
+  .category-title {
+      font-size: 1.2rem;
+  }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .category-card,
-    .nav-link {
-        transition: none;
-    }
+@media (max-width: 576px) {
+  .app-title {
+      font-size: 24px;
+  }
+  
+  .intro-text {
+      font-size: 1.1rem;
+  }
+  
+  .category-card {
+      flex-direction: row;
+      text-align: left;
+      padding: 12px;
+      min-height: 80px;
+  }
+  
+  .category-icon {
+      width: 40px;
+      height: 40px;
+  }
+  
+  .category-title {
+      font-size: 1rem;
+  }
+  
+  .app-footer {
+      padding: 8px 0;
+  }
+  
+  .nav-icon {
+      width: 20px;
+      height: 20px;
+  }
+  
+  .nav-link span {
+      font-size: 12px;
+  }
+  
+  .nav-link.active::after {
+      bottom: -6px;
+      width: 5px;
+      height: 5px;
+  }
 }
 
-@media (max-width: 991px) {
-    body {
-        overflow-y: auto;
-    }
+/* Very small devices (phones, 400px and down) */
+@media (max-width: 400px) {
+  .intro-text {
+      font-size: 1rem;
+  }
+  
+  .category-card {
+      padding: 10px;
+      min-height: 70px;
+  }
+  
+  .category-icon {
+      width: 35px;
+      height: 35px;
+  }
+  
+  .category-title {
+      font-size: 0.9rem;
+  }
+  
+  .nav-list {
+      padding: 0 10px;
+  }
+  
+  .nav-link {
+      font-size: 12px;
+      padding: 6px 0;
+  }
+  
+  .nav-icon {
+      margin-bottom: 4px;
+  }
+}
 
-    .main-content {
-        flex-direction: column;
-        max-height: none;
-    }
+/* Landscape orientation adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .content-wrapper {
+      grid-template-columns: 1fr 1fr;
+  }
+  
+  .intro-section {
+      padding: 10px;
+  }
+  
+  .intro-text {
+      font-size: 1rem;
+      margin-bottom: 10px;
+  }
+  
+  .categories-section {
+      grid-template-columns: 1fr;
+      max-height: 60vh;
+      overflow-y: auto;
+  }
+  
+  .category-card {
+      min-height: 70px;
+      padding: 10px;
+  }
+  
+  .category-icon {
+      width: 30px;
+      height: 30px;
+  }
+  
+  .category-title {
+      font-size: 0.9rem;
+  }
+}
 
-    .info-panel,
-    .recent-section {
-        position: center;
-        flex: none;
-        width: 100%;
-        max-width: none;
-    }
+/* Accessibility improvements for touch targets */
+.category-card {
+    min-width: 44px;
+    min-height: 44px;
+}
 
-    .nav-items {
-        flex-wrap: wrap;
-        gap: 20px;
-    }
+.nav-link {
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+}
+
+/* Prevent text size adjustment on mobile */
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }

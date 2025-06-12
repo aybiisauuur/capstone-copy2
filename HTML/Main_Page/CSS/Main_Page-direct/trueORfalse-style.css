@@ -326,3 +326,177 @@ button {
 .try-again-button:hover {
     background-color: #4271af;
 }
+
+/* Mobile Responsive Styles Only */
+@media (max-width: 767px) {
+
+       .container {
+        width: calc(100% - 50px);
+        margin-top: 13px;
+        padding: 13px;
+        border-left-width: 3px;
+    }
+
+    #questionText {
+        font-size: 14px;
+        padding: 0 3px;
+    }
+
+    .video-container {
+        max-width: 100%;
+        margin-top: 0;
+        padding: 3px;
+    }
+
+    video {
+        width: 100%;
+        max-height: none;
+        margin-top: 0;
+    }
+
+    .progress-segment {
+        height: 5px;
+        min-width: 13px;
+    }
+
+    .buttons-container {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    button {
+        width: 100%;
+        max-width: 250px;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .true-false-btn {
+        width: 100%;
+    }
+
+    .feedback-correct,
+    .feedback-wrong {
+        font-size: 15px;
+        margin-top: 12px;
+    }
+
+    .modal-content {
+        padding: 15px;
+    }
+
+    .modal h2 {
+        font-size: 15px;
+    }
+
+    .modal p {
+        font-size: 11px;
+    }
+
+    .modal-buttons {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .modal-button {
+        width: 100%;
+        padding: 8px;
+    }
+}
+
+/* Extra small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+
+    .container {
+        padding: 10px;
+    }
+
+    #questionText {
+        font-size: 12px;
+    }
+
+    .progress-segment {
+        height: 4px;
+    }
+
+    .feedback-correct,
+    .feedback-wrong {
+        font-size: 13px;
+    }
+
+    button {
+        padding: 8px;
+        font-size: 10px;
+    }
+}
+
+/* Very small devices (phones, 360px and down) */
+@media (max-width: 360px) {
+    .container {
+        padding: 8px;
+    }
+
+    #questionText {
+        font-size: 11px;
+    }
+
+    button {
+        padding: 5px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 767.98px) {
+  .top-header {
+    padding: 10px 15px;
+  }
+
+  .page-title {
+    max-width: 50%;
+    font-size: clamp(14px, 4vw, 18px);
+  }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .top-header {
+    padding: 8px 10px;
+  }
+
+  .back-link {
+    gap: 0.5rem;
+  }
+
+  .back-icon {
+    width: 10px;
+    height: 14px;
+  }
+
+  .back-text {
+    font-size: clamp(14px, 4vw, 16px);
+  }
+}
+
+/* Very small devices (phones under 360px) */
+@media (max-width: 359.98px) {
+
+  .back-link {
+    gap: 0.3rem;
+  }
+
+  .back-icon {
+    width: 8px;
+    height: 12px;
+  }
+
+  .page-title {
+    max-width: 40%;
+  }
+}
+
+/* Orientation-specific adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .top-header {
+    padding: 5px 10px;
+  }
+}

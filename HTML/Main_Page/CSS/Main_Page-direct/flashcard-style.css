@@ -518,49 +518,190 @@ button:disabled {
   background-color: #f44336;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
+/* Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+  .flashcard-container {
+    height: 55vh;
+    max-height: 400px;
+  }
+  
+  .container, .flashcard-wrapper {
+    width: 90%;
+    padding: 20px;
+    margin-top: 40px;
+  }
+  
+  .controls-container {
+    gap: 8px;
+  }
+}
+
+/* Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
   .top-header {
     padding: 10px 15px;
   }
 
   .page-title {
     max-width: 50%;
+    font-size: clamp(14px, 4vw, 18px);
   }
 
   .flashcard-container {
     height: 50vh;
-    margin: 20px auto;
+    min-height: 280px;
+    max-height: 350px;
+    margin: 15px auto;
   }
 
-  .controls-container {
+  .container, .flashcard-wrapper {
+    margin-top: 30px;
+    padding: 15px;
+  }
+
+  .front {
+    font-size: clamp(1.2rem, 4vw, 2em);
+  }
+
+  .back {
+    font-size: clamp(0.9rem, 3vw, 1.2em);
+  }
+
+  .button-group, .feedback-buttons {
     flex-direction: column;
     align-items: center;
+    gap: 10px;
   }
 
-  #reset-button,
-  #shuffle-button {
+  .feedback-btn, #reset-button, #shuffle-button {
     width: 100%;
-    max-width: 280px;
+    max-width: 250px;
+    padding: 10px 20px;
+  }
+
+  .summary-lists-container {
+    flex-direction: column;
   }
 }
 
-@media (max-width: 480px) {
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .top-header {
+    padding: 8px 10px;
+  }
+
   .back-link {
     gap: 0.5rem;
   }
 
   .back-icon {
-    width: 12px;
-    height: 16px;
+    width: 10px;
+    height: 14px;
+  }
+
+  .back-text {
+    font-size: clamp(14px, 4vw, 16px);
   }
 
   .flashcard-container {
     height: 45vh;
     min-height: 250px;
+    max-height: 300px;
+    width: 95%;
   }
 
   .card-face {
-    padding: 15px;
+    padding: 10px;
+  }
+
+  .front {
+    font-size: clamp(1rem, 4vw, 1.5em);
+  }
+
+  .back {
+    font-size: clamp(0.8rem, 3vw, 1em);
+  }
+
+  .container, .flashcard-wrapper {
+    width: 95%;
+    padding: 12px;
+    margin-top: 20px;
+  }
+
+  p {
+    font-size: clamp(0.8rem, 3vw, 1rem);
+  }
+
+  .controls-container {
+    margin-bottom: 30px;
+  }
+
+  .feedback-btn, #reset-button, #shuffle-button {
+    padding: 8px 15px;
+    font-size: clamp(0.9rem, 3vw, 1rem);
+  }
+
+  .summary-item {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Very small devices (phones under 360px) */
+@media (max-width: 359.98px) {
+  .flashcard-container {
+    height: 40vh;
+    min-height: 220px;
+  }
+
+  .back-link {
+    gap: 0.3rem;
+  }
+
+  .back-icon {
+    width: 8px;
+    height: 12px;
+  }
+
+  .page-title {
+    max-width: 40%;
+  }
+
+  .front {
+    font-size: clamp(0.9rem, 4vw, 1.2em);
+  }
+
+  .back {
+    font-size: clamp(0.7rem, 3vw, 0.9em);
+  }
+
+  .feedback-btn, #reset-button, #shuffle-button {
+    max-width: 200px;
+    padding: 6px 12px;
+  }
+
+  .summary-item {
+    font-size: 0.8rem;
+  }
+}
+
+/* Orientation-specific adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .flashcard-container {
+    height: 70vh;
+    min-height: 200px;
+  }
+  
+  .top-header {
+    padding: 5px 10px;
+  }
+  
+  .container, .flashcard-wrapper {
+    margin-top: 15px;
+    padding: 10px;
+  }
+  
+  .controls-container {
+    margin: 10px auto 20px;
   }
 }

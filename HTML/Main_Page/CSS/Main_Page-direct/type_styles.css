@@ -3,7 +3,7 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    /* Remove overflow: hidden */
     background: #fff;
     min-height: 100vh;
     margin: 0;
@@ -13,7 +13,10 @@ body {
 .Type_of_quiz {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
+    padding-bottom: 60px; /* Footer height */
+    box-sizing: border-box;
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .top-header {
@@ -34,29 +37,27 @@ body {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 20px;
+    font-size: clamp(16px, 4vw, 20px);
     color: #fff;
     font-weight: 400;
     margin: 0;
     white-space: nowrap;
+    max-width: 60%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .content-wrapper {
     flex: 1;
     display: flex;
     flex-direction: column;
-    /* Stack content vertically */
-    /* Center vertically */
     align-items: center;
-    /* Center horizontally */
     gap: 10px;
-    /* Add spacing between child elements */
     padding: 20px;
     width: 100%;
     margin-top: 5px;
-    /* Full-width container */
     box-sizing: border-box;
-    /* Include padding in width calculation */
+    overflow-y: visible; /* Change to visible or auto as needed */
 }
 
 /* Adjust intro text positioning */
@@ -204,8 +205,9 @@ body {
     width: 100%;
     box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-    transition: all 0.3s ease;
+    height: 60px; /* Fixed height */
 }
+
 
 .app-footer:hover {
     box-shadow: 0 -6px 16px rgba(0, 0, 0, 0.15);
@@ -340,65 +342,316 @@ body {
     border: 0;
 }
 
-@media (min-width: 769px) {
-    body {
-        overflow: hidden;
-    }
-
-    .main-content {
-        overflow-y: hidden;
-    }
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .categories-section {
+    gap: 30px;
+  }
+  .category-card {
+    min-height: 150px;
+  }
 }
 
-@media (max-width: 991px) {
+/* Large devices (desktops, 992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .intro-text {
+    font-size: 40px;
+    margin-bottom: 60px;
+  }
+}
+
+/* Medium devices (tablets, 768px to 991px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .intro-text {
+    font-size: 36px;
+    margin-bottom: 50px;
+  }
+  .category-card {
+    max-width: 280px;
+    min-height: 120px;
+  }
+}
+
+/* Small devices (landscape phones, 576px to 767px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .intro-text {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+  .categories-section {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+  .category-card {
+    max-width: 100%;
+    min-height: 110px;
+  }
+  .category-title {
+    font-size: 22px;
+  }
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .top-header {
+    padding: 8px 10px;
+  }
+
+    .back-link {
+    gap: 0.5rem;
+  }
+
+  .page-title {
+    font-size: 18px;
+    max-width: 60%;
+  }
+ .back-text {
+    font-size: clamp(14px, 4vw, 16px);
+  }
+ .back-icon {
+    width: 10px;
+    height: 14px;
+  }
+  
+  .intro-text {
+    font-size: 28px;
+    margin-bottom: 30px;
+    padding: 0 15px;
+  }
+  
+  .categories-section {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .category-card {
+    padding: 15px;
+    min-height: 90px;
+    border-radius: 15px;
+    max-width: 100%;
+  }
+  
+  .category-icon {
+    width: 50px;
+    margin-bottom: 8px;
+  }
+  
+  .category-title {
+    font-size: 18px;
+  }
+  
+  .app-footer {
+    padding: 10px 0;
+  }
+  
+  .nav-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .nav-link {
+    font-size: 12px;
+    padding: 6px 0;
+  }
+}
+
+/* Very small devices (phones under 360px) */
+@media (max-width: 359.98px) {
+  .top-header {
+    padding: 8px 10px;
+  }
+.page-title {
+    max-width: 40%;
+  }
+  .back-text {
+    font-size: 10px;
+  }
+  .back-icon {
+    width: 8px;
+    height: 12px;
+  }
+
+    .back-link {
+    gap: 0.3rem;
+  }
+  .intro-text {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+  
+  .categories-section {
+    gap: 12px;
+    padding: 12px;
+  }
+  
+  .category-card {
+    padding: 12px;
+    min-height: 80px;
+  }
+  
+  .category-icon {
+    width: 45px;
+  }
+  
+  .category-title {
+    font-size: 16px;
+  }
+  
+  .nav-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .nav-link {
+    font-size: 11px;
+  }
+}
+
+/* Small height devices */
+@media (max-height: 600px) {
+  .intro-text {
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  .category-card {
+    min-height: 70px;
+    padding: 12px;
+  }
+  .category-icon {
+    width: 40px;
+    margin-bottom: 5px;
+  }
+}
+
+/* Landscape orientation for mobile */
+@media (max-width: 991.98px) and (orientation: landscape) {
+  .content-wrapper {
+    padding-top: 10px;
+  }
+  .intro-text {
+    margin-bottom: 20px;
+    font-size: 28px;
+  }
+  .categories-section {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 700px;
+  }
+  .category-card {
+    min-height: 90px;
+  }
+}
+
+/* Accessibility adjustments */
+@media (prefers-reduced-motion) {
+  .nav-link,
+  .category-card,
+  .nav-link.active::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: more) {
+  .category-card {
+    border: 2px solid #000;
+  }
+  .nav-link {
+    color: #fff !important;
+  }
+}
+
+/* Specific adjustments for small screens */
+@media (max-width: 767.98px) {
+    .Type_of_quiz {
+        padding-bottom: 60px; /* Match footer height */
+    }
+
+    
     .content-wrapper {
-        flex-direction: column;
-        gap: 20px;
+        padding-bottom: 40px; /* Extra space above footer */
+    }
+}
+
+@media (max-width: 575.98px) {
+    .Type_of_quiz {
+        padding-bottom: 60px;
         overflow-y: auto;
     }
-
+    
+    .content-wrapper {
+        padding-bottom: 20px; /* Extra space before footer */
+    }
+    
     .categories-section {
-        margin-left: 0;
-    }
-
-    .category-card {
-        padding: 20px;
-    }
-
-    .nav-list {
-        flex-wrap: wrap;
-        padding: 0 20px;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 15px;
     }
 }
 
-@media (prefers-reduced-motion: reduce) {
-
-    .category-card,
-    .nav-link {
-        transition: none;
+@media (max-width: 991.98px) and (orientation: landscape) {
+    .Type_of_quiz {
+        padding-bottom: 60px;
+    }
+    
+    .content-wrapper {
+        padding-bottom: 40px;
     }
 }
 
-@media (max-width: 991px) {
-    body {
-        overflow-y: auto;
-    }
+@media (max-width: 767.98px) {
+  .top-header {
+    padding: 10px 15px;
+  }
 
-    .main-content {
-        flex-direction: column;
-        max-height: none;
-    }
-
-    .info-panel,
-    .recent-section {
-        position: center;
-        flex: none;
-        width: 100%;
-        max-width: none;
-    }
-
-    .nav-items {
-        flex-wrap: wrap;
-        gap: 20px;
-    }
+  .page-title {
+    max-width: 50%;
+    font-size: clamp(14px, 4vw, 18px);
+  }
 }
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .top-header {
+    padding: 8px 10px;
+  }
+
+  .back-link {
+    gap: 0.5rem;
+  }
+
+  .back-icon {
+    width: 10px;
+    height: 14px;
+  }
+
+  .back-text {
+    font-size: clamp(14px, 4vw, 16px);
+  }
+}
+
+/* Very small devices (phones under 360px) */
+@media (max-width: 359.98px) {
+  .back-link {
+    gap: 0.3rem;
+  }
+
+  .back-icon {
+    width: 8px;
+    height: 12px;
+  }
+
+  .page-title {
+    max-width: 40%;
+  }
+}
+
+/* Orientation-specific adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .top-header {
+    padding: 5px 10px;
+  }
+}
+
