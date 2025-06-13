@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Choice Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/Main_Page-direct/vid-multi-stlye.css">
+</head>
+
+<body>
+    <section class="quiz" role="main">
+        <header class="top-header" role="banner">
+            <a href="conversation-kind-type_quiz.html" class="back-link" aria-label="Back to previous page">
+                <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F4f58b895b87b443ba782586860e6d12c"
+                    alt="" class="back-icon" aria-hidden="true">
+                <span class="back-text">Quiz - Type</span>
+            </a>
+            <h1 class="page-title">Conversation - Multiple Choice (Version 2)</h1>
+        </header>
+
+        <h2 id = "instruction"> Click on the video to watch it, and confirm your answer using the button below.</h2>
+
+        <div class="container" id="quiz-container">
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p id="loading-text">Preparing your quiz...</p>
+            </div>
+            <div class="progress-bar" id="progress-bar"></div>
+            <h2 id="question-text"></h2>
+            <div class="video-options-container" id="video-options-container"></div>
+            <button id="final-answer-btn" class="next-btn">Final Answer</button>
+            <button id="next-btn" class="next-btn">Next Question</button>
+        </div>
+        <!-- Modal -->
+        <div id="quiz-modal" class="modal">
+            <div class="modal-content">
+                <h2>Yay, you finished the quiz!</h2>
+                <p>Quiz score: <span id="quiz-score"></span></p>
+                <div class="modal-buttons">
+                    <button class="modal-button back-button">Back</button>
+                    <button class="modal-button try-again-button">Try Again</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="JS/Main_Page-directjs/conversation-mutliple-v2.js"></script>
+</body>
+
+</html>

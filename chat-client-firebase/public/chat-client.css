@@ -1,0 +1,109 @@
+:root {
+    --primary-color: rgb(0, 74, 173);
+    --secondary-color: #f0f0f0;
+    --text-color: #000;
+    --white: #fff;
+    --shadow-color: rgba(0, 0, 0, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white);
+    padding: 10px;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    border-radius: 10px;
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.messages-box {
+    flex-grow: 1;
+    min-height: 200px;
+    max-height: 300px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+}
+
+.chat-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.question-button, .submit-button, .clear-button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.question-button {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.question-button:hover {
+    background-color: rgb(0, 50, 120);
+}
+
+.answer-textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--text-color);
+    border-radius: 5px;
+    resize: none;
+    font-size: 14px;
+}
+
+.submit-button, .clear-button {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.submit-button:hover, .clear-button:hover {
+    background-color: rgb(0, 50, 120);
+}
+
+@media (max-width: 600px) {
+    .chat-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .messages-box {
+        max-height: 250px;
+    }
+}

@@ -1,0 +1,11 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /profile_info/ohGKfHi2P0cgG0lzrgtm {
+      allow read, write, create: if request.auth.uid == "ohGKfHi2P0cgG0lzrgtm";
+    }
+        match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
