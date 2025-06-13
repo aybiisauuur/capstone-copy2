@@ -134,12 +134,12 @@ html, body {
 
 .app-footer {
   background-color: #004AAD;
-  padding: clamp(8px, 1.5vw, 12px) 0;
+  padding: 12px 0;
   position: fixed;
   bottom: 0;
   width: 100%;
-  z-index: 1000;
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
   transition: all 0.3s ease;
 }
 
@@ -148,9 +148,9 @@ html, body {
 }
 
 .footer-nav {
-  width: min(600px, 100%);
+  max-width: 600px;
   margin: 0 auto;
-  padding: 0 clamp(10px, 3vw, 20px);
+  padding: 0 20px;
 }
 
 .nav-list {
@@ -173,8 +173,8 @@ html, body {
   align-items: center;
   text-decoration: none;
   color: rgba(255, 255, 255, 0.6);
-  font-size: clamp(12px, 2.5vw, 14px);
-  padding: clamp(5px, 1vw, 8px) 0;
+  font-size: 14px;
+  padding: 8px 0;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
 }
@@ -202,9 +202,9 @@ html, body {
 }
 
 .nav-icon {
-  width: clamp(20px, 5vw, 24px);
-  height: clamp(20px, 5vw, 24px);
-  margin-bottom: clamp(4px, 1vw, 6px);
+  width: 24px;
+  height: 24px;
+  margin-bottom: 6px;
   transition: all 0.3s ease;
   filter: brightness(0.8);
 }
@@ -261,6 +261,53 @@ html, body {
   }
 }
 
+
+@media (max-width: 576px) {
+  .nav-list {
+    padding: 0 10px;
+  }
+
+  .nav-link {
+    font-size: 12px;
+    padding: 6px 0;
+  }
+
+  .nav-icon {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 4px;
+  }
+}
+
+@media (max-width: 400px) {
+  .nav-link {
+    font-size: 11px;
+  }
+
+  .nav-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+}
+
+/* Very small devices (phones, 360px and down) */
+@media (max-width: 360px) {
+  .nav-list {
+    padding: 0 5px;
+  }
+
+  .nav-link {
+    font-size: 10px;
+  }
+
+  .nav-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .content-grid {
@@ -284,24 +331,11 @@ html, body {
   .content-grid {
     padding: 20px;
   }
-  
-  .app-footer {
-    padding: 10px 0;
-  }
 }
 
 @media (max-width: 480px) {
   .content-grid {
     gap: 15px;
     padding: 15px;
-  }
-  
-  .nav-list {
-    flex-wrap: wrap;
-  }
-  
-  .nav-item {
-    flex: 0 0 50%;
-    margin-bottom: 10px;
   }
 }

@@ -20,31 +20,34 @@ body {
 }
 
 .top-header {
-    position: relative;
-    background-color: #004AB3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    padding: 15px 20px;
+  position: relative;
+  background-color: #004AB3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  min-height: 60px;
+  z-index: 1000;
 }
+
 
 .back-text {
     color: #ffffff;
 }
 
 .page-title {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: clamp(16px, 4vw, 20px);
-    color: #fff;
-    font-weight: 400;
-    margin: 0;
-    white-space: nowrap;
-    max-width: 60%;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(14px, 4vw, 20px);
+  color: #fff;
+  font-weight: 400;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 50%; /* Prevents overlap */
+  pointer-events: none; /* Allows clicks through to elements below */
 }
 
 .content-wrapper {
@@ -71,12 +74,13 @@ body {
 }
 
 .back-link {
-    display: flex;
-    align-items: center;
-    gap: 1.188rem;
-    text-decoration: none;
-    color: var(--primary-color);
-    transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex: 0 1 auto; /* Allows shrinking but not growing */
+  min-width: 0; /* Allows text truncation */
+  max-width: 45%; /* Prevents overlap */
 }
 
 .back-link:hover,
@@ -85,13 +89,17 @@ body {
 }
 
 .back-icon {
-    width: 15px;
-    height: 20px;
-    margin-bottom: 5px;
+  width: 15px;
+  height: 20px;
+  flex-shrink: 0; /* Prevents icon from shrinking */
 }
 
 .back-text {
-    font-size: 20px;
+  font-size: clamp(14px, 4vw, 20px);
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .categories-section {
@@ -360,58 +368,9 @@ body {
   }
 }
 
-/* Medium devices (tablets, 768px to 991px) */
-@media (min-width: 768px) and (max-width: 991.98px) {
-  .intro-text {
-    font-size: 36px;
-    margin-bottom: 50px;
-  }
-  .category-card {
-    max-width: 280px;
-    min-height: 120px;
-  }
-}
-
-/* Small devices (landscape phones, 576px to 767px) */
-@media (min-width: 576px) and (max-width: 767.98px) {
-  .intro-text {
-    font-size: 32px;
-    margin-bottom: 40px;
-  }
-  .categories-section {
-    grid-template-columns: 1fr;
-    max-width: 500px;
-  }
-  .category-card {
-    max-width: 100%;
-    min-height: 110px;
-  }
-  .category-title {
-    font-size: 22px;
-  }
-}
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
-  .top-header {
-    padding: 8px 10px;
-  }
-
-    .back-link {
-    gap: 0.5rem;
-  }
-
-  .page-title {
-    font-size: 18px;
-    max-width: 60%;
-  }
- .back-text {
-    font-size: clamp(14px, 4vw, 16px);
-  }
- .back-icon {
-    width: 10px;
-    height: 14px;
-  }
   
   .intro-text {
     font-size: 28px;
@@ -458,27 +417,6 @@ body {
 
 /* Very small devices (phones under 360px) */
 @media (max-width: 359.98px) {
-  .top-header {
-    padding: 8px 10px;
-  }
-.page-title {
-    max-width: 40%;
-  }
-  .back-text {
-    font-size: 10px;
-  }
-  .back-icon {
-    width: 8px;
-    height: 12px;
-  }
-
-    .back-link {
-    gap: 0.3rem;
-  }
-  .intro-text {
-    font-size: 24px;
-    margin-bottom: 25px;
-  }
   
   .categories-section {
     gap: 12px;
@@ -508,39 +446,6 @@ body {
   }
 }
 
-/* Small height devices */
-@media (max-height: 600px) {
-  .intro-text {
-    margin-bottom: 20px;
-    font-size: 24px;
-  }
-  .category-card {
-    min-height: 70px;
-    padding: 12px;
-  }
-  .category-icon {
-    width: 40px;
-    margin-bottom: 5px;
-  }
-}
-
-/* Landscape orientation for mobile */
-@media (max-width: 991.98px) and (orientation: landscape) {
-  .content-wrapper {
-    padding-top: 10px;
-  }
-  .intro-text {
-    margin-bottom: 20px;
-    font-size: 28px;
-  }
-  .categories-section {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 700px;
-  }
-  .category-card {
-    min-height: 90px;
-  }
-}
 
 /* Accessibility adjustments */
 @media (prefers-reduced-motion) {
@@ -552,101 +457,8 @@ body {
   }
 }
 
-/* High contrast mode */
-@media (prefers-contrast: more) {
-  .category-card {
-    border: 2px solid #000;
-  }
-  .nav-link {
-    color: #fff !important;
-  }
-}
 
-/* Specific adjustments for small screens */
-@media (max-width: 767.98px) {
-    .Type_of_quiz {
-        padding-bottom: 60px; /* Match footer height */
-    }
 
-    
-    .content-wrapper {
-        padding-bottom: 40px; /* Extra space above footer */
-    }
-}
-
-@media (max-width: 575.98px) {
-    .Type_of_quiz {
-        padding-bottom: 60px;
-        overflow-y: auto;
-    }
-    
-    .content-wrapper {
-        padding-bottom: 20px; /* Extra space before footer */
-    }
-    
-    .categories-section {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 15px;
-    }
-}
-
-@media (max-width: 991.98px) and (orientation: landscape) {
-    .Type_of_quiz {
-        padding-bottom: 60px;
-    }
-    
-    .content-wrapper {
-        padding-bottom: 40px;
-    }
-}
-
-@media (max-width: 767.98px) {
-  .top-header {
-    padding: 10px 15px;
-  }
-
-  .page-title {
-    max-width: 50%;
-    font-size: clamp(14px, 4vw, 18px);
-  }
-}
-
-/* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) {
-  .top-header {
-    padding: 8px 10px;
-  }
-
-  .back-link {
-    gap: 0.5rem;
-  }
-
-  .back-icon {
-    width: 10px;
-    height: 14px;
-  }
-
-  .back-text {
-    font-size: clamp(14px, 4vw, 16px);
-  }
-}
-
-/* Very small devices (phones under 360px) */
-@media (max-width: 359.98px) {
-  .back-link {
-    gap: 0.3rem;
-  }
-
-  .back-icon {
-    width: 8px;
-    height: 12px;
-  }
-
-  .page-title {
-    max-width: 40%;
-  }
-}
 
 /* Orientation-specific adjustments */
 @media (max-height: 500px) and (orientation: landscape) {
@@ -655,3 +467,62 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .top-header {
+    padding: 10px 12px;
+    min-height: 55px;
+  }
+  
+  .back-link {
+    gap: 6px;
+  }
+  
+  .back-icon {
+    width: 12px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .top-header {
+    padding: 8px 10px;
+    min-height: 50px;
+  }
+  
+  .back-link {
+    gap: 4px;
+    max-width: 40%;
+  }
+  
+  .page-title {
+    max-width: 45%;
+  }
+}
+
+@media (max-width: 360px) {
+  .back-text {
+    display: none; /* Hide text on very small screens */
+  }
+  
+  .back-link {
+    gap: 0;
+    max-width: 30px; /* Just show icon */
+  }
+  
+  .page-title {
+    max-width: 60%;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  .top-header {
+    min-height: 45px;
+    padding: 5px 8px;
+  }
+  
+  .back-icon {
+    width: 10px;
+    height: 14px;
+  }
+}

@@ -24,7 +24,8 @@ body {
   background-color: var(--chat-bg);
   display: flex;
   flex-direction: column;
-  overflow-y: auto; /* Keep this for overall page scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  padding-bottom: 80px;
 }
 
 .chat {
@@ -58,7 +59,9 @@ body {
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
-  padding-bottom: 80px; /* Add padding equal to footer height */
+  padding-bottom: 80px; 
+  min-height: calc(100vh - 150px - 80px); /* Viewport - header - footer */
+  overflow-y: auto; /* Add padding equal to footer height */
 }
 
 .chat-content {
@@ -268,8 +271,7 @@ body {
   bottom: 0;
   width: 100%;
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  transition: all 0.3s ease;
+z-index: 100;  transition: all 0.3s ease;
 }
 
 .app-footer:hover {
@@ -403,7 +405,6 @@ body {
 }
 
 /* Responsive Design */
-/* Mobile Responsive Styles Only */
 @media (max-width: 992px) {
   .main-content {
     padding: 15px;
@@ -419,7 +420,19 @@ body {
 
   .qr-section {
     width: 100%;
-    padding: 20px;
+    padding: 25px 20px; /* Slightly more padding for mobile */
+    margin-bottom: 20px;
+    height: auto; /* Ensure it grows with content */
+    min-height: auto; /* Remove any fixed minimum */
+  }
+
+  .qr-code {
+    max-width: 220px; /* Larger than before for better scanning */
+    margin: 0 auto 15px;
+    padding: 12px;
+    background: white;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
   .chat-container {
@@ -428,16 +441,20 @@ body {
   }
 
   .qr-content {
-    font-size: 20px;
+    font-size: 22px; /* Slightly larger for mobile readability */
+    margin-bottom: 15px;
   }
 
   .qr-description {
     font-size: 18px;
     margin: 15px 0 20px;
+    padding-bottom: 12px;
   }
 
   .qr-instructions {
-    font-size: 14px;
+    font-size: 15px;
+    margin-top: 20px;
+    line-height: 1.5;
   }
 }
 
@@ -474,23 +491,26 @@ body {
     font-size: 14px;
   }
 
-  .qr-section {
-    padding: 15px;
+   .qr-section {
+    padding: 22px 18px;
   }
 
   .qr-content {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .qr-description {
-    font-size: 16px;
-    margin: 10px 0 15px;
+    font-size: 17px;
+    margin: 12px 0 18px;
   }
 
   .qr-code {
     max-width: 200px;
-    padding: 10px;
   }
+  .qr-instructions {
+    font-size: 14px;
+  }
+
 }
 
 @media (max-width: 576px) {
@@ -513,23 +533,24 @@ body {
   }
 
   .qr-section {
-    padding: 12px;
+    padding: 15px 10px;
+    border-radius: 12px;
   }
 
   .qr-content {
-    font-size: 16px;
+    font-size: 19px;
   }
 
   .qr-description {
-    font-size: 15px;
+    font-size: 16px;
   }
-
+  
   .qr-code {
     max-width: 180px;
   }
-
+  
   .qr-instructions {
-    font-size: 13px;
+    font-size: 13.5px;
   }
 
   .nav-list {
@@ -566,17 +587,17 @@ body {
   }
 
   .qr-section {
-    padding: 10px;
+    padding: 12px 10px;
   }
-
+  
   .qr-content {
+    font-size: 18px;
+  }
+  
+  .qr-description {
     font-size: 15px;
   }
-
-  .qr-description {
-    font-size: 14px;
-  }
-
+  
   .qr-code {
     max-width: 160px;
   }
@@ -588,6 +609,10 @@ body {
   .nav-icon {
     width: 18px;
     height: 18px;
+  }
+
+  .qr-instructions {
+    font-size: 13px;
   }
 }
 
@@ -611,17 +636,24 @@ body {
   }
 
   .qr-section {
-    padding: 8px;
+    padding: 16px 10px;
   }
-
+  
   .qr-content {
+    font-size: 17px;
+  }
+  
+  .qr-description {
     font-size: 14px;
   }
 
-  .qr-description {
-    font-size: 13px;
+  .qr-code {
+    max-width: 150px;
   }
-
+  
+  .qr-instructions {
+    font-size: 12.5px;
+  }
   .nav-list {
     padding: 0 5px;
   }
@@ -633,5 +665,71 @@ body {
   .nav-icon {
     width: 16px;
     height: 16px;
+  }
+}
+
+/* Mobile Responsive Fix for QR Section */
+@media (max-width: 768px) {
+  .qr-section {
+    /* Ensure full visibility */
+    overflow: visible; /* Override any overflow:hidden */
+    height: auto; /* Let it expand with content */
+    min-height: unset; /* Remove fixed heights */
+    padding: 20px 15px; /* Adequate padding */
+  }
+
+  .qr-code {
+    max-width: 180px; /* Optimal mobile size */
+    width: 100%; /* Responsive width */
+    height: auto; /* Maintain aspect ratio */
+    margin: 10px auto; /* Center with spacing */
+    padding: 10px;
+    background: white;
+    border: 1px solid #eee; /* Better visibility */
+  }
+
+  .qr-content,
+  .qr-description,
+  .qr-instructions {
+    width: 100%; /* Prevent overflow */
+    word-wrap: break-word; /* Handle long text */
+  }
+}
+
+/* Extra Small Devices */
+@media (max-width: 480px) {
+  .qr-section {
+    padding: 15px 10px; /* Tighter padding */
+  }
+  
+  .qr-code {
+    max-width: 160px; /* Slightly smaller */
+    padding: 8px;
+  }
+  
+  .qr-description::after {
+    width: 60px; /* Smaller decoration */
+  }
+}
+
+@media (max-width: 992px) {
+  .chat {
+    height: auto; /* Remove fixed height */
+    min-height: 100vh; /* Fill viewport */
+  }
+
+  .main-content {
+    padding-bottom: 100px; /* Extra space for footer */
+    flex: 1;
+  }
+
+  .chat-sections {
+    min-height: calc(100vh - 150px - 100px); /* Adjusted calculation */
+    height: auto;
+    overflow: visible; /* Ensure all content is visible */
+  }
+
+  .qr-section {
+    margin-bottom: 20px; /* Space before footer */
   }
 }

@@ -45,17 +45,18 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  text-align: center;
-  padding: 15px 20px;
+  padding: 12px 15px;
+  min-height: 60px; /* Ensures consistent height */
+  z-index: 1000; /* Keeps header above other content */
 }
 
 .back-link {
   display: flex;
   align-items: center;
-  gap: 1.188rem;
+  gap: 10px;
   text-decoration: none;
-  color: var(--primary-color);
-  transition: opacity 0.2s;
+  flex-shrink: 0; /* Prevents shrinking */
+  max-width: 40%; /* Limits width to prevent overlap */
 }
 
 .back-link:hover,
@@ -66,24 +67,31 @@ body {
 .back-icon {
   width: 15px;
   height: 20px;
-  margin-bottom: 5px;
+  flex-shrink: 0; /* Prevents icon from shrinking */
 }
 
 .back-text {
-  font-size: 20px;
+  font-size: clamp(14px, 4vw, 20px); /* Responsive font size */
   color: #fff;
-
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Adds ellipsis if text is too long */
+  max-width: 100px; /* Limits text width */
 }
 
 .page-title {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 20px;
+  font-size: clamp(14px, 4vw, 20px); /* Responsive font size */
   color: #fff;
   font-weight: 400;
   margin: 0;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 50%; /* Prevents overlap with other elements */
+  pointer-events: none; /* Allows clicks to pass through to elements below */
 }
 
 .category-nav {
@@ -523,9 +531,16 @@ video {
 
 @media (max-width: 768px) {
   .top-header {
-    padding: 12px 15px;
+    padding: 10px 12px;
   }
 
+    .back-link {
+    gap: 8px;
+  }
+    .back-icon {
+    width: 12px;
+    height: 16px;
+  }
   .back-text, .page-title {
     font-size: 18px;
   }
@@ -621,18 +636,21 @@ video {
 }
 
 /* Extra small devices (phones, 400px and below) */
-@media (max-width: 400px) {
+@media (max-width: 480px) {
   .top-header {
-    padding: 10px 12px;
+    padding: 8px 10px;
   }
-
+  
   .back-text, .page-title {
-    font-size: 16px;
+    font-size: clamp(12px, 3.5vw, 16px);
   }
-
-  .back-icon {
-    width: 12px;
-    height: 16px;
+  
+  .back-text {
+    max-width: 80px;
+  }
+  
+  .page-title {
+    max-width: 40%;
   }
 
   .category-btn {
