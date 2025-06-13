@@ -1,0 +1,108 @@
+<!-- index naging login  -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./CSS/login.css" />
+    <link rel="stylesheet" href="./CSS/modal.css" />
+    <link rel="icon" type="image/png" href="/IMG/logo.png" sizes="32x32" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script type="module" src="./JS/login.js"></script>
+  </head>
+
+  <body>
+    <section class="login" id="login" role="main">
+      <header class="app-header">
+        <h1 class="app-title">Log In</h1>
+      </header>
+      <div class="intro-text-container">
+        <div class="logo-title-wrapper">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F057b21a83dfd405fbf224ddf754f4670"
+            alt="SenyasHub Logo"
+            class="site-logo"
+          />
+          <h2 class="intro-text">SenyasHub</h2>
+        </div>
+      </div>
+
+      <div class="form-container">
+        <!-- User Email -->
+        <div class="search-container">
+          <div class="input-wrapper">
+            <img src="../IMG/profile.png" alt="User Icon" class="icon" />
+            <input
+              type="search"
+              class="search-input"
+              placeholder="User Email"
+              aria-label="userID"
+              id="email"
+            />
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="password-container">
+          <div class="input-wrapper">
+            <img src="../IMG/lock.png" alt="Password Icon" class="icon" />
+            <input
+              type="password"
+              class="password-input"
+              placeholder="Password"
+              aria-label="password"
+              id="password"
+            />
+            <button type="button" class="toggle-password">&#128065;</button>
+          </div>
+        </div>
+        <main class="content-wrapper">
+          <section class="Sign_In-section" aria-label="FSL Categories">
+            <button class="Sign_In-card light" id="signup">
+              <h3 class="Sign_In-title">Sign in</h3>
+            </button>
+            <div class="link-container">
+              <!-- <a href="#" class="forgot-password">Forgot Password?</a> -->
+              <a href="./HTML/register.html" class="new-user"
+                >New user? Register here</a
+              >
+            </div>
+          </section>
+        </main>
+
+        <!-- modal  -->
+        <div id="modal" class="modal" style="display: none">
+          <div id="modal-content" class="modal-content">
+            <span id="close" class="close">×</span>
+            <p id="message">Profile updated successfully.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script>
+    async function askGemini() {
+      try {
+        const response = await fetch("http://localhost:3000/api/ask-gemini", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query: "Hello Gemini!" }),
+        });
+        const data = await response.json();
+        console.log(data.result);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+
+    askGemini();
+  </script>
+</html>
