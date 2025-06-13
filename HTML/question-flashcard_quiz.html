@@ -1,0 +1,144 @@
+<<<<<<< HEAD:HTML/Main_Page/question-flashcard_quiz.html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz - Flashcards</title>
+  <link rel="stylesheet" href="CSS/Main_Page-direct/flashcard-style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <header class="top-header" role="banner">
+    <a href="question-kind-type-quiz.html" class="back-link" aria-label="Back to previous page">
+      <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F4f58b895b87b443ba782586860e6d12c"
+        alt="" class="back-icon" aria-hidden="true" />
+      <span class="back-text">Quize</span>
+    </a>
+    <h1 class="page-title">Flashcards - Questions</h1>
+  </header>
+
+  <div class="flashcard-wrapper">
+    <div class="flashcard-container">
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p id="loading-text">Preparing your quiz...</p>
+    </div>
+      <div class="flashcard">
+        <div class="card-face front">
+          <h2>What?</h2>
+        </div>
+        <div class="card-face back">
+          <video class="card-video" controls>
+            <source src="https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Faea548e6c24a4551a40b0a9dc8fe373d%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=aea548e6c24a4551a40b0a9dc8fe373d&alt=media&optimized=true"
+              type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <p id ="instruction">Click on the flashcard to see the video.</p>
+
+    <div class="feedback-buttons">
+      <button id="practice-btn" class="feedback-btn practice-btn">Needs Practice ✘</button>
+      <button id="understood-btn" class="feedback-btn understood-btn">I Understand ✓</button>
+    </div>
+
+    <div class="button-group">
+      <button id="shuffle-button" type="button">Shuffle Flashcards</button>
+      <button id="reset-button" type="button">Reset Flashcards</button>
+    </div>
+
+    <div id="summary-container" class="summary-container">
+      <h3>Flashcard Summary</h3>
+      <div id="understood-list" class="summary-list">
+        <h4>Understood:</h4>
+      </div>
+      <div id="practice-list" class="summary-list">
+        <h4>Needs Practice:</h4>
+      </div>
+      <button id="try-again-btn" class="try-again-btn">Try Again</button>
+    </div>
+  </div>
+
+  <script src="JS/Main_Page-directjs/flashcards_quiz-style-questions.js"></script>
+</body>
+
+</html>
+
+=======
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz - Flashcards</title>
+  <link rel="stylesheet" href="../CSS/flashcard-style.css" />
+  <link rel="icon" type="image/png" href="/IMG/logo.png" sizes="32x32" />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <header class="top-header" role="banner">
+    <a href="question-kind-type-quiz.html" class="back-link" aria-label="Back to previous page">
+      <img src="https://cdn.builder.io/api/v1/image/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2F4f58b895b87b443ba782586860e6d12c"
+        alt="" class="back-icon" aria-hidden="true" />
+      <span class="back-text">Quiz - Type</span>
+    </a>
+    <h1 class="page-title">Flashcards - Questions</h1>
+  </header>
+
+  <div class="flashcard-wrapper">
+    <div class="flashcard-container">
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p id="loading-text">Preparing your quiz...</p>
+    </div>
+      <div class="flashcard">
+        <div class="card-face front">
+          <h2>What?</h2>
+        </div>
+        <div class="card-face back">
+          <video class="card-video" controls>
+            <source src="https://cdn.builder.io/o/assets%2F46a78e6780fc481d9e0cdcbac16d84ba%2Faea548e6c24a4551a40b0a9dc8fe373d%2Fcompressed?apiKey=46a78e6780fc481d9e0cdcbac16d84ba&token=aea548e6c24a4551a40b0a9dc8fe373d&alt=media&optimized=true"
+              type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <p id ="instruction">Click on the flashcard to see the video.</p>
+
+    <div class="feedback-buttons">
+      <button id="practice-btn" class="feedback-btn practice-btn">Needs Practice ✘</button>
+      <button id="understood-btn" class="feedback-btn understood-btn">I Understand ✓</button>
+    </div>
+
+    <div class="button-group">
+      <button id="shuffle-button" type="button">Shuffle Flashcards</button>
+      <button id="reset-button" type="button">Reset Flashcards</button>
+    </div>
+
+    <div id="summary-container" class="summary-container">
+      <h3>Flashcard Summary</h3>
+      <div id="understood-list" class="summary-list">
+        <h4>Understood:</h4>
+      </div>
+      <div id="practice-list" class="summary-list">
+        <h4>Needs Practice:</h4>
+      </div>
+      <button id="try-again-btn" class="try-again-btn">Try Again</button>
+    </div>
+  </div>
+
+  <script src="../JS/flashcards_quiz-style-questions.js"></script>
+</body>
+
+</html>
+
+>>>>>>> c812173f876407fff845f4f94ccf6facc4499817:HTML/question-flashcard_quiz.html
