@@ -204,7 +204,7 @@ h1 {
 }
 
 .video-option.selected {
-    box-shadow: 0 0 0 6px #007bff !important;
+    box-shadow: 0 0 0 6px #D16002 !important;
     animation: pulse 2s ease;
 }
 @keyframes pulse {

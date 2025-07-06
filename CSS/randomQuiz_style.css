@@ -203,7 +203,7 @@ body {
 
 .video-option.selected {
     border-color: var(--primary-color);
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 0 8px #D16002;
 }
 
 .video-option video {
