@@ -28,6 +28,8 @@ try {
   alert('Firebase configuration error. Please check your config values.');
 }
 
+console.log('Script loaded successfully!');
+//alert('JavaScript file is working!');
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Script loaded successfully!');
     
