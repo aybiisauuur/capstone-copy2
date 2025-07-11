@@ -1,7 +1,7 @@
 // forgot-pass-front.js
 
 console.log('Script loaded successfully!');
-alert('JavaScript file is working!');
+//alert('JavaScript file is working!');
 document.addEventListener('DOMContentLoaded', function() {
     // Get DOM elements
     const sendEmailBtn = document.getElementById('signup');
