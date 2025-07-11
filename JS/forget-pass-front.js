@@ -1,8 +1,38 @@
-// forgot-pass-front.js
+// Simple frontend-only forget password solution
+// Replace the firebaseConfig below with your actual Firebase config
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCnlzgGB3lSAn8Xf6H-Bx_bJ9QPK6iWJ80",
+  authDomain: "senyashub.firebaseapp.com",
+  projectId: "senyashub",
+  storageBucket: "senyashub.firebasestorage.app",
+  messagingSenderId: "272537634617",
+  appId: "1:272537634617:web:2763ed67c759373fd30ae8",
+  measurementId: "G-R6MYXS2Z0G",
+  databaseURL: "https://senyashub-default-rtdb.firebaseio.com/",
+};
+
+// Import Firebase modules from CDN
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js';
+import { getAuth, sendPasswordResetEmail } from 'https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js';
+
+// Initialize Firebase
+let app, auth;
+
+try {
+  app = initializeApp(firebaseConfig);
+  auth = getAuth(app);
+  console.log('✅ Firebase initialized successfully');
+} catch (error) {
+  console.error('❌ Firebase initialization failed:', error);
+  alert('Firebase configuration error. Please check your config values.');
+}
 
 console.log('Script loaded successfully!');
 //alert('JavaScript file is working!');
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Script loaded successfully!');
+    
     // Get DOM elements
     const sendEmailBtn = document.getElementById('signup');
     const emailInput = document.getElementById('email');
@@ -13,26 +43,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const okBtn = document.getElementById('okBtn');
     const messageElement = document.getElementById('message');
 
-    // Configuration
-    const API_BASE_URL = 'http://localhost:3000';
-    
-    // Validate that all required elements exist
-    const requiredElements = {
-        sendEmailBtn: 'Send Email Button',
-        emailInput: 'Email Input',
-        modal: 'Modal',
-        modalContent: 'Modal Content',
-        closeBtn: 'Close Button',
-        exitBtn: 'Exit Button',
-        okBtn: 'OK Button',
-        messageElement: 'Message Element'
-    };
-
-    for (const [element, name] of Object.entries(requiredElements)) {
-        if (!eval(element)) {
-            console.error(`${name} not found in DOM`);
-            return;
-        }
+    // Check if all elements exist
+    if (!sendEmailBtn || !emailInput || !modal || !modalContent || !closeBtn || !exitBtn || !okBtn || !messageElement) {
+        console.error('Some required elements are missing from the DOM');
+        alert('Page elements missing. Please check your HTML structure.');
+        return;
     }
 
     // Send password reset email
@@ -47,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Email validation regex
+        // Email validation
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             showModal('Please enter a valid email address.', 'error');
@@ -58,40 +73,52 @@ document.addEventListener('DOMContentLoaded', function() {
         setButtonLoading(true);
 
         try {
-            console.log('Sending password reset request for:', email);
+            console.log('Sending password reset email to:', email);
             
-            const response = await fetch(`${API_BASE_URL}/api/forgot-password`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email: email })
-            });
+            // Send password reset email
+            await sendPasswordResetEmail(auth, email);
 
-            const data = await response.json();
-            console.log('Response:', data);
-
-            if (data.success) {
-                showModal(data.message, 'success');
-                emailInput.value = ''; // Clear the input
-                
-                // Auto-redirect to login page after 5 seconds
-                setTimeout(() => {
-                    window.location.href = './login.html';
-                }, 5000);
-            } else {
-                showModal(data.message, 'error');
-            }
+            console.log('✅ Password reset email sent successfully');
+            showModal('Password reset email sent successfully! Please check your email inbox and spam folder.', 'success');
+            emailInput.value = ''; // Clear input
+            
+            // Auto-redirect after 5 seconds
+            setTimeout(() => {
+                window.location.href = './login.html';
+            }, 5000);
 
         } catch (error) {
-            console.error('Network error:', error);
-            showModal('Network error. Please check your internet connection and try again.', 'error');
+            console.error('❌ Error sending password reset email:', error);
+            
+            let errorMessage = 'An error occurred while sending the password reset email.';
+            
+            switch (error.code) {
+                case 'auth/user-not-found':
+                    errorMessage = 'No user found with this email address.';
+                    break;
+                case 'auth/invalid-email':
+                    errorMessage = 'Please enter a valid email address.';
+                    break;
+                case 'auth/too-many-requests':
+                    errorMessage = 'Too many requests. Please wait a few minutes before trying again.';
+                    break;
+                case 'auth/network-request-failed':
+                    errorMessage = 'Network error. Please check your internet connection.';
+                    break;
+                case 'auth/configuration-not-found':
+                    errorMessage = 'Firebase configuration error. Please check your setup.';
+                    break;
+                default:
+                    errorMessage = error.message || errorMessage;
+            }
+            
+            showModal(errorMessage, 'error');
         } finally {
             setButtonLoading(false);
         }
     });
 
-    // Handle Enter key press in email input
+    // Handle Enter key
     emailInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
             e.preventDefault();
@@ -99,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Function to set button loading state
+    // Button loading state
     function setButtonLoading(isLoading) {
         if (isLoading) {
             sendEmailBtn.disabled = true;
@@ -117,21 +144,16 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Showing modal:', message, type);
         
         messageElement.textContent = message;
-        
-        // Reset modal classes
         modalContent.className = 'modal-content';
         
-        // Add type-specific styling
         if (type === 'error') {
             modalContent.classList.add('error');
         } else if (type === 'success') {
             modalContent.classList.add('success');
         }
         
-        // Show modal
         modal.style.display = 'block';
         
-        // Auto-close for success messages
         if (type === 'success') {
             setTimeout(() => {
                 hideModal();
@@ -141,49 +163,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function hideModal() {
         modal.style.display = 'none';
-        console.log('Modal hidden');
     }
 
-    // Close modal when clicking the X button
-    closeBtn.addEventListener('click', function(e) {
+    // Event listeners for modal
+    closeBtn.addEventListener('click', (e) => {
         e.preventDefault();
         hideModal();
     });
 
-    // Exit button - redirect to index.html
-    exitBtn.addEventListener('click', function(e) {
+    exitBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        console.log('Redirecting to index.html');
         window.location.href = './index.html';
     });
 
-    // OK button - close modal
-    okBtn.addEventListener('click', function(e) {
+    okBtn.addEventListener('click', (e) => {
         e.preventDefault();
         hideModal();
     });
 
-    // Close modal when clicking outside of it
-    modal.addEventListener('click', function(event) {
+    modal.addEventListener('click', (event) => {
         if (event.target === modal) {
             hideModal();
         }
     });
 
-    // Prevent modal content click from closing modal
-    modalContent.addEventListener('click', function(event) {
+    modalContent.addEventListener('click', (event) => {
         event.stopPropagation();
     });
 
-    // Test API connection on load
-    fetch(`${API_BASE_URL}/api/health`)
-        .then(response => response.json())
-        .then(data => {
-            console.log('API Health Check:', data);
-        })
-        .catch(error => {
-            console.error('API Health Check Failed:', error);
-        });
-
-    console.log('Forgot password script loaded successfully');
+    console.log('✅ Frontend-only forgot password script loaded successfully');
 });
