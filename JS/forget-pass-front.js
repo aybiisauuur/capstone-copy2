@@ -1,6 +1,3 @@
-// Simple frontend-only forget password solution
-// Replace the firebaseConfig below with your actual Firebase config
-
 const firebaseConfig = {
   apiKey: "AIzaSyCnlzgGB3lSAn8Xf6H-Bx_bJ9QPK6iWJ80",
   authDomain: "senyashub.firebaseapp.com",
@@ -82,9 +79,9 @@ document.addEventListener('DOMContentLoaded', function() {
             showModal('Password reset email sent successfully! Please check your email inbox and spam folder.', 'success');
             emailInput.value = ''; // Clear input
             
-            // Auto-redirect after 5 seconds
+            // Auto-redirect to index.html after 5 seconds
             setTimeout(() => {
-                window.location.href = './login.html';
+                window.location.href = '../index.html';
             }, 5000);
 
         } catch (error) {
